@@ -1,0 +1,6 @@
+- [ ] Audit the current preview at mobile and desktop widths, with special focus on header clarity, nav behavior and homepage visual specificity.
+- [ ] Trace and correct the calculator interaction issue, including keyboard entry and calculated-result updates.
+- [ ] Define a scroll-to-top route-transition contract and back-navigation behavior for all public pages.
+- [ ] Replace platform-credit language and add a consistent, cleaner footer/legal treatment.
+- [ ] Specify one purpose-built visual or interactive visual system for every homepage story beat.
+- [ ] Prepare the build-ready navigation, UI, interaction and visual-asset plan for approval.

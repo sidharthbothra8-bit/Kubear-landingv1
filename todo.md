@@ -3,7 +3,7 @@
 - [x] Add purposeful motion that makes the Connected Ledger feel alive without distracting from clarity or trust.
 - [x] Modernise high-visibility surfaces and CTA moments so the product feels more immediate and rewarding.
 - [x] Verify responsive layout, reduced-motion behavior, interactions, build quality, and console health.
-- [ ] Save and deliver the revised preview checkpoint.
+- [x] Save and deliver the revised preview checkpoint.
 - [x] Audit Cleo’s visual storytelling, motion behavior, tone, and conversion structure without copying its brand assets or copy.
 - [x] Inspect Kubear’s live web app and Play Store listing to ground the marketing story in the real product and download path.
 - [x] Create an original creative direction with visual references, palette, typography, motion principles, and signature moments.
@@ -13,11 +13,18 @@
 - [x] Replace the screenshot-led homepage with the Moving Money Universe visual story and modern mobile-first interaction model.
 - [x] Rework shared navigation, supporting pages and app handoffs so the new campaign system is consistent across the site.
 - [x] Validate responsive visual quality, media load, motion fallbacks, accessiblity, direct conversion links and production build output.
-- [ ] Save and deliver the completed screenshot-free visual-story checkpoint.
+- [x] Save and deliver the completed screenshot-free visual-story checkpoint.
 - [x] Build a single content registry for approved Learn clusters, original articles, calculator metadata and route-specific SEO fields.
 - [x] Generate and use distinct original Learn Library and Tools Workshop visuals with no screenshots, third-party marks or readable financial figures.
 - [x] Build three live, accessible mobile-first calculators for SIP, EMI and Goa Goal planning.
-- [x] Build the internal Learn hub, five topic clusters, six original article routes and reading-first article template.
+- [x] Build the internal Learn hub, six topic clusters, six original article routes and reading-first article template.
 - [x] Add canonical route metadata, accurate structured data and sitemap entries for every approved Learn and Tools URL.
 - [x] Validate visual uniqueness, calculator calculations, mobile layouts, keyboard behavior, route metadata and crawl files.
-- [ ] Save and deliver the completed mobile-first expansion checkpoint.
+- [x] Save and deliver the completed mobile-first expansion checkpoint.
+- [x] Replace the floating header with the route-aware Money Map and an explicit mobile app action.
+- [x] Give every money-moment selector a distinct original or code-built scene, with no product screenshot as core campaign art.
+- [x] Repair SIP, EMI and Goa Goal controls with validation, reset examples, period chips, live results and accessible invalid states.
+- [x] Apply shared route scroll restoration, including browser history paths while preserving deliberate hash links.
+- [x] Generate 22 route-specific static metadata shells with matching canonical, title, description and social metadata.
+- [x] Validate desktop and 390px routes, calculator math, TypeScript, production build, nested route metadata and public copy scans.
+- [x] Save and deliver the final approved refinement checkpoint.

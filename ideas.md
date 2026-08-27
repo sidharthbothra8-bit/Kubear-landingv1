@@ -98,3 +98,6 @@ Every component and page begins with a short design comment that names the relev
 - **Connected Ledger rule:** Every major page includes a composition where labelled money fragments, margin notes, or ruled entries visibly gather into one picture with Kubear Copper connectors.
 - **Surface rule:** Default content containers use ledger paper, slips, tabs, ruled rows, or annotations. Generic floating cards are reserved for an explicit product-interface state.
 - **Color rule:** Kubear Copper `#C96632` is the recurring attention color for actions, connectors, and key markers. Saffron, leaf, and vermilion serve only semantic data states or rare editorial moments.
+- **Imagery rule:** Domestic imagery must show a recognisable Indian money-life moment or a tactile ledger/product state, never a cinematic still life without a clear financial role.
+- **Ledger continuation rule:** After the hero, every major section includes a visible gathering device such as a copper connector, ruled ledger row, labelled fragment, tab sequence or composed summary state.
+- **Trust rule:** Read-only control, selected sharing and no money movement recur as annotated ledger facts, not merely reassurance copy near a CTA.

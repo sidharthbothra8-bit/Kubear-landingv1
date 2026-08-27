@@ -25,6 +25,7 @@ export function PageMeta({ title, description, path = "/", image = defaultImage,
     setMeta('meta[property="og:title"]', "property", "og:title", title);
     setMeta('meta[property="og:description"]', "property", "og:description", description);
     setMeta('meta[property="og:type"]', "property", "og:type", type);
+    setMeta('meta[property="og:url"]', "property", "og:url", `${origin}${path}`);
     setMeta('meta[property="og:image"]', "property", "og:image", image);
     setMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
     setMeta('meta[name="twitter:description"]', "name", "twitter:description", description);

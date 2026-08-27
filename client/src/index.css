@@ -2,6 +2,26 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./learn-tools.css";
+@import "./money-map.css";
+@import "./calculator-fix.css";
+
+/* Living Ledger system: labelled rows and copper connectors make scattered money moments visibly gather into one governed view. */
+.ledger-thread { width:min(100%,25rem); margin:1.25rem 0 1.45rem; border-top:1px solid rgba(18,54,48,.18); border-bottom:1px solid rgba(18,54,48,.18); padding:.58rem 0 .52rem; }
+.ledger-thread>p { display:flex; align-items:center; gap:.38rem; margin:0 0 .35rem; color:#516761; font-family:"Roboto Mono",monospace; font-size:.57rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+.ledger-thread>p span { display:block; width:.42rem; height:.42rem; border:1px solid #FF5C2B; transform:rotate(45deg); }
+.ledger-thread>div { display:grid; gap:.1rem; }
+.ledger-thread-row { display:grid; grid-template-columns:1.8rem .8rem minmax(0,1fr) auto; align-items:center; min-height:1.62rem; color:#123630; font-size:.73rem; }
+.ledger-thread-row b { color:#FF5C2B; font-family:"Roboto Mono",monospace; font-size:.52rem; letter-spacing:.04em; }
+.ledger-thread-row i { display:block; height:1px; background:#FF5C2B; opacity:.85; }
+.ledger-thread-row strong { padding-left:.42rem; font-weight:850; }
+.ledger-thread-row em { border:1px solid rgba(18,54,48,.15); border-radius:999px; padding:.12rem .38rem; color:#516761; font-family:"Roboto Mono",monospace; font-size:.5rem; font-style:normal; font-weight:750; letter-spacing:.03em; }
+.ledger-thread-goa { border-color:rgba(18,54,48,.3); }
+.ledger-thread-goa>p,.ledger-thread-goa .ledger-thread-row { color:#123630; }
+.ledger-thread-home { border-color:rgba(18,54,48,.16); }
+.ledger-thread-trust { border-color:rgba(255,248,238,.22); }
+.ledger-thread-trust>p,.ledger-thread-trust .ledger-thread-row { color:#FFF8EE; }
+.ledger-thread-trust .ledger-thread-row em { border-color:rgba(255,248,238,.22); color:#D8E8DE; }
+@media (max-width:640px) { .ledger-thread { margin:1rem 0 1.2rem; }.ledger-thread-row { grid-template-columns:1.7rem .7rem minmax(0,1fr) auto; font-size:.7rem; }.ledger-thread-row em { font-size:.46rem; padding:.12rem .3rem; } }
 
 @custom-variant dark (&:is(.dark *));
 
