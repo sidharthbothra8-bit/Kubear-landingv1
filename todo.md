@@ -41,3 +41,9 @@
 - [x] Validate the redesigned site across mobile, tablet and desktop, then save and deliver the new checkpoint.
 - [x] Preserve the concurrent Learn-publishing foundation and restore the fullstack dependency and TypeScript build health.
 - [x] Rebuild the new Learn publishing and studio screens within the refreshed visual system without disrupting draft or publication states.
+- [x] Audit every public and editorial Kubear route for visual, responsive and interaction errors before another redesign pass.
+- [x] Define an implementation-ready visual purpose, hierarchy and motion system for each page rather than applying one treatment everywhere.
+- [x] Rebuild shared and page-specific layouts to resolve the audited UI defects while preserving working calculators and Learn publishing.
+- [x] Validate each redesigned route at mobile, tablet and desktop widths, then save and deliver the planned page-by-page checkpoint.
+- [x] Apply the final page-specific visual corrections to How it works, Privacy, Tools and Learn asynchronous states identified during audit.
+- [x] Revalidate every modified route and save the page-by-page redesign checkpoint.
