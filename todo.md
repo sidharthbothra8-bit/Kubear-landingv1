@@ -52,5 +52,5 @@
 - [x] Move calculator discovery and canonical calculator URLs under Learn, retaining compatibility forwarding from former Tools routes.
 - [x] Replace the broken rent-and-Goa goal panel with a responsive Goal Runway that keeps all text, actions and entries in normal flow.
 - [x] Rebuild Learn as a functional editorial desk with integrated tools, clear loading and empty states, and preserved publishing workflow.
-- [ ] Validate all legacy and new routes, calculator interactions, navigation, responsive layouts and build output, then save the final checkpoint.
+- [x] Validate all legacy and new routes, calculator interactions, navigation, responsive layouts and build output, then save the final checkpoint.
 - [x] Serve generated nested Learn shells directly without an intermediary static-directory redirect, then repeat production route validation.
