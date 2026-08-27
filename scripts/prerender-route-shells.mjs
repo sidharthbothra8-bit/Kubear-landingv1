@@ -11,10 +11,10 @@ const routes = {
   "/your-money-picture": ["Your money view | Kubear", "A clearer way to look at personal and selected home money in one focused view."],
   "/privacy-data": ["Privacy and data | Kubear", "Understand Kubear’s clear approach to control, data choices and account access."],
   "/journal": ["Kubear Journal | Everyday money notes", "A practical internal reading path for salary, UPI, bills, goals and home money."],
-  "/tools": ["Kubear Tools | Simple money calculators", "Try planning calculators for SIPs, EMIs and a Goa savings goal. Educational tools, not financial advice."],
-  "/tools/sip-calculator": ["SIP Calculator India | Kubear Tools", "Estimate the value of a monthly SIP using your contribution, expected return and time frame."],
-  "/tools/emi-calculator": ["EMI Calculator India | Kubear Tools", "Estimate a monthly EMI, overall repayment and illustrative interest from your loan details."],
-  "/tools/goa-goal-calculator": ["Goa Goal Calculator | Kubear Tools", "Plan a Goa goal with a target amount, money already saved and a time frame."],
+  "/learn/tools": ["Kubear Learn tools | Simple money answers", "Try simple planning tools for salary-day SIPs, home-plan EMIs and a Goa savings goal."],
+  "/learn/tools/sip-calculator": ["SIP Calculator India | Kubear Learn", "Estimate the value of a monthly SIP using your contribution, expected return and time frame."],
+  "/learn/tools/emi-calculator": ["EMI Calculator India | Kubear Learn", "Estimate a monthly EMI, overall repayment and illustrative interest from your loan details."],
+  "/learn/tools/goa-goal-calculator": ["Goa Goal Calculator | Kubear Learn", "Plan a Goa goal with a target amount, money already saved and a time frame."],
   "/learn": ["Kubear Learn | Money talk, no jargon", "Short, simple notes about salary day, UPI spending, rent, bills, home money and goals."],
   "/learn/start-here": ["Start here with your money view | Kubear Learn", "Simple ways to bring salary, bills, spending and goals into one more useful money view."],
   "/learn/salary-planning": ["Salary planning basics | Kubear Learn", "A practical way to give salary, bills, a buffer and plans clear places in the month."],
@@ -50,6 +50,16 @@ for (const [route, [title, description]] of Object.entries(routes)) {
   html = replaceOrAppend(html, /<meta\s+name="twitter:description"[^>]*>/i, contentTag("", "name", "twitter:description", description));
   html = replaceOrAppend(html, /<meta\s+name="twitter:image"[^>]*>/i, contentTag("", "name", "twitter:image", routeImage));
   const output = route === "/" ? resolve(root, "index.html") : resolve(root, route.slice(1), "index.html");
+  await mkdir(dirname(output), { recursive: true });
+  await writeFile(output, html, "utf8");
+}
+const legacyRedirects = { "/tools": "/learn/tools", "/tools/sip-calculator": "/learn/tools/sip-calculator", "/tools/emi-calculator": "/learn/tools/emi-calculator", "/tools/goa-goal-calculator": "/learn/tools/goa-goal-calculator" };
+for (const [route, destination] of Object.entries(legacyRedirects)) {
+  const canonical = `${origin}${destination}`;
+  let html = template.replace(/<title>[^<]*<\/title>/, `<title>Opening Kubear Learn tools</title>`);
+  html = replaceOrAppend(html, /<link\s+rel="canonical"[^>]*>/i, `<link rel="canonical" href="${canonical}" />`);
+  html = html.replace("</head>", `<meta http-equiv="refresh" content="0;url=${destination}" />\n</head>`);
+  const output = resolve(root, route.slice(1), "index.html");
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, html, "utf8");
 }

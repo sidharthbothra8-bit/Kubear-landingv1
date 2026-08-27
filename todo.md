@@ -47,3 +47,10 @@
 - [x] Validate each redesigned route at mobile, tablet and desktop widths, then save and deliver the planned page-by-page checkpoint.
 - [x] Apply the final page-specific visual corrections to How it works, Privacy, Tools and Learn asynchronous states identified during audit.
 - [x] Revalidate every modified route and save the page-by-page redesign checkpoint.
+- [x] Audit project-controlled platform-credit copy, calculator routes and route-level SEO before consolidating Tools into Learn.
+- [x] Remove Tools and Privacy from the primary desktop and mobile Money Map while retaining Trust links in the footer.
+- [x] Move calculator discovery and canonical calculator URLs under Learn, retaining compatibility forwarding from former Tools routes.
+- [x] Replace the broken rent-and-Goa goal panel with a responsive Goal Runway that keeps all text, actions and entries in normal flow.
+- [x] Rebuild Learn as a functional editorial desk with integrated tools, clear loading and empty states, and preserved publishing workflow.
+- [ ] Validate all legacy and new routes, calculator interactions, navigation, responsive layouts and build output, then save the final checkpoint.
+- [x] Serve generated nested Learn shells directly without an intermediary static-directory redirect, then repeat production route validation.

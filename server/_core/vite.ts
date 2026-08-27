@@ -58,7 +58,18 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Prefer a generated nested route shell when it exists. This avoids Express'
+  // default directory 301 so direct public routes immediately return their
+  // route-specific title, canonical URL and social metadata.
+  app.get("*", (req, res, next) => {
+    const routeShell = path.resolve(distPath, `.${req.path}`, "index.html");
+    if (routeShell.startsWith(`${distPath}${path.sep}`) && fs.existsSync(routeShell)) {
+      return res.sendFile(routeShell);
+    }
+    next();
+  });
+
+  app.use(express.static(distPath, { redirect: false }));
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
