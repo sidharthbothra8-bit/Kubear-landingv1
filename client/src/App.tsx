@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import HowItWorks from "@/pages/HowItWorks";
 import Journal from "@/pages/Journal";
 import Learn from "@/pages/Learn";
+import LearnStudio from "@/pages/LearnStudio";
 import MoneyPicture from "@/pages/MoneyPicture";
 import NotFound from "@/pages/NotFound";
 import PrivacyData from "@/pages/PrivacyData";
@@ -15,6 +16,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return <><ScrollToTop /><Switch>
     <Route path="/" component={Home} />
     <Route path="/how-it-works" component={HowItWorks} />
@@ -23,6 +25,7 @@ function Router() {
     <Route path="/journal" component={Journal} />
     <Route path="/learn" component={Learn} />
     <Route path="/learn/:slug" component={Learn} />
+    <Route path="/studio/learn" component={LearnStudio} />
     <Route path="/tools" component={Tools} />
     <Route path="/tools/:slug" component={Tools} />
     <Route path="/404" component={NotFound} />

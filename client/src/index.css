@@ -5,6 +5,7 @@
 @import "./money-map.css";
 @import "./calculator-fix.css";
 @import "./tactile-money.css";
+@import "./learn-publication.css";
 
 /* Home remediation: use a readable money picture and responsive instrument pairings rather than repeated photographic panels. */
 .instrument-hero { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(26rem,.98fr); align-items:center; gap:clamp(2rem,6vw,6rem); min-height:44rem; padding:8.5rem max(5vw,1.5rem) 6.5rem; background:#062E29; }

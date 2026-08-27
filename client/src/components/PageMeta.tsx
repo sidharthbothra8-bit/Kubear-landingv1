@@ -7,6 +7,7 @@ type PageMetaProps = {
   path?: string;
   image?: string;
   type?: "website" | "article";
+  article?: { author: string; publishedAt?: Date | string | null; updatedAt?: Date | string | null };
 };
 
 const origin = "https://www.kuberos.in";
@@ -18,7 +19,7 @@ function setMeta(selector: string, attribute: "name" | "property", key: string, 
   node.setAttribute("content", content);
 }
 
-export function PageMeta({ title, description, path = "/", image = defaultImage, type = "website" }: PageMetaProps) {
+export function PageMeta({ title, description, path = "/", image = defaultImage, type = "website", article }: PageMetaProps) {
   useEffect(() => {
     document.title = title;
     setMeta('meta[name="description"]', "name", "description", description);
@@ -41,7 +42,11 @@ export function PageMeta({ title, description, path = "/", image = defaultImage,
     if (!segments.length) { schema?.remove(); return; }
     if (!schema) { schema = document.createElement("script"); schema.id = "kubear-breadcrumb-schema"; schema.type = "application/ld+json"; document.head.appendChild(schema); }
     schema.textContent = JSON.stringify(breadcrumb);
-  }, [description, image, path, title, type]);
+    let articleSchema = document.querySelector<HTMLScriptElement>("#kubear-article-schema");
+    if (type !== "article" || !article?.publishedAt) { articleSchema?.remove(); return; }
+    if (!articleSchema) { articleSchema = document.createElement("script"); articleSchema.id = "kubear-article-schema"; articleSchema.type = "application/ld+json"; document.head.appendChild(articleSchema); }
+    articleSchema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, mainEntityOfPage: `${origin}${path}`, image, datePublished: new Date(article.publishedAt).toISOString(), dateModified: new Date(article.updatedAt ?? article.publishedAt).toISOString(), author: { "@type": "Organization", name: article.author }, publisher: { "@type": "Organization", name: "Kubear" } });
+  }, [article, description, image, path, title, type]);
 
   return null;
 }
