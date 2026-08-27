@@ -1,0 +1,6 @@
+- [x] Review the current homepage and supporting routes at mobile and desktop widths from an Indian user’s point of view.
+- [x] Define shorter, everyday Indian-English language and a modern motion direction with no em dashes.
+- [x] Add purposeful motion that makes the Connected Ledger feel alive without distracting from clarity or trust.
+- [x] Modernise high-visibility surfaces and CTA moments so the product feels more immediate and rewarding.
+- [x] Verify responsive layout, reduced-motion behavior, interactions, build quality, and console health.
+- [ ] Save and deliver the revised preview checkpoint.
