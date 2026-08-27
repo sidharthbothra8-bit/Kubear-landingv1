@@ -10,7 +10,7 @@ const routes = {
   "/how-it-works": ["How Kubear works | Your money, in focus", "See how Kubear helps you record money details, plan the month and keep important moments visible."],
   "/your-money-picture": ["Your money view | Kubear", "A clearer way to look at personal and selected home money in one focused view."],
   "/privacy-data": ["Privacy and data | Kubear", "Understand Kubear’s clear approach to control, data choices and account access."],
-  "/journal": ["Kubear Journal | Money notes for everyday life", "Short, clear Kubear notes about common money questions and everyday planning moments."],
+  "/journal": ["Kubear Journal | Everyday money notes", "A practical internal reading path for salary, UPI, bills, goals and home money."],
   "/tools": ["Kubear Tools | Simple money calculators", "Try planning calculators for SIPs, EMIs and a Goa savings goal. Educational tools, not financial advice."],
   "/tools/sip-calculator": ["SIP Calculator India | Kubear Tools", "Estimate the value of a monthly SIP using your contribution, expected return and time frame."],
   "/tools/emi-calculator": ["EMI Calculator India | Kubear Tools", "Estimate a monthly EMI, overall repayment and illustrative interest from your loan details."],

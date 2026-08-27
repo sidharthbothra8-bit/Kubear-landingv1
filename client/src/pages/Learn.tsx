@@ -5,16 +5,13 @@ import { PageMeta } from "@/components/PageMeta";
 import { SiteLayout } from "@/components/SiteChrome";
 import { articles, getArticle, getTopic, topics } from "@/lib/contentRegistry";
 
-const photoUrls: Partial<Record<string, string>> = {
-  salary: "/manus-storage/kubear-salary-morning-ref_172ccce8.png", goa: "/manus-storage/kubear-goa-goal-still-life_2bd357a8.png", home: "/manus-storage/kubear-home-table_49e1543c.png",
-};
-
 function ArticleVisual({ visual, className = "" }: { visual: string; className?: string }) {
-  const photo = photoUrls[visual];
-  if (photo) return <div className={`learn-visual ${className}`}><img src={photo} alt="" loading="lazy" /></div>;
-  if (visual === "upi") return <div className={`learn-visual learn-visual-upi ${className}`} aria-hidden="true"><span className="upi-rail" /><span className="upi-cup" /><span className="upi-ticket">UPI</span><span className="upi-spark upi-spark-one" /><span className="upi-spark upi-spark-two" /></div>;
-  if (visual === "rent") return <div className={`learn-visual learn-visual-rent ${className}`} aria-hidden="true"><span className="rent-envelope" /><span className="rent-key" /><span className="rent-route" /><span className="rent-label">Due first</span></div>;
-  return <div className={`learn-visual learn-visual-library ${className}`} aria-hidden="true"><span className="library-mini-tab one" /><span className="library-mini-tab two" /><span className="library-mini-card"><BookOpen className="size-6" />Learn</span><span className="library-mini-route" /></div>;
+  if (visual === "salary") return <div className={`learn-visual learn-visual-instrument visual-salary ${className}`} aria-hidden="true"><span className="article-visual-kicker">Salary jobs</span><div><i /><b>Rent</b><small>placed</small></div><div><i /><b>Goa</b><small>visible</small></div><div><i /><b>Buffer</b><small>saved</small></div></div>;
+  if (visual === "upi") return <div className={`learn-visual learn-visual-instrument visual-upi ${className}`} aria-hidden="true"><span className="article-visual-kicker">UPI week</span><div className="article-visual-days"><i>M</i><i>T</i><i>W</i><i>T</i><i className="today">F</i><i>S</i><i>S</i></div><b>Friday check-in</b></div>;
+  if (visual === "rent") return <div className={`learn-visual learn-visual-instrument visual-rent ${className}`} aria-hidden="true"><span className="article-visual-kicker">Commitments</span><div className="article-visual-runway"><i>05</i><b>Rent</b><i>11</i><b>Card</b><i>27</i><b>Plan</b></div><span>Due first</span></div>;
+  if (visual === "goa") return <div className={`learn-visual learn-visual-instrument visual-goa ${className}`} aria-hidden="true"><span className="article-visual-kicker">Goa plan</span><div className="article-visual-goal"><i /><b>₹15K</b><small>saved so far</small></div><span>9 months to go</span></div>;
+  if (visual === "home") return <div className={`learn-visual learn-visual-instrument visual-home ${className}`} aria-hidden="true"><span className="article-visual-kicker">Selected sharing</span><div><b>Home</b><span>Electricity</span><span>Groceries</span></div><div><b>Personal</b><span>Lunch out</span><span>Weekend plan</span></div></div>;
+  return <div className={`learn-visual learn-visual-instrument visual-library ${className}`} aria-hidden="true"><span className="article-visual-kicker">Long-term basics</span><BookOpen className="size-7" /><b>EPF · PPF · NPS</b><span>Plain words, no jargon</span></div>;
 }
 
 export default function Learn() {

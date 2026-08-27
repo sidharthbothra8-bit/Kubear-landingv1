@@ -28,3 +28,6 @@
 - [x] Generate 22 route-specific static metadata shells with matching canonical, title, description and social metadata.
 - [x] Validate desktop and 390px routes, calculator math, TypeScript, production build, nested route metadata and public copy scans.
 - [x] Save and deliver the final approved refinement checkpoint.
+- [x] Replace weak decorative visuals, graphs and image-led panels with purposeful responsive HTML/CSS/JS money instruments.
+- [x] Repair visual hierarchy, mobile controls, navigation states and supporting-route UI inconsistencies.
+- [x] Validate the visual remediation at target responsive widths and save the completed checkpoint.

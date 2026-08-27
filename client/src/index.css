@@ -4,6 +4,15 @@
 @import "./learn-tools.css";
 @import "./money-map.css";
 @import "./calculator-fix.css";
+@import "./tactile-money.css";
+
+/* Home remediation: use a readable money picture and responsive instrument pairings rather than repeated photographic panels. */
+.instrument-hero { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(26rem,.98fr); align-items:center; gap:clamp(2rem,6vw,6rem); min-height:44rem; padding:8.5rem max(5vw,1.5rem) 6.5rem; background:#062E29; }
+.instrument-hero-grid { position:absolute; inset:0; opacity:.32; pointer-events:none; background-image:linear-gradient(rgba(189,232,208,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(189,232,208,.18) 1px,transparent 1px); background-size:44px 44px; mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.15) 72%,transparent); }
+.instrument-hero .mm-hero-content { position:relative; z-index:2; max-width:38rem; padding:0; }.instrument-hero .mm-hero-lede { max-width:29rem; }.instrument-hero .hero-money-picture { position:relative; z-index:2; width:min(100%,32rem); justify-self:end; transform:rotate(2.2deg); }.instrument-hero .scroll-prompt { right:max(5vw,1.5rem); bottom:2rem; }
+.instrument-story-grid { display:grid; grid-template-columns:minmax(0,.84fr) minmax(25rem,1.16fr); align-items:center; gap:clamp(2rem,7vw,8rem); }.instrument-story-grid .money-instrument { width:min(100%,40rem); justify-self:end; }
+@media (max-width:1020px) { .instrument-hero { grid-template-columns:1fr; gap:2.5rem; min-height:auto; padding-top:7rem; }.instrument-hero .mm-hero-content { max-width:44rem; }.instrument-hero .hero-money-picture { width:min(100%,36rem); justify-self:start; }.instrument-story-grid { grid-template-columns:1fr; }.instrument-story-grid .money-instrument { justify-self:start; } }
+@media (max-width:520px) { .instrument-hero { min-height:auto; padding:5.75rem 1.15rem 4.25rem; }.instrument-hero .mm-hero-content { padding:0; }.instrument-hero .hero-money-picture { margin-top:.45rem; }.instrument-story-grid { gap:2rem; }.instrument-story-grid .money-instrument { width:100%; } }
 
 /* Living Ledger system: labelled rows and copper connectors make scattered money moments visibly gather into one governed view. */
 .ledger-thread { width:min(100%,25rem); margin:1.25rem 0 1.45rem; border-top:1px solid rgba(18,54,48,.18); border-bottom:1px solid rgba(18,54,48,.18); padding:.58rem 0 .52rem; }
