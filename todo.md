@@ -14,3 +14,10 @@
 - [x] Rework shared navigation, supporting pages and app handoffs so the new campaign system is consistent across the site.
 - [x] Validate responsive visual quality, media load, motion fallbacks, accessiblity, direct conversion links and production build output.
 - [ ] Save and deliver the completed screenshot-free visual-story checkpoint.
+- [x] Build a single content registry for approved Learn clusters, original articles, calculator metadata and route-specific SEO fields.
+- [x] Generate and use distinct original Learn Library and Tools Workshop visuals with no screenshots, third-party marks or readable financial figures.
+- [x] Build three live, accessible mobile-first calculators for SIP, EMI and Goa Goal planning.
+- [x] Build the internal Learn hub, five topic clusters, six original article routes and reading-first article template.
+- [x] Add canonical route metadata, accurate structured data and sitemap entries for every approved Learn and Tools URL.
+- [x] Validate visual uniqueness, calculator calculations, mobile layouts, keyboard behavior, route metadata and crawl files.
+- [ ] Save and deliver the completed mobile-first expansion checkpoint.

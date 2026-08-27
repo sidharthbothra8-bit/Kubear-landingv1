@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import HowItWorks from "@/pages/HowItWorks";
 import Journal from "@/pages/Journal";
+import Learn from "@/pages/Learn";
 import MoneyPicture from "@/pages/MoneyPicture";
 import NotFound from "@/pages/NotFound";
 import PrivacyData from "@/pages/PrivacyData";
@@ -19,7 +20,10 @@ function Router() {
     <Route path="/your-money-picture" component={MoneyPicture} />
     <Route path="/privacy-data" component={PrivacyData} />
     <Route path="/journal" component={Journal} />
+    <Route path="/learn" component={Learn} />
+    <Route path="/learn/:slug" component={Learn} />
     <Route path="/tools" component={Tools} />
+    <Route path="/tools/:slug" component={Tools} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />
   </Switch>;
