@@ -31,3 +31,19 @@ The source-level motion verification confirms that all newly introduced homepage
 The prior UPI weekday decoration was replaced with an explanatory spend trail. The new panel now communicates one clear idea: three ordinary payments, shown with their category, context and illustrative amount, become a visible ₹637 total when viewed together. The desktop layout keeps the weekly total and three entries readable at a glance. At 390px, the panel remains contained in the homepage flow and its spend entries preserve their ordering and labels.
 
 The focused correction passed TypeScript and the seven-test regression suite. Its production build generated the expected 22 static route shells, and the restarted homepage preview returned HTTP 200.
+
+## Human-story review
+
+The first code-crafted human-scene pass makes coffee, commute, rent, Goa, home sharing and personal control visible as distinct moments. The review also found that the repeated card treatment needed a stronger connected-ledger structure and more varied scene emphasis. The next pass therefore adds readable money-fragment strips and reduces repetitive sun-based composition while keeping live page copy and controls accessible.
+
+Desktop and 390px inspection confirmed the recurring human scenes are legible and stay inside the section flow. The next styling pass changes the paper silhouettes, edges and material details for coffee, salary, Goa, home and control so the illustrations read as different chapters rather than a repeated component frame.
+
+The final desktop pass confirms that coffee, commute, salary planning, rent with a Goa plan, household choices and personal control now have distinct scene props and ledger labels. At 390px, the scenes reduce in scale, retain their labelled money fragments and stay in a clean single-column story without overflow. The generated-image quota was unavailable, so these original human illustrations and foreground motion details were created in the site rather than as new raster assets.
+
+At 768px, the story holds together as a purposeful linear journey: every human scene remains paired with its section copy, no scene is clipped, and the trust and closing scenes retain their darker ink-led contrast. The human-scene steam, sunlight, character and travel-tag motion is explicitly scoped to reduced-motion-safe rules and uses opacity or transform only.
+
+The final validation passed the seven-test regression suite and TypeScript checks. The production build completed successfully with 22 static route shells, and the managed preview restarted with the homepage returning HTTP 200. The scene system is rendered in-page, so it introduces no new remote image requests or asset-loading failures while image-generation capacity is unavailable.
+
+The fresh homepage render produced no failed image, stylesheet, script or other asset requests in the focused network-log check. The hero and closing actions still bind to the Kubear web app and official Google Play listing; both destinations returned HTTP 200 during direct validation.
+
+> **Human-story asset-load verification: passed.** The homepage, entry module, homepage module, human-scene component and page-signature stylesheet each returned HTTP 200. The fresh network log contained no 4xx/5xx responses and no non-null request errors. The new scene system is code-crafted and does not depend on a new image download.

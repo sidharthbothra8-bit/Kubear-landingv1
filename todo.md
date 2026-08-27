@@ -62,3 +62,10 @@
 - [x] Persist the homepage reduced-motion verification result in the visual QA record.
 - [x] Replace the decorative UPI Week panel with a meaningful spending-pattern visual that explains small spends clearly.
 - [x] Validate the revised UPI panel at mobile and desktop widths, confirm homepage layout integrity.
+- [x] Create and select a consistent set of original Indian everyday-money illustration scenes and lightweight animated foreground details.
+- [x] Integrate accessible, responsive human-story visuals into the homepage hero, spending, salary, Goa, household, control and closing chapters.
+- [x] Validate mobile, tablet and desktop storytelling, asset loading, reduced-motion behavior, links and production build.
+- [x] Create an original code-crafted Indian everyday-life scene system with recurring characters, coffee, commute, rent, home and Goa details while generated illustration capacity is unavailable.
+- [x] Revalidate the hero and closing app and Play Store links after the human-scene redesign.
+- [x] Verify the human-story homepage has no broken image or asset network requests and record the final asset-load result.
+- [x] Confirm all human-story homepage modules and styles load successfully with no failed asset requests.

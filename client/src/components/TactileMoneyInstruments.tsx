@@ -64,6 +64,40 @@ export function SpendingStoryInstrument({ className = "" }: InstrumentProps) {
   return <section className={`spending-story-instrument ${className}`} aria-label="Illustrative small spending pattern"><header className="spend-story-head"><div><InstrumentLabel>Small spend trail</InstrumentLabel><strong>Three moments.<br />One clearer total.</strong></div><span>Illustrative week</span></header><div className="spend-story-canvas"><div className="spend-story-total"><small>Quick check before the week blurs</small><b>₹637</b><span>across 3 small payments</span></div><ol className="spend-story-list">{entries.map(([day, title, note, amount, tone], index) => <li className={`spend-story-entry tone-${tone}`} key={title}><span className="spend-story-day">{day}</span><i aria-hidden="true" /><div><b>{title}</b><small>{note}</small></div><strong>{amount}</strong>{index < entries.length - 1 ? <em aria-hidden="true" /> : null}</li>)}</ol><p className="spend-story-note"><span>Small, not invisible</span><b>See the pattern before it becomes a surprise.</b></p></div><footer><span><Eye className="size-3.5" />A quick look, not a judgement.</span><span>UPI WEEK</span></footer></section>;
 }
 
+type HumanSceneKind = "morning" | "coffee" | "salary" | "goa" | "home" | "control" | "closing";
+
+function Aarav({ pose = "standing" }: { pose?: "standing" | "desk" | "tag" | "walk" }) {
+  return <div className={`human-character human-aarav human-pose-${pose}`} aria-hidden="true"><i className="human-halo" /><i className="human-leg human-leg-a" /><i className="human-leg human-leg-b" /><i className="human-torso" /><i className="human-neck" /><i className="human-head"><b /><em /></i><i className="human-arm human-arm-a" /><i className="human-arm human-arm-b" /></div>;
+}
+
+function Meera({ pose = "standing" }: { pose?: "standing" | "table" | "tray" | "walk" }) {
+  return <div className={`human-character human-meera human-pose-${pose}`} aria-hidden="true"><i className="human-halo" /><i className="human-leg human-leg-a" /><i className="human-leg human-leg-b" /><i className="human-torso" /><i className="human-neck" /><i className="human-head"><b /><em /></i><i className="human-arm human-arm-a" /><i className="human-arm human-arm-b" /></div>;
+}
+
+export function HumanMoneyScene({ kind, className = "" }: InstrumentProps & { kind: HumanSceneKind }) {
+  const labels: Record<HumanSceneKind, [string, string, string]> = {
+    morning: ["Monday morning", "Coffee. Metro. A week that is already moving.", "Keep the small things close."],
+    coffee: ["Before the day gets busy", "Chai and metro are normal. They still belong in the week.", "A small spend, seen."],
+    salary: ["Salary morning", "Give rent, home and a plan a place before the month runs ahead.", "Put the jobs in view."],
+    goa: ["One pinboard", "Rent due and a Goa plan can sit on the same board.", "Due first. Dream too."],
+    home: ["The home table", "Shared groceries stay together. Personal plans stay separate.", "Only what belongs together."],
+    control: ["Your choices", "You decide what sits in your view and what stays out.", "Your view. Your rules."],
+    closing: ["A calmer evening", "A little more context can make the day feel lighter.", "Life keeps moving."],
+  };
+  const [eyebrow, title, note] = labels[kind];
+  const ledgerBits: Record<HumanSceneKind, [string, string]> = { morning: ["COFFEE", "METRO"], coffee: ["CHAi", "COMMUTE"], salary: ["RENT", "GOA"], goa: ["DUE", "PLAN"], home: ["SHARED", "PERSONAL"], control: ["CHOOSE", "KEEP"], closing: ["TODAY", "NEXT"] };
+  const [firstBit, secondBit] = ledgerBits[kind];
+  return <figure className={`human-money-scene human-scene-${kind} ${className}`} aria-label={title}><div className="human-scene-stage" aria-hidden="true"><i className="scene-grid" />{(kind === "morning" || kind === "coffee") && <i className="scene-sun" />}<i className="scene-shadow" /><div className="scene-ledger-strip"><span>01</span><b>{firstBit}</b><i /><span>02</span><b>{secondBit}</b></div>
+    {kind === "morning" && <><i className="scene-counter" /><i className="scene-cup"><b /></i><i className="scene-steam steam-a" /><i className="scene-steam steam-b" /><i className="scene-metro-card"><b>METRO</b><span /></i><i className="scene-window" /><Aarav pose="standing" /></>}
+    {kind === "coffee" && <><i className="scene-sidewalk" /><i className="scene-ticket"><b>09:12</b><span>WAY OUT</span></i><i className="scene-cup scene-cup-small"><b /></i><i className="scene-steam steam-a" /><i className="scene-turnstile" /><Aarav pose="standing" /></>}
+    {kind === "salary" && <><i className="scene-desk" /><i className="scene-plant"><b /><b /><b /></i><i className="scene-envelope envelope-rent"><b>RENT</b></i><i className="scene-note note-groceries"><b>HOME</b><span /><span /></i><i className="scene-travel-tab">GOA</i><Aarav pose="desk" /></>}
+    {kind === "goa" && <><i className="scene-pinboard" /><i className="scene-pin pin-rent" /><i className="scene-envelope envelope-goa"><b>DUE</b></i><i className="scene-postcard"><b /><span /></i><i className="scene-travel-tag">GOA</i><Aarav pose="tag" /></>}
+    {kind === "home" && <><i className="scene-table" /><i className="scene-tray"><b>HOME</b><span /><span /></i><i className="scene-notebook">MINE</i><i className="scene-leaf leaf-a" /><i className="scene-leaf leaf-b" /><Aarav pose="standing" /><Meera pose="table" /></>}
+    {kind === "control" && <><i className="scene-glass-tray"><b /><b /><b /></i><i className="scene-card card-in"><b /></i><i className="scene-card card-out"><b /></i><i className="scene-card card-out-two"><b /></i><i className="scene-choice-line" /><Meera pose="tray" /></>}
+    {kind === "closing" && <><i className="scene-evening-window" /><i className="scene-table scene-closing-table" /><i className="scene-cup scene-close-cup"><b /></i><i className="scene-travel-tag close-tag">GOA</i><Aarav pose="walk" /><Meera pose="walk" /></>}
+  </div><figcaption><span>{eyebrow}</span><strong>{title}</strong><p>{note}</p></figcaption></figure>;
+}
+
 export function GoalRunwayInstrument({ className = "" }: InstrumentProps) {
   const moments = [["05", "Rent", "Due first", "copper"], ["11", "Card bill", "Kept visible", "ink"], ["27", "Goa plan", "Still open", "saffron"]];
   return <section className={`goal-runway-instrument ${className}`} aria-label="Illustrative monthly goal runway"><div className="goal-runway-top"><div><InstrumentLabel>April, in one view</InstrumentLabel><strong>Due dates and your plan can sit together.</strong></div><span>Illustrative month</span></div><div className="goal-runway-lane">{moments.map(([date, title, detail, tone], index) => <div className={`goal-runway-stop ${tone}`} key={title}><span>{date}<small>APR</small></span><i aria-hidden="true" /><div><strong>{title}</strong><small>{detail}</small></div>{index < moments.length - 1 ? <b aria-hidden="true" /> : null}</div>)}<div className="goal-runway-destination" aria-hidden="true"><span>GOA</span><i /><small>plan stays open</small></div></div><div className="goal-runway-summary"><div><small>After the commitments you planned</small><strong>There is still room to choose.</strong></div><span><Check className="size-4" />Goal stays visible</span></div></section>;
