@@ -34,3 +34,10 @@
 - [x] Correct the UPI rhythm instrument’s typography, day-card breathing room and visual hierarchy from the user’s review.
 - [x] Correct the salary allocation section’s ledger-note/link overlap and reinforce clean mobile and desktop stacking.
 - [x] Recheck the corrected instruments at desktop and mobile sizes, then save and deliver the focused visual-fix checkpoint.
+- [x] Audit the current palette, typography scale, density and mobile journey friction for a full Kubear theme reset.
+- [x] Replace the current theme with a more modern, high-contrast visual system and larger responsive typography.
+- [x] Rebuild shared navigation, homepage and core journey UI with smooth purposeful interactions and clearer hierarchy.
+- [x] Apply the refreshed visual system to tools, Learn, money-view and privacy pages.
+- [x] Validate the redesigned site across mobile, tablet and desktop, then save and deliver the new checkpoint.
+- [x] Preserve the concurrent Learn-publishing foundation and restore the fullstack dependency and TypeScript build health.
+- [x] Rebuild the new Learn publishing and studio screens within the refreshed visual system without disrupting draft or publication states.
