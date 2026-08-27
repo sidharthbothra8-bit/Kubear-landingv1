@@ -34,8 +34,16 @@
 - [x] Correct the UPI rhythm instrument’s typography, day-card breathing room and visual hierarchy from the user’s review.
 - [x] Correct the salary allocation section’s ledger-note/link overlap and reinforce clean mobile and desktop stacking.
 - [x] Recheck the corrected instruments at desktop and mobile sizes, then save and deliver the focused visual-fix checkpoint.
-- [ ] Audit the current palette, typography scale, density and mobile journey friction for a full Kubear theme reset.
-- [ ] Replace the current theme with a more modern, high-contrast visual system and larger responsive typography.
-- [ ] Rebuild shared navigation, homepage and core journey UI with smooth purposeful interactions and clearer hierarchy.
-- [ ] Apply the refreshed visual system to tools, Learn, money-view and privacy pages.
-- [ ] Validate the redesigned site across mobile, tablet and desktop, then save and deliver the new checkpoint.
+- [x] Audit the current palette, typography scale, density and mobile journey friction for a full Kubear theme reset.
+- [x] Replace the current theme with a more modern, high-contrast visual system and larger responsive typography.
+- [x] Rebuild shared navigation, homepage and core journey UI with smooth purposeful interactions and clearer hierarchy.
+- [x] Apply the refreshed visual system to tools, Learn, money-view and privacy pages.
+- [x] Validate the redesigned site across mobile, tablet and desktop, then save and deliver the new checkpoint.
+- [x] Preserve the concurrent Learn-publishing foundation and restore the fullstack dependency and TypeScript build health.
+- [x] Rebuild the new Learn publishing and studio screens within the refreshed visual system without disrupting draft or publication states.
+- [x] Audit every public and editorial Kubear route for visual, responsive and interaction errors before another redesign pass.
+- [x] Define an implementation-ready visual purpose, hierarchy and motion system for each page rather than applying one treatment everywhere.
+- [x] Rebuild shared and page-specific layouts to resolve the audited UI defects while preserving working calculators and Learn publishing.
+- [x] Validate each redesigned route at mobile, tablet and desktop widths, then save and deliver the planned page-by-page checkpoint.
+- [x] Apply the final page-specific visual corrections to How it works, Privacy, Tools and Learn asynchronous states identified during audit.
+- [x] Revalidate every modified route and save the page-by-page redesign checkpoint.
