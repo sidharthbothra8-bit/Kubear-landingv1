@@ -1,0 +1,19 @@
+/* Living Ledger design: the Journal is a quiet editorial shelf that treats helpful learning as part of the product’s trust system. */
+import { ArrowUpRight } from "lucide-react";
+import { LedgerEvidence } from "@/components/LedgerEvidence";
+import { PageMeta } from "@/components/PageMeta";
+import { SiteLayout } from "@/components/SiteChrome";
+
+const articles = [
+  { category: "Trust", title: "Is Account Aggregator actually safe? A plain-English answer.", desc: "A practical way to understand the plumbing behind consent-based financial data sharing.", href: "https://www.kuberos.in/blog/account-aggregator-safety" },
+  { category: "Product", title: "22 apps, one phone, one small nervous breakdown", desc: "Why a financial life can stay fragmented even when every individual app works well.", href: "https://www.kuberos.in/blog/22-apps-1-screen" },
+  { category: "Money", title: "PPF vs EPF vs NPS — what’s the difference?", desc: "A starting point for understanding three familiar Indian long-term savings routes.", href: "https://www.kuberos.in/blog/ppf-vs-epf-vs-nps" },
+  { category: "Guides", title: "Old vs New Tax Regime FY 2025–26 — which one wins for you", desc: "A plain-language guide to one of the questions that deserves careful context.", href: "https://www.kuberos.in/blog/old-vs-new-regime-fy-2025-26" },
+];
+
+export default function Journal() {
+  return <SiteLayout><PageMeta title="Kubear Journal — money, without the noise" description="Notes from Kubear about how Indians manage money, personal finance and financial data in plain language." path="/journal" />
+    <section className="paper-grid px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto max-w-[1280px]"><p className="eyebrow text-[#C96632]">Kubear Journal</p><div className="mt-6 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]"><h1 className="display text-[#102B28]">Money, without the noise.</h1><p className="lede self-end">Notes on everyday money decisions, the systems behind financial data and the human questions that sit around both.</p></div></div></section>
+    <section className="px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28"><div className="mx-auto max-w-[1280px]"><article className="overflow-hidden rounded-[2rem] bg-[#102B28] text-[#FDF9F0] sm:grid sm:grid-cols-[1.2fr_0.8fr]"><div className="p-7 sm:p-10"><p className="eyebrow text-[#E2BA66]">Featured · Money</p><h2 className="mt-7 max-w-2xl font-serif text-4xl leading-[0.98] tracking-[-0.055em] sm:text-5xl">Kids’ investing: minor account guide</h2><p className="mt-6 max-w-xl leading-7 text-[#CBD4CF]">Bachche ke naam pe SIP? PPF? Sukanya? Kya sahi hai — pehle samjho.</p><a href="https://www.kuberos.in/blog/investing-for-kids-india" target="_blank" rel="noreferrer" className="button button-light mt-8">Read the guide <ArrowUpRight className="size-4" /></a></div><div className="border-t border-white/20 bg-[#143B35] p-5 sm:border-l sm:border-t-0 sm:p-8"><LedgerEvidence variant="journal" /><p className="mt-5 text-sm leading-6 text-[#CBD4CF]">A product that asks for financial trust should teach, not simply capture a lead.</p></div></article><div className="mt-5 grid gap-5 md:grid-cols-2">{articles.map((article, index) => <a key={article.title} href={article.href} target="_blank" rel="noreferrer" className={`ledger-slip group p-7 transition duration-200 hover:-translate-y-1 hover:border-[#C96632]/55 hover:shadow-[0_18px_45px_rgba(16,43,40,0.11)] ${index === 1 ? "md:translate-y-4" : ""}`}><p className="eyebrow text-[#C96632]">{article.category} · 0{index + 1}</p><h2 className="mt-4 text-2xl font-bold leading-tight tracking-[-0.045em] text-[#102B28] group-hover:text-[#C96632]">{article.title}</h2><p className="mt-4 leading-7 text-[#53625B]">{article.desc}</p><span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#102B28]">Read on Kubear <ArrowUpRight className="size-4" /></span></a>)}</div></div></section>
+  </SiteLayout>;
+}

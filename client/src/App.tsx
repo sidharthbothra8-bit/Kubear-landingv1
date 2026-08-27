@@ -1,42 +1,32 @@
+/* Living Ledger design: all routes share a warm, editorial system so the product, privacy, tools and learning surfaces feel like one calm picture. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import HowItWorks from "@/pages/HowItWorks";
+import Journal from "@/pages/Journal";
+import MoneyPicture from "@/pages/MoneyPicture";
 import NotFound from "@/pages/NotFound";
+import PrivacyData from "@/pages/PrivacyData";
+import Tools from "@/pages/Tools";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
-
 function Router() {
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
+  return <Switch>
+    <Route path="/" component={Home} />
+    <Route path="/how-it-works" component={HowItWorks} />
+    <Route path="/your-money-picture" component={MoneyPicture} />
+    <Route path="/privacy-data" component={PrivacyData} />
+    <Route path="/journal" component={Journal} />
+    <Route path="/tools" component={Tools} />
+    <Route path="/404" component={NotFound} />
+    <Route component={NotFound} />
+  </Switch>;
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><Router /></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }
 
 export default App;

@@ -1,0 +1,48 @@
+/* Living Ledger design: the connected ledger gives the product story a specific visual metaphor instead of a generic finance dashboard. */
+import { ArrowDownLeft, ArrowUpRight, CalendarDays, CreditCard, Landmark, ScanLine, WalletCards } from "lucide-react";
+
+type LedgerSceneProps = { compact?: boolean; className?: string };
+
+const fragments = [
+  { label: "Salary", detail: "credited", icon: Landmark, tone: "leaf", pos: "left-[4%] top-[13%]" },
+  { label: "UPI", detail: "this week", icon: ScanLine, tone: "copper", pos: "left-[0%] top-[54%]" },
+  { label: "Card bill", detail: "due Fri", icon: CreditCard, tone: "red", pos: "right-[2%] top-[7%]" },
+  { label: "SIP", detail: "upcoming", icon: ArrowUpRight, tone: "saffron", pos: "right-[0%] top-[48%]" },
+  { label: "Shared home", detail: "rent + bills", icon: WalletCards, tone: "leaf", pos: "right-[11%] bottom-[4%]" },
+  { label: "Refund", detail: "received", icon: ArrowDownLeft, tone: "copper", pos: "left-[15%] bottom-[4%]" },
+];
+
+export function LedgerScene({ compact = false, className = "" }: LedgerSceneProps) {
+  return (
+    <figure className={`ledger-scene ${compact ? "min-h-[310px]" : "min-h-[450px] sm:min-h-[520px]"} ${className}`} aria-label="Illustrative financial fragments resolving into a single Kubear money picture">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_42%,rgba(201,102,50,0.18),transparent_22%),radial-gradient(circle_at_18%_78%,rgba(77,120,105,0.16),transparent_24%)]" />
+      <div className="ledger-thread ledger-thread-a" />
+      <div className="ledger-thread ledger-thread-b" />
+      <div className="ledger-thread ledger-thread-c" />
+      {fragments.map((item, index) => {
+        const Icon = item.icon;
+        return (
+          <div key={item.label} className={`ledger-fragment ${item.pos} motion-safe:animate-[settle_700ms_var(--ease-out)_both]`} style={{ animationDelay: `${index * 75}ms` }}>
+            <span className={`ledger-icon ledger-icon-${item.tone}`}><Icon className="size-3.5" /></span>
+            <span><b>{item.label}</b><small>{item.detail}</small></span>
+          </div>
+        );
+      })}
+      <div className="ledger-folio">
+        <div className="flex items-center justify-between border-b border-[#102B28]/10 pb-3">
+          <span className="text-xs font-bold uppercase tracking-[0.13em] text-[#6E756C]">Your money picture</span>
+          <span className="flex size-7 items-center justify-center rounded-full bg-[#DDE8E1] text-[#356756]"><CalendarDays className="size-3.5" /></span>
+        </div>
+        <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
+          <div><span className="text-xs font-semibold text-[#6E756C]">Safe to use this week</span><p className="mt-1 text-3xl font-extrabold tracking-[-0.06em] text-[#102B28]">₹18,400</p></div>
+          <span className="rounded-full bg-[#E9F1EB] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[#356756]">Illustrative</span>
+        </div>
+        <div className="mt-6 space-y-3">
+          {["Salary received", "Card payment due", "SIP scheduled", "Shared rent pending"].map((item, index) => <div key={item} className="flex items-center gap-2.5"><span className={`size-2 rounded-full ${["bg-[#4D7869]", "bg-[#B74E3C]", "bg-[#E2BA66]", "bg-[#C96632]"][index]}`} /><span className="text-sm font-semibold text-[#31463F]">{item}</span><span className="ml-auto h-px flex-1 bg-[#102B28]/10" /></div>)}
+        </div>
+        <div className="mt-6 rounded-xl bg-[#102B28] px-3.5 py-3 text-xs leading-5 text-[#ECF3EF]">“Your card bill is due before the weekend. Here’s what’s already spoken for.”</div>
+      </div>
+      <figcaption className="absolute bottom-4 left-5 right-5 text-center text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[#65726C]">Illustrative product flow based on public Kubear materials—not live user data</figcaption>
+    </figure>
+  );
+}

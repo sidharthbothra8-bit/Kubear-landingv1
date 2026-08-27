@@ -1,0 +1,19 @@
+/* Living Ledger design: trust is presented as legible, factual control rather than symbolic security theatre. */
+import { ArrowRight, Eye, KeyRound, Trash2 } from "lucide-react";
+import { LedgerEvidence } from "@/components/LedgerEvidence";
+import { PageMeta } from "@/components/PageMeta";
+import { SiteLayout } from "@/components/SiteChrome";
+
+const points = [
+  { icon: Eye, title: "Read-only by design", text: "Kubear’s published materials say it can show connected information but cannot move money." },
+  { icon: KeyRound, title: "No banking secrets", text: "The published privacy page says Kubear does not collect banking passwords, UPI PINs, OTPs or card CVVs." },
+  { icon: Trash2, title: "A clear way out", text: "The published deletion flow says account, connected-account tokens, stored financial data and chat history can be removed through the app or by email." },
+];
+
+export default function PrivacyData() {
+  return <SiteLayout><PageMeta title="Privacy & data | Kubear" description="A plain-language overview of Kubear’s current published read-only and data-control commitments." path="/privacy-data" />
+    <section className="bg-[#E7DED0] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end"><div><p className="eyebrow text-[#C96632]">Privacy & data</p><h1 className="display mt-5 text-[#102B28]">Control should be easy to understand.</h1><p className="lede mt-7">Financial trust is not a badge. It is the ability to understand what can connect, what cannot happen, and how to leave.</p><div className="margin-note mt-7">Your data is personal. The explanation should be, too.</div></div><LedgerEvidence variant="privacy" /></div></section>
+    <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto max-w-[1280px]"><div className="grid gap-5 lg:grid-cols-3">{points.map((point, index) => { const Icon = point.icon; return <article className={`ledger-slip p-7 ${index === 1 ? "lg:translate-y-5" : ""}`} key={point.title}><p className="eyebrow text-[#C96632]">0{index + 1} · A clear boundary</p><Icon className="mt-7 size-6 text-[#C96632]" /><h2 className="mt-7 text-2xl font-bold tracking-[-0.045em] text-[#102B28]">{point.title}</h2><p className="mt-4 leading-7 text-[#53625B]">{point.text}</p></article>; })}</div></div></section>
+    <section className="bg-[#102B28] px-5 py-20 text-[#FDF9F0] sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="eyebrow text-[#E2BA66]">Plain language, not fine print</p><h2 className="section-title mt-5 text-white">What current public materials say.</h2></div><div className="space-y-5 text-base leading-7 text-[#D6DFD9]"><p>The current privacy policy states that data is not sold, rented or shared with advertisers, and that a person chooses the accounts they connect. It also states that basic profile information, connected balances/transactions and product questions may be collected.[*]</p><p>The current terms state that Kubear is a personal-finance assistant—not a bank, broker, investment adviser or payment service—and that product suggestions are informational, not professional advice.[*]</p><p className="border-l-2 border-[#E2BA66] pl-5 text-white">Before this redesign becomes public, every data, consent, Account Aggregator, retention, pricing and regulatory statement should be reviewed against the latest approved policies.</p><a href="https://www.kuberos.in/legal/privacy-policy" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-bold text-[#E2BA66] hover:text-white">Read the current privacy policy <ArrowRight className="size-4" /></a><p className="text-sm text-[#AAB6AE]">[*] Summary of Kubear’s public policy and terms pages at the time of research; not independent legal verification.</p></div></div></section>
+  </SiteLayout>;
+}
