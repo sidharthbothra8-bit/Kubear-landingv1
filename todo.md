@@ -4,3 +4,8 @@
 - [x] Modernise high-visibility surfaces and CTA moments so the product feels more immediate and rewarding.
 - [x] Verify responsive layout, reduced-motion behavior, interactions, build quality, and console health.
 - [ ] Save and deliver the revised preview checkpoint.
+- [x] Audit Cleo’s visual storytelling, motion behavior, tone, and conversion structure without copying its brand assets or copy.
+- [x] Inspect Kubear’s live web app and Play Store listing to ground the marketing story in the real product and download path.
+- [x] Create an original creative direction with visual references, palette, typography, motion principles, and signature moments.
+- [x] Map the new marketing conversion journey to kubear.kuberos.in and the Android Play Store listing.
+- [x] Deliver a build-ready visual and experience plan for approval before the next implementation pass.
