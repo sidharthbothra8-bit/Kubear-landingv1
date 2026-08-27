@@ -54,3 +54,9 @@
 - [x] Rebuild Learn as a functional editorial desk with integrated tools, clear loading and empty states, and preserved publishing workflow.
 - [x] Validate all legacy and new routes, calculator interactions, navigation, responsive layouts and build output, then save the final checkpoint.
 - [x] Serve generated nested Learn shells directly without an intermediary static-directory redirect, then repeat production route validation.
+- [x] Rebuild the homepage as a distinct, mobile-first Money Week visual story with an original hero mosaic and chapter-specific instruments.
+- [x] Refine homepage visual hierarchy, motion, accessibility and responsive compositions without changing product claims or conversion paths.
+- [x] Validate the homepage redesign across target viewports, motion settings and technical checks.
+- [x] Validate the redesigned homepage at tablet width for overflow, hierarchy and spacing regressions.
+- [x] Verify reduced-motion behavior for homepage-only animation and record the result.
+- [x] Persist the homepage reduced-motion verification result in the visual QA record.
