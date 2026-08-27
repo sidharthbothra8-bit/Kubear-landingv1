@@ -31,3 +31,6 @@
 - [x] Replace weak decorative visuals, graphs and image-led panels with purposeful responsive HTML/CSS/JS money instruments.
 - [x] Repair visual hierarchy, mobile controls, navigation states and supporting-route UI inconsistencies.
 - [x] Validate the visual remediation at target responsive widths and save the completed checkpoint.
+- [x] Correct the UPI rhythm instrument’s typography, day-card breathing room and visual hierarchy from the user’s review.
+- [x] Correct the salary allocation section’s ledger-note/link overlap and reinforce clean mobile and desktop stacking.
+- [x] Recheck the corrected instruments at desktop and mobile sizes, then save and deliver the focused visual-fix checkpoint.

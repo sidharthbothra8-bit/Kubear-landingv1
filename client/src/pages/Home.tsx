@@ -22,7 +22,7 @@ const ledgerMoments = {
 
 function LedgerThread({ moment }: { moment: keyof typeof ledgerMoments }) {
   const { label, eyebrow, rows } = ledgerMoments[moment];
-  return <aside className={`ledger-thread ledger-thread-${moment}`} aria-label={label}><p><span />{eyebrow}</p><div>{rows.map(([number, name, state]) => <span className="ledger-thread-row" key={name}><b>{number}</b><i aria-hidden="true" /><strong>{name}</strong><em>{state}</em></span>)}</div></aside>;
+  return <aside className={`home-ledger-thread home-ledger-thread-${moment}`} aria-label={label}><p><span />{eyebrow}</p><div>{rows.map(([number, name, state]) => <span className="home-ledger-thread-row" key={name}><b>{number}</b><i aria-hidden="true" /><strong>{name}</strong><em>{state}</em></span>)}</div></aside>;
 }
 
 export default function Home() {
