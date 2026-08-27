@@ -25,3 +25,9 @@ At 768px, the full homepage resolves to a deliberate single-column story. Visual
 The source-level motion verification confirms that all newly introduced homepage animation is inside the no-preference media query. The visible movement is restricted to opacity and transform keyframes or transform transitions, so reduced-motion visitors receive the same information architecture without nonessential animation.
 
 > **Reduced-motion verification: passed.** The homepage’s new mosaic, orbit, chapter-hover and destination animations are absent when a visitor requests reduced motion; the readable content and interaction controls remain available.
+
+## UPI panel correction
+
+The prior UPI weekday decoration was replaced with an explanatory spend trail. The new panel now communicates one clear idea: three ordinary payments, shown with their category, context and illustrative amount, become a visible ₹637 total when viewed together. The desktop layout keeps the weekly total and three entries readable at a glance. At 390px, the panel remains contained in the homepage flow and its spend entries preserve their ordering and labels.
+
+The focused correction passed TypeScript and the seven-test regression suite. Its production build generated the expected 22 static route shells, and the restarted homepage preview returned HTTP 200.

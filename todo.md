@@ -60,3 +60,5 @@
 - [x] Validate the redesigned homepage at tablet width for overflow, hierarchy and spacing regressions.
 - [x] Verify reduced-motion behavior for homepage-only animation and record the result.
 - [x] Persist the homepage reduced-motion verification result in the visual QA record.
+- [x] Replace the decorative UPI Week panel with a meaningful spending-pattern visual that explains small spends clearly.
+- [x] Validate the revised UPI panel at mobile and desktop widths, confirm homepage layout integrity.
