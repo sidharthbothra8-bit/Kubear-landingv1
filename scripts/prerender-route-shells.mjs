@@ -7,8 +7,7 @@ const image = `${origin}/manus-storage/kubear-money-orbit-master_fa60fb1b.png`;
 const articleImage = `${origin}/manus-storage/kubear-goa-goal-still-life_2bd357a8.png`;
 const routes = {
   "/": ["Kubear | A clearer view of your money week", "Kubear helps you see salary, UPI, rent, bills, goals and home money in one calm view."],
-  "/how-it-works": ["How Kubear works | Your money, in focus", "See how Kubear helps you record money details, plan the month and keep important moments visible."],
-  "/your-money-picture": ["Your money view | Kubear", "A clearer way to look at personal and selected home money in one focused view."],
+  "/how-it-works": ["How Kubear Works & Your Money View | One Unified Picture", "See how Kubear unifies your complete money story: fast natural chat, bill photo capture, upfront salary allocation, two-table flatmate splits, and goal runway."],
   "/privacy-data": ["Privacy and data | Kubear", "Understand Kubear’s clear approach to control, data choices and account access."],
   "/journal": ["Kubear Journal | Everyday money notes", "A practical internal reading path for salary, UPI, bills, goals and home money."],
   "/learn/tools": ["Kubear Learn tools | Simple money answers", "Try simple planning tools for salary-day SIPs, home-plan EMIs and a Goa savings goal."],

@@ -1,9 +1,172 @@
-/* Editorial Aurora refinement: modern product clarity with warmer, more ownable financial-companion materials. */
-:root { --aurora-ink:#152043; --aurora-navy:#1A2A5A; --aurora-violet:#3563E9; --aurora-violet-deep:#2349BF; --aurora-lime:#FFD46B; --aurora-coral:#E85D3F; --aurora-sky:#E7EEFF; --aurora-cloud:#FCF8F2; --aurora-line:#E7DDD2; --aurora-muted:#5E6680; }
-body :is(h1,h2,h3,.display,.section-title,.week-section-title,.learn-feature h2,.article-intro h1,.topic-list h2,.tool-route h2,.journal-internal-list h3,.learn-calendar h2,.learn-studio-head h1) { font-family:"DM Serif Display",Georgia,serif!important; font-weight:400!important; letter-spacing:-.055em!important; line-height:.94!important; }
-.map-open,.mm-button,.button,.button-primary { background:var(--aurora-coral)!important; box-shadow:0 6px 0 #AA432E!important; }.map-open:hover,.mm-button:hover,.button:hover,.button-primary:hover { background:#C84D34!important; }.map-open:active,.mm-button:active,.button:active,.button-primary:active { box-shadow:0 2px 0 #AA432E!important; }.map-open { box-shadow:0 4px 0 #AA432E!important; }
-.instrument-hero,.mm-hero { background:radial-gradient(circle at 82% 24%,rgba(53,99,233,.42),transparent 23rem),radial-gradient(circle at 18% 92%,rgba(232,93,63,.2),transparent 24rem),var(--aurora-ink)!important; }.instrument-hero-grid { background-image:linear-gradient(rgba(231,238,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(231,238,255,.16) 1px,transparent 1px)!important; }.mm-hero h1 em,.mm-section-intro h2 em,.mm-salary-copy h2 em,.mm-goa-copy h2 em,.mm-home-copy h2 em,.mm-trust-copy h2 em,.mm-faq-grid h2 em,.mm-final-content h2 em { color:var(--aurora-coral)!important; font-style:italic!important; }.mm-eyebrow span { background:var(--aurora-coral)!important; }.hero-money-picture { box-shadow:22px 22px 0 rgba(53,99,233,.38),0 34px 70px rgba(0,0,0,.3)!important; }.mm-final-section { background:radial-gradient(circle at 85% 30%,rgba(255,212,107,.28),transparent 16rem),var(--aurora-violet)!important; }
-.money-picture-instrument,.salary-allocation-instrument,.home-split-instrument { background:#FFFEFC!important; }.spend-rhythm-instrument,.calculator-logic-instrument,.tool-bench-instrument { background:linear-gradient(145deg,#1A2A5A,#152043)!important; }.commitment-runway-instrument { background:linear-gradient(145deg,#FFE4B1,#FFD17A)!important; }.control-boundary-instrument { background:linear-gradient(145deg,#3158D1,#1D3DA4)!important; }.rhythm-top strong,.tool-bench-instrument>div>strong { font-family:"DM Serif Display",Georgia,serif!important; font-weight:400!important; font-size:1.9rem!important; }.rhythm-day.is-check { background:rgba(255,212,107,.13)!important; }.rhythm-day.is-check i { background:var(--aurora-lime)!important; }
-.tools-hub-hero h1 em,.tool-hero h1 em,.learn-hero .week-section-title em,.learn-studio-head h1 em { color:var(--aurora-violet)!important; font-style:italic!important; }.quick-chips button.is-selected,.learn-release-chip { background:var(--aurora-violet)!important; }.calc-answer strong { color:var(--aurora-lime)!important; }
-.learn-hero { background:radial-gradient(circle at 78% 28%,rgba(53,99,233,.14),transparent 19rem),var(--aurora-cloud)!important; }.library-ribbon { background:var(--aurora-lime)!important; }.paper-grid,.bg-\[\#E7DED0\] { background:radial-gradient(circle at 90% 5%,rgba(53,99,233,.11),transparent 28rem),var(--aurora-cloud)!important; }.ledger-step .font-serif,.bg-\[\#102B28\] .text-\[\#E2BA66\],footer .text-\[\#F4D277\],footer .text-\[\#FFB18E\] { color:var(--aurora-lime)!important; }.margin-note { border-color:var(--aurora-coral)!important; }.article-tool-link { background:var(--aurora-coral)!important; }
-.learn-prose :is(h2,h3),.learn-studio-status strong,.learn-studio-row h2,.ledger-entry :is(h2,.text-2xl),footer :is(.font-serif,.text-3xl) { font-family:"DM Serif Display",Georgia,serif!important; font-weight:400!important; }
+/* Editorial Refinements: Warm, spacious, and legible financial companion styling. */
+:root {
+  --aurora-ink: #123630;
+  --aurora-ink-deep: #0C2B26;
+  --aurora-coral: #D44722;
+  --aurora-lime: #FFD46B;
+  --aurora-cloud: #FAF7F0;
+  --aurora-line: rgba(18, 54, 48, 0.12);
+  --aurora-muted: #4B605B;
+}
+
+body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .topic-list h2, .tool-route h2, .journal-internal-list h3, .learn-calendar h2, .learn-studio-head h1) {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.15 !important;
+  color: var(--aurora-ink) !important;
+}
+
+.map-open,
+.mm-button,
+.button,
+.button-primary {
+  background: var(--aurora-coral) !important;
+  box-shadow: 0 4px 0 #A83518 !important;
+}
+
+.map-open:hover,
+.mm-button:hover,
+.button:hover,
+.button-primary:hover {
+  background: #B93C1C !important;
+  box-shadow: 0 6px 0 #A83518 !important;
+}
+
+.map-open:active,
+.mm-button:active,
+.button:active,
+.button-primary:active {
+  box-shadow: 0 1px 0 #A83518 !important;
+}
+
+.instrument-hero,
+.mm-hero {
+  background: radial-gradient(circle at 82% 20%, rgba(255, 212, 107, 0.25), transparent 24rem),
+              radial-gradient(circle at 18% 85%, rgba(212, 71, 34, 0.08), transparent 22rem),
+              var(--aurora-cloud) !important;
+}
+
+.instrument-hero-grid {
+  background-image: linear-gradient(rgba(18, 54, 48, 0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(18, 54, 48, 0.08) 1px, transparent 1px) !important;
+}
+
+.mm-hero h1 em,
+.mm-section-intro h2 em,
+.mm-salary-copy h2 em,
+.mm-goa-copy h2 em,
+.mm-home-copy h2 em,
+.mm-trust-copy h2 em,
+.mm-faq-grid h2 em,
+.mm-final-content h2 em {
+  color: var(--aurora-coral) !important;
+  font-style: italic !important;
+}
+
+.mm-eyebrow span {
+  background: var(--aurora-coral) !important;
+}
+
+.hero-money-picture {
+  box-shadow: 18px 18px 0 rgba(212, 71, 34, 0.35), 0 32px 68px rgba(18, 54, 48, 0.12) !important;
+}
+
+.money-picture-instrument,
+.salary-allocation-instrument,
+.home-split-instrument {
+  background: #FFFDF8 !important;
+}
+
+.spend-rhythm-instrument {
+  background: linear-gradient(145deg, #FFF6F0, #FFEFE8) !important;
+}
+
+.calculator-logic-instrument {
+  background: linear-gradient(145deg, #FFFDF0, #FEF9C3) !important;
+}
+
+.tool-bench-instrument {
+  background: linear-gradient(145deg, #F0FDF4, #E6F7EC) !important;
+}
+
+.commitment-runway-instrument {
+  background: linear-gradient(145deg, #F0FDF9, #E0F7FA) !important;
+}
+
+.control-boundary-instrument {
+  background: linear-gradient(145deg, #F0FDF4, #DCFCE7) !important;
+}
+
+.rhythm-top strong,
+.tool-bench-instrument > div > strong {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  font-weight: 400 !important;
+  font-size: 1.8rem !important;
+  line-height: 1.15 !important;
+  color: var(--aurora-ink) !important;
+}
+
+.rhythm-day.is-check {
+  background: rgba(255, 92, 43, 0.12) !important;
+}
+
+.rhythm-day.is-check i {
+  background: var(--aurora-coral) !important;
+}
+
+.tools-hub-hero h1 em,
+.tool-hero h1 em,
+.learn-hero .week-section-title em,
+.learn-studio-head h1 em {
+  color: var(--aurora-coral) !important;
+  font-style: italic !important;
+}
+
+.quick-chips button.is-selected,
+.learn-release-chip {
+  background: var(--aurora-coral) !important;
+  color: #FFFDF8 !important;
+}
+
+.calc-answer strong {
+  color: #047857 !important;
+}
+
+.learn-hero {
+  background: radial-gradient(circle at 78% 28%, rgba(255, 212, 107, 0.22), transparent 20rem),
+              var(--aurora-cloud) !important;
+}
+
+.library-ribbon {
+  background: var(--aurora-lime) !important;
+}
+
+.paper-grid,
+.bg-\[\#E7DED0\] {
+  background: var(--aurora-cloud) !important;
+}
+
+.ledger-step .font-serif,
+.bg-\[\#102B28\] .text-\[\#E2BA66\],
+footer .text-\[\#F4D277\],
+footer .text-\[\#FFB18E\] {
+  color: var(--aurora-lime) !important;
+}
+
+.margin-note {
+  border-color: var(--aurora-coral) !important;
+}
+
+.article-tool-link {
+  background: var(--aurora-coral) !important;
+}
+
+.learn-prose :is(h2, h3),
+.learn-studio-status strong,
+.learn-studio-row h2,
+.ledger-entry :is(h2, .text-2xl),
+footer :is(.font-serif, .text-3xl) {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  font-weight: 400 !important;
+}

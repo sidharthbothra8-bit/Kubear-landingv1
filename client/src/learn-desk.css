@@ -1,6 +1,47 @@
-.learn-desk-tools { max-width:1280px; margin:0 auto; padding:clamp(4rem,8vw,7rem) clamp(1.15rem,4vw,3rem); }.learn-desk-tools-head { display:grid; grid-template-columns:minmax(0,.95fr) minmax(16rem,.75fr); gap:2rem; align-items:end; }.learn-desk-tools-head h2 { max-width:31rem; margin-top:.65rem; color:#152043; font-family:"DM Serif Display",Georgia,serif; font-size:clamp(2.4rem,4.6vw,4.8rem); font-weight:400; line-height:.9; letter-spacing:-.06em; }.learn-desk-tools-head>p { max-width:26rem; margin-bottom:.2rem; color:#5E6680; font-size:1.05rem; line-height:1.65; }.learn-desk-tool-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.95rem; margin-top:2rem; }.learn-desk-tool-card { position:relative; display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; gap:.7rem; align-items:start; min-height:12.6rem; overflow:hidden; border:1px solid #E7DDD2; border-radius:1.2rem; background:#FFFEFC; padding:1.25rem; color:#152043; box-shadow:0 12px 28px rgba(21,32,67,.06); transition:transform 180ms cubic-bezier(.23,1,.32,1),box-shadow 180ms cubic-bezier(.23,1,.32,1),border-color 180ms cubic-bezier(.23,1,.32,1); }.learn-desk-tool-card::before { position:absolute; top:0; right:0; left:0; height:4px; background:#E85D3F; content:""; }.learn-desk-tool-card.tone-home::before { background:#3563E9; }.learn-desk-tool-card.tone-goal::before { background:#E4AA28; }.learn-desk-tool-card:hover { transform:translateY(-4px); border-color:#D9BEB3; box-shadow:0 18px 34px rgba(21,32,67,.12); }.learn-desk-tool-card:focus-visible { outline:3px solid #E85D3F; outline-offset:3px; }.learn-desk-tool-index { color:#9D765F; font-family:"IBM Plex Mono",monospace; font-size:.64rem; font-weight:700; letter-spacing:.05em; }.learn-desk-tool-card>svg:not(.learn-desk-tool-arrow) { color:#E85D3F; }.learn-desk-tool-card.tone-home>svg:not(.learn-desk-tool-arrow) { color:#3563E9; }.learn-desk-tool-card.tone-goal>svg:not(.learn-desk-tool-arrow) { color:#D59315; }.learn-desk-tool-card>div { min-width:0; }.learn-desk-tool-card p { color:#8F6149; font-family:"IBM Plex Mono",monospace; font-size:.58rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; }.learn-desk-tool-card strong,.learn-desk-tool-card small { display:block; }.learn-desk-tool-card strong { margin-top:.5rem; font-family:"DM Serif Display",Georgia,serif; font-size:1.55rem; font-weight:400; line-height:.98; letter-spacing:-.04em; }.learn-desk-tool-card small { margin-top:.6rem; color:#697087; font-size:.81rem; line-height:1.5; }.learn-desk-tool-arrow { align-self:center; color:#E85D3F; }.learn-desk-tools-note { max-width:43rem; margin-top:1.15rem; color:#6D7282; font-size:.78rem; line-height:1.5; }.learn-desk-tools.is-compact { padding-top:2.75rem; padding-bottom:2.75rem; }.learn-desk-tools.is-compact .learn-desk-tools-head h2 { font-size:clamp(2rem,3.8vw,3.5rem); }.learn-desk-tools.is-compact .learn-desk-tool-card { min-height:10.5rem; }
-@media (max-width:840px) { .learn-desk-tools-head { grid-template-columns:1fr; gap:.9rem; }.learn-desk-tool-list { grid-template-columns:1fr; }.learn-desk-tool-card { min-height:0; grid-template-columns:auto auto minmax(0,1fr) auto; padding:1rem; }.learn-desk-tool-card small { max-width:34rem; }.learn-desk-tools-note { font-size:.75rem; } }
-@media (prefers-reduced-motion: reduce) { .learn-desk-tool-card { transition:none; }.learn-desk-tool-card:hover { transform:none; } }
+.learn-desk-tools { max-width:1280px; margin:0 auto; padding:clamp(4rem,8vw,7rem) clamp(1.15rem,4vw,3rem); }
+.learn-desk-tools-head { display:grid; grid-template-columns:minmax(0,.95fr) minmax(16rem,.75fr); gap:2.5rem; align-items:end; }
+.learn-desk-tools-head h2 { max-width:34rem; margin-top:.65rem; color:#123630; font-family:"DM Serif Display",Georgia,serif; font-size:clamp(2.4rem,4.6vw,4.4rem); font-weight:400; line-height:1.15; letter-spacing:-.025em; }
+.learn-desk-tools-head>p { max-width:28rem; margin-bottom:.2rem; color:#4B605B; font-size:1.05rem; line-height:1.65; }
+.learn-desk-tool-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; margin-top:2.5rem; }
+.learn-desk-tool-card { position:relative; display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; gap:.85rem; align-items:start; min-height:12.6rem; overflow:hidden; border:1px solid rgba(18,54,48,.12); border-radius:1.2rem; background:#FFFDF8; padding:1.35rem; color:#123630; box-shadow:0 12px 28px rgba(18,54,48,.05); transition:transform 180ms cubic-bezier(.23,1,.32,1),box-shadow 180ms cubic-bezier(.23,1,.32,1),border-color 180ms cubic-bezier(.23,1,.32,1); }
+.learn-desk-tool-card::before { position:absolute; top:0; right:0; left:0; height:4px; background:#D44722; content:""; }
+.learn-desk-tool-card.tone-home::before { background:#123630; }
+.learn-desk-tool-card.tone-goal::before { background:#E5AD2B; }
+.learn-desk-tool-card:hover { transform:translateY(-4px); border-color:#D44722; box-shadow:0 18px 34px rgba(18,54,48,.1); }
+.learn-desk-tool-card:focus-visible { outline:3px solid #D44722; outline-offset:3px; }
+.learn-desk-tool-index { color:#4B605B; font-family:"IBM Plex Mono",monospace; font-size:.65rem; font-weight:700; letter-spacing:.05em; }
+.learn-desk-tool-card>svg:not(.learn-desk-tool-arrow) { color:#D44722; }
+.learn-desk-tool-card.tone-home>svg:not(.learn-desk-tool-arrow) { color:#123630; }
+.learn-desk-tool-card.tone-goal>svg:not(.learn-desk-tool-arrow) { color:#E5AD2B; }
+.learn-desk-tool-card>div { min-width:0; }
+.learn-desk-tool-card p { color:#D44722; font-family:"IBM Plex Mono",monospace; font-size:.6rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+.learn-desk-tool-card strong,.learn-desk-tool-card small { display:block; }
+.learn-desk-tool-card strong { margin-top:.5rem; font-family:"DM Serif Display",Georgia,serif; font-size:1.55rem; font-weight:400; line-height:1.15; letter-spacing:-.025em; color:#123630; }
+.learn-desk-tool-card small { margin-top:.6rem; color:#4B605B; font-size:.85rem; line-height:1.55; }
+.learn-desk-tool-arrow { align-self:center; color:#D44722; }
+.learn-desk-tools-note { max-width:44rem; margin-top:1.25rem; color:#4B605B; font-size:.82rem; line-height:1.6; }
+.learn-desk-tools.is-compact { padding-top:2.75rem; padding-bottom:2.75rem; }
+.learn-desk-tools.is-compact .learn-desk-tools-head h2 { font-size:clamp(2rem,3.8vw,3.5rem); }
+.learn-desk-tools.is-compact .learn-desk-tool-card { min-height:10.5rem; }
+@media (max-width:840px) {
+  .learn-desk-tools-head { grid-template-columns:1fr; gap:1.25rem; }
+  .learn-desk-tool-list { grid-template-columns:1fr; }
+  .learn-desk-tool-card { min-height:0; grid-template-columns:auto auto minmax(0,1fr) auto; padding:1.15rem; }
+  .learn-desk-tool-card small { max-width:34rem; }
+  .learn-desk-tools-note { font-size:.78rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .learn-desk-tool-card { transition:none; }
+  .learn-desk-tool-card:hover { transform:none; }
+}
 
-.learn-desk-hero-action,.topic-tools-link { display:inline-flex; min-height:2.9rem; align-items:center; gap:.5rem; margin-top:1.4rem; border-bottom:2px solid #E85D3F; color:#152043; font-size:.94rem; font-weight:800; transition:gap 180ms cubic-bezier(.23,1,.32,1),color 180ms cubic-bezier(.23,1,.32,1); }.learn-desk-hero-action:hover,.topic-tools-link:hover { gap:.8rem; color:#C74D31; }.learn-desk-hero-action:focus-visible,.topic-tools-link:focus-visible { outline:3px solid #E85D3F; outline-offset:4px; }.learn-desk-empty { background:radial-gradient(circle at 90% 18%,rgba(232,93,63,.12),transparent 14rem),#FFFEFC!important; }.learn-unavailable { background:radial-gradient(circle at 15% 85%,rgba(53,99,233,.1),transparent 14rem),#FFFEFC!important; }.learn-unavailable h2 { max-width:40rem; margin-right:auto; margin-left:auto; }.learn-unavailable .button { min-height:3rem; }
-@media (max-width:640px) { .learn-desk-hero-action,.topic-tools-link { min-height:2.7rem; margin-top:1rem; font-size:.88rem; } }
+.learn-desk-hero-action,.topic-tools-link { display:inline-flex; min-height:2.9rem; align-items:center; gap:.5rem; margin-top:1.4rem; border-bottom:2px solid #D44722; color:#123630; font-size:.94rem; font-weight:800; transition:gap 180ms cubic-bezier(.23,1,.32,1),color 180ms cubic-bezier(.23,1,.32,1); }
+.learn-desk-hero-action:hover,.topic-tools-link:hover { gap:.8rem; color:#B93C1C; }
+.learn-desk-hero-action:focus-visible,.topic-tools-link:focus-visible { outline:3px solid #D44722; outline-offset:4px; }
+.learn-desk-empty { background:radial-gradient(circle at 90% 18%,rgba(212,71,34,.12),transparent 14rem),#FFFDF8!important; }
+.learn-unavailable { background:radial-gradient(circle at 15% 85%,rgba(18,54,48,.1),transparent 14rem),#FFFDF8!important; }
+.learn-unavailable h2 { max-width:40rem; margin-right:auto; margin-left:auto; }
+.learn-unavailable .button { min-height:3rem; }
+@media (max-width:640px) {
+  .learn-desk-hero-action,.topic-tools-link { min-height:2.7rem; margin-top:1rem; font-size:.88rem; }
+}
