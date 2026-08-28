@@ -1,0 +1,8 @@
+{
+  "name": "Kubear",
+  "description": "A read-only personal finance assistant for seeing salary, UPI spending, bills, goals, and household commitments in one unified picture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
