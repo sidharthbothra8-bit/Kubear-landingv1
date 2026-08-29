@@ -1,31 +1,70 @@
 /* Money Map: a floating product guide that gives every route a clear name, active position and thumb-ready app handoff. */
-import { ArrowUpRight, BookOpen, Compass, MoveRight, Smartphone, WalletCards } from "lucide-react";
+import { ArrowUpRight, BookOpen, Compass, Home as HomeIcon, MoveRight, Sparkles, WalletCards } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { MotionObserver } from "@/components/MotionObserver";
-import { useEffect, useState } from "react";
 
 const APP_URL = "https://kubear.kuberos.in";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear&pcampaignid=web_share";
-const navItems = [
+
+const desktopNavItems = [
   { href: "/how-it-works", label: "How it works", icon: Compass },
   { href: "/learn", label: "Learn", icon: BookOpen },
   { href: "/learn/tools", label: "Tools", icon: WalletCards },
 ];
-function Mark() { return <img src="/manus-storage/kubear-symbol-mark_f469077a.png" alt="" className="size-9 object-contain" />; }
-export function Brand({ inverse = false }: { inverse?: boolean }) { return <Link href="/" className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] ${inverse ? "text-[#FFF8EE]" : "text-[#123630]"}`} aria-label="Kubear home"><span className={inverse ? "brightness-0 invert" : ""}><Mark /></span><span className="text-[1.28rem]">Kubear</span></Link>; }
+
+const mobileNavItems = [
+  { href: "/", label: "Home", icon: HomeIcon },
+  { href: "/how-it-works", label: "How it works", icon: Sparkles },
+  { href: "/learn", label: "Learn", icon: BookOpen },
+  { href: "/learn/tools", label: "Tools", icon: WalletCards },
+];
+
+/* Mark component with clean inline geometric vector logo matching Kubear identity */
+function Mark({ className = "size-7 sm:size-8" }: { className?: string }) {
+  return (
+    <span className={`flex items-center justify-center rounded-[0.55rem] sm:rounded-[0.65rem] bg-[#123630] text-[#FFF8EE] shadow-sm shrink-0 ${className}`}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="size-4 sm:size-5"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5V19C10 20.1046 9.10457 21 8 21C6.89543 21 6 20.1046 6 19V5Z"
+          fill="#FF5C2B"
+        />
+        <path
+          d="M14 5C14 3.89543 14.8954 3 16 3C17.1046 3 18 3.89543 18 5V19C18 20.1046 17.1046 21 16 21C14.8954 21 14 20.1046 14 19V5Z"
+          fill="#F4B63A"
+        />
+        <circle cx="12" cy="12" r="3.5" fill="#FFF8EE" />
+      </svg>
+    </span>
+  );
+}
+
+export function Brand({ inverse = false }: { inverse?: boolean }) {
+  return (
+    <Link
+      href="/"
+      className={`inline-flex items-center gap-2 font-semibold tracking-[-0.045em] shrink-0 ${
+        inverse ? "text-[#FFF8EE]" : "text-[#123630]"
+      }`}
+      aria-label="Kubear home"
+    >
+      <Mark className={inverse ? "size-8" : "size-7 sm:size-8"} />
+      <span className="text-[1.15rem] font-black sm:text-[1.28rem] tracking-tight">Kubear</span>
+    </Link>
+  );
+}
 
 export function Header() {
   const [location] = useLocation();
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 24);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
+  const isNavActive = (href: string) =>
+    location === href || (href === "/learn" && location.startsWith("/learn/") && location !== "/learn/tools");
 
-  const isNavActive = (href: string) => location === href || (href === "/learn" && location.startsWith("/learn/"));
   return (
     <header className="mm-header mm-header-light">
       <a href="#main-content" className="skip-link">
@@ -33,14 +72,21 @@ export function Header() {
       </a>
       <div className="mm-header-inner">
         <Brand inverse={false} />
-        <nav className="map-nav flex items-center" aria-label="Money Map">
-          {navItems.map((item) => {
+        
+        {/* Desktop / Tablet Navigation Links */}
+        <nav className="hidden sm:flex items-center gap-1.5" aria-label="Money Map">
+          {desktopNavItems.map((item) => {
             const Icon = item.icon;
+            const active = isNavActive(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`map-nav-link ${isNavActive(item.href) ? "is-active" : ""}`}
+                className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[0.65rem] font-bold text-[0.82rem] whitespace-nowrap transition-all ${
+                  active
+                    ? "bg-[#123630] text-[#FFF8EE] shadow-sm"
+                    : "text-[#3E5750] hover:text-[#123630] hover:bg-[#123630]/5"
+                }`}
               >
                 <Icon className="size-3.5" />
                 <span>{item.label}</span>
@@ -48,14 +94,58 @@ export function Header() {
             );
           })}
         </nav>
-        <div className="flex items-center gap-2">
-          <a className="map-open" href={APP_URL}>
-            <span>Open Kubear</span>
-            <ArrowUpRight className="size-4" />
+
+        {/* Action Button (Spacious and perfectly aligned on both mobile & desktop) */}
+        <div className="flex items-center shrink-0">
+          <a
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-[0.65rem] sm:rounded-[0.75rem] bg-[#FF5C2B] text-[#FFF8EE] font-black text-xs sm:text-[0.82rem] shadow-[0_3px_0_#9F3017] hover:shadow-[0_4px_0_#9F3017] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#9F3017] transition-all shrink-0"
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Open App</span>
+            <ArrowUpRight className="size-3.5" />
           </a>
         </div>
       </div>
     </header>
+  );
+}
+
+export function MobileBottomNav() {
+  const [location] = useLocation();
+
+  const isNavActive = (href: string) => {
+    if (href === "/") return location === "/";
+    return location === href || (href === "/learn" && location.startsWith("/learn/") && location !== "/learn/tools");
+  };
+
+  return (
+    <nav
+      className="sm:hidden fixed bottom-3 left-3 right-3 z-50 pointer-events-auto"
+      aria-label="Mobile Navigation"
+    >
+      <div className="max-w-md mx-auto bg-[#FFFDF8] rounded-2xl shadow-[0_10px_30px_rgba(18,54,48,0.1)] p-1.5 flex items-center justify-between gap-1">
+        {mobileNavItems.map((item) => {
+          const Icon = item.icon;
+          const active = isNavActive(item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex-1 min-h-[46px] flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all ${
+                active
+                  ? "bg-[#123630] text-[#FFF8EE] font-bold shadow-sm"
+                  : "text-[#516761] hover:text-[#123630] hover:bg-[#123630]/5 font-medium"
+              }`}
+            >
+              <Icon className="size-4 mb-0.5" />
+              <span className="text-[10px] tracking-tight leading-none whitespace-nowrap">{item.label}</span>
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
   );
 }
 
@@ -145,4 +235,14 @@ export function Footer() {
     </footer>
   );
 }
-export function SiteLayout({ children }: { children: React.ReactNode }) { return <><Header /><MotionObserver /><main id="main-content">{children}</main><Footer /></>; }
+export function SiteLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Header />
+      <MotionObserver />
+      <main id="main-content" className="pb-20 sm:pb-0">{children}</main>
+      <MobileBottomNav />
+      <Footer />
+    </>
+  );
+}

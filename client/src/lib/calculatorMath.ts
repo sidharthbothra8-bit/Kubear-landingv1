@@ -37,3 +37,11 @@ export const goalEstimate = (target: number, saved: number, targetMonth: string,
   const months = monthsUntil(targetMonth, now);
   return { remaining, months, monthly: months > 0 ? remaining / months : 0, complete: remaining === 0, overdue: remaining > 0 && months <= 0 };
 };
+
+export const salaryAllocationEstimate = (salary: number, rent: number, parents: number, sip: number, bills: number) => {
+  const totalCommitted = rent + parents + sip + bills;
+  const discretionary = Math.max(0, salary - totalCommitted);
+  const dailySpend = Math.floor(discretionary / 30);
+  const committedRatio = salary > 0 ? Math.round((totalCommitted / salary) * 100) : 0;
+  return { totalCommitted, discretionary, dailySpend, committedRatio };
+};

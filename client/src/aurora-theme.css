@@ -84,11 +84,13 @@ body summary:focus-visible {
 .mm-header-inner {
   max-width: 1320px !important;
   min-height: 4.25rem !important;
-  border: 1px solid rgba(18, 54, 48, 0.12) !important;
+  border: none !important;
+  outline: none !important;
   border-radius: 1.35rem !important;
-  background: rgba(250, 247, 240, 0.92) !important;
-  box-shadow: 0 10px 32px rgba(18, 54, 48, 0.08) !important;
-  backdrop-filter: blur(18px);
+  background: #FFFDF8 !important;
+  box-shadow: 0 10px 30px rgba(18, 54, 48, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   pointer-events: auto;
 }
 
@@ -219,17 +221,17 @@ footer .text-\[\#FFB18E\] {
   min-height: 44rem !important;
   padding-top: 8rem !important;
   padding-bottom: 5rem !important;
-  background: radial-gradient(circle at 82% 20%, rgba(255, 212, 107, 0.24), transparent 24rem),
-              radial-gradient(circle at 18% 85%, rgba(212, 71, 34, 0.08), transparent 22rem),
-              var(--aurora-cloud) !important;
+  background: var(--aurora-cloud) !important;
   color: var(--aurora-ink) !important;
 }
 
 .instrument-hero-grid {
-  opacity: 0.18 !important;
-  background-image: linear-gradient(rgba(18, 54, 48, 0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(18, 54, 48, 0.1) 1px, transparent 1px) !important;
+  opacity: 0.14 !important;
+  background-image: linear-gradient(rgba(18, 54, 48, 0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(18, 54, 48, 0.08) 1px, transparent 1px) !important;
   background-size: 40px 40px !important;
+  mask-image: linear-gradient(to bottom, transparent 0, transparent 140px, rgba(0,0,0,0.85) 200px, #000 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 140px, rgba(0,0,0,0.85) 200px, #000 100%) !important;
 }
 
 .mm-hero h1 {

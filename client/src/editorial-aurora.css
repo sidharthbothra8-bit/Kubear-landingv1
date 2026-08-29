@@ -42,9 +42,7 @@ body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-featu
 
 .instrument-hero,
 .mm-hero {
-  background: radial-gradient(circle at 82% 20%, rgba(255, 212, 107, 0.25), transparent 24rem),
-              radial-gradient(circle at 18% 85%, rgba(212, 71, 34, 0.08), transparent 22rem),
-              var(--aurora-cloud) !important;
+  background: var(--aurora-cloud) !important;
 }
 
 .instrument-hero-grid {

@@ -1,5 +1,6 @@
 /* Moving Money Universe: A screenshot-free, high-craft interactive page for real Indian money moments. */
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Check, CircleHelp, Eye, LockKeyhole, MessageSquare, Play, ShieldCheck, Sparkles, UploadCloud } from "lucide-react";
+import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageMeta } from "@/components/PageMeta";
 import { SiteLayout } from "@/components/SiteChrome";
@@ -91,6 +92,17 @@ function LedgerThread({ moment }: { moment: keyof typeof ledgerMoments }) {
 }
 
 export default function Home() {
+  const scrollToSalarySimulator = () => {
+    const el = document.getElementById("salary-allocation-simulator");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("ring-4", "ring-amber-400", "scale-[1.01]", "transition-all", "duration-300");
+      setTimeout(() => {
+        el.classList.remove("ring-4", "ring-amber-400", "scale-[1.01]");
+      }, 2000);
+    }
+  };
+
   return (
     <SiteLayout>
       <PageMeta
@@ -118,7 +130,7 @@ export default function Home() {
             <em>Keep the whole picture calm.</em>
           </h1>
           <p className="mm-hero-lede">
-            Log in 5 seconds via chat or photo upload. Track chai, split rent with flatmates, lock salary allocations, and save for Goa — completely manual, 100% private.
+            Log in 5 seconds via chat or photo upload. Track chai, split rent with flatmates, lock salary allocations, and save for Goa - completely manual, 100% private.
           </p>
 
           <div className="mm-actions">
@@ -196,9 +208,18 @@ export default function Home() {
             </p>
             <p className="mm-margin-note">Pehle plan karo, phir spend karo with zero guilt.</p>
             <LedgerThread moment="salary" />
-            <a className="mm-text-link" href={APP_URL}>
-              Try Salary Allocation <ArrowRight className="size-4" />
-            </a>
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={scrollToSalarySimulator}
+                className="mm-button mm-button-orange text-xs py-2 px-3.5 cursor-pointer inline-flex items-center gap-1.5 shadow-sm"
+              >
+                <Sparkles className="size-3.5" /> Try Live Simulator
+              </button>
+              <Link href="/learn/tools/salary-allocation" className="mm-text-link text-xs inline-flex items-center gap-1">
+                Open Full Calculator <ArrowRight className="size-3.5" />
+              </Link>
+            </div>
           </div>
           <HumanMoneyScene kind="salary" />
         </div>
@@ -223,9 +244,14 @@ export default function Home() {
             <p className="goal-runway-copy-note">
               3 months • ₹22.5k saved of ₹30k. Clear visual runway so you stay on track.
             </p>
-            <a className="mm-button mm-button-dark mt-8" href={PLAY_URL} target="_blank" rel="noreferrer">
-              Get the Android App <ArrowUpRight className="size-4" />
-            </a>
+            <div className="flex flex-wrap items-center gap-3 mt-6">
+              <Link href="/learn/tools/goa-goal-calculator" className="mm-button mm-button-dark text-xs py-2 px-4 inline-flex items-center gap-1.5">
+                <Sparkles className="size-3.5 text-amber-400" /> Plan Your Goal
+              </Link>
+              <a className="mm-text-link text-xs inline-flex items-center gap-1" href={PLAY_URL} target="_blank" rel="noreferrer">
+                Get Android App <ArrowUpRight className="size-3.5" />
+              </a>
+            </div>
           </div>
           <HumanMoneyScene kind="goa" />
         </div>
@@ -248,9 +274,11 @@ export default function Home() {
               Split Cook Aunty salary, Blinkit groceries, and WiFi with flatmates on the shared table. Your weekend shopping and dates stay strictly on your private table.
             </p>
             <LedgerThread moment="home" />
-            <a className="mm-text-link" href="/how-it-works">
-              See Two-Table Sharing <ArrowRight className="size-4" />
-            </a>
+            <div className="pt-2">
+              <Link href="/how-it-works" className="mm-text-link inline-flex items-center gap-1">
+                See Two-Table Sharing <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
           <HumanMoneyScene kind="home" />
         </div>

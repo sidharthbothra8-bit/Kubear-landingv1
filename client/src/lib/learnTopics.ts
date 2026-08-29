@@ -9,7 +9,17 @@ export const learnTopics = [
   { slug: "home-household", label: "Home & household", title: "Share the right things, clearly.", description: "Household money conversations that keep boundaries and responsibilities understandable." },
   { slug: "insurance-protection", label: "Insurance & protection", title: "Protection begins with the question.", description: "Health, life and employer cover explained without fear-based jargon." },
   { slug: "tax-records", label: "Tax & records", title: "The paperwork is part of the picture.", description: "Tax, documents and money records organised around useful next actions." },
-  { slug: "long-term", label: "Long-term", title: "Make distant plans feel present.", description: "Retirement and long-range financial questions made concrete and human." },
+  { slug: "long-term", label: "Long-term & FIRE", title: "Make distant plans feel present.", description: "Retirement, independence, gold and long-range financial questions made concrete and human." },
 ] as const;
 
-export const getLearnTopic = (slug: string) => learnTopics.find(topic => topic.slug === slug);
+export const topicAliases: Record<string, string> = {
+  "taxes-records": "tax-records",
+  "tax-records": "tax-records",
+  "wealth-independence": "long-term",
+  "long-term": "long-term",
+};
+
+export const getLearnTopic = (slug: string) => {
+  const targetSlug = topicAliases[slug] || slug;
+  return learnTopics.find(topic => topic.slug === targetSlug);
+};

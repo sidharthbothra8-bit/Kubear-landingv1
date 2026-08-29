@@ -1,7 +1,7 @@
 /* Mobile-first expansion: this registry is the single source for internal Learn and Tools route copy, contextual links and route-level SEO data. */
 export type Topic = { slug: string; label: string; title: string; description: string; accent: "orange" | "mint" | "saffron" | "ink" };
 export type Article = { slug: string; topic: string; title: string; description: string; readTime: string; visual: "salary" | "upi" | "rent" | "goa" | "home" | "library"; takeaway: string; sections: { title: string; paragraphs: string[] }[]; tool?: { label: string; href: string } };
-export type ToolItem = { slug: string; title: string; eyebrow: string; description: string; visual: "sip" | "emi" | "goa"; query: string; learnSlug: string };
+export type ToolItem = { slug: string; title: string; eyebrow: string; description: string; visual: "salary" | "sip" | "emi" | "goa"; query: string; learnSlug: string };
 
 export const topics: Topic[] = [
   { slug: "start-here", label: "Start here", title: "Start with the month you have.", description: "A simpler way to see what comes in, what is due and what you want to keep moving.", accent: "orange" },
@@ -13,6 +13,7 @@ export const topics: Topic[] = [
 ];
 
 export const tools: ToolItem[] = [
+  { slug: "salary-allocation", title: "Salary Day Allocation Planner", eyebrow: "Salary plan", description: "Allocate rent, parents, SIP and utility bills upfront on Day 1. See your daily guilt-free spend limit.", visual: "salary", query: "salary allocation planner India", learnSlug: "salary-day-is-not-spending-day" },
   { slug: "sip-calculator", title: "SIP Calculator", eyebrow: "Monthly plan", description: "Try a monthly amount, a return assumption and a time frame. See the estimate in one view.", visual: "sip", query: "SIP calculator India", learnSlug: "salary-day-is-not-spending-day" },
   { slug: "emi-calculator", title: "EMI Calculator", eyebrow: "Loan plan", description: "Try a loan amount, rate and tenure. See the monthly amount and overall cost clearly.", visual: "emi", query: "EMI calculator India", learnSlug: "rent-bills-cards-what-to-see-first" },
   { slug: "goa-goal-calculator", title: "Goa Goal Calculator", eyebrow: "Trip plan", description: "Put a Goa plan on the table. See what may be left to save every month.", visual: "goa", query: "travel goal calculator India", learnSlug: "goa-fund-without-guilt" },

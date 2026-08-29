@@ -134,7 +134,7 @@ const lifecycleSteps = [
     badgeColor: "text-[#1D4ED8] bg-[#EFF6FF] border border-[#BFDBFE]",
     points: [
       "Zero awkward roommate math at month-end",
-      "Selective sharing — personal items never appear on the home board",
+      "Selective sharing - personal items never appear on the home board",
       "Instant 50/50 or custom percentage settlement summary",
     ],
   },
@@ -195,7 +195,7 @@ const howFaq = [
   },
   {
     q: "How does the Money View differ from a regular bank balance?",
-    a: "A bank balance is just a static number — it doesn't know you have ₹14,000 rent due this Friday, a ₹5,000 SIP next Tuesday, or a shared flatmate grocery split. Kubear's unified Money View connects what you have with what is already committed, giving you an exact, safe-to-spend daily allowance.",
+    a: "A bank balance is just a static number - it doesn't know you have ₹14,000 rent due this Friday, a ₹5,000 SIP next Tuesday, or a shared flatmate grocery split. Kubear's unified Money View connects what you have with what is already committed, giving you an exact, safe-to-spend daily allowance.",
   },
   {
     q: "How does the receipt photo upload work?",
@@ -243,7 +243,7 @@ export default function HowItWorks() {
                 <em className="italic text-[#D44722] font-serif">Your money has a story.</em>
               </h1>
               <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#5A6E69] max-w-xl">
-                A bank balance doesn&apos;t tell you about rent due Friday, your SIP, flatmate grocery splits, or your Goa trip fund. Kubear unifies your entire money picture through fast natural chat, photo receipts, and upfront salary allocation — with zero bank logins and zero SMS snooping.
+                A bank balance doesn&apos;t tell you about rent due Friday, your SIP, flatmate grocery splits, or your Goa trip fund. Kubear unifies your entire money picture through fast natural chat, photo receipts, and upfront salary allocation with zero bank logins and zero SMS snooping.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4 items-center">
@@ -377,7 +377,7 @@ export default function HowItWorks() {
               Designed specifically for how money moves in India.
             </h2>
             <p className="mt-4 text-base text-[#5A6E69]">
-              We stripped away everything that makes traditional personal finance stressful — SMS background snooping, annoying loan notifications, and endless forms.
+              We stripped away everything that makes traditional personal finance stressful: SMS background snooping, annoying loan notifications, and endless forms.
             </p>
           </div>
 
