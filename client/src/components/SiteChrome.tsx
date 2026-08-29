@@ -2,6 +2,7 @@
 import { ArrowUpRight, BookOpen, Compass, Home as HomeIcon, MoveRight, Sparkles, WalletCards } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { MotionObserver } from "@/components/MotionObserver";
+import { KubearLogo } from "@/components/KubearLogo";
 
 const APP_URL = "https://kubear.kuberos.in";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear&pcampaignid=web_share";
@@ -19,42 +20,17 @@ const mobileNavItems = [
   { href: "/learn/tools", label: "Tools", icon: WalletCards },
 ];
 
-/* Mark component with clean inline geometric vector logo matching Kubear identity */
-function Mark({ className = "size-7 sm:size-8" }: { className?: string }) {
-  return (
-    <span className={`flex items-center justify-center rounded-[0.55rem] sm:rounded-[0.65rem] bg-[#123630] text-[#FFF8EE] shadow-sm shrink-0 ${className}`}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="size-4 sm:size-5"
-        aria-hidden="true"
-      >
-        <path
-          d="M6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5V19C10 20.1046 9.10457 21 8 21C6.89543 21 6 20.1046 6 19V5Z"
-          fill="#FF5C2B"
-        />
-        <path
-          d="M14 5C14 3.89543 14.8954 3 16 3C17.1046 3 18 3.89543 18 5V19C18 20.1046 17.1046 21 16 21C14.8954 21 14 20.1046 14 19V5Z"
-          fill="#F4B63A"
-        />
-        <circle cx="12" cy="12" r="3.5" fill="#FFF8EE" />
-      </svg>
-    </span>
-  );
-}
-
 export function Brand({ inverse = false }: { inverse?: boolean }) {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2 font-semibold tracking-[-0.045em] shrink-0 ${
+      className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] shrink-0 transition-opacity hover:opacity-90 ${
         inverse ? "text-[#FFF8EE]" : "text-[#123630]"
       }`}
       aria-label="Kubear home"
     >
-      <Mark className={inverse ? "size-8" : "size-7 sm:size-8"} />
-      <span className="text-[1.15rem] font-black sm:text-[1.28rem] tracking-tight">Kubear</span>
+      <KubearLogo className={inverse ? "size-8 sm:size-9" : "size-7 sm:size-8"} inverse={inverse} />
+      <span className="text-[1.18rem] font-black sm:text-[1.32rem] tracking-tight">Kubear</span>
     </Link>
   );
 }

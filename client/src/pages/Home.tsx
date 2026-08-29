@@ -1,5 +1,5 @@
 /* Moving Money Universe: A screenshot-free, high-craft interactive page for real Indian money moments. */
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Check, CircleHelp, Eye, LockKeyhole, MessageSquare, Play, ShieldCheck, Sparkles, UploadCloud } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Check, CircleHelp, Eye, LockKeyhole, MessageSquare, Play, ShieldCheck, Sparkles, UploadCloud, Users } from "lucide-react";
 import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageMeta } from "@/components/PageMeta";
@@ -29,68 +29,6 @@ const faq = [
     "No. Kubear is not a registered investment adviser, bank, or tax consultant. It is a personal and household organizer that gives you clarity on where your salary and savings go.",
   ],
 ];
-
-const ledgerMoments = {
-  salary: {
-    label: "Salary day allocation",
-    eyebrow: "Give every rupee a job",
-    rows: [
-      ["01", "House Rent", "locked 5th"],
-      ["02", "Home & SIP", "allocated"],
-      ["03", "Goa Fund", "₹5k saved"],
-    ],
-  },
-  goa: {
-    label: "Trip goals on monthly runway",
-    eyebrow: "One clear runway",
-    rows: [
-      ["01", "Fixed Bills", "planned first"],
-      ["02", "Goa Plan", "3 months left"],
-      ["03", "Guilt-free Spend", "clear daily buffer"],
-    ],
-  },
-  home: {
-    label: "Flatmate & home splits",
-    eyebrow: "Share by choice",
-    rows: [
-      ["01", "Cook & WiFi", "shared 50/50"],
-      ["02", "Personal Coffee", "private view"],
-      ["03", "Month-end Settle", "zero math confusion"],
-    ],
-  },
-  trust: {
-    label: "Zero scraping trust boundary",
-    eyebrow: "Strictly private",
-    rows: [
-      ["01", "Manual Chat/Photo", "your input only"],
-      ["02", "SMS / Bank Sync", "none / zero"],
-      ["03", "Your Data", "export & delete anytime"],
-    ],
-  },
-} as const;
-
-function LedgerThread({ moment }: { moment: keyof typeof ledgerMoments }) {
-  const { label, eyebrow, rows } = ledgerMoments[moment];
-  return (
-    <aside className={`home-ledger-thread home-ledger-thread-${moment}`} aria-label={label}>
-      <p>
-        <span />
-        {eyebrow}
-      </p>
-      <div>
-        {rows.map(([number, name, state]) => (
-          <div className="home-ledger-thread-row" key={name}>
-            <div className="home-ledger-thread-row-left">
-              <b>{number}</b>
-              <strong>{name}</strong>
-            </div>
-            <em>{state}</em>
-          </div>
-        ))}
-      </div>
-    </aside>
-  );
-}
 
 export default function Home() {
   const scrollToSalarySimulator = () => {
@@ -207,8 +145,14 @@ export default function Home() {
             <p>
               Protect your commitments on Day 1. Spend whatever remains with zero guilt.
             </p>
-            <p className="mm-margin-note">Pehle plan karo, phir spend karo with zero guilt.</p>
-            <LedgerThread moment="salary" />
+            <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#123630]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <Sparkles className="size-3.5 text-[#FF5C2B]" /> Fixed Commitments First
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <Check className="size-3.5 text-emerald-700" /> Guilt-Free Safe Spend
+              </span>
+            </div>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
@@ -267,15 +211,22 @@ export default function Home() {
               04 / Flatmate Matrix
             </p>
             <h2>
-              Split the cook &amp; WiFi.
+              Split flat expenses.
               <br />
-              <em>Keep your personal spends private.</em>
+              <em>Keep personal spends private.</em>
             </h2>
             <p>
               Flatmates only see shared apartment bills. Your personal coffee and dates stay strictly yours.
             </p>
-            <LedgerThread moment="home" />
-            <div className="pt-2">
+            <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#123630]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <Users className="size-3.5 text-[#7C3AED]" /> Shared 50/50 Splits
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <LockKeyhole className="size-3.5 text-emerald-700" /> Private Isolation
+              </span>
+            </div>
+            <div className="pt-3">
               <Link href="/how-it-works" className="mm-text-link inline-flex items-center gap-1">
                 See Two-Table Sharing <ArrowRight className="size-4" />
               </Link>
@@ -296,26 +247,27 @@ export default function Home() {
             <h2>
               No OTP permissions.
               <br />
-              <em>No bank servers touching your data.</em>
+              <em>Zero bank scraping.</em>
             </h2>
             <p>
               We don't read your SMS or sell personal loans. You track only what you choose.
             </p>
-            <LedgerThread moment="trust" />
-            <div className="mm-rules">
-              <p>
-                <ShieldCheck className="size-4 text-[#4ADE80]" /> Zero bank scraping
-              </p>
-              <p>
-                <LockKeyhole className="size-4 text-[#FCD34D]" /> Manual chat &amp; photo only
-              </p>
-              <p>
-                <Check className="size-4 text-[#4ADE80]" /> Export or delete anytime
-              </p>
+            <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#123630]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <ShieldCheck className="size-3.5 text-emerald-700" /> Zero Bank Scraping
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <LockKeyhole className="size-3.5 text-[#FF5C2B]" /> Manual Chat Only
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1 shadow-2xs">
+                <Check className="size-3.5 text-blue-700" /> 1-Tap CSV Export
+              </span>
             </div>
-            <a className="mm-text-link mm-text-link-light" href="/privacy-data">
-              Read Our Privacy Manifesto <ArrowRight className="size-4" />
-            </a>
+            <div className="pt-3">
+              <Link className="mm-text-link mm-text-link-light inline-flex items-center gap-1" href="/privacy-data">
+                Read Our Privacy Manifesto <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
           <HumanMoneyScene kind="control" />
         </div>
