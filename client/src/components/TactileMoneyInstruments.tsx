@@ -28,6 +28,7 @@ import {
   Zap,
 } from "lucide-react";
 import React, { useState } from "react";
+import { APP_URL } from "./MovingMoneyWorld";
 
 type InstrumentProps = { className?: string };
 
@@ -395,16 +396,16 @@ export function SpendingStoryInstrument({ className = "" }: InstrumentProps) {
 export type HumanSceneKind = "morning" | "coffee" | "salary" | "goa" | "home" | "control" | "closing";
 
 /* -------------------------------------------------------------------------- */
-/* NEW REDESIGNED RELATABLE INDIAN HOMEPAGE CARDS (MANUAL CHAT & UPLOAD ONLY)  */
+/* NEW REDESIGNED RELATABLE INDIAN HOMEPAGE CARDS (COMPACT, CRISP & TACTILE)   */
 /* -------------------------------------------------------------------------- */
 
-/** 1. MORNING HERO CARD: Quick Chat Logging (Interactive Demo) */
+/** 1. MORNING HERO CARD: Quick Chat Logging (Compact, Crisp, Flat Ledger) */
 function ChatLogHeroCard() {
   const [inputText, setInputText] = useState("");
   const [items, setItems] = useState<Array<{ name: string; tag: string; cost: number; icon: string }>>([
-    { name: "Auto to Metro", tag: "Commute", cost: 70, icon: "🛺" },
-    { name: "Chai & Maska", tag: "Snack", cost: 45, icon: "☕" },
-    { name: "Blinkit Dairy", tag: "Grocery", cost: 160, icon: "🥛" },
+    { name: "Metro auto", tag: "Commute", cost: 70, icon: "🛺" },
+    { name: "Chai point", tag: "Snacks", cost: 45, icon: "☕" },
+    { name: "Blinkit", tag: "Grocery", cost: 160, icon: "🥛" },
   ]);
 
   const totalSpent = items.reduce((acc, curr) => acc + curr.cost, 0);
@@ -421,196 +422,160 @@ function ChatLogHeroCard() {
     if (!inputText.trim()) return;
     const match = inputText.match(/\d+/);
     const amount = match ? parseInt(match[0], 10) : 50;
-    const cleanName = inputText.replace(/\d+/, "").replace(/rs|inr|₹/gi, "").trim() || "Quick Expense";
-    setItems((prev) => [...prev, { name: cleanName, tag: "Daily Spend", cost: amount, icon: "💳" }]);
+    const cleanName = inputText.replace(/\d+/, "").replace(/rs|inr|₹/gi, "").trim() || "Quick spend";
+    setItems((prev) => [...prev, { name: cleanName.slice(0, 24), tag: "Daily", cost: amount, icon: "💳" }]);
     setInputText("");
   };
 
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#FED7AA] bg-[#FFFDF8] p-4 sm:p-6 lg:p-7 text-[#123630] shadow-[0_20px_50px_rgba(212,71,34,0.1)]">
-      {/* Background ambient pattern */}
-      <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[#FFEDD5] blur-3xl opacity-80" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-[#D1FAE5] blur-3xl opacity-70" />
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FED7AA]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(212,71,34,0.06)] mx-auto">
+      {/* Ambient background accent */}
+      <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-[#FFEDD5] blur-2xl opacity-60" />
+      <div className="pointer-events-none absolute -bottom-12 -left-12 size-40 rounded-full bg-[#D1FAE5] blur-2xl opacity-50" />
 
-      {/* Top status bar */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-2.5 border-b border-[#FEE2E2]/60 pb-3 sm:pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[#FF5C2B] text-white shadow-sm">
-            <MessageSquare className="size-4" />
+      {/* Header */}
+      <div className="relative z-10 flex items-center justify-between border-b border-[#FED7AA]/60 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-2xs">
+            <MessageSquare className="size-3.5" />
           </span>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-[#10B981] animate-pulse" />
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF5C2B]">Quick Chat Entry</span>
-            </div>
-            <p className="text-[11px] sm:text-xs text-[#4B605B]">Interactive Simulator • Type or tap quick chips</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5C2B]">Today&apos;s Spend</span>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full border border-[#FCD34D] bg-[#FFFBEB] px-2.5 sm:px-3 py-1 font-mono text-[10px] sm:text-[11px] font-bold text-[#B45309]">
-          <Zap className="size-3 text-[#D97706]" /> Live interactive
+        <span className="inline-flex items-center gap-1 rounded-full border border-amber-300/80 bg-amber-50 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-900 shrink-0">
+          <Sparkles className="size-2.5 text-amber-600" /> ₹0 math effort
         </span>
       </div>
 
-      {/* Interactive Quick Add Chips */}
-      <div className="relative z-10 mt-3.5 sm:mt-4 flex flex-wrap items-center gap-1.5">
-        <span className="text-[11px] font-bold text-[#5A6E69]">Quick chips:</span>
+      {/* Quick Tap Buttons */}
+      <div className="relative z-10 mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-0.5 text-[11px]">
         <button
           type="button"
-          onClick={() => handleAddSample("Filter Coffee", 30, "Beverage", "☕")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-1 text-[11px] font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer shadow-2xs"
+          onClick={() => handleAddSample("Chai tapri", 30, "Snacks", "☕")}
+          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
         >
           + Chai ₹30
         </button>
         <button
           type="button"
-          onClick={() => handleAddSample("Uber to HSR", 180, "Transport", "🚕")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-1 text-[11px] font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer shadow-2xs"
+          onClick={() => handleAddSample("Uber cab", 180, "Commute", "🚕")}
+          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
         >
           + Uber ₹180
         </button>
         <button
           type="button"
-          onClick={() => handleAddSample("Swiggy Biryani", 320, "Food", "🍲")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-1 text-[11px] font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer shadow-2xs"
+          onClick={() => handleAddSample("Swiggy meal", 320, "Dinner", "🍲")}
+          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
         >
           + Swiggy ₹320
         </button>
-        {items.length > 3 && (
-          <button
-            type="button"
-            onClick={() => setItems([
-              { name: "Auto to Metro", tag: "Commute", cost: 70, icon: "🛺" },
-              { name: "Chai & Maska", tag: "Snack", cost: 45, icon: "☕" },
-              { name: "Blinkit Dairy", tag: "Grocery", cost: 160, icon: "🥛" },
-            ])}
-            className="text-[10px] font-mono text-orange-700 hover:underline ml-auto cursor-pointer"
-          >
-            Reset
-          </button>
-        )}
       </div>
 
-      {/* Chat Simulation Area */}
-      <div className="relative z-10 mt-3.5 sm:mt-4 space-y-3">
-        {/* Custom Input Form */}
-        <form onSubmit={handleCustomSubmit} className="flex gap-2">
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Type 'Dosa 60' or 'Auto 40'..."
-            className="flex-1 rounded-xl border border-[#FED7AA] bg-white px-3 sm:px-3.5 py-2 text-xs text-[#123630] placeholder:text-[#94A3B8] focus:border-[#FF5C2B] focus:outline-none shadow-inner"
-          />
-          <button
-            type="submit"
-            className="flex items-center justify-center rounded-xl bg-[#FF5C2B] px-3 sm:px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#D44722] transition-colors cursor-pointer shrink-0"
-          >
-            <Send className="size-3.5" />
-          </button>
-        </form>
+      {/* Input Form */}
+      <form onSubmit={handleCustomSubmit} className="relative z-10 mt-2 flex gap-1.5">
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="Type 'Dosa 60' or 'Auto 40'..."
+          className="flex-1 rounded-lg border border-[#FED7AA] bg-white px-2.5 py-1.5 text-xs text-[#123630] placeholder:text-[#94A3B8] focus:border-[#FF5C2B] focus:outline-none shadow-2xs"
+        />
+        <button
+          type="submit"
+          className="flex items-center justify-center rounded-lg bg-[#FF5C2B] px-3 py-1.5 text-xs font-bold text-white shadow-2xs hover:bg-[#D44722] transition-colors cursor-pointer shrink-0 active:scale-95"
+        >
+          <Send className="size-3" />
+        </button>
+      </form>
 
-        {/* Kubear Response Bubble with parsed cards */}
-        <div className="flex items-start gap-2 sm:gap-2.5">
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#FF5C2B] text-xs font-bold text-white shadow-sm">
-            K
-          </div>
-          <div className="w-full min-w-0 rounded-2xl rounded-tl-sm border border-[#FED7AA] bg-[#FFF8F3] p-3 sm:p-3.5 shadow-xs">
-            <div className="flex items-center justify-between border-b border-[#FDBA74]/40 pb-2">
-              <span className="flex items-center gap-1.5 text-xs font-bold text-[#059669] truncate">
-                <CheckCircle2 className="size-3.5 shrink-0 text-[#10B981]" /> {items.length} items (₹{totalSpent.toLocaleString("en-IN")})
-              </span>
-              <span className="font-mono text-[10px] sm:text-[11px] font-bold text-[#D44722] shrink-0 ml-1">Today&apos;s Ledger</span>
-            </div>
+      {/* Sleek Flat Mini-Ledger */}
+      <div className="relative z-10 mt-2.5 rounded-xl border border-orange-200/70 bg-[#FFF9F5] p-2.5">
+        <div className="flex items-center justify-between border-b border-orange-200/50 pb-1.5 text-[10.5px]">
+          <span className="flex items-center gap-1 font-bold text-[#059669]">
+            <CheckCircle2 className="size-3 text-[#10B981]" /> {items.length} items logged
+          </span>
+          <span className="font-mono font-bold text-[#D44722]">₹{totalSpent} total</span>
+        </div>
 
-            {/* Parsed items breakdown */}
-            <div className="mt-2.5 grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-h-44 overflow-y-auto pr-1">
-              {items.map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between rounded-xl border border-orange-200 bg-white/95 px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-xs">
-                  <div className="min-w-0 pr-1">
-                    <p className="truncate text-xs font-bold text-[#123630]">{item.icon} {item.name}</p>
-                    <p className="font-mono text-[10px] text-orange-600 font-semibold">{item.tag}</p>
-                  </div>
-                  <span className="font-mono text-xs sm:text-sm font-bold text-[#D44722] shrink-0">₹{item.cost}</span>
-                </div>
-              ))}
+        <div className="mt-1.5 space-y-1 max-h-32 overflow-y-auto">
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center justify-between py-1 px-1.5 rounded-md hover:bg-white transition-colors text-xs"
+            >
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-xs">{item.icon}</span>
+                <span className="font-semibold text-[#123630] truncate">{item.name}</span>
+                <span className="font-mono text-[9.5px] text-orange-600 font-medium">· {item.tag}</span>
+              </div>
+              <span className="font-mono text-xs font-bold text-[#D44722] shrink-0">₹{item.cost}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Daily Pacing Metric Card */}
-      <div className="relative z-10 mt-3.5 sm:mt-4 rounded-2xl border border-[#86EFAC] bg-gradient-to-r from-[#F0FDF4] to-[#ECFDF5] p-3.5 sm:p-4 shadow-xs">
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-[#065F46] font-medium">Daily safe limit: <strong className="font-mono text-[#123630]">₹{dailyLimit}</strong></span>
-          <span className="font-mono font-bold text-[#059669]">₹{remaining} left today</span>
+      {/* Slim Pacing Line */}
+      <div className="relative z-10 mt-2.5 rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-2 text-xs">
+        <div className="flex items-center justify-between text-[11px]">
+          <span className="text-[#065F46] font-medium">Safe Limit: <strong className="font-mono">₹{dailyLimit}</strong></span>
+          <span className="font-mono font-bold text-[#059669]">₹{remaining} safe left</span>
         </div>
-        {/* Progress bar */}
-        <div className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full bg-[#DCFCE7]">
+        <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-[#DCFCE7]">
           <div
             style={{ width: `${percent}%` }}
-            className={`h-full rounded-full transition-all duration-300 ${percent > 90 ? "bg-red-500" : "bg-gradient-to-r from-[#FF5C2B] via-[#F59E0B] to-[#10B981]"}`}
+            className={`h-full rounded-full transition-all duration-300 ${percent > 90 ? "bg-red-500" : "bg-[#10B981]"}`}
           />
         </div>
-        <div className="mt-2 flex items-center justify-between text-[10px] sm:text-[11px] text-[#047857] font-mono font-bold">
-          <span>₹{totalSpent} spent ({percent}%)</span>
-          <span>Buffer target ₹{dailyLimit}</span>
-        </div>
-      </div>
-
-      {/* Card Footnote */}
-      <div className="relative z-10 mt-3.5 sm:mt-4 flex flex-wrap items-center justify-between gap-1 border-t border-[#FED7AA]/60 pt-3 text-xs text-[#4B605B]">
-        <span className="inline-flex items-center gap-1.5 font-medium text-[11px] sm:text-xs">
-          <Sparkles className="size-3.5 text-[#F59E0B] shrink-0" /> Type anything or tap the quick chips.
-        </span>
-        <span className="font-mono text-[10px] font-bold uppercase text-[#FF5C2B]">Live Simulator</span>
       </div>
     </div>
   );
 }
 
-/** 2. COFFEE / DAILY EXPENSES CARD: Bill & Receipt Photo Upload (Interactive Demo) */
+/** 2. COFFEE / DAILY EXPENSES CARD: Bill & Receipt Photo Upload */
 function ReceiptUploadCard() {
   const [selectedBill, setSelectedBill] = useState<"meghana" | "swiggy" | "dmart">("meghana");
   const [isScanning, setIsScanning] = useState(false);
-  const [mobileTab, setMobileTab] = useState<"receipt" | "extracted">("receipt");
 
   const bills = {
     meghana: {
-      name: "Meghana Foods Biryani",
+      name: "Meghana Biryani",
       tag: "Sunday Dinner",
       items: [
-        { name: "1x Special Chicken Biryani", price: 420 },
-        { name: "1x Paneer 65 Starter", price: 340 },
-        { name: "2x Fresh Lime Soda", price: 160 },
-        { name: "GST & Service", price: 46 },
+        { name: "Chicken Biryani", price: 420 },
+        { name: "Paneer 65", price: 340 },
+        { name: "Lime Soda (2)", price: 160 },
+        { name: "Taxes & Pack", price: 46 },
       ],
       total: 966,
-      category: "🍔 Dining & Outings",
-      bufferRemaining: 3450,
+      category: "🍔 Dining",
+      splitCount: 3,
+      perPerson: 322,
     },
     swiggy: {
-      name: "Swiggy Gourmet Order",
+      name: "Swiggy Order",
       tag: "Friday Night",
       items: [
-        { name: "1x Sourdough Pizza", price: 490 },
-        { name: "1x Garlic Breadsticks", price: 180 },
-        { name: "Delivery & Packing", price: 65 },
+        { name: "Sourdough Pizza", price: 490 },
+        { name: "Garlic Bread", price: 180 },
+        { name: "Delivery Fee", price: 65 },
       ],
       total: 735,
-      category: "🍕 Food Delivery",
-      bufferRemaining: 4265,
+      category: "🍕 Delivery",
+      splitCount: 2,
+      perPerson: 368,
     },
     dmart: {
-      name: "DMart Ready Pantry",
+      name: "DMart Pantry",
       tag: "Weekly Staples",
       items: [
-        { name: "5kg Basmati Rice", price: 450 },
-        { name: "2L Cold Pressed Oil", price: 360 },
-        { name: "Detergent & Soaps", price: 290 },
+        { name: "Basmati Rice 5kg", price: 450 },
+        { name: "Groundnut Oil 2L", price: 360 },
+        { name: "Soaps & Sponges", price: 290 },
       ],
       total: 1100,
-      category: "🛒 Household Groceries",
-      bufferRemaining: 6900,
+      category: "🛒 Grocery",
+      splitCount: 3,
+      perPerson: 367,
     },
   };
 
@@ -619,463 +584,265 @@ function ReceiptUploadCard() {
   const handleSwitchBill = (key: "meghana" | "swiggy" | "dmart") => {
     setIsScanning(true);
     setSelectedBill(key);
-    setTimeout(() => setIsScanning(false), 250);
+    setTimeout(() => setIsScanning(false), 180);
   };
 
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#BFDBFE] bg-[#FFFDF8] p-4 sm:p-6 lg:p-7 text-[#123630] shadow-[0_20px_50px_rgba(37,99,235,0.08)]">
-      {/* Top Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-blue-100 pb-3 sm:pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[#2563EB] text-white shadow-sm">
-            <Camera className="size-4" />
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#BFDBFE]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(37,99,235,0.06)] mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-blue-100 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#2563EB] text-white shadow-2xs">
+            <Camera className="size-3.5" />
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#2563EB]">Receipt &amp; Bill Upload</span>
-            <p className="text-[11px] sm:text-xs text-[#4B605B]">Interactive Demo • Tap sample to scan</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB]">Bill Scanner</span>
         </div>
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+        <div className="flex items-center gap-1">
           {(["meghana", "swiggy", "dmart"] as const).map((key) => (
             <button
               key={key}
               type="button"
               onClick={() => handleSwitchBill(key)}
-              className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-bold transition-all cursor-pointer whitespace-nowrap ${
+              className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold transition-all cursor-pointer ${
                 selectedBill === key
-                  ? "bg-[#2563EB] text-white shadow-xs"
-                  : "bg-blue-50 text-[#1D4ED8] border border-blue-200 hover:bg-blue-100"
+                  ? "bg-[#2563EB] text-white"
+                  : "bg-blue-50 text-[#1D4ED8] hover:bg-blue-100"
               }`}
             >
-              {key === "meghana" ? "Restaurant" : key === "swiggy" ? "Swiggy" : "DMart"}
+              {key === "meghana" ? "Biryani" : key === "swiggy" ? "Swiggy" : "DMart"}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Mobile Sub-view Toggle (Visible on small screens) */}
-      <div className="mt-3 flex sm:hidden rounded-xl bg-blue-50/80 p-1 border border-blue-100">
-        <button
-          type="button"
-          onClick={() => setMobileTab("receipt")}
-          className={`flex-1 rounded-lg py-1 text-center font-mono text-xs font-bold transition-all ${
-            mobileTab === "receipt" ? "bg-white text-[#123630] shadow-2xs" : "text-[#4B605B]"
-          }`}
-        >
-          🧾 1. Receipt Bill
-        </button>
-        <button
-          type="button"
-          onClick={() => setMobileTab("extracted")}
-          className={`flex-1 rounded-lg py-1 text-center font-mono text-xs font-bold transition-all ${
-            mobileTab === "extracted" ? "bg-emerald-600 text-white shadow-2xs" : "text-[#4B605B]"
-          }`}
-        >
-          ✨ 2. Parsed Ledger
-        </button>
-      </div>
-
-      {/* Dual Column: Upload Preview vs Parsed Result */}
-      <div className="mt-4 sm:mt-5 grid gap-4 grid-cols-1 sm:grid-cols-2">
-        {/* Left: Tactile Receipt Snippet */}
-        <div
-          className={`relative rounded-2xl border border-dashed border-[#FDBA74] bg-[#FFFDF9] p-3.5 sm:p-4 shadow-xs transition-all duration-200 ${
-            mobileTab !== "receipt" ? "hidden sm:block" : "block"
-          } ${isScanning ? "opacity-40 scale-[0.99]" : "opacity-100 scale-100"}`}
-        >
-          <div className="flex items-center justify-between border-b border-dashed border-[#FED7AA] pb-2">
-            <div className="flex items-center gap-1.5 truncate">
-              <Receipt className="size-4 shrink-0 text-[#FF5C2B]" />
-              <span className="truncate font-serif text-sm font-bold text-[#123630]">{current.name}</span>
-            </div>
-            <span className="shrink-0 font-mono text-[10px] text-orange-700 font-bold ml-1">{current.tag}</span>
+      {/* Dual Tight Layout: Mini Receipt + Instant Split */}
+      <div className="mt-2.5 grid grid-cols-2 gap-2">
+        {/* Left: Tear-off receipt style */}
+        <div className="rounded-lg border border-dashed border-[#FED7AA] bg-[#FFFDF9] p-2 text-xs">
+          <div className="flex justify-between items-center border-b border-dashed border-[#FED7AA] pb-1">
+            <span className="font-serif text-[11px] font-bold text-[#123630] truncate">{current.name}</span>
+            <span className="font-mono text-[9px] text-orange-700 font-bold">{current.tag}</span>
           </div>
-
-          <div className="mt-3 space-y-1.5 text-xs text-[#4B605B]">
-            {current.items.map((item, idx) => (
-              <div key={idx} className="flex justify-between gap-2">
-                <span className="truncate">{item.name}</span>
-                <span className="font-mono font-bold text-[#123630] shrink-0">₹{item.price}</span>
+          <div className="mt-1.5 space-y-1 text-[10.5px] text-[#4B605B]">
+            {current.items.slice(0, 3).map((item, idx) => (
+              <div key={idx} className="flex justify-between items-center">
+                <span className="truncate max-w-[80px]">{item.name}</span>
+                <span className="font-mono font-bold text-[#123630]">₹{item.price}</span>
               </div>
             ))}
           </div>
-
-          <div className="mt-3 flex items-center justify-between border-t border-[#FED7AA] pt-2">
-            <span className="text-xs font-bold text-[#123630]">Total Paid</span>
-            <span className="font-mono text-base font-extrabold text-[#D44722]">₹{current.total}</span>
-          </div>
-
-          {/* Quick tap indicator on mobile */}
-          <div className="mt-3 flex sm:hidden justify-end">
-            <button
-              type="button"
-              onClick={() => setMobileTab("extracted")}
-              className="text-[11px] font-bold text-blue-600 inline-flex items-center gap-1 hover:underline"
-            >
-              View parsed breakdown →
-            </button>
+          <div className="mt-1.5 flex justify-between items-center border-t border-[#FED7AA] pt-1 text-[11px]">
+            <span className="font-bold">Total</span>
+            <span className="font-mono font-extrabold text-[#D44722]">₹{current.total}</span>
           </div>
         </div>
 
-        {/* Right: Kubear Live Ledger Update */}
-        <div
-          className={`flex flex-col justify-between rounded-2xl border border-[#86EFAC] bg-gradient-to-br from-[#F0FDF4] to-[#DCFCE7]/50 p-3.5 sm:p-4 text-[#123630] ${
-            mobileTab !== "extracted" ? "hidden sm:flex" : "flex"
-          }`}
-        >
+        {/* Right: Extracted Result & Split */}
+        <div className="flex flex-col justify-between rounded-lg border border-[#86EFAC] bg-[#F0FDF4] p-2 text-xs">
           <div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 border border-emerald-300 px-2 py-0.5 text-[10px] font-bold text-emerald-800 shrink-0">
-                <Check className="size-3 text-emerald-600" /> {isScanning ? "Scanning..." : "Extracted in 1.2s"}
+            <div className="flex items-center justify-between border-b border-emerald-200 pb-1">
+              <span className="inline-flex items-center gap-1 font-bold text-emerald-800 text-[9.5px]">
+                <Check className="size-2.5 text-emerald-600" /> {isScanning ? "Scanning..." : "Parsed (1.1s)"}
               </span>
-              <span className="font-mono text-[10px] font-bold text-emerald-700 truncate">Auto Categorized</span>
+              <span className="font-mono text-[9px] font-bold text-emerald-800 bg-white px-1 py-0.2 rounded border border-emerald-200">
+                {current.category}
+              </span>
             </div>
-
-            <div className="mt-2.5 sm:mt-3">
-              <span className="text-xs text-[#065F46] font-medium">Category tagged</span>
-              <p className="text-sm sm:text-base font-bold text-[#123630] truncate">{current.category}</p>
-            </div>
-
-            <div className="mt-2.5 sm:mt-3 rounded-xl bg-white border border-[#A7F3D0] p-2.5 text-xs shadow-2xs">
-              <div className="flex justify-between text-[#4B605B]">
-                <span>Logged to ledger:</span>
-                <span className="font-mono font-bold text-[#123630]">₹{current.total}</span>
+            <div className="mt-2 space-y-1 text-[10.5px]">
+              <div className="flex justify-between">
+                <span className="text-[#5A6E69]">Total:</span>
+                <span className="font-mono font-bold">₹{current.total}</span>
               </div>
-              <div className="mt-1 flex justify-between font-mono text-[11px] text-emerald-700 font-bold">
-                <span>Safe left for month:</span>
-                <span>₹{current.bufferRemaining.toLocaleString("en-IN")}</span>
+              <div className="flex justify-between font-bold text-emerald-800 border-t border-emerald-200/60 pt-1">
+                <span>{current.splitCount}-way split:</span>
+                <span className="font-mono">₹{current.perPerson}/ea</span>
               </div>
             </div>
           </div>
-
-          <p className="mt-3 text-[11px] text-[#065F46] font-medium leading-relaxed">
-            Zero typing. OCR automatically itemizes prices and tags the buffer.
+          <p className="mt-1.5 text-[9.5px] text-[#065F46] leading-tight font-medium">
+            ✓ Auto-categorised with zero manual entry.
           </p>
         </div>
-      </div>
-
-      {/* Footnote */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-blue-100 pt-3 text-xs text-[#4B605B]">
-        <span className="flex items-center gap-1.5 font-medium">
-          <Eye className="size-3.5 text-[#2563EB] shrink-0" /> Only what you upload is saved. Never scraped.
-        </span>
-        <span className="font-mono text-[10px] font-bold uppercase text-[#2563EB]">Zero Math</span>
       </div>
     </div>
   );
 }
 
-/** 3. SALARY DAY CARD: Day 1 Allocation for Indian Life (Interactive Simulator) */
+/** 3. SALARY DAY CARD: 1st of Month Allocation */
 function SalaryAllocationCard() {
-  const [salary, setSalary] = useState(65000);
-  const [rent, setRent] = useState(18000);
-  const [parents, setParents] = useState(10000);
-  const [sip, setSip] = useState(7000);
-  const [bills, setBills] = useState(2500);
+  const [salary, setSalary] = useState(85000);
+  const rent = 22000;
+  const parents = 12000;
+  const sip = 10000;
 
-  const totalCommitted = rent + parents + sip + bills;
+  const totalCommitted = rent + parents + sip;
   const discretionary = Math.max(0, salary - totalCommitted);
   const dailySpend = Math.floor(discretionary / 30);
   const committedRatio = Math.round((totalCommitted / salary) * 100);
 
   return (
-    <div id="salary-allocation-simulator" className="relative w-full overflow-hidden rounded-3xl border border-[#FDE68A] bg-[#FFFDF8] p-5 sm:p-7 text-[#123630] shadow-[0_20px_50px_rgba(245,158,11,0.1)]">
+    <div id="salary-allocation-simulator" className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FDE68A]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(245,158,11,0.06)] mx-auto">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-200 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-[#F59E0B] text-white shadow-sm font-black">
+      <div className="flex items-center justify-between border-b border-amber-200/70 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#F59E0B] text-white shadow-2xs font-black text-xs">
             ₹
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#B45309]">1st of the Month</span>
-            <p className="text-xs text-[#4B605B]">Salary Allocation Simulator</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#B45309]">Salary Autopilot</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-emerald-50 border border-emerald-300 px-3 py-1 font-mono text-[11px] font-bold text-emerald-800">
-            {committedRatio}% Locked Upfront
-          </span>
-        </div>
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-300 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-800 shrink-0">
+          {committedRatio}% Protected
+        </span>
       </div>
 
-      {/* Salary Quick Selector */}
-      <div className="mt-4 rounded-2xl bg-amber-50/60 border border-amber-200 p-3.5">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-bold text-[#123630]">Your Take-Home Monthly Salary:</span>
-          <span className="font-mono text-sm font-extrabold text-[#B45309]">₹{salary.toLocaleString("en-IN")}</span>
-        </div>
-        <input
-          type="range"
-          min="30000"
-          max="200000"
-          step="5000"
-          value={salary}
-          onChange={(e) => setSalary(Number(e.target.value))}
-          className="w-full accent-[#B45309] cursor-pointer"
-        />
-        <div className="mt-2 flex gap-1.5">
-          {[45000, 65000, 90000, 120000, 150000].map((val) => (
+      {/* Salary Selector */}
+      <div className="mt-2.5 flex items-center justify-between">
+        <div className="flex gap-1">
+          {[50000, 85000, 120000, 150000].map((val) => (
             <button
               key={val}
               type="button"
               onClick={() => setSalary(val)}
-              className={`rounded-lg px-2 py-0.5 font-mono text-[10px] font-bold cursor-pointer transition-colors ${
+              className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold cursor-pointer transition-colors ${
                 salary === val
                   ? "bg-[#B45309] text-white"
-                  : "bg-white border border-amber-200 text-amber-900 hover:bg-amber-100"
+                  : "bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100"
               }`}
             >
               ₹{(val / 1000)}k
             </button>
           ))}
         </div>
+        <span className="font-mono text-xs font-extrabold text-[#B45309]">₹{salary.toLocaleString("en-IN")}</span>
       </div>
 
-      {/* Protected Fixed Commitments Stack */}
-      <div className="mt-4 space-y-2.5">
-        {/* House Rent */}
-        <div className="rounded-xl border border-orange-200 bg-gradient-to-r from-orange-50 to-[#FFF7ED] p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <HomeIcon className="size-4 text-[#C2410C]" />
-              <div>
-                <p className="text-xs font-bold text-[#123630]">House Rent to Owner</p>
-                <p className="font-mono text-[10px] text-orange-700">Due 5th • Locked upfront</p>
-              </div>
-            </div>
-            <span className="font-mono text-sm font-bold text-[#C2410C]">₹{rent.toLocaleString("en-IN")}</span>
-          </div>
-          <input
-            type="range"
-            min="5000"
-            max="60000"
-            step="1000"
-            value={rent}
-            onChange={(e) => setRent(Number(e.target.value))}
-            className="w-full accent-[#C2410C] mt-2 cursor-pointer"
-          />
+      {/* Stacked Proportional Segment Bar */}
+      <div className="mt-2.5 space-y-1">
+        <div className="flex h-3 w-full overflow-hidden rounded-full bg-amber-100 text-[9px] font-mono font-bold text-white">
+          <div style={{ width: `${(rent / salary) * 100}%` }} className="bg-[#C2410C] flex items-center justify-center" title="Rent" />
+          <div style={{ width: `${(parents / salary) * 100}%` }} className="bg-[#D97706] flex items-center justify-center" title="Parents" />
+          <div style={{ width: `${(sip / salary) * 100}%` }} className="bg-[#059669] flex items-center justify-center" title="SIP" />
+          <div style={{ width: `${(discretionary / salary) * 100}%` }} className="bg-[#10B981] flex items-center justify-center" title="Safe Spend" />
         </div>
-
-        {/* Parents Support */}
-        <div className="rounded-xl border border-amber-200 bg-gradient-to-r from-amber-50 to-[#FFFBEB] p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <Users className="size-4 text-[#A16207]" />
-              <div>
-                <p className="text-xs font-bold text-[#123630]">Sent Home to Parents</p>
-                <p className="font-mono text-[10px] text-amber-700">Family priority</p>
-              </div>
-            </div>
-            <span className="font-mono text-sm font-bold text-[#A16207]">₹{parents.toLocaleString("en-IN")}</span>
-          </div>
-          <input
-            type="range"
-            min="0"
-            max="40000"
-            step="1000"
-            value={parents}
-            onChange={(e) => setParents(Number(e.target.value))}
-            className="w-full accent-[#A16207] mt-2 cursor-pointer"
-          />
-        </div>
-
-        {/* SIP & Investments */}
-        <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-[#F0FDF4] p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <TrendingUp className="size-4 text-[#15803D]" />
-              <div>
-                <p className="text-xs font-bold text-[#123630]">Mutual Fund Index SIP</p>
-                <p className="font-mono text-[10px] text-emerald-700">Future growth</p>
-              </div>
-            </div>
-            <span className="font-mono text-sm font-bold text-[#15803D]">₹{sip.toLocaleString("en-IN")}</span>
-          </div>
-          <input
-            type="range"
-            min="1000"
-            max="50000"
-            step="1000"
-            value={sip}
-            onChange={(e) => setSip(Number(e.target.value))}
-            className="w-full accent-[#15803D] mt-2 cursor-pointer"
-          />
-        </div>
-
-        {/* Bills & Utilities */}
-        <div className="rounded-xl border border-blue-200 bg-gradient-to-r from-blue-50 to-[#EFF6FF] p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <Zap className="size-4 text-[#1D4ED8]" />
-              <div>
-                <p className="text-xs font-bold text-[#123630]">Electricity, WiFi &amp; Bills</p>
-                <p className="font-mono text-[10px] text-blue-700">Utilities</p>
-              </div>
-            </div>
-            <span className="font-mono text-sm font-bold text-[#1D4ED8]">₹{bills.toLocaleString("en-IN")}</span>
-          </div>
-          <input
-            type="range"
-            min="500"
-            max="15000"
-            step="500"
-            value={bills}
-            onChange={(e) => setBills(Number(e.target.value))}
-            className="w-full accent-[#1D4ED8] mt-2 cursor-pointer"
-          />
+        <div className="flex justify-between text-[9.5px] font-mono text-[#5A6E69]">
+          <span className="text-[#C2410C] font-semibold">Rent 22k</span>
+          <span className="text-[#D97706] font-semibold">Parents 12k</span>
+          <span className="text-[#059669] font-semibold">SIP 10k</span>
+          <span className="text-[#10B981] font-bold">Safe Spend</span>
         </div>
       </div>
 
-      {/* Highlight Box: Safe Spending Remaining */}
-      <div className="mt-5 rounded-2xl border border-[#86EFAC] bg-gradient-to-r from-[#F0FDF4] via-[#ECFDF5] to-[#E0F2FE] p-4 text-[#123630]">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
-              Left for Living &amp; Fun
-            </span>
-            <p className="font-serif text-2xl font-bold text-[#123630] sm:text-3xl">₹{discretionary.toLocaleString("en-IN")}</p>
-          </div>
-          <div className="text-right">
-            <span className="inline-block rounded-lg bg-white border border-[#86EFAC] px-2.5 py-1 font-mono text-xs font-bold text-[#15803D] shadow-2xs">
-              ₹{dailySpend.toLocaleString("en-IN")} / day limit
-            </span>
-            <p className="mt-1 text-[10px] text-emerald-700 font-medium">Guilt-free daily spend</p>
-          </div>
+      {/* Guilt-Free Spending Outcome Pill */}
+      <div className="mt-2.5 flex items-center justify-between rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-2.5 text-[#123630]">
+        <div>
+          <span className="text-[9.5px] font-bold uppercase tracking-wider text-emerald-800 block">
+            Guilt-Free Left
+          </span>
+          <p className="font-serif text-lg font-bold leading-tight text-[#123630]">₹{discretionary.toLocaleString("en-IN")}</p>
         </div>
-      </div>
-
-      {/* Footnote */}
-      <div className="mt-4 flex items-center justify-between border-t border-amber-200 pt-3 text-xs text-[#4B605B]">
-        <span>Total committed: <strong className="font-mono font-bold text-[#B45309]">₹{totalCommitted.toLocaleString("en-IN")}</strong></span>
-        <span className="font-mono text-[10px] font-bold text-emerald-800">100% CLEAR</span>
+        <div className="text-right">
+          <span className="inline-block rounded-md bg-white border border-[#86EFAC] px-2 py-0.5 font-mono text-[11px] font-bold text-[#15803D] shadow-2xs">
+            ₹{dailySpend.toLocaleString("en-IN")} / day safe
+          </span>
+        </div>
       </div>
     </div>
   );
 }
 
-/** 4. GOA / GOAL RUNWAY CARD: Rent first, Goal too (Interactive) */
+/** 4. GOA / GOAL RUNWAY CARD */
 function GoaGoalCard() {
-  const [goalAmount, setGoalAmount] = useState(30000);
-  const [savedSoFar, setSavedSoFar] = useState(22500);
-  const [monthsLeft, setMonthsLeft] = useState(3);
+  const [savedSoFar, setSavedSoFar] = useState(24500);
+  const goalAmount = 35000;
+  const monthsLeft = 2;
 
-  const neededPerMonth = Math.ceil((goalAmount - savedSoFar) / monthsLeft);
+  const remainingNeeded = goalAmount - savedSoFar;
+  const dailySave = Math.ceil((remainingNeeded / monthsLeft) / 30);
   const progressPercent = Math.min(100, Math.round((savedSoFar / goalAmount) * 100));
 
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#FDBA74] bg-[#FFFDF8] p-5 sm:p-7 text-[#123630] shadow-[0_20px_50px_rgba(234,88,12,0.1)]">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[#FFEDD5] blur-3xl opacity-80" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-[#CCFBF1] blur-3xl opacity-70" />
-
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FDBA74]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(234,88,12,0.06)] mx-auto">
       {/* Header */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-orange-200 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-[#EA580C] text-white shadow-sm">
-            <Palmtree className="size-4" />
+      <div className="flex items-center justify-between border-b border-orange-200/70 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#EA580C] text-white shadow-2xs">
+            <Palmtree className="size-3.5" />
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#EA580C]">Goal Runway Tracker</span>
-            <p className="text-xs text-[#4B605B]">Interactive • Goa Trip with Friends</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#EA580C]">Goa Trip Runway</span>
         </div>
-        <span className="rounded-full bg-orange-100 border border-orange-300 px-3 py-1 font-mono text-[11px] font-bold text-[#C2410C]">
-          {monthsLeft} Months Left
+        <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 border border-orange-300 px-2 py-0.5 font-mono text-[10px] font-bold text-[#C2410C] shrink-0">
+          {monthsLeft} Mos Left
         </span>
       </div>
 
-      {/* Progress Bar & Amount Display */}
-      <div className="relative z-10 mt-5">
-        <div className="flex items-center justify-between text-xs font-bold">
-          <span className="text-[#123630]">Progress ({progressPercent}%)</span>
-          <span className="font-mono text-[#EA580C]">₹{savedSoFar.toLocaleString("en-IN")} / ₹{goalAmount.toLocaleString("en-IN")}</span>
+      {/* Progress Track with Milestones */}
+      <div className="mt-2.5">
+        <div className="flex justify-between items-center text-xs font-bold">
+          <span className="text-[11px] text-[#123630]">Progress ({progressPercent}%)</span>
+          <span className="font-mono text-xs text-[#EA580C]">₹{savedSoFar.toLocaleString("en-IN")} / ₹{goalAmount.toLocaleString("en-IN")}</span>
         </div>
-        <div className="mt-2 h-3 w-full overflow-hidden rounded-full bg-orange-100">
+        <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-orange-100">
           <div
             style={{ width: `${progressPercent}%` }}
-            className="h-full rounded-full bg-gradient-to-r from-[#EA580C] to-[#F59E0B] transition-all duration-300"
+            className="h-full rounded-full bg-gradient-to-r from-[#EA580C] to-[#F59E0B] transition-all"
           />
         </div>
-        <div className="mt-2 flex justify-between text-[11px] text-[#839791] font-mono">
-          <span>0%</span>
-          <span>₹{(goalAmount - savedSoFar).toLocaleString("en-IN")} needed</span>
-          <span>100%</span>
+        <div className="mt-1.5 flex justify-between text-[9.5px] font-mono text-[#839791]">
+          <span>✈️ Flights (Locked)</span>
+          <span>🏨 Stay (Locked)</span>
+          <span className="text-[#EA580C] font-bold">🌴 Goa (85%)</span>
         </div>
       </div>
 
-      {/* Interactive Controls */}
-      <div className="relative z-10 mt-4 rounded-2xl bg-orange-50/70 border border-orange-200 p-3.5 space-y-3">
-        <div>
-          <div className="flex justify-between text-xs font-bold text-[#123630] mb-1">
-            <span>Saved So Far:</span>
-            <span className="font-mono text-[#EA580C]">₹{savedSoFar.toLocaleString("en-IN")}</span>
-          </div>
-          <input
-            type="range"
-            min="0"
-            max={goalAmount}
-            step="1500"
-            value={savedSoFar}
-            onChange={(e) => setSavedSoFar(Number(e.target.value))}
-            className="w-full accent-[#EA580C] cursor-pointer"
-          />
-        </div>
-        <div className="flex items-center justify-between pt-1 text-xs">
-          <span className="font-medium text-[#123630]">Monthly Savings Needed:</span>
-          <span className="font-mono font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-lg border border-emerald-200">
-            ₹{neededPerMonth.toLocaleString("en-IN")} / month
+      {/* Slider & Daily Action */}
+      <div className="mt-2.5 rounded-xl bg-orange-50/70 border border-orange-200 p-2.5">
+        <div className="flex justify-between text-[11px] font-bold text-[#123630] mb-1">
+          <span>Saved: ₹{savedSoFar.toLocaleString("en-IN")}</span>
+          <span className="font-mono text-emerald-800 font-bold bg-white px-2 py-0.2 rounded border border-emerald-200 text-[10px]">
+            Save ₹{dailySave}/day
           </span>
         </div>
-      </div>
-
-      {/* Footnote */}
-      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-orange-200 pt-3 text-xs text-[#4B605B]">
-        <span>Plans don&apos;t fight with rent. They live side-by-side.</span>
-        <span className="font-mono text-[10px] uppercase font-bold text-[#EA580C]">On Track</span>
+        <input
+          type="range"
+          min="0"
+          max={goalAmount}
+          step="1500"
+          value={savedSoFar}
+          onChange={(e) => setSavedSoFar(Number(e.target.value))}
+          className="w-full accent-[#EA580C] cursor-pointer h-1.5"
+        />
       </div>
     </div>
   );
 }
 
-/** 5. HOME / FLATMATE SPLIT CARD: Shared Flat & Ghar Ka Kharcha (Interactive) */
+/** 5. HOME / FLATMATE SPLIT CARD */
 function FlatmateSplitCard() {
-  const [cookCost, setCookCost] = useState(4500);
-  const [wifiCost, setWifiCost] = useState(1200);
-  const [groceryCost, setGroceryCost] = useState(2400);
   const [numRoommates, setNumRoommates] = useState(3);
-
-  const totalShared = cookCost + wifiCost + groceryCost;
+  const totalShared = 8400; // Cook 4500 + Wifi 1200 + Grocery 2700
   const perPerson = Math.round(totalShared / numRoommates);
-  const toCollect = totalShared - perPerson;
 
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#DDD6FE] bg-[#FFFDF8] p-5 sm:p-7 text-[#123630] shadow-[0_20px_50px_rgba(124,58,237,0.08)]">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[#EDE9FE] blur-3xl opacity-80" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-[#FEF3C7] blur-3xl opacity-70" />
-
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#DDD6FE]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(124,58,237,0.06)] mx-auto">
       {/* Header */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-purple-100 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-[#7C3AED] text-white shadow-sm">
-            <Users className="size-4" />
+      <div className="flex items-center justify-between border-b border-purple-100 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#7C3AED] text-white shadow-2xs">
+            <Users className="size-3.5" />
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#7C3AED]">Shared Ghar &amp; Flatmates</span>
-            <p className="text-xs text-[#4B605B]">Interactive Two Tables Splitter</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#7C3AED]">Flat 402 Matrix</span>
         </div>
-        <div className="flex items-center gap-1">
-          <span className="text-[11px] font-bold text-purple-900 mr-1">Flatmates:</span>
+        <div className="flex items-center gap-1 shrink-0">
+          <span className="text-[10px] font-bold text-purple-900 mr-0.5">Flatmates:</span>
           {[2, 3, 4].map((count) => (
             <button
               key={count}
               type="button"
               onClick={() => setNumRoommates(count)}
-              className={`size-6 rounded-md font-mono text-xs font-bold transition-colors cursor-pointer ${
+              className={`size-5 rounded font-mono text-[10px] font-bold transition-colors cursor-pointer ${
                 numRoommates === count
                   ? "bg-[#7C3AED] text-white"
-                  : "bg-purple-100 text-[#7C3AED] hover:bg-purple-200"
+                  : "bg-purple-100 text-[#7C3AED]"
               }`}
             >
               {count}
@@ -1084,169 +851,91 @@ function FlatmateSplitCard() {
         </div>
       </div>
 
-      {/* Shared Expenses Live Adjuster */}
-      <div className="relative z-10 mt-4 space-y-2">
-        <div className="flex items-center justify-between rounded-xl bg-white border border-purple-100 p-2.5 text-xs shadow-2xs">
-          <span className="font-bold text-[#123630]">👩‍🍳 Cook Aunty Salary:</span>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={cookCost}
-              onChange={(e) => setCookCost(Number(e.target.value))}
-              className="w-20 rounded-md border border-purple-200 px-2 py-1 text-right font-mono font-bold text-[#7C3AED]"
-            />
-          </div>
-        </div>
-        <div className="flex items-center justify-between rounded-xl bg-white border border-purple-100 p-2.5 text-xs shadow-2xs">
-          <span className="font-bold text-[#123630]">⚡ Wi-Fi &amp; Utilities:</span>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={wifiCost}
-              onChange={(e) => setWifiCost(Number(e.target.value))}
-              className="w-20 rounded-md border border-purple-200 px-2 py-1 text-right font-mono font-bold text-[#7C3AED]"
-            />
-          </div>
-        </div>
-        <div className="flex items-center justify-between rounded-xl bg-white border border-purple-100 p-2.5 text-xs shadow-2xs">
-          <span className="font-bold text-[#123630]">🥦 Shared Groceries:</span>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={groceryCost}
-              onChange={(e) => setGroceryCost(Number(e.target.value))}
-              className="w-20 rounded-md border border-purple-200 px-2 py-1 text-right font-mono font-bold text-[#7C3AED]"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Split Result Matrix */}
-      <div className="relative z-10 mt-4 grid gap-3 sm:grid-cols-2">
+      {/* Side-by-side contrast */}
+      <div className="mt-2.5 grid grid-cols-2 gap-2 text-xs">
         {/* Shared Table */}
-        <div className="rounded-2xl border border-orange-300 bg-gradient-to-br from-orange-50 to-[#FFF7ED] p-3.5 shadow-xs">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#C2410C]">🏠 Shared House Table</span>
-            <span className="font-mono text-[10px] font-bold text-[#C2410C] bg-white px-1.5 py-0.5 rounded">Visible to {numRoommates}</span>
+        <div className="rounded-xl border border-orange-200 bg-orange-50/80 p-2 shadow-2xs">
+          <div className="flex justify-between items-center border-b border-orange-200/60 pb-1">
+            <span className="text-[10.5px] font-bold text-[#C2410C]">🏠 Shared</span>
+            <span className="font-mono text-[8.5px] font-bold text-[#C2410C] bg-white px-1 rounded-full">All {numRoommates} see</span>
           </div>
-          <div className="mt-2.5 space-y-1.5 text-xs text-[#123630]">
-            <div className="flex justify-between">
-              <span>Total Shared Spends</span>
-              <span className="font-mono font-bold">₹{totalShared.toLocaleString("en-IN")}</span>
-            </div>
-            <div className="flex justify-between text-[#C2410C] font-semibold">
-              <span>Your Exact Share (1/{numRoommates})</span>
-              <span className="font-mono font-bold">₹{perPerson.toLocaleString("en-IN")}</span>
-            </div>
-            <div className="flex justify-between font-bold text-emerald-700">
-              <span>To Collect from Others</span>
-              <span className="font-mono">₹{toCollect.toLocaleString("en-IN")}</span>
+          <div className="mt-1.5 space-y-1 text-[10px]">
+            <div className="flex justify-between"><span className="text-[#5A6E69]">Cook + WiFi:</span><span className="font-mono font-bold">₹{totalShared}</span></div>
+            <div className="flex justify-between font-bold text-[#C2410C] border-t border-orange-200/60 pt-1">
+              <span>Your share:</span>
+              <span className="font-mono">₹{perPerson}</span>
             </div>
           </div>
         </div>
 
         {/* Private Table */}
-        <div className="rounded-2xl border border-emerald-300 bg-gradient-to-br from-emerald-50 to-[#F0FDF4] p-3.5 shadow-xs">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-900">🔒 Your Private Ledger</span>
-            <span className="font-mono text-[10px] font-bold text-emerald-800 bg-white px-1.5 py-0.5 rounded">You Only</span>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-2 shadow-2xs">
+          <div className="flex justify-between items-center border-b border-emerald-200/60 pb-1">
+            <span className="text-[10.5px] font-bold text-emerald-900">🔒 Private</span>
+            <span className="font-mono text-[8.5px] font-bold text-emerald-800 bg-white px-1 rounded-full">You only</span>
           </div>
-          <div className="mt-2.5 space-y-1.5 text-xs text-[#123630]">
-            <div className="flex justify-between">
-              <span>Zara Shirt &amp; Weekend Outing</span>
-              <span className="font-mono font-bold text-emerald-900">₹2,800</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Filter Coffee &amp; Snacks</span>
-              <span className="font-mono font-bold text-emerald-900">₹140</span>
-            </div>
-            <div className="border-t border-emerald-200 pt-1 text-[11px] text-emerald-800 font-medium">
-              ✓ Invisible to roommates
+          <div className="mt-1.5 space-y-1 text-[10px]">
+            <div className="flex justify-between"><span className="text-[#5A6E69]">Cafe &amp; dates:</span><span className="font-mono font-bold text-emerald-900">₹1,990</span></div>
+            <div className="border-t border-emerald-200/60 pt-1 text-[9px] text-emerald-800 font-semibold truncate">
+              ✓ 100% hidden from flat
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Footnote */}
-      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-purple-100 pt-3 text-xs text-[#4B605B]">
-        <span>Zero awkward roommate WhatsApp chats at month end.</span>
-        <span className="font-mono text-[10px] uppercase font-bold text-[#7C3AED]">Two Tables</span>
       </div>
     </div>
   );
 }
 
-/** 6. CONTROL / PRIVACY CARD: No Bank Passwords, No Movement */
+/** 6. CONTROL / PRIVACY CARD: No Bank Passwords */
 function ControlPrivacyCard() {
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#A7F3D0] bg-[#FFFDF8] p-5 sm:p-7 text-[#123630] shadow-[0_20px_50px_rgba(16,185,129,0.08)]">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[#D1FAE5] blur-3xl opacity-80" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-[#E0E7FF] blur-3xl opacity-70" />
-
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#A7F3D0]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(16,185,129,0.06)] mx-auto">
       {/* Header */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-emerald-200 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm font-bold">
-            <ShieldCheck className="size-4" />
+      <div className="flex items-center justify-between border-b border-emerald-200/70 pb-2.5">
+        <div className="flex items-center gap-2">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-2xs font-bold">
+            <ShieldCheck className="size-3.5" />
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-800">Privacy &amp; Control</span>
-            <p className="text-xs text-[#4B605B]">Manual Read-Only Organiser</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-800">Total Privacy</span>
         </div>
-        <span className="rounded-full bg-emerald-100 border border-emerald-300 px-3 py-1 font-mono text-[11px] font-bold text-emerald-800">
-          Zero Movement
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 border border-emerald-300 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-800 shrink-0">
+          Zero Sync
         </span>
       </div>
 
-      {/* 4 Pillars of Trust */}
-      <div className="relative z-10 mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50 to-[#FFF1F2] p-3.5 shadow-xs">
-          <div className="flex items-center gap-2">
-            <span className="flex size-6 items-center justify-center rounded-lg bg-rose-200 text-rose-800 font-mono text-xs font-bold">✕</span>
-            <p className="text-xs font-bold text-rose-950">No Bank Passwords</p>
+      {/* 2x2 Crisp Security Stamps */}
+      <div className="mt-2.5 grid grid-cols-2 gap-2 text-xs">
+        <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-2">
+          <div className="flex items-center gap-1.5">
+            <span className="font-bold text-rose-800 text-[11px]">✕</span>
+            <p className="text-[11px] font-bold text-rose-950">No SMS Reading</p>
           </div>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-rose-900/80">
-            Never enter net banking logins, UPI PINs, or bank passwords. All entries are manual.
-          </p>
+          <p className="mt-0.5 text-[9.5px] text-rose-900/80 leading-tight">Zero OTP snooping.</p>
         </div>
 
-        <div className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-[#FFF7ED] p-3.5 shadow-xs">
-          <div className="flex items-center gap-2">
-            <span className="flex size-6 items-center justify-center rounded-lg bg-orange-200 text-orange-800 font-mono text-xs font-bold">✕</span>
-            <p className="text-xs font-bold text-orange-950">Zero Money Movement</p>
+        <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-2">
+          <div className="flex items-center gap-1.5">
+            <span className="font-bold text-orange-800 text-[11px]">✕</span>
+            <p className="text-[11px] font-bold text-orange-950">No Netbanking</p>
           </div>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-orange-900/80">
-            Kubear cannot debit, transfer, or touch a single rupee of your money.
-          </p>
+          <p className="mt-0.5 text-[9.5px] text-orange-900/80 leading-tight">No bank passwords.</p>
         </div>
 
-        <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-[#F0FDF4] p-3.5 shadow-xs">
-          <div className="flex items-center gap-2">
-            <span className="flex size-6 items-center justify-center rounded-lg bg-emerald-200 text-emerald-900 font-mono text-xs font-bold">✓</span>
-            <p className="text-xs font-bold text-emerald-950">Encrypted &amp; Private</p>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2">
+          <div className="flex items-center gap-1.5">
+            <span className="font-bold text-emerald-900 text-[11px]">✓</span>
+            <p className="text-[11px] font-bold text-emerald-950">Never Sold</p>
           </div>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-emerald-900/80">
-            Your data belongs to you. We never sell your spending details to credit card or loan companies.
-          </p>
+          <p className="mt-0.5 text-[9.5px] text-emerald-900/80 leading-tight">No loan sales calls.</p>
         </div>
 
-        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-[#EFF6FF] p-3.5 shadow-xs">
-          <div className="flex items-center gap-2">
-            <span className="flex size-6 items-center justify-center rounded-lg bg-blue-200 text-blue-900 font-mono text-xs font-bold">✓</span>
-            <p className="text-xs font-bold text-blue-950">1-Click Export &amp; Delete</p>
+        <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-2">
+          <div className="flex items-center gap-1.5">
+            <span className="font-bold text-blue-900 text-[11px]">✓</span>
+            <p className="text-[11px] font-bold text-blue-950">1-Tap Export</p>
           </div>
-          <p className="mt-1.5 text-[11px] leading-relaxed text-blue-900/80">
-            Export your entire transaction ledger or delete your account anytime with zero lock-in.
-          </p>
+          <p className="mt-0.5 text-[9.5px] text-blue-900/80 leading-tight">Download ledger CSV.</p>
         </div>
-      </div>
-
-      {/* Footnote */}
-      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-emerald-200 pt-3 text-xs text-[#4B605B]">
-        <span>A quiet, respectful tool for your eyes only.</span>
-        <span className="font-mono text-[10px] font-bold text-emerald-800">YOU LEAD</span>
       </div>
     </div>
   );
@@ -1255,59 +944,43 @@ function ControlPrivacyCard() {
 /** 7. CLOSING CALM SUMMARY CARD */
 function CalmClosingCard() {
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl border border-[#FED7AA] bg-[#FFFDF8] p-5 sm:p-7 text-[#123630] shadow-[0_20px_50px_rgba(212,71,34,0.1)]">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-[#FFEDD5] blur-3xl opacity-80" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-[#D1FAE5] blur-3xl opacity-70" />
-
+    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FED7AA]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(212,71,34,0.06)] mx-auto">
       {/* Header */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-orange-200 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-[#FF5C2B] text-white shadow-sm font-black">
-            <Sparkles className="size-4" />
+      <div className="flex items-center justify-between border-b border-orange-200/70 pb-2.5">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-2xs font-black">
+            <Sparkles className="size-3.5" />
           </span>
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF5C2B]">One Calm Picture</span>
-            <p className="text-xs text-[#4B605B]">Week in Review</p>
-          </div>
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5C2B] truncate">Monthly Picture</span>
         </div>
-        <span className="rounded-full bg-[#FFFBEB] border border-[#FCD34D] px-3 py-1 font-mono text-[11px] font-bold text-[#B45309]">
-          Clarity &gt; Complexity
+        <span className="inline-flex items-center rounded-full bg-[#FFFBEB] border border-[#FCD34D] px-2 py-0.5 font-mono text-[10px] font-bold text-[#B45309] shrink-0">
+          Zero Anxiety
         </span>
       </div>
 
-      {/* Summary Matrix */}
-      <div className="relative z-10 mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div className="rounded-2xl border border-blue-200 bg-gradient-to-b from-blue-50 to-white p-3 text-center shadow-xs">
-          <span className="text-[10px] uppercase tracking-wider text-blue-700 font-bold">Salary Inflow</span>
-          <p className="mt-1 font-mono text-lg font-bold text-blue-950">₹65,000</p>
+      {/* 4-Metric Grid */}
+      <div className="mt-2.5 grid grid-cols-4 gap-1.5 text-center">
+        <div className="rounded-lg border border-blue-200 bg-blue-50/60 p-1.5">
+          <span className="text-[9px] uppercase tracking-wider text-blue-700 font-bold block">Salary</span>
+          <p className="font-mono text-xs font-bold text-blue-950 mt-0.5">85k</p>
         </div>
-
-        <div className="rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-3 text-center shadow-xs">
-          <span className="text-[10px] uppercase tracking-wider text-[#C2410C] font-bold">Rent &amp; Bills</span>
-          <p className="mt-1 font-mono text-lg font-bold text-[#C2410C]">₹37,500</p>
+        <div className="rounded-lg border border-orange-200 bg-orange-50/60 p-1.5">
+          <span className="text-[9px] uppercase tracking-wider text-[#C2410C] font-bold block">Fixed</span>
+          <p className="font-mono text-xs font-bold text-[#C2410C] mt-0.5">47.5k</p>
         </div>
-
-        <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-3 text-center shadow-xs">
-          <span className="text-[10px] uppercase tracking-wider text-[#A16207] font-bold">Chat Spends</span>
-          <p className="mt-1 font-mono text-lg font-bold text-[#A16207]">₹11,240</p>
+        <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-1.5">
+          <span className="text-[9px] uppercase tracking-wider text-[#A16207] font-bold block">Logged</span>
+          <p className="font-mono text-xs font-bold text-[#A16207] mt-0.5">14.2k</p>
         </div>
-
-        <div className="rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-white p-3 text-center shadow-xs">
-          <span className="text-[10px] uppercase tracking-wider text-emerald-800 font-bold">Safe Buffer</span>
-          <p className="mt-1 font-mono text-lg font-bold text-emerald-800">₹16,260</p>
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-1.5">
+          <span className="text-[9px] uppercase tracking-wider text-emerald-800 font-bold block">Safe</span>
+          <p className="font-mono text-xs font-bold text-emerald-800 mt-0.5">23.3k</p>
         </div>
       </div>
 
-      <div className="relative z-10 mt-4 rounded-2xl bg-gradient-to-r from-orange-50 via-[#FFF7ED] to-amber-50 border border-orange-200 p-3.5 text-center text-xs font-medium text-[#123630]">
-        &quot;No lost paper receipts. No Excel spreadsheet anxiety. Just peace of mind.&quot;
-      </div>
-
-      {/* Footnote */}
-      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-orange-200 pt-3 text-xs text-[#4B605B]">
-        <span>Available on Web &amp; Android.</span>
-        <span className="font-mono text-[10px] font-bold text-[#FF5C2B]">KUBEAR 2026</span>
-      </div>
+      <p className="mt-2 text-center text-[10.5px] text-[#5A6E69] font-medium">
+        &quot;No lost paper receipts. Just calm clarity every single day.&quot;
+      </p>
     </div>
   );
 }
@@ -1325,7 +998,7 @@ export function HumanMoneyScene({ kind, className = "" }: InstrumentProps & { ki
   };
 
   return (
-    <figure className={`w-full max-w-[42rem] justify-self-end ${className}`} aria-label={`Kubear ${kind} money scenario`}>
+    <figure className={`w-full max-w-[420px] justify-self-end flex justify-end ${className}`} aria-label={`Kubear ${kind} money scenario`}>
       {cardMap[kind]}
     </figure>
   );

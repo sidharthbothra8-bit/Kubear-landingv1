@@ -77,13 +77,13 @@ body summary:focus-visible {
 /* Navigation */
 .mm-header {
   top: 0 !important;
-  padding: 0.85rem clamp(1rem, 4vw, 4rem) !important;
+  padding: clamp(0.5rem, 1.2vw, 1rem) clamp(1rem, 3.5vw, 3rem) !important;
   pointer-events: none;
 }
 
 .mm-header-inner {
-  max-width: 1320px !important;
-  min-height: 4.25rem !important;
+  max-width: 1140px !important;
+  min-height: 4rem !important;
   border: none !important;
   outline: none !important;
   border-radius: 1.35rem !important;
@@ -218,9 +218,9 @@ footer .text-\[\#FFB18E\] {
 /* Hero Section: Warm, airy canvas with high-contrast readable typography */
 .instrument-hero,
 .mm-hero {
-  min-height: 44rem !important;
-  padding-top: 8rem !important;
-  padding-bottom: 5rem !important;
+  min-height: 40rem !important;
+  padding-top: clamp(6.5rem, 10vw, 8.5rem) !important;
+  padding-bottom: clamp(3.5rem, 5vw, 5.5rem) !important;
   background: var(--aurora-cloud) !important;
   color: var(--aurora-ink) !important;
 }
@@ -235,12 +235,12 @@ footer .text-\[\#FFB18E\] {
 }
 
 .mm-hero h1 {
-  max-width: 32rem !important;
+  max-width: 38rem !important;
   color: var(--aurora-ink) !important;
-  font-size: clamp(3.2rem, 5.8vw, 5.8rem) !important;
+  font-size: clamp(2.75rem, 5.2vw, 6.2rem) !important;
   font-weight: 400 !important;
-  line-height: 1.12 !important;
-  letter-spacing: -0.03em !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.04em !important;
   margin-top: 1rem !important;
 }
 
@@ -254,6 +254,12 @@ footer .text-\[\#FFB18E\] {
 .mm-final-content h2 em {
   color: var(--aurora-coral) !important;
   font-style: italic !important;
+}
+
+.mm-hero-lede {
+  max-width: 34rem !important;
+  font-size: clamp(0.98rem, 1.2vw, 1.16rem) !important;
+  line-height: 1.6 !important;
 }
 
 .mm-hero-lede,
@@ -382,19 +388,22 @@ footer .text-\[\#FFB18E\] {
 
 .home-ledger-thread-row {
   color: var(--aurora-ink) !important;
-  font-size: 0.88rem !important;
+  font-size: 0.85rem !important;
 }
 
-.home-ledger-thread-row b,
-.home-ledger-thread-row i {
+.home-ledger-thread-row b {
   color: var(--aurora-coral) !important;
-  background-color: rgba(212, 71, 34, 0.12) !important;
+  background-color: transparent !important;
+}
+
+.home-ledger-thread-row i {
+  background-color: var(--aurora-coral) !important;
 }
 
 .home-ledger-thread-row em {
   background: white !important;
   color: var(--aurora-muted) !important;
-  font-size: 0.65rem !important;
+  font-size: 0.72rem !important;
 }
 
 .mm-text-link {
@@ -1052,41 +1061,18 @@ footer .text-\[\#FFB18E\] {
   color: var(--aurora-ink) !important;
 }
 
-@media (max-width: 1020px) {
-  .instrument-hero,
-  .mm-hero {
-    min-height: auto !important;
-    padding-top: 7rem !important;
-  }
-  .mm-hero h1 {
-    font-size: clamp(3.2rem, 9vw, 5rem) !important;
-  }
-  .mm-shell {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-  }
-  .tools-hub-hero,
-  .tool-hero {
-    padding-top: 6.5rem !important;
-  }
-  .learn-hero {
-    padding-top: 6.5rem !important;
-  }
-  .learn-hero > div:last-child h1 {
-    font-size: clamp(3rem, 8.5vw, 4.8rem) !important;
-  }
-}
-
 @media (max-width: 640px) {
   body {
     font-size: 16px !important;
   }
   .mm-header {
-    padding: 0.5rem 0.65rem !important;
+    top: 0.5rem !important;
+    padding: 0 0.65rem !important;
   }
   .mm-header-inner {
-    min-height: 3.5rem !important;
-    padding: 0 0.55rem !important;
+    width: 100% !important;
+    min-height: 3.35rem !important;
+    padding: 0.35rem 0.65rem !important;
     border-radius: 1.1rem !important;
     gap: 0.35rem !important;
   }
@@ -1094,14 +1080,7 @@ footer .text-\[\#FFB18E\] {
     font-size: 1.05rem !important;
   }
   .map-nav {
-    display: flex !important;
-    gap: 0.15rem !important;
-  }
-  .map-nav-link {
-    min-height: 2.35rem !important;
-    padding: 0.35rem 0.55rem !important;
-    font-size: 0.78rem !important;
-    gap: 0.25rem !important;
+    display: none !important;
   }
   .map-open {
     min-height: 2.35rem !important;
@@ -1111,31 +1090,47 @@ footer .text-\[\#FFB18E\] {
   }
   .instrument-hero,
   .mm-hero {
-    padding: 5.5rem 1.15rem 4rem !important;
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 5.25rem 1.15rem 3.5rem !important;
+    gap: 2.25rem !important;
   }
   .mm-hero h1 {
-    font-size: clamp(2.8rem, 13vw, 3.8rem) !important;
-    line-height: 1.15 !important;
+    font-size: clamp(2.35rem, 10vw, 3.2rem) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.04em !important;
   }
   .mm-hero-lede {
-    font-size: 1rem !important;
+    font-size: 0.96rem !important;
+    line-height: 1.55 !important;
   }
   .mm-actions {
-    gap: 0.75rem !important;
+    gap: 0.65rem !important;
   }
   .mm-button,
   .button,
   .button-primary {
-    min-height: 3rem !important;
-    font-size: 0.9rem !important;
+    min-height: 2.85rem !important;
+    font-size: 0.88rem !important;
   }
+  .hero-human-scene,
   .hero-money-picture {
     width: 100% !important;
+    max-width: 100% !important;
     transform: none !important;
   }
   .mm-shell {
     padding-left: 1.15rem !important;
     padding-right: 1.15rem !important;
+  }
+  .instrument-story-grid,
+  .mm-salary-grid,
+  .goal-runway-layout,
+  .mm-home-grid,
+  .mm-trust-grid,
+  .mm-faq-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
   }
   .mm-section-intro h2,
   .mm-salary-copy h2,
@@ -1144,8 +1139,9 @@ footer .text-\[\#FFB18E\] {
   .mm-trust-copy h2,
   .mm-faq-grid h2,
   .mm-final-content h2 {
-    font-size: clamp(2.2rem, 10vw, 3.2rem) !important;
-    line-height: 1.18 !important;
+    font-size: clamp(2rem, 8.5vw, 2.75rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.04em !important;
   }
   .mm-section-intro > p:not(.mm-eyebrow),
   .mm-salary-copy > p:not(.mm-eyebrow),
@@ -1154,9 +1150,11 @@ footer .text-\[\#FFB18E\] {
   .mm-trust-copy > p:not(.mm-eyebrow),
   .mm-faq-grid > div > p:not(.mm-eyebrow),
   .mm-final-content > p:not(.mm-eyebrow) {
-    font-size: 1rem !important;
+    font-size: 0.94rem !important;
   }
   .money-instrument {
+    width: 100% !important;
+    max-width: 100% !important;
     border-radius: 1.15rem !important;
   }
   .rhythm-days {

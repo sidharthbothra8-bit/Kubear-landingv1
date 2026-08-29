@@ -79,12 +79,13 @@ function LedgerThread({ moment }: { moment: keyof typeof ledgerMoments }) {
       </p>
       <div>
         {rows.map(([number, name, state]) => (
-          <span className="home-ledger-thread-row" key={name}>
-            <b>{number}</b>
-            <i aria-hidden="true" />
-            <strong>{name}</strong>
+          <div className="home-ledger-thread-row" key={name}>
+            <div className="home-ledger-thread-row-left">
+              <b>{number}</b>
+              <strong>{name}</strong>
+            </div>
             <em>{state}</em>
-          </span>
+          </div>
         ))}
       </div>
     </aside>
@@ -122,15 +123,15 @@ export default function Home() {
           </div>
           <p className="mm-eyebrow">
             <span />
-            Real Indian Money Life • Zero Bank Sync
+            Made for Indian Money Reality
           </p>
           <h1>
-            Money is moving.
+            UPI is fast.
             <br />
-            <em>Keep the whole picture calm.</em>
+            <em>Your money clarity should be faster.</em>
           </h1>
           <p className="mm-hero-lede">
-            Log in 5 seconds via chat or photo upload. Track chai, split rent with flatmates, lock salary allocations, and save for Goa - completely manual, 100% private.
+            From ₹20 cutting chai to ₹25,000 house rent. Type it in chat or snap the bill — zero bank logins, zero OTP snooping.
           </p>
 
           <div className="mm-actions">
@@ -150,7 +151,7 @@ export default function Home() {
 
           <p className="mm-trust">
             <ShieldCheck className="size-4 text-[#4ADE80]" />
-            No SMS scraping. No bank login. You enter what you choose.
+            No bank access. No SMS reading. 100% private.
           </p>
         </div>
 
@@ -167,15 +168,15 @@ export default function Home() {
           <div className="mm-section-intro" data-reveal>
             <p className="mm-eyebrow">
               <span />
-              Quick Capture • Zero Form Fatigue
+              01 / Instant Chat Log
             </p>
             <h2>
-              Chai, Auto, Dinner.
+              Log it like a text.
               <br />
-              <em>Just chat or snap the bill.</em>
+              <em>Dosa 60. Auto 80. Done.</em>
             </h2>
             <p>
-              Type <em>&ldquo;₹40 auto to metro&rdquo;</em> or snap your restaurant receipt. Kubear extracts the items and updates your weekly category buffer in seconds.
+              No category dropdowns or homework. Just text what you spent and get right back to your day.
             </p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#123630]">
               <span className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-[#123630]/15 px-3 py-1">
@@ -196,15 +197,15 @@ export default function Home() {
           <div className="mm-salary-copy" data-reveal>
             <p className="mm-eyebrow">
               <span />
-              1st of the Month • Order Before Spending
+              02 / 1st of the Month
             </p>
             <h2>
-              Salary arrives.
+              Salary credited?
               <br />
-              <em>Give every rupee a job.</em>
+              <em>Lock rent, SIP &amp; family first.</em>
             </h2>
             <p>
-              Rent to owner locked. SIP and electricity bill put aside. Mummy papa support scheduled. What remains is your real guilt-free spending money.
+              Protect your commitments on Day 1. Spend whatever remains with zero guilt.
             </p>
             <p className="mm-margin-note">Pehle plan karo, phir spend karo with zero guilt.</p>
             <LedgerThread moment="salary" />
@@ -231,15 +232,15 @@ export default function Home() {
           <div className="mm-goa-copy" data-reveal>
             <p className="mm-eyebrow">
               <span />
-              Goals On Your Monthly Runway
+              03 / Goal Runway
             </p>
             <h2>
-              Rent first.
+              Goa on the calendar.
               <br />
-              <em>Goa plan bhi.</em>
+              <em>Not on your credit card EMI.</em>
             </h2>
             <p>
-              A vacation goal should not fight with monthly commitments. Place your dream trip on the same timeline with your fixed bills and see exact monthly progress.
+              See your exact daily pacing. Skip one weekend delivery and fund your flights on time.
             </p>
             <p className="goal-runway-copy-note">
               3 months • ₹22.5k saved of ₹30k. Clear visual runway so you stay on track.
@@ -263,15 +264,15 @@ export default function Home() {
           <div className="mm-home-copy" data-reveal>
             <p className="mm-eyebrow">
               <span />
-              Shared Flat vs Personal Life
+              04 / Flatmate Matrix
             </p>
             <h2>
-              Ghar ka kharcha together.
+              Split the cook &amp; WiFi.
               <br />
-              <em>Personal stays personal.</em>
+              <em>Keep your personal spends private.</em>
             </h2>
             <p>
-              Split Cook Aunty salary, Blinkit groceries, and WiFi with flatmates on the shared table. Your weekend shopping and dates stay strictly on your private table.
+              Flatmates only see shared apartment bills. Your personal coffee and dates stay strictly yours.
             </p>
             <LedgerThread moment="home" />
             <div className="pt-2">
@@ -290,15 +291,15 @@ export default function Home() {
           <div className="mm-trust-copy" data-reveal>
             <p className="mm-eyebrow">
               <span />
-              Absolute Privacy • You Hold the Keys
+              05 / Total Control
             </p>
             <h2>
-              No bank logins.
+              No OTP permissions.
               <br />
-              <em>No SMS snooping.</em>
+              <em>No bank servers touching your data.</em>
             </h2>
             <p>
-              Kubear never asks for your bank credentials, net banking password, or SMS read permissions. What you enter is all that is saved.
+              We don't read your SMS or sell personal loans. You track only what you choose.
             </p>
             <LedgerThread moment="trust" />
             <div className="mm-rules">
@@ -326,7 +327,7 @@ export default function Home() {
           <div data-reveal>
             <p className="mm-eyebrow">
               <span />
-              No Finance Jargon
+              No Jargon
             </p>
             <h2>
               Simple questions.
@@ -355,30 +356,32 @@ export default function Home() {
       <section className="mm-final-section">
         <div className="mm-final-orb orb-a" />
         <div className="mm-final-orb orb-b" />
-        <HumanMoneyScene kind="closing" className="final-human-scene" />
-        <div className="mm-shell mm-final-content" data-reveal>
-          <p className="mm-eyebrow">
-            <span />
-            Calm Week Ahead
-          </p>
-          <h2>
-            Life keeps moving.
-            <br />
-            <em>Your money picture can stay clear.</em>
-          </h2>
-          <p>Available on web and Android. Start recording in 10 seconds without any bank sync hassle.</p>
-          <div className="mm-actions">
-            <a className="mm-button mm-button-orange" href={APP_URL}>
-              Open Web App <ArrowUpRight className="size-4" />
-            </a>
-            <a className="mm-button mm-button-ghost-light" href={PLAY_URL} target="_blank" rel="noreferrer">
-              Get it on Google Play <Play className="size-4" />
-            </a>
+        <div className="mm-shell instrument-story-grid">
+          <div className="mm-final-content" data-reveal>
+            <p className="mm-eyebrow">
+              <span />
+              Calm Starts Today
+            </p>
+            <h2>
+              Stop stressing where it went.
+              <br />
+              <em>Know where it stands.</em>
+            </h2>
+            <p>Start free on Web and Android in 10 seconds. No credit card, no bank sync.</p>
+            <div className="mm-actions">
+              <a className="mm-button mm-button-orange" href={APP_URL}>
+                Open Web App <ArrowUpRight className="size-4" />
+              </a>
+              <a className="mm-button mm-button-ghost-light" href={PLAY_URL} target="_blank" rel="noreferrer">
+                Get it on Google Play <Play className="size-4" />
+              </a>
+            </div>
+            <p className="mm-final-note">
+              <Sparkles className="size-4 text-[#FCD34D]" />
+              A clearer money view. Zero bank sync.
+            </p>
           </div>
-          <p className="mm-final-note">
-            <Sparkles className="size-4 text-[#FCD34D]" />
-            A clearer money view. No sales pitch, no bank sync.
-          </p>
+          <HumanMoneyScene kind="closing" className="final-human-scene" />
         </div>
       </section>
     </SiteLayout>
