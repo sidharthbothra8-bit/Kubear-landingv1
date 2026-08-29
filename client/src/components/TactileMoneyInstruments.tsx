@@ -405,7 +405,7 @@ function ChatLogHeroCard() {
   const [items, setItems] = useState<Array<{ name: string; tag: string; cost: number; icon: string }>>([
     { name: "Metro auto", tag: "Commute", cost: 70, icon: "🛺" },
     { name: "Chai point", tag: "Snacks", cost: 45, icon: "☕" },
-    { name: "Blinkit", tag: "Grocery", cost: 160, icon: "🥛" },
+    { name: "Blinkit grocery", tag: "Dairy & fruit", cost: 160, icon: "🥛" },
   ]);
 
   const totalSpent = items.reduce((acc, curr) => acc + curr.cost, 0);
@@ -428,99 +428,102 @@ function ChatLogHeroCard() {
   };
 
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FED7AA]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(212,71,34,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Ambient background accent */}
-      <div className="pointer-events-none absolute -right-12 -top-12 size-40 rounded-full bg-[#FFEDD5] blur-2xl opacity-60" />
-      <div className="pointer-events-none absolute -bottom-12 -left-12 size-40 rounded-full bg-[#D1FAE5] blur-2xl opacity-50" />
+      <div className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-[#FFEDD5] blur-2xl opacity-60" />
+      <div className="pointer-events-none absolute -bottom-10 -left-10 size-40 rounded-full bg-[#D1FAE5] blur-2xl opacity-40" />
 
       {/* Header */}
-      <div className="relative z-10 flex items-center justify-between border-b border-[#FED7AA]/60 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-2xs">
-            <MessageSquare className="size-3.5" />
+      <div className="relative z-10 flex items-center justify-between border-b border-[#E7DED0] pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-sm">
+            <MessageSquare className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5C2B]">Today&apos;s Spend</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#FF5C2B] block">Today&apos;s Spend</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Logged via quick chat</span>
+          </div>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full border border-amber-300/80 bg-amber-50 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-900 shrink-0">
-          <Sparkles className="size-2.5 text-amber-600" /> ₹0 math effort
+        <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 font-mono text-[11px] font-bold text-amber-900 shrink-0">
+          <Sparkles className="size-3 text-amber-600" /> ₹0 math effort
         </span>
       </div>
 
       {/* Quick Tap Buttons */}
-      <div className="relative z-10 mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-0.5 text-[11px]">
+      <div className="relative z-10 mt-3 flex items-center gap-2 overflow-x-auto pb-1 text-xs">
         <button
           type="button"
           onClick={() => handleAddSample("Chai tapri", 30, "Snacks", "☕")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
+          className="rounded-full bg-white border border-[#E7DED0] px-3 py-1 font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 shadow-xs"
         >
           + Chai ₹30
         </button>
         <button
           type="button"
           onClick={() => handleAddSample("Uber cab", 180, "Commute", "🚕")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
+          className="rounded-full bg-white border border-[#E7DED0] px-3 py-1 font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 shadow-xs"
         >
           + Uber ₹180
         </button>
         <button
           type="button"
           onClick={() => handleAddSample("Swiggy meal", 320, "Dinner", "🍲")}
-          className="rounded-full bg-white border border-[#FED7AA] px-2.5 py-0.5 font-medium text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 text-[10.5px]"
+          className="rounded-full bg-white border border-[#E7DED0] px-3 py-1 font-semibold text-[#123630] hover:bg-orange-50 hover:border-[#FF5C2B] transition-all cursor-pointer whitespace-nowrap active:scale-95 shadow-xs"
         >
           + Swiggy ₹320
         </button>
       </div>
 
       {/* Input Form */}
-      <form onSubmit={handleCustomSubmit} className="relative z-10 mt-2 flex gap-1.5">
+      <form onSubmit={handleCustomSubmit} className="relative z-10 mt-2.5 flex gap-2">
         <input
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type 'Dosa 60' or 'Auto 40'..."
-          className="flex-1 rounded-lg border border-[#FED7AA] bg-white px-2.5 py-1.5 text-xs text-[#123630] placeholder:text-[#94A3B8] focus:border-[#FF5C2B] focus:outline-none shadow-2xs"
+          className="flex-1 rounded-xl border border-[#E7DED0] bg-white px-3 py-2 text-xs text-[#123630] placeholder:text-[#94A3B8] focus:border-[#FF5C2B] focus:outline-none shadow-xs"
         />
         <button
           type="submit"
-          className="flex items-center justify-center rounded-lg bg-[#FF5C2B] px-3 py-1.5 text-xs font-bold text-white shadow-2xs hover:bg-[#D44722] transition-colors cursor-pointer shrink-0 active:scale-95"
+          className="flex items-center justify-center rounded-xl bg-[#FF5C2B] px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#D44722] transition-colors cursor-pointer shrink-0 active:scale-95"
         >
-          <Send className="size-3" />
+          <Send className="size-3.5" />
         </button>
       </form>
 
       {/* Sleek Flat Mini-Ledger */}
-      <div className="relative z-10 mt-2.5 rounded-xl border border-orange-200/70 bg-[#FFF9F5] p-2.5">
-        <div className="flex items-center justify-between border-b border-orange-200/50 pb-1.5 text-[10.5px]">
-          <span className="flex items-center gap-1 font-bold text-[#059669]">
-            <CheckCircle2 className="size-3 text-[#10B981]" /> {items.length} items logged
+      <div className="relative z-10 mt-3 rounded-xl border border-orange-200/80 bg-[#FFF9F5] p-3">
+        <div className="flex items-center justify-between border-b border-orange-200/60 pb-2 text-xs">
+          <span className="flex items-center gap-1.5 font-bold text-[#059669]">
+            <CheckCircle2 className="size-3.5 text-[#10B981]" /> {items.length} items logged today
           </span>
-          <span className="font-mono font-bold text-[#D44722]">₹{totalSpent} total</span>
+          <span className="font-mono font-extrabold text-[#D44722]">₹{totalSpent} total</span>
         </div>
 
-        <div className="mt-1.5 space-y-1 max-h-32 overflow-y-auto">
+        <div className="mt-2 space-y-1.5 max-h-36 overflow-y-auto pr-1">
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-between py-1 px-1.5 rounded-md hover:bg-white transition-colors text-xs"
+              className="flex items-center justify-between py-1 px-2 rounded-lg bg-white/70 hover:bg-white transition-colors text-xs border border-orange-100/60"
             >
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="text-xs">{item.icon}</span>
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className="text-sm">{item.icon}</span>
                 <span className="font-semibold text-[#123630] truncate">{item.name}</span>
-                <span className="font-mono text-[9.5px] text-orange-600 font-medium">· {item.tag}</span>
+                <span className="font-mono text-[10px] text-orange-600 font-medium">· {item.tag}</span>
               </div>
-              <span className="font-mono text-xs font-bold text-[#D44722] shrink-0">₹{item.cost}</span>
+              <span className="font-mono text-xs font-extrabold text-[#D44722] shrink-0">₹{item.cost}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Slim Pacing Line */}
-      <div className="relative z-10 mt-2.5 rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-2 text-xs">
-        <div className="flex items-center justify-between text-[11px]">
-          <span className="text-[#065F46] font-medium">Safe Limit: <strong className="font-mono">₹{dailyLimit}</strong></span>
-          <span className="font-mono font-bold text-[#059669]">₹{remaining} safe left</span>
+      <div className="relative z-10 mt-3 rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-2.5 text-xs">
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-[#065F46] font-medium">Daily Safe Pacing: <strong className="font-mono font-bold text-[#123630]">₹{dailyLimit}</strong></span>
+          <span className="font-mono font-extrabold text-[#059669]">₹{remaining} safe left</span>
         </div>
-        <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-[#DCFCE7]">
+        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-[#DCFCE7]">
           <div
             style={{ width: `${percent}%` }}
             className={`h-full rounded-full transition-all duration-300 ${percent > 90 ? "bg-red-500" : "bg-[#10B981]"}`}
@@ -588,25 +591,28 @@ function ReceiptUploadCard() {
   };
 
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#BFDBFE]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(37,99,235,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-blue-100 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#2563EB] text-white shadow-2xs">
-            <Camera className="size-3.5" />
+      <div className="flex items-center justify-between border-b border-[#E7DED0] pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#2563EB] text-white shadow-sm">
+            <Camera className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB]">Bill Scanner</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#2563EB] block">Bill Scanner</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Instant OCR & category extraction</span>
+          </div>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
           {(["meghana", "swiggy", "dmart"] as const).map((key) => (
             <button
               key={key}
               type="button"
               onClick={() => handleSwitchBill(key)}
-              className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold transition-all cursor-pointer ${
+              className={`rounded-lg px-2.5 py-1 font-mono text-[11px] font-bold transition-all cursor-pointer ${
                 selectedBill === key
-                  ? "bg-[#2563EB] text-white"
-                  : "bg-blue-50 text-[#1D4ED8] hover:bg-blue-100"
+                  ? "bg-[#2563EB] text-white shadow-xs"
+                  : "bg-blue-50 text-[#1D4ED8] hover:bg-blue-100 border border-blue-200"
               }`}
             >
               {key === "meghana" ? "Biryani" : key === "swiggy" ? "Swiggy" : "DMart"}
@@ -616,50 +622,50 @@ function ReceiptUploadCard() {
       </div>
 
       {/* Dual Tight Layout: Mini Receipt + Instant Split */}
-      <div className="mt-2.5 grid grid-cols-2 gap-2">
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
         {/* Left: Tear-off receipt style */}
-        <div className="rounded-lg border border-dashed border-[#FED7AA] bg-[#FFFDF9] p-2 text-xs">
-          <div className="flex justify-between items-center border-b border-dashed border-[#FED7AA] pb-1">
-            <span className="font-serif text-[11px] font-bold text-[#123630] truncate">{current.name}</span>
-            <span className="font-mono text-[9px] text-orange-700 font-bold">{current.tag}</span>
+        <div className="rounded-xl border border-dashed border-[#FED7AA] bg-[#FFFDF9] p-3 text-xs shadow-2xs">
+          <div className="flex justify-between items-center border-b border-dashed border-[#FED7AA] pb-1.5">
+            <span className="font-serif text-xs font-bold text-[#123630] truncate">{current.name}</span>
+            <span className="font-mono text-[10px] text-orange-700 font-bold bg-orange-50 px-1.5 py-0.5 rounded">{current.tag}</span>
           </div>
-          <div className="mt-1.5 space-y-1 text-[10.5px] text-[#4B605B]">
+          <div className="mt-2 space-y-1 text-xs text-[#4B605B]">
             {current.items.slice(0, 3).map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center">
-                <span className="truncate max-w-[80px]">{item.name}</span>
+              <div key={idx} className="flex justify-between items-center py-0.5">
+                <span className="truncate max-w-[110px]">{item.name}</span>
                 <span className="font-mono font-bold text-[#123630]">₹{item.price}</span>
               </div>
             ))}
           </div>
-          <div className="mt-1.5 flex justify-between items-center border-t border-[#FED7AA] pt-1 text-[11px]">
-            <span className="font-bold">Total</span>
-            <span className="font-mono font-extrabold text-[#D44722]">₹{current.total}</span>
+          <div className="mt-2 flex justify-between items-center border-t border-[#FED7AA] pt-1.5 text-xs">
+            <span className="font-bold text-[#123630]">Total</span>
+            <span className="font-mono font-extrabold text-[#D44722] text-sm">₹{current.total}</span>
           </div>
         </div>
 
         {/* Right: Extracted Result & Split */}
-        <div className="flex flex-col justify-between rounded-lg border border-[#86EFAC] bg-[#F0FDF4] p-2 text-xs">
+        <div className="flex flex-col justify-between rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-3 text-xs shadow-2xs">
           <div>
-            <div className="flex items-center justify-between border-b border-emerald-200 pb-1">
-              <span className="inline-flex items-center gap-1 font-bold text-emerald-800 text-[9.5px]">
-                <Check className="size-2.5 text-emerald-600" /> {isScanning ? "Scanning..." : "Parsed (1.1s)"}
+            <div className="flex items-center justify-between border-b border-emerald-200 pb-1.5">
+              <span className="inline-flex items-center gap-1 font-bold text-emerald-800 text-[10.5px]">
+                <Check className="size-3 text-emerald-600" /> {isScanning ? "Scanning..." : "Parsed in 1.1s"}
               </span>
-              <span className="font-mono text-[9px] font-bold text-emerald-800 bg-white px-1 py-0.2 rounded border border-emerald-200">
+              <span className="font-mono text-[10px] font-bold text-emerald-800 bg-white px-1.5 py-0.5 rounded border border-emerald-200">
                 {current.category}
               </span>
             </div>
-            <div className="mt-2 space-y-1 text-[10.5px]">
+            <div className="mt-2.5 space-y-1.5 text-xs">
               <div className="flex justify-between">
                 <span className="text-[#5A6E69]">Total:</span>
                 <span className="font-mono font-bold">₹{current.total}</span>
               </div>
               <div className="flex justify-between font-bold text-emerald-800 border-t border-emerald-200/60 pt-1">
                 <span>{current.splitCount}-way split:</span>
-                <span className="font-mono">₹{current.perPerson}/ea</span>
+                <span className="font-mono font-extrabold text-sm">₹{current.perPerson}/ea</span>
               </div>
             </div>
           </div>
-          <p className="mt-1.5 text-[9.5px] text-[#065F46] leading-tight font-medium">
+          <p className="mt-2 text-[10.5px] text-[#065F46] leading-tight font-semibold bg-emerald-100/50 p-1.5 rounded-lg">
             ✓ Auto-categorised with zero manual entry.
           </p>
         </div>
@@ -681,50 +687,53 @@ function SalaryAllocationCard() {
   const committedRatio = Math.round((totalCommitted / salary) * 100);
 
   return (
-    <div id="salary-allocation-simulator" className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FDE68A]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(245,158,11,0.06)] mx-auto">
+    <div id="salary-allocation-simulator" className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-amber-200/70 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#F59E0B] text-white shadow-2xs font-black text-xs">
+      <div className="flex items-center justify-between border-b border-amber-200/70 pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#F59E0B] text-white shadow-sm font-black text-sm">
             ₹
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#B45309]">Salary Autopilot</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#B45309] block">Salary Autopilot</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Day 1 commitments locked</span>
+          </div>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-300 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-800 shrink-0">
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-300 px-2.5 py-1 font-mono text-[11px] font-bold text-emerald-800 shrink-0">
           {committedRatio}% Protected
         </span>
       </div>
 
       {/* Salary Selector */}
-      <div className="mt-2.5 flex items-center justify-between">
-        <div className="flex gap-1">
+      <div className="mt-3 flex items-center justify-between bg-amber-50/50 p-2 rounded-xl border border-amber-100">
+        <div className="flex gap-1.5">
           {[50000, 85000, 120000, 150000].map((val) => (
             <button
               key={val}
               type="button"
               onClick={() => setSalary(val)}
-              className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold cursor-pointer transition-colors ${
+              className={`rounded-lg px-2.5 py-1 font-mono text-xs font-bold cursor-pointer transition-colors ${
                 salary === val
-                  ? "bg-[#B45309] text-white"
-                  : "bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100"
+                  ? "bg-[#B45309] text-white shadow-xs"
+                  : "bg-white border border-amber-200 text-amber-900 hover:bg-amber-100"
               }`}
             >
               ₹{(val / 1000)}k
             </button>
           ))}
         </div>
-        <span className="font-mono text-xs font-extrabold text-[#B45309]">₹{salary.toLocaleString("en-IN")}</span>
+        <span className="font-mono text-sm font-extrabold text-[#B45309]">₹{salary.toLocaleString("en-IN")}</span>
       </div>
 
       {/* Stacked Proportional Segment Bar */}
-      <div className="mt-2.5 space-y-1">
-        <div className="flex h-3 w-full overflow-hidden rounded-full bg-amber-100 text-[9px] font-mono font-bold text-white">
+      <div className="mt-3 space-y-1.5">
+        <div className="flex h-3.5 w-full overflow-hidden rounded-full bg-amber-100 text-[10px] font-mono font-bold text-white shadow-inner">
           <div style={{ width: `${(rent / salary) * 100}%` }} className="bg-[#C2410C] flex items-center justify-center" title="Rent" />
           <div style={{ width: `${(parents / salary) * 100}%` }} className="bg-[#D97706] flex items-center justify-center" title="Parents" />
           <div style={{ width: `${(sip / salary) * 100}%` }} className="bg-[#059669] flex items-center justify-center" title="SIP" />
           <div style={{ width: `${(discretionary / salary) * 100}%` }} className="bg-[#10B981] flex items-center justify-center" title="Safe Spend" />
         </div>
-        <div className="flex justify-between text-[9.5px] font-mono text-[#5A6E69]">
+        <div className="flex justify-between text-[10px] font-mono text-[#5A6E69]">
           <span className="text-[#C2410C] font-semibold">Rent 22k</span>
           <span className="text-[#D97706] font-semibold">Parents 12k</span>
           <span className="text-[#059669] font-semibold">SIP 10k</span>
@@ -733,15 +742,15 @@ function SalaryAllocationCard() {
       </div>
 
       {/* Guilt-Free Spending Outcome Pill */}
-      <div className="mt-2.5 flex items-center justify-between rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-2.5 text-[#123630]">
+      <div className="mt-3 flex items-center justify-between rounded-xl border border-[#86EFAC] bg-[#F0FDF4] p-3 text-[#123630] shadow-xs">
         <div>
-          <span className="text-[9.5px] font-bold uppercase tracking-wider text-emerald-800 block">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block">
             Guilt-Free Left
           </span>
-          <p className="font-serif text-lg font-bold leading-tight text-[#123630]">₹{discretionary.toLocaleString("en-IN")}</p>
+          <p className="font-serif text-xl font-bold leading-tight text-[#123630]">₹{discretionary.toLocaleString("en-IN")}</p>
         </div>
         <div className="text-right">
-          <span className="inline-block rounded-md bg-white border border-[#86EFAC] px-2 py-0.5 font-mono text-[11px] font-bold text-[#15803D] shadow-2xs">
+          <span className="inline-block rounded-lg bg-white border border-[#86EFAC] px-3 py-1 font-mono text-xs font-extrabold text-[#15803D] shadow-xs">
             ₹{dailySpend.toLocaleString("en-IN")} / day safe
           </span>
         </div>
@@ -761,44 +770,47 @@ function GoaGoalCard() {
   const progressPercent = Math.min(100, Math.round((savedSoFar / goalAmount) * 100));
 
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FDBA74]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(234,88,12,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-orange-200/70 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#EA580C] text-white shadow-2xs">
-            <Palmtree className="size-3.5" />
+      <div className="flex items-center justify-between border-b border-orange-200/70 pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#EA580C] text-white shadow-sm">
+            <Palmtree className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#EA580C]">Goa Trip Runway</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#EA580C] block">Goa Trip Runway</span>
+            <span className="text-[11px] text-[#60746D] font-medium">April holiday pacing</span>
+          </div>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 border border-orange-300 px-2 py-0.5 font-mono text-[10px] font-bold text-[#C2410C] shrink-0">
+        <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 border border-orange-300 px-2.5 py-1 font-mono text-[11px] font-bold text-[#C2410C] shrink-0">
           {monthsLeft} Mos Left
         </span>
       </div>
 
       {/* Progress Track with Milestones */}
-      <div className="mt-2.5">
+      <div className="mt-3">
         <div className="flex justify-between items-center text-xs font-bold">
-          <span className="text-[11px] text-[#123630]">Progress ({progressPercent}%)</span>
-          <span className="font-mono text-xs text-[#EA580C]">₹{savedSoFar.toLocaleString("en-IN")} / ₹{goalAmount.toLocaleString("en-IN")}</span>
+          <span className="text-xs text-[#123630]">Progress ({progressPercent}%)</span>
+          <span className="font-mono text-xs text-[#EA580C] font-extrabold">₹{savedSoFar.toLocaleString("en-IN")} / ₹{goalAmount.toLocaleString("en-IN")}</span>
         </div>
-        <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-orange-100">
+        <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-orange-100 shadow-inner">
           <div
             style={{ width: `${progressPercent}%` }}
             className="h-full rounded-full bg-gradient-to-r from-[#EA580C] to-[#F59E0B] transition-all"
           />
         </div>
-        <div className="mt-1.5 flex justify-between text-[9.5px] font-mono text-[#839791]">
-          <span>✈️ Flights (Locked)</span>
-          <span>🏨 Stay (Locked)</span>
-          <span className="text-[#EA580C] font-bold">🌴 Goa (85%)</span>
+        <div className="mt-2 flex justify-between text-[10px] font-mono text-[#839791]">
+          <span className="bg-orange-50 px-1.5 py-0.5 rounded border border-orange-100 font-semibold text-[#123630]">✈️ Flights (Locked)</span>
+          <span className="bg-orange-50 px-1.5 py-0.5 rounded border border-orange-100 font-semibold text-[#123630]">🏨 Stay (Locked)</span>
+          <span className="text-[#EA580C] font-bold bg-orange-100 px-1.5 py-0.5 rounded">🌴 Goa (85%)</span>
         </div>
       </div>
 
       {/* Slider & Daily Action */}
-      <div className="mt-2.5 rounded-xl bg-orange-50/70 border border-orange-200 p-2.5">
-        <div className="flex justify-between text-[11px] font-bold text-[#123630] mb-1">
+      <div className="mt-3 rounded-xl bg-orange-50/70 border border-orange-200 p-3">
+        <div className="flex justify-between text-xs font-bold text-[#123630] mb-1.5">
           <span>Saved: ₹{savedSoFar.toLocaleString("en-IN")}</span>
-          <span className="font-mono text-emerald-800 font-bold bg-white px-2 py-0.2 rounded border border-emerald-200 text-[10px]">
+          <span className="font-mono text-emerald-800 font-bold bg-white px-2.5 py-0.5 rounded-md border border-emerald-200 text-xs shadow-2xs">
             Save ₹{dailySave}/day
           </span>
         </div>
@@ -809,7 +821,7 @@ function GoaGoalCard() {
           step="1500"
           value={savedSoFar}
           onChange={(e) => setSavedSoFar(Number(e.target.value))}
-          className="w-full accent-[#EA580C] cursor-pointer h-1.5"
+          className="w-full accent-[#EA580C] cursor-pointer h-2"
         />
       </div>
     </div>
@@ -823,26 +835,29 @@ function FlatmateSplitCard() {
   const perPerson = Math.round(totalShared / numRoommates);
 
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#DDD6FE]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(124,58,237,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-purple-100 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#7C3AED] text-white shadow-2xs">
-            <Users className="size-3.5" />
+      <div className="flex items-center justify-between border-b border-purple-100 pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#7C3AED] text-white shadow-sm">
+            <Users className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#7C3AED]">Flat 402 Matrix</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#7C3AED] block">Flat 402 Matrix</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Shared vs Private Isolation</span>
+          </div>
         </div>
         <div className="flex items-center gap-1 shrink-0">
-          <span className="text-[10px] font-bold text-purple-900 mr-0.5">Flatmates:</span>
+          <span className="text-[11px] font-bold text-purple-900 mr-1">Flatmates:</span>
           {[2, 3, 4].map((count) => (
             <button
               key={count}
               type="button"
               onClick={() => setNumRoommates(count)}
-              className={`size-5 rounded font-mono text-[10px] font-bold transition-colors cursor-pointer ${
+              className={`size-6 rounded-lg font-mono text-xs font-bold transition-colors cursor-pointer ${
                 numRoommates === count
-                  ? "bg-[#7C3AED] text-white"
-                  : "bg-purple-100 text-[#7C3AED]"
+                  ? "bg-[#7C3AED] text-white shadow-xs"
+                  : "bg-purple-100 text-[#7C3AED] hover:bg-purple-200"
               }`}
             >
               {count}
@@ -852,32 +867,32 @@ function FlatmateSplitCard() {
       </div>
 
       {/* Side-by-side contrast */}
-      <div className="mt-2.5 grid grid-cols-2 gap-2 text-xs">
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
         {/* Shared Table */}
-        <div className="rounded-xl border border-orange-200 bg-orange-50/80 p-2 shadow-2xs">
-          <div className="flex justify-between items-center border-b border-orange-200/60 pb-1">
-            <span className="text-[10.5px] font-bold text-[#C2410C]">🏠 Shared</span>
-            <span className="font-mono text-[8.5px] font-bold text-[#C2410C] bg-white px-1 rounded-full">All {numRoommates} see</span>
+        <div className="rounded-xl border border-orange-200 bg-orange-50/80 p-3 shadow-2xs">
+          <div className="flex justify-between items-center border-b border-orange-200/60 pb-1.5">
+            <span className="text-xs font-bold text-[#C2410C]">🏠 Shared Table</span>
+            <span className="font-mono text-[9px] font-bold text-[#C2410C] bg-white px-1.5 py-0.5 rounded-full border border-orange-200">All {numRoommates} see</span>
           </div>
-          <div className="mt-1.5 space-y-1 text-[10px]">
+          <div className="mt-2 space-y-1 text-xs">
             <div className="flex justify-between"><span className="text-[#5A6E69]">Cook + WiFi:</span><span className="font-mono font-bold">₹{totalShared}</span></div>
-            <div className="flex justify-between font-bold text-[#C2410C] border-t border-orange-200/60 pt-1">
+            <div className="flex justify-between font-bold text-[#C2410C] border-t border-orange-200/60 pt-1.5">
               <span>Your share:</span>
-              <span className="font-mono">₹{perPerson}</span>
+              <span className="font-mono font-extrabold text-sm">₹{perPerson}</span>
             </div>
           </div>
         </div>
 
         {/* Private Table */}
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-2 shadow-2xs">
-          <div className="flex justify-between items-center border-b border-emerald-200/60 pb-1">
-            <span className="text-[10.5px] font-bold text-emerald-900">🔒 Private</span>
-            <span className="font-mono text-[8.5px] font-bold text-emerald-800 bg-white px-1 rounded-full">You only</span>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-3 shadow-2xs">
+          <div className="flex justify-between items-center border-b border-emerald-200/60 pb-1.5">
+            <span className="text-xs font-bold text-emerald-900">🔒 Private Ledger</span>
+            <span className="font-mono text-[9px] font-bold text-emerald-800 bg-white px-1.5 py-0.5 rounded-full border border-emerald-200">You only</span>
           </div>
-          <div className="mt-1.5 space-y-1 text-[10px]">
+          <div className="mt-2 space-y-1 text-xs">
             <div className="flex justify-between"><span className="text-[#5A6E69]">Cafe &amp; dates:</span><span className="font-mono font-bold text-emerald-900">₹1,990</span></div>
-            <div className="border-t border-emerald-200/60 pt-1 text-[9px] text-emerald-800 font-semibold truncate">
-              ✓ 100% hidden from flat
+            <div className="border-t border-emerald-200/60 pt-1.5 text-[10px] text-emerald-800 font-semibold truncate">
+              ✓ 100% hidden from flatmates
             </div>
           </div>
         </div>
@@ -889,52 +904,55 @@ function FlatmateSplitCard() {
 /** 6. CONTROL / PRIVACY CARD: No Bank Passwords */
 function ControlPrivacyCard() {
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#A7F3D0]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(16,185,129,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-emerald-200/70 pb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-2xs font-bold">
-            <ShieldCheck className="size-3.5" />
+      <div className="flex items-center justify-between border-b border-emerald-200/70 pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm font-bold">
+            <ShieldCheck className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-800">Total Privacy</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-emerald-800 block">Total Privacy</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Zero bank logins, zero sync</span>
+          </div>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 border border-emerald-300 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-800 shrink-0">
+        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 border border-emerald-300 px-2.5 py-1 font-mono text-[11px] font-bold text-emerald-800 shrink-0">
           Zero Sync
         </span>
       </div>
 
       {/* 2x2 Crisp Security Stamps */}
-      <div className="mt-2.5 grid grid-cols-2 gap-2 text-xs">
-        <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-2">
+      <div className="mt-3 grid grid-cols-2 gap-2.5 text-xs">
+        <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-2.5">
           <div className="flex items-center gap-1.5">
-            <span className="font-bold text-rose-800 text-[11px]">✕</span>
-            <p className="text-[11px] font-bold text-rose-950">No SMS Reading</p>
+            <span className="font-bold text-rose-800 text-xs">✕</span>
+            <p className="text-xs font-bold text-rose-950">No SMS Reading</p>
           </div>
-          <p className="mt-0.5 text-[9.5px] text-rose-900/80 leading-tight">Zero OTP snooping.</p>
+          <p className="mt-1 text-[10.5px] text-rose-900/80 leading-tight">Zero OTP or message snooping.</p>
         </div>
 
-        <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-2">
+        <div className="rounded-xl border border-orange-200 bg-orange-50/70 p-2.5">
           <div className="flex items-center gap-1.5">
-            <span className="font-bold text-orange-800 text-[11px]">✕</span>
-            <p className="text-[11px] font-bold text-orange-950">No Netbanking</p>
+            <span className="font-bold text-orange-800 text-xs">✕</span>
+            <p className="text-xs font-bold text-orange-950">No Netbanking</p>
           </div>
-          <p className="mt-0.5 text-[9.5px] text-orange-900/80 leading-tight">No bank passwords.</p>
+          <p className="mt-1 text-[10.5px] text-orange-900/80 leading-tight">No bank passwords requested.</p>
         </div>
 
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2.5">
           <div className="flex items-center gap-1.5">
-            <span className="font-bold text-emerald-900 text-[11px]">✓</span>
-            <p className="text-[11px] font-bold text-emerald-950">Never Sold</p>
+            <span className="font-bold text-emerald-900 text-xs">✓</span>
+            <p className="text-xs font-bold text-emerald-950">Never Sold</p>
           </div>
-          <p className="mt-0.5 text-[9.5px] text-emerald-900/80 leading-tight">No loan sales calls.</p>
+          <p className="mt-1 text-[10.5px] text-emerald-900/80 leading-tight">No loan or card sales calls.</p>
         </div>
 
-        <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-2">
+        <div className="rounded-xl border border-blue-200 bg-blue-50/70 p-2.5">
           <div className="flex items-center gap-1.5">
-            <span className="font-bold text-blue-900 text-[11px]">✓</span>
-            <p className="text-[11px] font-bold text-blue-950">1-Tap Export</p>
+            <span className="font-bold text-blue-900 text-xs">✓</span>
+            <p className="text-xs font-bold text-blue-950">1-Tap Export</p>
           </div>
-          <p className="mt-0.5 text-[9.5px] text-blue-900/80 leading-tight">Download ledger CSV.</p>
+          <p className="mt-1 text-[10.5px] text-blue-900/80 leading-tight">Download ledger CSV anytime.</p>
         </div>
       </div>
     </div>
@@ -944,41 +962,44 @@ function ControlPrivacyCard() {
 /** 7. CLOSING CALM SUMMARY CARD */
 function CalmClosingCard() {
   return (
-    <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#FED7AA]/80 bg-[#FFFDF8] p-3.5 sm:p-4 text-[#123630] shadow-[0_8px_24px_rgba(212,71,34,0.06)] mx-auto">
+    <div className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-[#E7DED0] bg-[#FFFDF9] p-4 sm:p-5 text-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.08)]">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-orange-200/70 pb-2.5">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-2xs font-black">
-            <Sparkles className="size-3.5" />
+      <div className="flex items-center justify-between border-b border-orange-200/70 pb-3">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#FF5C2B] text-white shadow-sm font-black">
+            <Sparkles className="size-4" />
           </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5C2B] truncate">Monthly Picture</span>
+          <div>
+            <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-[#FF5C2B] block truncate">Monthly Picture</span>
+            <span className="text-[11px] text-[#60746D] font-medium">Calm financial control</span>
+          </div>
         </div>
-        <span className="inline-flex items-center rounded-full bg-[#FFFBEB] border border-[#FCD34D] px-2 py-0.5 font-mono text-[10px] font-bold text-[#B45309] shrink-0">
+        <span className="inline-flex items-center rounded-full bg-[#FFFBEB] border border-[#FCD34D] px-2.5 py-1 font-mono text-[11px] font-bold text-[#B45309] shrink-0">
           Zero Anxiety
         </span>
       </div>
 
       {/* 4-Metric Grid */}
-      <div className="mt-2.5 grid grid-cols-4 gap-1.5 text-center">
-        <div className="rounded-lg border border-blue-200 bg-blue-50/60 p-1.5">
-          <span className="text-[9px] uppercase tracking-wider text-blue-700 font-bold block">Salary</span>
-          <p className="font-mono text-xs font-bold text-blue-950 mt-0.5">85k</p>
+      <div className="mt-3 grid grid-cols-4 gap-2 text-center">
+        <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-2">
+          <span className="text-[10px] uppercase tracking-wider text-blue-700 font-bold block">Salary</span>
+          <p className="font-mono text-sm font-bold text-blue-950 mt-1">₹85k</p>
         </div>
-        <div className="rounded-lg border border-orange-200 bg-orange-50/60 p-1.5">
-          <span className="text-[9px] uppercase tracking-wider text-[#C2410C] font-bold block">Fixed</span>
-          <p className="font-mono text-xs font-bold text-[#C2410C] mt-0.5">47.5k</p>
+        <div className="rounded-xl border border-orange-200 bg-orange-50/60 p-2">
+          <span className="text-[10px] uppercase tracking-wider text-[#C2410C] font-bold block">Fixed</span>
+          <p className="font-mono text-sm font-bold text-[#C2410C] mt-1">₹47.5k</p>
         </div>
-        <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-1.5">
-          <span className="text-[9px] uppercase tracking-wider text-[#A16207] font-bold block">Logged</span>
-          <p className="font-mono text-xs font-bold text-[#A16207] mt-0.5">14.2k</p>
+        <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-2">
+          <span className="text-[10px] uppercase tracking-wider text-[#A16207] font-bold block">Logged</span>
+          <p className="font-mono text-sm font-bold text-[#A16207] mt-1">₹14.2k</p>
         </div>
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-1.5">
-          <span className="text-[9px] uppercase tracking-wider text-emerald-800 font-bold block">Safe</span>
-          <p className="font-mono text-xs font-bold text-emerald-800 mt-0.5">23.3k</p>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-2">
+          <span className="text-[10px] uppercase tracking-wider text-emerald-800 font-bold block">Safe</span>
+          <p className="font-mono text-sm font-bold text-emerald-800 mt-1">₹23.3k</p>
         </div>
       </div>
 
-      <p className="mt-2 text-center text-[10.5px] text-[#5A6E69] font-medium">
+      <p className="mt-3 text-center text-xs text-[#5A6E69] font-medium bg-[#FAF7F0] p-2 rounded-xl border border-[#E7DED0]">
         &quot;No lost paper receipts. Just calm clarity every single day.&quot;
       </p>
     </div>
@@ -998,7 +1019,7 @@ export function HumanMoneyScene({ kind, className = "" }: InstrumentProps & { ki
   };
 
   return (
-    <figure className={`w-full max-w-[420px] justify-self-end flex justify-end ${className}`} aria-label={`Kubear ${kind} money scenario`}>
+    <figure className={`w-full flex justify-center lg:justify-end ${className}`} aria-label={`Kubear ${kind} money scenario`}>
       {cardMap[kind]}
     </figure>
   );
