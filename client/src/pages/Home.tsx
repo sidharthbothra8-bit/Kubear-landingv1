@@ -159,8 +159,9 @@ export default function Home() {
   return (
     <SiteLayout>
       <PageMeta
-        title="Kubear | Real Money Clarity for India. Zero Bank Scraping."
-        description="Log chai, split flatmate rent, lock salary day allocations, and track Goa goals via quick chat and photo upload. 100% manual, private, and calm."
+        title="Kubear by Kuberos | Real Money Clarity for India. Zero Bank Scraping."
+        description="Kubear by Kuberos Innovations helps you log daily chai, split flatmate bills, lock salary allocations, and track Goa sinking funds via chat and photo upload. 100% private and read-only."
+        path="/"
       />
 
       {/* HERO SECTION - KEPT INTACT */}

@@ -444,8 +444,8 @@ function LearnHub() {
                       key={article.slug}
                     >
                       {/* Left: Issue Index Tag & Thumbnail Visual */}
-                      <div className="flex items-center sm:items-start gap-3 shrink-0">
-                        <span className="px-2.5 py-1 rounded-lg bg-[#FAF5EE] border border-[#E8DCC8] font-mono font-bold text-xs text-[#C96632] shrink-0">
+                      <div className="flex items-center sm:items-start gap-2.5 sm:gap-3 shrink-0">
+                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-[#FAF5EE] border border-[#E8DCC8] font-mono font-bold text-[11px] sm:text-xs text-[#C96632] shrink-0">
                           #{String(article.calendarOrder).padStart(2, "0")}
                         </span>
                         <div className="w-48 sm:w-56 shrink-0 hidden md:block">
@@ -455,26 +455,26 @@ function LearnHub() {
 
                       {/* Middle: Editorial Content */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider bg-[#143B35]/10 text-[#143B35]">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1 sm:mb-1.5">
+                          <span className="px-2 py-0.2 sm:px-2.5 sm:py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold font-mono uppercase tracking-wider bg-[#143B35]/10 text-[#143B35]">
                             {getLearnTopic(article.topic)?.label ?? article.topic}
                           </span>
-                          <span className="text-[11px] text-[#65726C] font-mono flex items-center gap-1">
-                            <Clock3 className="size-3 text-[#C96632]" />
+                          <span className="text-[10px] sm:text-[11px] text-[#65726C] font-mono flex items-center gap-1">
+                            <Clock3 className="size-2.5 sm:size-3 text-[#C96632]" />
                             {article.readTime}
                           </span>
                         </div>
-                        <h2 className="text-lg sm:text-xl font-serif text-[#123630] group-hover:text-[#C96632] transition-colors leading-snug">
+                        <h2 className="text-base sm:text-lg md:text-xl font-serif text-[#123630] group-hover:text-[#C96632] transition-colors leading-snug">
                           {article.title}
                         </h2>
-                        <p className="line-clamp-2 text-xs sm:text-sm text-[#5B6D67] mt-1.5 leading-relaxed">
+                        <p className="line-clamp-2 text-xs sm:text-sm text-[#5B6D67] mt-1 leading-relaxed">
                           {article.dek}
                         </p>
                       </div>
 
                       {/* Right: Interaction Arrow */}
-                      <div className="size-9 rounded-full bg-[#143B35]/5 group-hover:bg-[#C96632] flex items-center justify-center shrink-0 transition-colors self-end sm:self-center ml-auto">
-                        <ArrowRight className="size-4 text-[#143B35] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                      <div className="size-7 sm:size-9 rounded-full bg-[#143B35]/5 group-hover:bg-[#C96632] flex items-center justify-center shrink-0 transition-colors self-end sm:self-center ml-auto">
+                        <ArrowRight className="size-3.5 sm:size-4 text-[#143B35] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
                       </div>
                     </Link>
                   ))}

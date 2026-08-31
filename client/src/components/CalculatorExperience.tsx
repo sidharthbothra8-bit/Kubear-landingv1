@@ -1857,8 +1857,8 @@ export function ToolsHub() {
             />
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          {/* Category Filter Pills (Horizontal Snap Scroll on Mobile) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 type="button"
@@ -1877,51 +1877,51 @@ export function ToolsHub() {
         </div>
       </header>
 
-      {/* Tools Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Tools Grid / Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
         {filteredTools.map((tool, index) => (
           <Link
             href={`/learn/tools/${tool.slug}`}
-            className="flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-[#FFFDF8] border border-[#123630]/12 shadow-sm hover:shadow-md hover:border-[#123630]/30 hover:-translate-y-1 transition-all group no-underline"
+            className="flex flex-col justify-between p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-[#FFFDF8] border border-[#123630]/12 shadow-2xs sm:shadow-sm hover:shadow-md hover:border-[#123630]/30 hover:-translate-y-0.5 transition-all group no-underline"
             key={tool.slug}
           >
             <div>
               {/* Card Topline with Badge & Time */}
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#C96632]">
+              <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[#C96632]">
                   TOOL 0{index + 1} · {tool.eyebrow}
                 </span>
-                <span className="text-[10px] font-mono text-[#687C75] bg-[#123630]/5 px-2 py-0.5 rounded-md flex items-center gap-1">
+                <span className="text-[9px] sm:text-[10px] font-mono text-[#687C75] bg-[#123630]/5 px-2 py-0.5 rounded-md flex items-center gap-1">
                   <Clock3 className="size-2.5" /> ~{tool.timeToFill}
                 </span>
               </div>
 
               {/* Title */}
-              <h2 className="text-xl font-serif font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors leading-snug mb-2.5">
+              <h2 className="text-base sm:text-xl font-serif font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors leading-snug mb-1.5 sm:mb-2.5">
                 {tool.title}
               </h2>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-[#5B6F68] leading-relaxed mb-4">
+              <p className="text-xs sm:text-sm text-[#5B6F68] leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
                 {tool.description}
               </p>
 
               {/* "What You Need to Feed" Preview Pills */}
-              <div className="pt-3 border-t border-[#123630]/8 space-y-1.5">
-                <span className="text-[10px] font-mono font-bold uppercase text-[#71827C] block">
+              <div className="pt-2.5 sm:pt-3 border-t border-[#123630]/8 space-y-1 sm:space-y-1.5">
+                <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase text-[#71827C] block">
                   Feed required:
                 </span>
                 <div className="flex flex-wrap gap-1">
                   {tool.inputsRequired.slice(0, 3).map((inp) => (
                     <span
                       key={inp}
-                      className="text-[10px] bg-[#FAF7F0] text-[#123630] border border-[#123630]/10 px-2 py-0.5 rounded-md font-medium"
+                      className="text-[9px] sm:text-[10px] bg-[#FAF7F0] text-[#123630] border border-[#123630]/10 px-1.5 sm:px-2 py-0.2 sm:py-0.5 rounded-md font-medium"
                     >
                       {inp}
                     </span>
                   ))}
                   {tool.inputsRequired.length > 3 && (
-                    <span className="text-[10px] text-[#71827C] font-mono py-0.5">
+                    <span className="text-[9px] sm:text-[10px] text-[#71827C] font-mono py-0.5">
                       +{tool.inputsRequired.length - 3} more
                     </span>
                   )}
@@ -1930,9 +1930,9 @@ export function ToolsHub() {
             </div>
 
             {/* Bottom Action Row */}
-            <div className="flex items-center justify-between pt-4 mt-6 border-t border-[#123630]/8 text-xs font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors">
+            <div className="flex items-center justify-between pt-3 sm:pt-4 mt-3 sm:mt-6 border-t border-[#123630]/8 text-[11px] sm:text-xs font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors">
               <span>Open live calculation</span>
-              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="size-3.5 sm:size-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
         ))}

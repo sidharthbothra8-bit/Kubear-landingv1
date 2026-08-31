@@ -98,36 +98,37 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-6">
+      {/* Mobile Swipe Rail / Desktop 3-Column Grid */}
+      <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-6 overflow-x-auto md:overflow-x-visible pb-3 md:pb-0 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
         {toolMoments.map(({ href, index, moment, title, detail, icon: Icon, bgAccent }) => (
           <Link
             href={href}
             key={href}
-            className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-[#FFFDF8] border border-[#123630]/12 shadow-sm hover:shadow-md hover:border-[#123630]/30 transition-all duration-200 hover:-translate-y-1 overflow-hidden no-underline"
+            className="group relative flex flex-col justify-between p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-[#FFFDF8] border border-[#123630]/12 shadow-xs hover:shadow-md hover:border-[#123630]/30 transition-all duration-200 overflow-hidden no-underline shrink-0 w-[82vw] max-w-[290px] sm:w-[320px] md:w-auto snap-start"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="font-mono text-xs font-bold text-[#6F827C] tracking-wider">
+              <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
+                <span className="font-mono text-[10px] sm:text-xs font-bold text-[#6F827C] tracking-wider">
                   TOOL {index}
                 </span>
                 <span
-                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${bgAccent}`}
+                  className={`inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold ${bgAccent}`}
                 >
-                  <Icon className="size-3.5" />
+                  <Icon className="size-3 sm:size-3.5" />
                   {moment}
                 </span>
               </div>
-              <h3 className="text-lg font-serif font-bold text-[#123630] group-hover:text-[#C96632] transition-colors mb-2 leading-snug">
+              <h3 className="text-base sm:text-lg font-serif font-bold text-[#123630] group-hover:text-[#C96632] transition-colors mb-1.5 sm:mb-2 leading-snug">
                 {title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#5B6F68] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#5B6F68] leading-relaxed line-clamp-2 sm:line-clamp-none">
                 {detail}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#123630]/8 text-xs font-bold text-[#123630] group-hover:text-[#C96632] transition-colors">
+            <div className="flex items-center justify-between pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-[#123630]/8 text-[11px] sm:text-xs font-bold text-[#123630] group-hover:text-[#C96632] transition-colors">
               <span>Open live calculation</span>
-              <ArrowUpRight className="size-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight className="size-3.5 sm:size-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </Link>
         ))}

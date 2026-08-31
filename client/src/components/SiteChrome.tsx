@@ -24,7 +24,7 @@ export function Brand({ inverse = false, compact = false }: { inverse?: boolean;
       className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] shrink-0 transition-all duration-200 hover:opacity-90 ${
         inverse ? "text-[#FFF8EE]" : "text-[#123630]"
       }`}
-      aria-label="Kubear home"
+      aria-label="Kubear by Kuberos home"
     >
       <KubearLogo
         className={`w-auto aspect-[470/365] transition-all duration-200 ${
@@ -36,13 +36,18 @@ export function Brand({ inverse = false, compact = false }: { inverse?: boolean;
         }`}
         inverse={inverse}
       />
-      <span
-        className={`font-black tracking-tight transition-all duration-200 ${
-          compact ? "text-[1.12rem] sm:text-[1.2rem]" : "text-[1.22rem] sm:text-[1.34rem]"
-        }`}
-      >
-        Kubear
-      </span>
+      <div className="flex flex-col">
+        <span
+          className={`font-black tracking-tight transition-all duration-200 leading-none ${
+            compact ? "text-[1.12rem] sm:text-[1.2rem]" : "text-[1.22rem] sm:text-[1.34rem]"
+          }`}
+        >
+          Kubear
+        </span>
+        <span className="text-[9px] font-mono tracking-wider uppercase text-[#C96632] opacity-80 leading-none mt-0.5 hidden xs:inline-block">
+          by Kuberos
+        </span>
+      </div>
     </Link>
   );
 }

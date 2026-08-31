@@ -45,7 +45,31 @@ export function PageMeta({ title, description, path = "/", image = defaultImage,
     let articleSchema = document.querySelector<HTMLScriptElement>("#kubear-article-schema");
     if (type !== "article" || !article?.publishedAt) { articleSchema?.remove(); return; }
     if (!articleSchema) { articleSchema = document.createElement("script"); articleSchema.id = "kubear-article-schema"; articleSchema.type = "application/ld+json"; document.head.appendChild(articleSchema); }
-    articleSchema.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, mainEntityOfPage: `${origin}${path}`, image, datePublished: new Date(article.publishedAt).toISOString(), dateModified: new Date(article.updatedAt ?? article.publishedAt).toISOString(), author: { "@type": "Organization", name: article.author }, publisher: { "@type": "Organization", name: "Kubear" } });
+    articleSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      mainEntityOfPage: `${origin}${path}`,
+      image,
+      datePublished: new Date(article.publishedAt).toISOString(),
+      dateModified: new Date(article.updatedAt ?? article.publishedAt).toISOString(),
+      author: {
+        "@type": "Organization",
+        name: article.author || "Kubear Editorial Desk",
+        url: origin
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Kuberos Innovations Pvt. Ltd.",
+        alternateName: "Kubear by Kuberos",
+        url: origin,
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.kuberos.in/branding/logo.svg"
+        }
+      }
+    });
   }, [article, description, image, path, title, type]);
 
   return null;
