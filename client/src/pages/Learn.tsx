@@ -35,13 +35,11 @@ import { SiteLayout } from "@/components/SiteChrome";
 import { ArticleVisual } from "@/components/ArticleVisual";
 import { LearnLibraryVisual } from "@/components/LearnLibraryVisual";
 import { getLearnTopic, learnTopics } from "@/lib/learnTopics";
-import { trpc } from "@/lib/trpc";
 import {
   staticParsedArticles,
   getStaticArticleBySlug,
   getStaticArticlesByTopic,
 } from "@shared/articlesData";
-
 
 type ViewMode = "all" | "calculators" | "guides";
 
@@ -63,10 +61,6 @@ export default function Learn() {
 
 function LearnHub() {
   const [location] = useLocation();
-  const query = trpc.learn.hub.useQuery(undefined, {
-    retry: false,
-    refetchOnWindowFocus: false,
-  });
   const [search, setSearch] = useState("");
   const [activeTopicFilter, setActiveTopicFilter] = useState<string>("all");
   const topicRailRef = useRef<HTMLDivElement>(null);
@@ -92,12 +86,7 @@ function LearnHub() {
     }
   }, [location]);
 
-  const allArticles = useMemo(() => {
-    if (query.data?.articles && query.data.articles.length > 0) {
-      return query.data.articles;
-    }
-    return staticParsedArticles;
-  }, [query.data?.articles]);
+  const allArticles = staticParsedArticles;
 
   const filteredArticles = useMemo(() => {
     return allArticles.filter((article) => {
@@ -117,7 +106,7 @@ function LearnHub() {
     });
   }, [allArticles, search, activeTopicFilter]);
 
-  const featured = (query.data?.featured as typeof allArticles[0] | undefined) ?? allArticles[0];
+  const featured = allArticles[0];
 
 
   // Group all articles by Pillar / Topic
@@ -375,14 +364,8 @@ function LearnHub() {
       {/* ARTICLES & GUIDES CONTENT (Visible in 'all' and 'guides' view modes) */}
       {(viewMode === "all" || viewMode === "guides") && (
         <>
-          {query.isLoading ? (
-            <LibraryLoading />
-          ) : query.isError ? (
-            <LibraryUnavailable onRetry={() => void query.refetch()} />
-          ) : (
-            <>
-              {/* Featured Cornerstone Article (when not searching/filtering) */}
-              {!search && activeTopicFilter === "all" && featured ? (
+          {/* Featured Cornerstone Article (when not searching/filtering) */}
+          {!search && activeTopicFilter === "all" && featured ? (
                 <section className="learn-feature">
                   <ArticleVisual visual={featured.heroType} topic={featured.topic} />
                   <div>
@@ -560,8 +543,6 @@ function LearnHub() {
                   ))}
                 </div>
               </section>
-            </>
-          )}
         </>
       )}
     </SiteLayout>
@@ -598,31 +579,7 @@ function LearnDetail({ slug }: { slug: string }) {
   const topic = getLearnTopic(slug);
   if (topic) return <TopicPage slug={slug} />;
 
-  const staticArticle = useMemo(() => getStaticArticleBySlug(slug), [slug]);
-  const query = trpc.learn.article.useQuery(
-    { slug },
-    {
-      retry: false,
-      refetchOnWindowFocus: false,
-      enabled: !staticArticle,
-    }
-  );
-
-  const article = query.data ?? staticArticle;
-
-  if (!article && query.isLoading)
-    return (
-      <SiteLayout>
-        <LibraryLoading />
-      </SiteLayout>
-    );
-
-  if (!article && query.isError)
-    return (
-      <SiteLayout>
-        <LibraryUnavailable onRetry={() => void query.refetch()} />
-      </SiteLayout>
-    );
+  const article = getStaticArticleBySlug(slug);
 
   if (!article)
     return (
@@ -903,16 +860,7 @@ function LearnDetail({ slug }: { slug: string }) {
 
 function TopicPage({ slug }: { slug: string }) {
   const topic = getLearnTopic(slug)!;
-  const staticTopicArticles = useMemo(() => getStaticArticlesByTopic(slug), [slug]);
-  const query = trpc.learn.topic.useQuery(
-    { topic: slug },
-    {
-      retry: false,
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  const topicArticles = query.data && query.data.length > 0 ? query.data : staticTopicArticles;
+  const topicArticles = useMemo(() => getStaticArticlesByTopic(slug), [slug]);
 
   return (
     <SiteLayout>
@@ -981,10 +929,6 @@ function TopicPage({ slug }: { slug: string }) {
               </Link>
             ))}
           </div>
-        ) : query.isLoading ? (
-          <LibraryLoading />
-        ) : query.isError ? (
-          <LibraryUnavailable onRetry={() => void query.refetch()} />
         ) : (
           <p className="topic-empty">
             This collection is being carefully built. Try a practical planning tool while the next notes are reviewed.
