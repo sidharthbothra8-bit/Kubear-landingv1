@@ -9,15 +9,13 @@ const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubea
 
 const desktopNavItems = [
   { href: "/how-it-works", label: "How it works", icon: Compass },
-  { href: "/learn", label: "Learn", icon: BookOpen },
-  { href: "/learn/tools", label: "Tools", icon: WalletCards },
+  { href: "/learn", label: "Learn & Tools", icon: BookOpen },
 ];
 
 const mobileNavItems = [
   { href: "/", label: "Home", icon: HomeIcon },
   { href: "/how-it-works", label: "How it works", icon: Sparkles },
-  { href: "/learn", label: "Learn", icon: BookOpen },
-  { href: "/learn/tools", label: "Tools", icon: WalletCards },
+  { href: "/learn", label: "Learn & Tools", icon: BookOpen },
 ];
 
 export function Brand({ inverse = false }: { inverse?: boolean }) {
@@ -39,7 +37,7 @@ export function Header() {
   const [location] = useLocation();
 
   const isNavActive = (href: string) =>
-    location === href || (href === "/learn" && location.startsWith("/learn/") && location !== "/learn/tools");
+    location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
 
   return (
     <header className="mm-header mm-header-light">
@@ -64,8 +62,8 @@ export function Header() {
                     : "text-[#3E5750] hover:text-[#123630] hover:bg-[#123630]/5"
                 }`}
               >
-                <Icon className="size-3.5" />
-                <span>{item.label}</span>
+                <Icon className={`size-3.5 ${active ? "text-[#FFF8EE]" : "text-[#3E5750]"}`} />
+                <span className={active ? "text-[#FFF8EE]" : ""}>{item.label}</span>
               </Link>
             );
           })}
@@ -93,7 +91,7 @@ export function MobileBottomNav() {
 
   const isNavActive = (href: string) => {
     if (href === "/") return location === "/";
-    return location === href || (href === "/learn" && location.startsWith("/learn/") && location !== "/learn/tools");
+    return location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
   };
 
   return (
@@ -115,8 +113,8 @@ export function MobileBottomNav() {
                   : "text-[#516761] hover:text-[#123630] hover:bg-[#123630]/5 font-medium"
               }`}
             >
-              <Icon className="size-4 mb-0.5" />
-              <span className="text-[10px] tracking-tight leading-none whitespace-nowrap">{item.label}</span>
+              <Icon className={`size-4 mb-0.5 ${active ? "text-[#FFF8EE]" : "text-[#516761]"}`} />
+              <span className={`text-[10px] tracking-tight leading-none whitespace-nowrap ${active ? "text-[#FFF8EE]" : ""}`}>{item.label}</span>
             </Link>
           );
         })}
@@ -160,10 +158,7 @@ export function Footer() {
                   How it works
                 </Link>
                 <Link href="/learn" className="hover:text-white">
-                  Learn
-                </Link>
-                <Link href="/learn/tools" className="hover:text-white">
-                  Learn tools
+                  Learn & Tools
                 </Link>
                 <Link href="/journal" className="hover:text-white">
                   Journal

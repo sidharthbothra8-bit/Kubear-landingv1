@@ -31,6 +31,8 @@ function Router() {
     <Route path="/studio/learn" component={LearnStudio} />
     <Route path="/tools" component={LegacyToolsRedirect} />
     <Route path="/tools/:slug" component={LegacyToolsRedirect} />
+    <Route path="/desk" component={LegacyDeskRedirect} />
+    <Route path="/desk/:slug" component={LegacyDeskRedirect} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />
   </Switch></>;
@@ -59,7 +61,27 @@ function LegacyToolsRedirect() {
   const [location, setLocation] = useLocation();
   const destination = location.replace(/^\/tools/, "/learn/tools");
   useEffect(() => { setLocation(destination, { replace: true }); }, [destination, setLocation]);
-  return <main className="grid min-h-screen place-items-center bg-[#FFFCF7] p-6 text-center"><div><p className="eyebrow text-[#C96632]">Kubear Learn</p><h1 className="mt-3 font-serif text-4xl text-[#152043]">Opening Learn tools.</h1><p className="mt-3 text-[#5E6680]">Your planning tool now lives inside Learn.</p><Link href={destination} className="button button-primary mt-6">Continue to Learn tools</Link></div></main>;
+  return <main className="grid min-h-screen place-items-center bg-[#FFFCF7] p-6 text-center"><div><p className="eyebrow text-[#C96632]">Kubear Learn & Tools</p><h1 className="mt-3 font-serif text-4xl text-[#152043]">Opening Learn & Tools.</h1><p className="mt-3 text-[#5E6680]">Planning tools now live inside the unified Learn & Tools desk.</p><Link href={destination} className="button button-primary mt-6">Continue to Learn & Tools</Link></div></main>;
+}
+
+function LegacyDeskRedirect() {
+  const [location, setLocation] = useLocation();
+  const destination = location.replace(/^\/desk/, "/learn");
+  useEffect(() => {
+    setLocation(destination, { replace: true });
+  }, [destination, setLocation]);
+  return (
+    <main className="grid min-h-screen place-items-center bg-[#FAF7F0] p-6 text-center">
+      <div>
+        <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C96632]">Kubear Learn & Tools</p>
+        <h1 className="mt-3 font-serif text-4xl text-[#123630]">Opening the Learn & Tools Desk</h1>
+        <p className="mt-3 text-[#5A6E69]">Your planning tools and money guides live together in one unified desk.</p>
+        <Link href={destination} className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full bg-[#123630] px-6 text-sm font-extrabold text-[#FFFDF8] mt-6">
+          Continue to Learn & Tools
+        </Link>
+      </div>
+    </main>
+  );
 }
 
 function App() {

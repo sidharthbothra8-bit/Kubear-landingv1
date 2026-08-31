@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 580" fill="none" width="100%" height="100%">
+  <!-- Top Node / Head Knot -->
+  <circle cx="250" cy="74" r="38" fill="#FFF8EE" />
+
+  <!-- Outer Meditating Body Silhouette -->
+  <path
+    fill="#FFF8EE"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M 250 115 
+       C 346 115 424 193 424 289 
+       C 424 345 397 395 354 425
+       C 396 428 440 443 462 472
+       C 478 493 468 522 438 535
+       C 392 554 326 542 286 502
+       C 275 507 263 510 250 510
+       C 237 510 225 507 214 502
+       C 174 542 108 554 62 535
+       C 32 522 22 493 38 472
+       C 60 443 104 428 146 425
+       C 103 395 76 345 76 289
+       C 76 193 154 115 250 115 Z
+       M 250 160
+       C 179 160 121 218 121 289
+       C 121 360 179 418 250 418
+       C 321 418 379 360 379 289
+       C 379 218 321 160 250 160 Z"
+  />
+
+  <!-- Bottom Center Node with white cutout border -->
+  <circle cx="250" cy="485" r="48" fill="#123630" />
+  <circle cx="250" cy="485" r="37" fill="#FFF8EE" />
+
+  <!-- Inner Orange Disc with white margin -->
+  <circle cx="250" cy="289" r="118" fill="#123630" />
+  <circle cx="250" cy="289" r="102" fill="#FF5C2B" />
+
+  <!-- Bear Head Profile (White Line Art inside Orange Disc) -->
+  <path
+    d="M 182 356
+       C 170 332 170 296 182 270
+       C 194 242 216 220 238 220
+       C 246 220 252 226 250 234
+       C 247 243 241 248 245 254
+       C 254 265 284 273 310 284
+       C 326 291 334 298 332 308
+       C 330 316 321 322 314 326
+       C 305 330 304 336 307 342
+       C 311 348 305 358 296 362
+       C 285 366 273 361 265 367
+       C 257 373 255 382 256 388"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="9.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Bear Eye -->
+  <circle cx="288" cy="277" r="4.5" fill="#FFFFFF" />
+</svg>

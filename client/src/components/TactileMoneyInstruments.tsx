@@ -179,37 +179,143 @@ export function MoneyWeekMosaic({ className = "" }: InstrumentProps) {
 
 export function MoneyViewSnapshot({ className = "" }: InstrumentProps) {
   const points = [
-    ["Balance", "after plans", "₹26,660"],
-    ["Due next", "Friday", "House Rent"],
-    ["Daily Spends", "logged in chat", "₹7,240"],
-    ["Flatmates", "Cook & Groceries", "2 splits"],
+    {
+      index: "01",
+      label: "Balance & Runway",
+      detail: "after planned commitments",
+      value: "₹26,660",
+      tag: "Free to spend",
+      tagColor: "bg-emerald-50 text-emerald-800 border-emerald-200/60",
+      dotColor: "bg-emerald-500",
+      icon: Wallet,
+    },
+    {
+      index: "02",
+      label: "Due Next",
+      detail: "House Rent due this Friday",
+      value: "₹22,000",
+      tag: "Fixed bill",
+      tagColor: "bg-rose-50 text-rose-800 border-rose-200/60",
+      dotColor: "bg-rose-500",
+      icon: HomeIcon,
+    },
+    {
+      index: "03",
+      label: "Daily Spends",
+      detail: "Auto, chai, lunches logged via chat",
+      value: "₹7,240",
+      tag: "14 logs",
+      tagColor: "bg-amber-50 text-amber-800 border-amber-200/60",
+      dotColor: "bg-amber-500",
+      icon: Coffee,
+    },
+    {
+      index: "04",
+      label: "Flatmate Splits",
+      detail: "Cook & grocery reconciliation",
+      value: "2 Pending",
+      tag: "Shared",
+      tagColor: "bg-teal-50 text-teal-800 border-teal-200/60",
+      dotColor: "bg-teal-500",
+      icon: Users,
+    },
   ];
+
   return (
-    <section className={`money-view-snapshot ${className}`} aria-label="Illustrative five-part money view">
-      <div className="snapshot-glow" aria-hidden="true" />
-      <div className="snapshot-header">
-        <InstrumentLabel>One week, with context</InstrumentLabel>
-        <span>Illustrative view</span>
-      </div>
-      <div className="snapshot-core">
-        <div>
-          <small>Today&apos;s picture</small>
-          <b>₹26,660</b>
-          <span>after planned commitments</span>
+    <section
+      className={`relative overflow-hidden rounded-3xl border border-[#123630]/15 bg-linear-to-b from-[#FFFDF8] via-[#FFF9EE] to-[#F5EFE4] p-5 sm:p-7 shadow-xl shadow-[#123630]/8 text-[#123630] ${className}`}
+      aria-label="Illustrative five-part money view"
+    >
+      {/* Subtle background glow */}
+      <div
+        className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-[#FF5C2B]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* Header */}
+      <div className="flex items-center justify-between gap-3 pb-4 border-b border-[#123630]/10">
+        <div className="flex items-center gap-2 text-[11px] font-mono font-bold tracking-wider uppercase text-[#C96632]">
+          <span className="size-2 rounded-xs border border-current rotate-45" />
+          <span>One week, with context</span>
         </div>
-        <i aria-hidden="true" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[#123630]/15 bg-[#FFFDF8] text-[10px] font-mono font-bold uppercase tracking-wider text-[#536861]">
+          <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          Illustrative view
+        </span>
       </div>
-      <div className="snapshot-points">
-        {points.map(([label, detail, value], index) => (
-          <div key={label}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <small>{label}</small>
-            <b>{value}</b>
-            <em>{detail}</em>
+
+      {/* Hero Balance Snapshot */}
+      <div className="my-5 p-4 sm:p-5 rounded-2xl bg-[#123630] text-[#FFF8EE] shadow-md shadow-[#123630]/15 relative overflow-hidden">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[11px] font-mono font-semibold tracking-wider uppercase text-[#D8E8DE]/70">
+              Today&apos;s Picture · Free Cashflow
+            </p>
+            <div className="mt-1 flex items-baseline gap-2">
+              <strong className="text-3xl sm:text-4xl font-serif font-normal text-[#FFF8EE] tracking-tight">
+                ₹26,660
+              </strong>
+            </div>
+            <p className="text-xs text-[#D8E8DE]/80 mt-1">
+              after all planned commitments and upcoming bills
+            </p>
           </div>
-        ))}
+          <span className="shrink-0 px-2.5 py-1 rounded-full bg-[#FFF8EE]/10 border border-[#FFF8EE]/20 text-[10px] font-mono font-bold text-[#F4D277] uppercase tracking-wider">
+            Safe Runway
+          </span>
+        </div>
       </div>
-      <p><Eye className="size-3.5" />Manual chat & upload entry. Kubear does not touch your money.</p>
+
+      {/* Dimension rows (01 - 04) */}
+      <div className="space-y-2.5">
+        {points.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.index}
+              className="group flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-xl border border-[#123630]/10 bg-[#FFFDF8]/90 hover:bg-white hover:border-[#123630]/25 transition-all shadow-xs"
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="font-mono text-xs font-bold text-[#8C9E97]">
+                  {item.index}
+                </span>
+                <div className="size-8 rounded-lg bg-[#FAF7F0] border border-[#123630]/10 flex items-center justify-center text-[#123630] shrink-0 group-hover:scale-105 transition-transform">
+                  <Icon className="size-4 text-[#123630]" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <b className="text-xs sm:text-sm font-semibold text-[#123630] truncate">
+                      {item.label}
+                    </b>
+                    <span
+                      className={`hidden xs:inline-flex px-2 py-0.2 rounded-full border text-[10px] font-medium ${item.tagColor}`}
+                    >
+                      {item.tag}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-[#6A7C75] truncate">
+                    {item.detail}
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-right shrink-0">
+                <span className="font-serif text-sm sm:text-base font-semibold text-[#123630] block">
+                  {item.value}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer Trust Indicator */}
+      <div className="mt-4 pt-3.5 border-t border-[#123630]/10 flex items-center gap-2 text-[11px] text-[#556963]">
+        <LockKeyhole className="size-3.5 text-emerald-700 shrink-0" />
+        <span>
+          Manual chat & upload entry. Kubear does not touch your money or connect to bank accounts.
+        </span>
+      </div>
     </section>
   );
 }

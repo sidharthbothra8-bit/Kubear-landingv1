@@ -94,11 +94,6 @@ body summary:focus-visible {
   pointer-events: auto;
 }
 
-.mm-header .inline-flex[class*="text-"] {
-  color: var(--aurora-ink) !important;
-  font-family: "Plus Jakarta Sans", sans-serif !important;
-}
-
 .map-nav {
   display: flex !important;
   align-items: center !important;
