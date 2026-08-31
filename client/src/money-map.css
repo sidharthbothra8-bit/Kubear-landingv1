@@ -1,9 +1,11 @@
 /* Money Map navigation and scene-specific money moments: practical editorial navigation, no generic visual repetition. */
 @layer components {
-  .mm-header { position:fixed; z-index:60; top:clamp(0.5rem, 1.2vw, 1rem); left:0; right:0; pointer-events:none; background:transparent!important; }
-  .mm-header-inner { width:clamp(320px, calc(100% - 1.5rem), 1140px); min-height:3.8rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.5rem clamp(0.75rem, 1.8vw, 1.25rem); border:none!important; outline:none!important; border-radius:1.35rem; background:#FFFDF8!important; box-shadow:0 10px 30px rgba(18,54,48,.08)!important; pointer-events:auto; backdrop-filter:none!important; -webkit-backdrop-filter:none!important; }
+  .mm-header { position:fixed; z-index:60; top:clamp(0.5rem, 1.2vw, 1rem); left:0; right:0; pointer-events:none; background:transparent!important; transition:top 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .mm-header.is-scrolled { top:0.4rem; }
+  .mm-header-inner { width:clamp(320px, calc(100% - 1.5rem), 1140px); min-height:3.75rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.5rem clamp(0.75rem, 1.8vw, 1.25rem); border:1px solid rgba(18,54,48,.08)!important; outline:none!important; border-radius:1.35rem; background:#FFFDF8!important; box-shadow:0 10px 30px rgba(18,54,48,.08)!important; pointer-events:auto; transition:all 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .mm-header.is-scrolled .mm-header-inner { width:clamp(320px, calc(100% - 2rem), 900px); min-height:2.85rem; padding:.25rem clamp(0.6rem, 1.4vw, 1rem); border-radius:1rem; background:rgba(255,253,248,0.94)!important; backdrop-filter:blur(12px)!important; -webkit-backdrop-filter:blur(12px)!important; box-shadow:0 8px 26px rgba(18,54,48,.12)!important; border-color:rgba(18,54,48,.14)!important; }
   .mm-header-dark .mm-header-inner { background:#052C27!important; border:none!important; outline:none!important; backdrop-filter:none!important; -webkit-backdrop-filter:none!important; }
-  .mm-header-light .mm-header-inner { background:#FFFDF8!important; border:none!important; outline:none!important; box-shadow:0 10px 30px rgba(18,54,48,.08)!important; backdrop-filter:none!important; -webkit-backdrop-filter:none!important; }
+  .mm-header-light .mm-header-inner { background:#FFFDF8!important; }
   .map-nav { display:flex; align-items:center; gap:.15rem; padding:.22rem; border-radius:.9rem; }
   .map-nav-link { position:relative; display:inline-flex; align-items:center; gap:.42rem; min-height:2.45rem; padding:0 .7rem; border-radius:.65rem; color:#3E5750; font-size:.76rem; font-weight:800; letter-spacing:-.02em; transition:color 170ms var(--ease-out),background-color 170ms var(--ease-out); }
   .map-nav-link:hover { background:rgba(18,54,48,.07); color:#123630; }

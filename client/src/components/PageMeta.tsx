@@ -11,7 +11,7 @@ type PageMetaProps = {
 };
 
 const origin = "https://www.kuberos.in";
-const defaultImage = "https://www.kuberos.in/manus-storage/kubear-money-orbit-master_fa60fb1b.png";
+const defaultImage = "https://www.kuberos.in/branding/logo.svg";
 
 function setMeta(selector: string, attribute: "name" | "property", key: string, content: string) {
   let node = document.querySelector<HTMLMetaElement>(selector);

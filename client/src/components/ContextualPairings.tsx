@@ -39,7 +39,7 @@ export function ContextualPairings() {
           </h2>
         </div>
         <p className="text-sm text-[#4B605B] max-w-md">
-          Calculators are paired directly with the exact editorial frameworks they belong to — no jumping between separate tabs.
+          Calculators are paired directly with the exact editorial frameworks they belong to, with no jumping between separate tabs.
         </p>
       </div>
 

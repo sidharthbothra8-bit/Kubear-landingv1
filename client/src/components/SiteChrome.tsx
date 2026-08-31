@@ -1,6 +1,7 @@
 /* Money Map: a floating product guide that gives every route a clear name, active position and thumb-ready app handoff. */
-import { ArrowUpRight, BookOpen, Compass, Home as HomeIcon, MoveRight, Sparkles, WalletCards } from "lucide-react";
+import { ArrowUpRight, BookOpen, Home as HomeIcon, MoveRight } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import { useEffect, useState } from "react";
 import { MotionObserver } from "@/components/MotionObserver";
 import { KubearLogo } from "@/components/KubearLogo";
 
@@ -8,47 +9,70 @@ const APP_URL = "https://kubear.kuberos.in";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear&pcampaignid=web_share";
 
 const desktopNavItems = [
-  { href: "/how-it-works", label: "How it works", icon: Compass },
   { href: "/learn", label: "Learn & Tools", icon: BookOpen },
 ];
 
 const mobileNavItems = [
   { href: "/", label: "Home", icon: HomeIcon },
-  { href: "/how-it-works", label: "How it works", icon: Sparkles },
   { href: "/learn", label: "Learn & Tools", icon: BookOpen },
 ];
 
-export function Brand({ inverse = false }: { inverse?: boolean }) {
+export function Brand({ inverse = false, compact = false }: { inverse?: boolean; compact?: boolean }) {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] shrink-0 transition-opacity hover:opacity-90 ${
+      className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] shrink-0 transition-all duration-200 hover:opacity-90 ${
         inverse ? "text-[#FFF8EE]" : "text-[#123630]"
       }`}
       aria-label="Kubear home"
     >
-      <KubearLogo className={inverse ? "size-8 sm:size-9" : "size-7 sm:size-8"} inverse={inverse} />
-      <span className="text-[1.18rem] font-black sm:text-[1.32rem] tracking-tight">Kubear</span>
+      <KubearLogo
+        className={`w-auto aspect-[470/365] transition-all duration-200 ${
+          inverse
+            ? "h-8 sm:h-9"
+            : compact
+            ? "h-6.5 sm:h-7"
+            : "h-7.5 sm:h-8.5"
+        }`}
+        inverse={inverse}
+      />
+      <span
+        className={`font-black tracking-tight transition-all duration-200 ${
+          compact ? "text-[1.12rem] sm:text-[1.2rem]" : "text-[1.22rem] sm:text-[1.34rem]"
+        }`}
+      >
+        Kubear
+      </span>
     </Link>
   );
 }
 
 export function Header() {
   const [location] = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isNavActive = (href: string) =>
     location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
 
   return (
-    <header className="mm-header mm-header-light">
+    <header className={`mm-header mm-header-light ${isScrolled ? "is-scrolled" : ""}`}>
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
       <div className="mm-header-inner">
-        <Brand inverse={false} />
-        
+        <Brand inverse={false} compact={isScrolled} />
+
         {/* Desktop / Tablet Navigation Links */}
-        <nav className="hidden sm:flex items-center gap-1.5" aria-label="Money Map">
+        <nav className="hidden sm:flex items-center" aria-label="Money Map">
           {desktopNavItems.map((item) => {
             const Icon = item.icon;
             const active = isNavActive(item.href);
@@ -56,29 +80,39 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[0.65rem] font-bold text-[0.82rem] whitespace-nowrap transition-all ${
+                className={`relative inline-flex items-center gap-2 rounded-xl font-bold whitespace-nowrap transition-all duration-200 ${
+                  isScrolled ? "px-3 py-1.5 text-xs" : "px-3.5 py-1.5 text-[0.82rem]"
+                } ${
                   active
-                    ? "bg-[#123630] text-[#FFF8EE] shadow-sm"
-                    : "text-[#3E5750] hover:text-[#123630] hover:bg-[#123630]/5"
+                    ? "bg-[#123630] text-[#FFF8EE] shadow-xs border border-[#123630]"
+                    : "bg-[#123630]/[0.04] text-[#24453E] border border-[#123630]/10 hover:bg-[#123630]/10 hover:border-[#123630]/25 hover:text-[#123630]"
                 }`}
               >
-                <Icon className={`size-3.5 ${active ? "text-[#FFF8EE]" : "text-[#3E5750]"}`} />
-                <span className={active ? "text-[#FFF8EE]" : ""}>{item.label}</span>
+                <Icon
+                  className={`transition-colors ${
+                    isScrolled ? "size-3.5" : "size-4"
+                  } ${active ? "text-[#FFB18E]" : "text-[#C96632]"}`}
+                />
+                <span className={active ? "text-[#FFF8EE]" : "text-[#143B35]"}>{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        {/* Action Button (Spacious and perfectly aligned on both mobile & desktop) */}
+        {/* Action Button (Seamlessly becomes compact on scroll) */}
         <div className="flex items-center shrink-0">
           <a
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-[0.65rem] sm:rounded-[0.75rem] bg-[#FF5C2B] text-[#FFF8EE] font-black text-xs sm:text-[0.82rem] shadow-[0_3px_0_#9F3017] hover:shadow-[0_4px_0_#9F3017] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#9F3017] transition-all shrink-0"
+            className={`inline-flex items-center gap-1.5 rounded-[0.65rem] sm:rounded-[0.75rem] bg-[#FF5C2B] text-[#FFF8EE] font-black shadow-[0_3px_0_#9F3017] hover:shadow-[0_4px_0_#9F3017] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#9F3017] transition-all duration-200 shrink-0 ${
+              isScrolled
+                ? "px-3 py-1.5 text-xs sm:text-[0.78rem]"
+                : "px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-[0.82rem]"
+            }`}
             href={APP_URL}
             target="_blank"
             rel="noreferrer"
           >
             <span>Open App</span>
-            <ArrowUpRight className="size-3.5" />
+            <ArrowUpRight className={isScrolled ? "size-3" : "size-3.5"} />
           </a>
         </div>
       </div>
@@ -96,10 +130,10 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="sm:hidden fixed bottom-3 left-3 right-3 z-50 pointer-events-auto"
+      className="sm:hidden fixed bottom-3 left-4 right-4 z-50 pointer-events-auto"
       aria-label="Mobile Navigation"
     >
-      <div className="max-w-md mx-auto bg-[#FFFDF8] rounded-2xl shadow-[0_10px_30px_rgba(18,54,48,0.1)] p-1.5 flex items-center justify-between gap-1">
+      <div className="max-w-xs mx-auto bg-[#FFFDF8] rounded-2xl shadow-[0_10px_30px_rgba(18,54,48,0.12)] border border-[#123630]/10 p-1.5 flex items-center justify-between gap-1">
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const active = isNavActive(item.href);
@@ -107,14 +141,16 @@ export function MobileBottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex-1 min-h-[46px] flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all ${
+              className={`flex-1 min-h-[44px] flex items-center justify-center gap-2 py-1.5 px-3 rounded-xl transition-all ${
                 active
-                  ? "bg-[#123630] text-[#FFF8EE] font-bold shadow-sm"
+                  ? "bg-[#123630] text-[#FFF8EE] font-bold shadow-xs"
                   : "text-[#516761] hover:text-[#123630] hover:bg-[#123630]/5 font-medium"
               }`}
             >
-              <Icon className={`size-4 mb-0.5 ${active ? "text-[#FFF8EE]" : "text-[#516761]"}`} />
-              <span className={`text-[10px] tracking-tight leading-none whitespace-nowrap ${active ? "text-[#FFF8EE]" : ""}`}>{item.label}</span>
+              <Icon className={`size-4 ${active ? "text-[#FFB18E]" : "text-[#516761]"}`} />
+              <span className={`text-xs tracking-tight font-bold whitespace-nowrap ${active ? "text-[#FFF8EE]" : ""}`}>
+                {item.label}
+              </span>
             </Link>
           );
         })}
@@ -154,14 +190,11 @@ export function Footer() {
             <div>
               <p className="eyebrow text-[#F4D277]">Explore</p>
               <div className="mt-4 grid gap-3 text-sm text-[#D8E8DE]">
-                <Link href="/how-it-works" className="hover:text-white">
-                  How it works
+                <Link href="/" className="hover:text-white">
+                  Overview
                 </Link>
                 <Link href="/learn" className="hover:text-white">
                   Learn & Tools
-                </Link>
-                <Link href="/journal" className="hover:text-white">
-                  Journal
                 </Link>
               </div>
             </div>

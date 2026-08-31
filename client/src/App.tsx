@@ -1,7 +1,6 @@
 /* Living Ledger design: all routes share a warm, editorial system so the product, privacy, tools and learning surfaces feel like one calm picture. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import HowItWorks from "@/pages/HowItWorks";
 import Journal from "@/pages/Journal";
 import Learn from "@/pages/Learn";
 import LearnStudio from "@/pages/LearnStudio";
@@ -19,9 +18,9 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return <><ScrollToTop /><Switch>
     <Route path="/" component={Home} />
-    <Route path="/how-it-works" component={HowItWorks} />
-    <Route path="/your-money-picture" component={LegacyMoneyPictureRedirect} />
-    <Route path="/money-view" component={LegacyMoneyPictureRedirect} />
+    <Route path="/how-it-works" component={LegacyHomeRedirect} />
+    <Route path="/your-money-picture" component={LegacyHomeRedirect} />
+    <Route path="/money-view" component={LegacyHomeRedirect} />
     <Route path="/privacy-data" component={PrivacyData} />
     <Route path="/journal" component={Journal} />
     <Route path="/learn" component={Learn} />
@@ -38,19 +37,19 @@ function Router() {
   </Switch></>;
 }
 
-function LegacyMoneyPictureRedirect() {
+function LegacyHomeRedirect() {
   const [, setLocation] = useLocation();
   useEffect(() => {
-    setLocation("/how-it-works", { replace: true });
+    setLocation("/", { replace: true });
   }, [setLocation]);
   return (
     <main className="grid min-h-screen place-items-center bg-[#FAF7F0] p-6 text-center">
       <div>
-        <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#D44722]">Kubear Living Ledger</p>
-        <h1 className="mt-3 font-serif text-4xl text-[#123630]">Opening How Kubear Works</h1>
-        <p className="mt-3 text-[#5A6E69]">Your money view is now an integrated part of How Kubear Works.</p>
-        <Link href="/how-it-works" className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full bg-[#123630] px-6 text-sm font-extrabold text-[#FFFDF8] mt-6">
-          Continue to How It Works
+        <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#D44722]">Kubear</p>
+        <h1 className="mt-3 font-serif text-4xl text-[#123630]">Returning to Home</h1>
+        <p className="mt-3 text-[#5A6E69]">The product story is fully integrated on our homepage.</p>
+        <Link href="/" className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full bg-[#123630] px-6 text-sm font-extrabold text-[#FFFDF8] mt-6">
+          Continue to Home
         </Link>
       </div>
     </main>

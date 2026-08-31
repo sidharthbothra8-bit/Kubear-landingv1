@@ -32,6 +32,8 @@ import { InteractiveCalculatorSuite } from "@/components/InteractiveCalculatorSu
 import { LearnDeskTools } from "@/components/LearnDeskTools";
 import { PageMeta } from "@/components/PageMeta";
 import { SiteLayout } from "@/components/SiteChrome";
+import { ArticleVisual } from "@/components/ArticleVisual";
+import { LearnLibraryVisual } from "@/components/LearnLibraryVisual";
 import { getLearnTopic, learnTopics } from "@/lib/learnTopics";
 import { trpc } from "@/lib/trpc";
 
@@ -46,64 +48,6 @@ const displayDate = (value: Date | string | null | undefined) =>
         timeZone: "Asia/Kolkata",
       }).format(new Date(value))
     : "";
-
-function ArticleVisual({ visual, className = "" }: { visual: string; className?: string }) {
-  if (visual === "salary")
-    return (
-      <div className={`learn-visual learn-visual-instrument visual-salary ${className}`} aria-hidden="true">
-        <span className="article-visual-kicker">Salary jobs</span>
-        <div><i /><b>Rent</b><small>placed</small></div>
-        <div><i /><b>Goa</b><small>visible</small></div>
-        <div><i /><b>Buffer</b><small>saved</small></div>
-      </div>
-    );
-  if (visual === "upi")
-    return (
-      <div className={`learn-visual learn-visual-instrument visual-upi ${className}`} aria-hidden="true">
-        <span className="article-visual-kicker">UPI week</span>
-        <div className="article-visual-days">
-          <i>M</i><i>T</i><i>W</i><i>T</i><i className="today">F</i><i>S</i><i>S</i>
-        </div>
-        <b>Friday check-in</b>
-      </div>
-    );
-  if (visual === "rent")
-    return (
-      <div className={`learn-visual learn-visual-instrument visual-rent ${className}`} aria-hidden="true">
-        <span className="article-visual-kicker">Commitments</span>
-        <div className="article-visual-runway">
-          <i>05</i><b>Rent</b><i>11</i><b>Card</b><i>27</i><b>Plan</b>
-        </div>
-        <span>Due first</span>
-      </div>
-    );
-  if (visual === "goa")
-    return (
-      <div className={`learn-visual learn-visual-instrument visual-goa ${className}`} aria-hidden="true">
-        <span className="article-visual-kicker">Goal marker</span>
-        <div className="article-visual-goal">
-          <i /><b>₹15K</b><small>saved so far</small>
-        </div>
-        <span>one plan at a time</span>
-      </div>
-    );
-  if (visual === "home")
-    return (
-      <div className={`learn-visual learn-visual-instrument visual-home ${className}`} aria-hidden="true">
-        <span className="article-visual-kicker">Selected sharing</span>
-        <div><b>Home</b><span>Electricity</span><span>Groceries</span></div>
-        <div><b>Personal</b><span>Lunch out</span><span>Weekend plan</span></div>
-      </div>
-    );
-  return (
-    <div className={`learn-visual learn-visual-instrument visual-library ${className}`} aria-hidden="true">
-      <span className="article-visual-kicker">Kubear Learn</span>
-      <BookOpen className="size-7" />
-      <b>Money, in focus</b>
-      <span>Plain words, no jargon</span>
-    </div>
-  );
-}
 
 export default function Learn() {
   const [, params] = useRoute("/learn/:slug");
@@ -194,16 +138,7 @@ function LearnHub() {
 
       {/* Editorial & Planning Hero Banner */}
       <section className="learn-hero learn-desk-hero">
-        <div className="learn-library-object" aria-hidden="true">
-          <div className="library-tab tab-one" />
-          <div className="library-tab tab-two" />
-          <div className="library-card">
-            <BookOpen className="size-7 text-[#C96632]" />
-            <b>50 Guides & Tools</b>
-            <span>Editorial & Planning Desk</span>
-          </div>
-          <div className="library-ribbon" />
-        </div>
+        <LearnLibraryVisual />
         <div>
           <p className="week-kicker">
             <span /> Kubear Learn & Tools Desk
@@ -212,7 +147,7 @@ function LearnHub() {
             Money talk & practical math. <em>One unified desk.</em>
           </h1>
           <p className="week-lede">
-            Short, verified guides and interactive calculators for the decisions that shape Indian financial lives — from salary day SIPs and rent vs buy math to emergency runway and FIRE goals.
+            Short, verified guides and interactive calculators for the decisions that shape Indian financial lives, from salary day SIPs and rent vs buy math to emergency runway and FIRE goals.
           </p>
 
           {/* Quick Action Badges */}
@@ -434,7 +369,7 @@ function LearnHub() {
               {/* Featured Cornerstone Article (when not searching/filtering) */}
               {!search && activeTopicFilter === "all" && featured ? (
                 <section className="learn-feature">
-                  <ArticleVisual visual={featured.heroType} />
+                  <ArticleVisual visual={featured.heroType} topic={featured.topic} />
                   <div>
                     <p className="eyebrow text-[#C96632]">
                       Cornerstone Guide · Issue {String(featured.calendarOrder).padStart(2, "0")}
@@ -503,34 +438,46 @@ function LearnHub() {
                   <span>Verified Indian financial frameworks</span>
                 </div>
 
-                <div className="grid gap-3.5">
+                <div className="flex flex-col gap-3">
                   {filteredArticles.map((article) => (
                     <Link
                       href={`/learn/${article.slug}`}
-                      className="learn-feed-item group hover:shadow-xs transition-all duration-150"
+                      className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 sm:p-5 rounded-2xl bg-[#FFFDF8] hover:bg-white border border-[#143B35]/12 hover:border-[#143B35]/30 hover:shadow-md transition-all duration-200 no-underline"
                       key={article.slug}
                     >
-                      <span className="font-mono font-bold text-xs text-[#C96632]">
-                        #{String(article.calendarOrder).padStart(2, "0")}
-                      </span>
-                      <ArticleVisual visual={article.heroType} />
+                      {/* Left: Issue Index Tag & Thumbnail Visual */}
+                      <div className="flex items-center sm:items-start gap-3 shrink-0">
+                        <span className="px-2.5 py-1 rounded-lg bg-[#FAF5EE] border border-[#E8DCC8] font-mono font-bold text-xs text-[#C96632] shrink-0">
+                          #{String(article.calendarOrder).padStart(2, "0")}
+                        </span>
+                        <div className="w-48 sm:w-56 shrink-0 hidden md:block">
+                          <ArticleVisual visual={article.heroType} topic={article.topic} compact={true} />
+                        </div>
+                      </div>
+
+                      {/* Middle: Editorial Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#143B35]/10 text-[#143B35]">
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider bg-[#143B35]/10 text-[#143B35]">
                             {getLearnTopic(article.topic)?.label ?? article.topic}
                           </span>
-                          <span className="text-[11px] text-[#65726C] font-mono">
+                          <span className="text-[11px] text-[#65726C] font-mono flex items-center gap-1">
+                            <Clock3 className="size-3 text-[#C96632]" />
                             {article.readTime}
                           </span>
                         </div>
-                        <h2 className="group-hover:text-[#C96632] transition-colors text-lg sm:text-xl font-serif text-[#123630]">
+                        <h2 className="text-lg sm:text-xl font-serif text-[#123630] group-hover:text-[#C96632] transition-colors leading-snug">
                           {article.title}
                         </h2>
-                        <p className="line-clamp-2 text-xs sm:text-sm text-[#5B6D67] mt-1 leading-relaxed">
+                        <p className="line-clamp-2 text-xs sm:text-sm text-[#5B6D67] mt-1.5 leading-relaxed">
                           {article.dek}
                         </p>
                       </div>
-                      <ArrowRight className="size-5 shrink-0 text-[#143B35] group-hover:translate-x-1 group-hover:text-[#C96632] transition-all" />
+
+                      {/* Right: Interaction Arrow */}
+                      <div className="size-9 rounded-full bg-[#143B35]/5 group-hover:bg-[#C96632] flex items-center justify-center shrink-0 transition-colors self-end sm:self-center ml-auto">
+                        <ArrowRight className="size-4 text-[#143B35] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                      </div>
                     </Link>
                   ))}
 
@@ -606,6 +553,32 @@ function LearnHub() {
   );
 }
 
+function ReadingProgressBar() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight <= 0) return;
+      const currentScroll = window.scrollY;
+      const calculated = Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100));
+      setProgress(calculated);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 right-0 h-1 bg-[#123630]/10 z-50 pointer-events-none">
+      <div
+        className="h-full bg-[#C96632] transition-all duration-75 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
+}
+
 function LearnDetail({ slug }: { slug: string }) {
   const topic = getLearnTopic(slug);
   if (topic) return <TopicPage slug={slug} />;
@@ -666,114 +639,219 @@ function LearnDetail({ slug }: { slug: string }) {
           updatedAt: article.updatedAt,
         }}
       />
+      {/* Reading Progress Indicator Bar */}
+      <ReadingProgressBar />
+
       <article className="article-page pt-24 sm:pt-28 md:pt-32 max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="mb-6 flex items-center justify-between">
-          <Link
-            href="/learn"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[#123630]/15 text-xs font-mono font-bold text-[#3E524D] hover:text-[#123630] hover:border-[#123630]/35 transition-all shadow-xs"
-          >
-            <ArrowLeft className="size-3.5 text-[#C96632]" />
-            <span>Back to Learn & Tools</span>
-          </Link>
-          {toolHref ? (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
             <Link
-              href={toolHref}
-              className="inline-flex items-center gap-1 text-xs font-mono font-bold text-[#C96632] hover:underline"
+              href="/learn"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#123630]/15 text-xs font-mono font-bold text-[#3E524D] hover:text-[#123630] hover:border-[#123630]/35 transition-all shadow-xs"
             >
-              <span>Interactive Calculator</span>
-              <ArrowRight className="size-3" />
+              <ArrowLeft className="size-3.5 text-[#C96632]" />
+              <span>Learn Hub</span>
             </Link>
-          ) : null}
+            <span className="text-xs text-[#8A9B95] font-mono">/</span>
+            <Link
+              href={`/learn/${article.topic}`}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FAF7F0] border border-[#123630]/10 text-xs font-mono font-bold text-[#143B35] hover:border-[#123630]/30 transition-all"
+            >
+              <Tag className="size-3 text-[#C96632]" />
+              <span>{getLearnTopic(article.topic)?.label ?? article.topic}</span>
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {toolHref ? (
+              <Link
+                href={toolHref}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#143B35] text-[#FFF8EE] text-xs font-mono font-bold hover:bg-[#1E4D45] transition-all shadow-xs"
+              >
+                <Calculator className="size-3 text-[#FF5C2B]" />
+                <span>Interactive Math</span>
+                <ArrowRight className="size-3" />
+              </Link>
+            ) : null}
+          </div>
         </div>
+
         <div className="article-intro">
-          <p className="week-kicker">
-            <span /> {getLearnTopic(article.topic)?.label ?? article.topic} · Issue{" "}
-            {String(article.calendarOrder).padStart(2, "0")}
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-[#C96632]/10 text-[#C96632] border border-[#C96632]/20">
+              Issue #{String(article.calendarOrder).padStart(2, "0")}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-[#143B35]/10 text-[#143B35]">
+              {article.category}
+            </span>
+            <span className="inline-flex items-center gap-1 text-xs font-mono text-[#5B6D67] ml-auto">
+              <Clock3 className="size-3.5 text-[#C96632]" />
+              {article.readTime}
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#123630] font-normal leading-[1.12] tracking-tight">
+            {article.title}
+          </h1>
+          <p className="text-base sm:text-lg text-[#556962] font-sans mt-3 leading-relaxed max-w-3xl">
+            {article.dek}
           </p>
-          <h1>{article.title}</h1>
-          <p>{article.dek}</p>
-          <div className="article-meta-strip">
-            <span>
-              <CalendarDays className="size-3.5" /> Published {displayDate(article.publishedAt)}
+
+          {/* Byline & Reviewer Confidence Chip */}
+          <div className="flex flex-wrap items-center gap-4 mt-5 pt-4 border-t border-[#143B35]/10 text-xs font-mono text-[#657670]">
+            <span className="flex items-center gap-1.5">
+              <UserRound className="size-3.5 text-[#143B35]" />
+              <strong>{article.authorName}</strong>
             </span>
-            <span>
-              <Clock3 className="size-3.5" /> {article.readTime}
+            <span className="text-[#A4B3AD]">·</span>
+            <span className="flex items-center gap-1">
+              <ShieldCheck className="size-3.5 text-emerald-700" />
+              <span>Verified for Indian statutory rules</span>
             </span>
-            <span>
-              <UserRound className="size-3.5" /> {article.authorName}
-            </span>
-            {article.updatedAt ? (
-              <span>Updated {displayDate(article.updatedAt)}</span>
-            ) : null}
+            <span className="text-[#A4B3AD]">·</span>
+            <span>Reviewed {displayDate(article.reviewedAt)}</span>
           </div>
         </div>
 
-        <ArticleVisual visual={article.heroType} className="article-hero-visual" />
+        <ArticleVisual visual={article.heroType} topic={article.topic} className="article-hero-visual my-6" />
 
-        <div className="article-body">
-          <aside>
-            <Sparkles className="size-5 text-[#C96632]" />
-            <p>{article.takeaway}</p>
-          </aside>
-          <div>
-            <div className="learn-prose">
-              <Streamdown>{article.bodyMarkdown}</Streamdown>
+        {article.takeaway ? (
+          <div className="my-8 p-5 sm:p-6 rounded-2xl bg-[#FFFDF8] border-l-4 border-[#C96632] border-y border-r border-[#143B35]/15 shadow-xs flex items-start gap-4">
+            <div className="size-10 rounded-xl bg-[#FFF5EB] border border-[#FED7AA] flex items-center justify-center shrink-0 mt-0.5">
+              <Sparkles className="size-5 text-[#C96632]" />
             </div>
-
-            {article.indianScenario ? (
-              <div className="my-6 p-4 rounded-xl bg-[#FAF7F0] border border-[#143B35]/15">
-                <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#C96632] mb-1">
-                  Real Indian Context
-                </p>
-                <p className="text-sm text-[#143B35] leading-relaxed">{article.indianScenario}</p>
-              </div>
-            ) : null}
-
-            <p className="article-safety mt-6">
-              This article is general financial education. It is not personal tax, legal, or investment advice.
-            </p>
-
-            {toolHref && article.toolLabel ? (
-              <Link href={toolHref} className="article-tool-link">
-                {article.toolLabel} <ArrowRight className="size-4" />
-              </Link>
-            ) : article.ctaHref ? (
-              <Link href={article.ctaHref} className="article-tool-link">
-                {article.ctaLabel} <ArrowRight className="size-4" />
-              </Link>
-            ) : null}
+            <div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#C96632] block mb-1">
+                Key Takeaway
+              </span>
+              <p className="text-base sm:text-lg font-medium text-[#102B28] leading-relaxed">
+                {article.takeaway}
+              </p>
+            </div>
           </div>
+        ) : null}
+
+        <div className="max-w-none">
+          <div className="learn-prose">
+            <Streamdown>{article.bodyMarkdown}</Streamdown>
+          </div>
+
+          {article.indianScenario ? (
+            <div className="my-8 p-5 sm:p-6 rounded-2xl bg-[#F4F8F6] border border-[#143B35]/15 shadow-2xs">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="size-2 rounded-full bg-[#143B35]" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#143B35]">
+                  Real Indian Context
+                </span>
+              </div>
+              <p className="text-sm sm:text-base text-[#1E3F39] leading-relaxed">
+                {article.indianScenario}
+              </p>
+            </div>
+          ) : null}
+
+          <div className="my-8 p-4 rounded-xl bg-[#FAF7F0] border border-[#143B35]/12 text-xs text-[#596E67] leading-relaxed">
+            <p>This article is general financial education. It is not personal tax, legal, or investment advice.</p>
+          </div>
+
+          {toolHref && article.toolLabel ? (
+            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#143B35] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-white/15 text-[#D8E8DE] mb-2">
+                  <Calculator className="size-3 text-[#E5AD2B]" />
+                  Interactive Tool
+                </div>
+                <h3 className="text-xl font-serif text-white font-normal">
+                  {article.toolLabel}
+                </h3>
+                <p className="text-xs text-[#A8C5BD] mt-1 max-w-md">
+                  Calculate your exact allocation numbers with verified Indian tax and expense rules.
+                </p>
+              </div>
+              <Link
+                href={toolHref}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C96632] hover:bg-[#b05526] text-white text-sm font-bold shadow-xs hover:shadow transition-all shrink-0 no-underline"
+              >
+                <span>Open Calculator</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          ) : article.ctaHref ? (
+            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#143B35] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
+              <div>
+                <h3 className="text-xl font-serif text-white font-normal">
+                  {article.ctaLabel}
+                </h3>
+              </div>
+              <Link
+                href={article.ctaHref}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C96632] hover:bg-[#b05526] text-white text-sm font-bold shadow-xs hover:shadow transition-all shrink-0 no-underline"
+              >
+                <span>Get Started</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          ) : null}
         </div>
 
         {article.sources && article.sources.length > 0 ? (
-          <section className="article-sources">
-            <h2>Sources & Statutory References</h2>
-            <ul>
+          <section className="mt-12 pt-8 border-t border-[#143B35]/15">
+            <h3 className="text-xl font-serif text-[#102B28] mb-4">Sources &amp; Statutory References</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {article.sources.map((source) => (
-                <li key={source.id}>
-                  <a href={source.sourceUrl} target="_blank" rel="noreferrer">
-                    {source.sourceTitle}
-                    <ExternalLink className="size-3" />
-                  </a>
-                  <small>Verified route recorded {displayDate(source.accessedAt)}</small>
-                </li>
+                <a
+                  key={source.id}
+                  href={source.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group p-4 rounded-xl bg-[#FAF7F0] border border-[#143B35]/12 hover:border-[#C96632]/40 hover:bg-white transition-all flex flex-col justify-between gap-2 no-underline"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-xs font-bold text-[#143B35] group-hover:text-[#C96632] transition-colors leading-snug">
+                      {source.sourceTitle}
+                    </span>
+                    <ExternalLink className="size-3.5 text-[#62726C] group-hover:text-[#C96632] shrink-0 mt-0.5" />
+                  </div>
+                  <span className="text-[10px] font-mono text-[#718079]">
+                    Verified route recorded {displayDate(source.accessedAt)}
+                  </span>
+                </a>
               ))}
-            </ul>
+            </div>
           </section>
         ) : null}
 
         {article.related && article.related.length > 0 ? (
-          <section className="article-related">
-            <p className="eyebrow">Related Guides</p>
-            {article.related.map((item) => (
-              <Link href={`/learn/${item.slug}`} key={item.slug}>
-                <span>
-                  <Clock3 className="size-4" /> {item.readTime}
-                </span>
-                <b>{item.title}</b>
-                <ArrowRight className="size-4" />
-              </Link>
-            ))}
+          <section className="mt-12 pt-8 border-t border-[#143B35]/15">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#C96632]">
+                Related Guides
+              </p>
+              <span className="text-xs font-mono text-[#62726C]">Issue #{String(article.calendarOrder).padStart(2, "0")} series</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {article.related.map((item) => (
+                <Link
+                  href={`/learn/${item.slug}`}
+                  key={item.slug}
+                  className="group p-5 rounded-2xl bg-[#FFFDF8] hover:bg-white border border-[#143B35]/12 hover:border-[#143B35]/30 hover:shadow-md transition-all flex flex-col justify-between gap-3 no-underline"
+                >
+                  <div>
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#62726C] mb-2">
+                      <Clock3 className="size-3 text-[#C96632]" />
+                      <span>{item.readTime}</span>
+                    </div>
+                    <h4 className="text-base font-serif font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors leading-snug">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs font-bold text-[#C96632] group-hover:translate-x-1 transition-transform self-end mt-2">
+                    <span>Read guide</span>
+                    <ArrowRight className="size-3.5" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </section>
         ) : null}
       </article>
@@ -812,25 +890,50 @@ function TopicPage({ slug }: { slug: string }) {
         </Link>
       </section>
 
-      <section className="topic-list">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20">
         {query.isLoading ? (
           <LibraryLoading />
         ) : query.isError ? (
           <LibraryUnavailable onRetry={() => void query.refetch()} />
         ) : query.data?.length ? (
-          query.data.map((article) => (
-            <Link href={`/learn/${article.slug}`} key={article.slug}>
-              <ArticleVisual visual={article.heroType} />
-              <div>
-                <p className="eyebrow">
-                  Issue {String(article.calendarOrder).padStart(2, "0")} · {article.readTime}
-                </p>
-                <h2>{article.title}</h2>
-                <p>{article.dek}</p>
-              </div>
-              <ArrowRight className="size-5" />
-            </Link>
-          ))
+          <div className="flex flex-col gap-3">
+            {query.data.map((article) => (
+              <Link
+                href={`/learn/${article.slug}`}
+                key={article.slug}
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 sm:p-5 rounded-2xl bg-[#FFFDF8] hover:bg-white border border-[#143B35]/12 hover:border-[#143B35]/30 hover:shadow-md transition-all duration-200 no-underline"
+              >
+                <div className="flex items-center sm:items-start gap-3 shrink-0">
+                  <span className="px-2.5 py-1 rounded-lg bg-[#FAF5EE] border border-[#E8DCC8] font-mono font-bold text-xs text-[#C96632] shrink-0">
+                    #{String(article.calendarOrder).padStart(2, "0")}
+                  </span>
+                  <div className="w-48 sm:w-52 shrink-0 hidden md:block">
+                    <ArticleVisual visual={article.heroType} topic={topic.slug} compact={true} />
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider bg-[#143B35]/10 text-[#143B35]">
+                      {topic.label}
+                    </span>
+                    <span className="text-[11px] text-[#65726C] font-mono flex items-center gap-1">
+                      <Clock3 className="size-3 text-[#C96632]" />
+                      {article.readTime}
+                    </span>
+                  </div>
+                  <h2 className="text-lg sm:text-xl font-serif text-[#123630] group-hover:text-[#C96632] transition-colors leading-snug">
+                    {article.title}
+                  </h2>
+                  <p className="line-clamp-2 text-xs sm:text-sm text-[#5B6D67] mt-1.5 leading-relaxed">
+                    {article.dek}
+                  </p>
+                </div>
+                <div className="size-9 rounded-full bg-[#143B35]/5 group-hover:bg-[#C96632] flex items-center justify-center shrink-0 transition-colors self-end sm:self-center ml-auto">
+                  <ArrowRight className="size-4 text-[#143B35] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                </div>
+              </Link>
+            ))}
+          </div>
         ) : (
           <p className="topic-empty">
             This collection is being carefully built. Try a practical planning tool while the next notes are reviewed.

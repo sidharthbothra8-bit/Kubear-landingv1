@@ -21,50 +21,155 @@ body :is(.instrument-hero, .instrument-story-grid, .mm-salary-grid, .goal-runway
   min-width: 0;
 }
 
+/* Site-wide Guaranteed Hero Top Clearances for Floating Navbar */
+.instrument-hero,
+.mm-hero,
+.learn-hero,
+.learn-desk-hero,
+.tools-hub-hero,
+.article-page,
+.calculator-shell,
+.topic-hero {
+  padding-top: 5.5rem !important;
+}
+
+@media (min-width: 640px) {
+  .instrument-hero,
+  .mm-hero,
+  .learn-hero,
+  .learn-desk-hero,
+  .tools-hub-hero,
+  .article-page,
+  .calculator-shell,
+  .topic-hero {
+    padding-top: 6.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .instrument-hero,
+  .mm-hero,
+  .learn-hero,
+  .learn-desk-hero,
+  .tools-hub-hero,
+  .article-page,
+  .calculator-shell,
+  .topic-hero {
+    padding-top: 7.5rem !important;
+  }
+}
+
+.mm-hero h1,
+.instrument-hero h1 {
+  max-width: 38rem !important;
+  color: var(--aurora-ink) !important;
+  font-size: 2.25rem !important;
+  font-weight: 400 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  margin-top: 0.75rem !important;
+}
+
+@media (min-width: 640px) {
+  .mm-hero h1,
+  .instrument-hero h1 {
+    font-size: 2.75rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mm-hero h1,
+  .instrument-hero h1 {
+    font-size: 3.25rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mm-hero h1,
+  .instrument-hero h1 {
+    font-size: 3.75rem !important;
+  }
+}
+
+.mm-hero-lede,
+.instrument-hero .mm-hero-lede {
+  max-width: 32rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+}
+
+@media (min-width: 768px) {
+  .mm-hero-lede,
+  .instrument-hero .mm-hero-lede {
+    font-size: 1.05rem !important;
+  }
+}
+
 @media (min-width: 641px) {
   .instrument-hero {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
+    padding-top: 6.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  @media (min-width: 1024px) {
+    .instrument-hero {
+      gap: 3.5rem !important;
+      padding-top: 7.5rem !important;
+      padding-bottom: 4.5rem !important;
+    }
   }
   .instrument-story-grid,
   .mm-orbit-section .mm-shell {
     display: grid !important;
     grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
   }
   .mm-salary-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
   }
   .goal-runway-layout,
   .mm-goa-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
   }
   .mm-home-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
   }
   .mm-trust-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr) !important;
     align-items: center !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
   }
   .mm-faq-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr) !important;
     align-items: start !important;
-    gap: clamp(2rem, 4vw, 5rem) !important;
+    gap: 2rem !important;
+  }
+  @media (min-width: 1024px) {
+    .instrument-story-grid,
+    .mm-orbit-section .mm-shell,
+    .mm-salary-grid,
+    .goal-runway-layout,
+    .mm-goa-grid,
+    .mm-home-grid,
+    .mm-trust-grid,
+    .mm-faq-grid {
+      gap: 3.5rem !important;
+    }
   }
   .hero-money-picture,
   .money-instrument {
