@@ -647,21 +647,21 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
 
             {/* Direct App CTA */}
             {currentResult.valid && (
-              <div className="mt-4 p-4 rounded-xl bg-[#123630] text-[#FFF8EE] shadow-sm flex flex-col justify-between">
+              <div className="mt-4 p-4 rounded-xl bg-white border-2 border-[#123630]/12 shadow-xs text-[#123630] flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#F4D277] flex items-center gap-1">
-                    <Sparkles className="size-3 text-[#FF5C2B]" /> Ready to track this live?
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#C96632] flex items-center gap-1">
+                    <Sparkles className="size-3 text-[#C96632]" /> Ready to track this live?
                   </span>
-                  <p className="text-xs text-[#FFF8EE]/85 mt-1 leading-relaxed">
-                    Set up this target in Kubear to auto-track every UPI payment, salary deposit, and SIP transaction.
+                  <p className="text-xs text-[#556963] mt-1 leading-relaxed">
+                    Set up this target in Kubear to auto-track every payment, salary deposit, and SIP transaction with 0 bank logins.
                   </p>
                 </div>
                 <div className="mt-3 flex items-center gap-2">
                   <a
-                    href="https://app.kubear.com"
+                    href="https://kubear.kuberos.in"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[#FF5C2B] text-[#FFF8EE] text-xs font-bold hover:bg-[#E04D1F] transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-[#FF5C2B] text-[#FFFDF8] text-xs font-bold shadow-[0_2px_0_#9F3017] hover:shadow-[0_3px_0_#9F3017] hover:-translate-y-0.5 active:translate-y-0.5 transition-all text-center no-underline"
                   >
                     <span>Open Kubear App</span>
                     <ArrowUpRight className="size-3.5" />
@@ -670,7 +670,7 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
                     href="https://play.google.com/store/apps/details?id=com.kubear.app"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center py-2 px-2.5 rounded-lg bg-white/10 text-white hover:bg-white/15 text-[11px] font-medium transition-all"
+                    className="inline-flex items-center justify-center py-2 px-2.5 rounded-lg bg-[#FAF7F0] border border-[#123630]/15 text-[#123630] hover:bg-white text-[11px] font-bold transition-all no-underline shadow-xs"
                     title="Get on Android"
                   >
                     Android

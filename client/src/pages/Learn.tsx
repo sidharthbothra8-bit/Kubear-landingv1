@@ -36,6 +36,12 @@ import { ArticleVisual } from "@/components/ArticleVisual";
 import { LearnLibraryVisual } from "@/components/LearnLibraryVisual";
 import { getLearnTopic, learnTopics } from "@/lib/learnTopics";
 import { trpc } from "@/lib/trpc";
+import {
+  staticParsedArticles,
+  getStaticArticleBySlug,
+  getStaticArticlesByTopic,
+} from "@shared/articlesData";
+
 
 type ViewMode = "all" | "calculators" | "guides";
 
@@ -57,7 +63,10 @@ export default function Learn() {
 
 function LearnHub() {
   const [location] = useLocation();
-  const query = trpc.learn.hub.useQuery();
+  const query = trpc.learn.hub.useQuery(undefined, {
+    retry: false,
+    refetchOnWindowFocus: false,
+  });
   const [search, setSearch] = useState("");
   const [activeTopicFilter, setActiveTopicFilter] = useState<string>("all");
   const topicRailRef = useRef<HTMLDivElement>(null);
@@ -83,7 +92,12 @@ function LearnHub() {
     }
   }, [location]);
 
-  const allArticles = useMemo(() => query.data?.articles ?? [], [query.data?.articles]);
+  const allArticles = useMemo(() => {
+    if (query.data?.articles && query.data.articles.length > 0) {
+      return query.data.articles;
+    }
+    return staticParsedArticles;
+  }, [query.data?.articles]);
 
   const filteredArticles = useMemo(() => {
     return allArticles.filter((article) => {
@@ -103,7 +117,8 @@ function LearnHub() {
     });
   }, [allArticles, search, activeTopicFilter]);
 
-  const featured = allArticles[0] ?? query.data?.featured;
+  const featured = (query.data?.featured as typeof allArticles[0] | undefined) ?? allArticles[0];
+
 
   // Group all articles by Pillar / Topic
   const pillarGroups = useMemo(() => {
@@ -582,17 +597,27 @@ function ReadingProgressBar() {
 function LearnDetail({ slug }: { slug: string }) {
   const topic = getLearnTopic(slug);
   if (topic) return <TopicPage slug={slug} />;
-  const query = trpc.learn.article.useQuery({ slug });
-  const article = query.data;
 
-  if (query.isLoading)
+  const staticArticle = useMemo(() => getStaticArticleBySlug(slug), [slug]);
+  const query = trpc.learn.article.useQuery(
+    { slug },
+    {
+      retry: false,
+      refetchOnWindowFocus: false,
+      enabled: !staticArticle,
+    }
+  );
+
+  const article = query.data ?? staticArticle;
+
+  if (!article && query.isLoading)
     return (
       <SiteLayout>
         <LibraryLoading />
       </SiteLayout>
     );
 
-  if (query.isError)
+  if (!article && query.isError)
     return (
       <SiteLayout>
         <LibraryUnavailable onRetry={() => void query.refetch()} />
@@ -623,6 +648,7 @@ function LearnDetail({ slug }: { slug: string }) {
         </section>
       </SiteLayout>
     );
+
 
   const toolHref = article.toolHref?.replace(/^\/tools(?=\/|$)/, "/learn/tools");
 
@@ -794,11 +820,11 @@ function LearnDetail({ slug }: { slug: string }) {
           ) : null}
         </div>
 
-        {article.sources && article.sources.length > 0 ? (
+        {"sources" in article && Array.isArray((article as any).sources) && (article as any).sources.length > 0 ? (
           <section className="mt-12 pt-8 border-t border-[#143B35]/15">
             <h3 className="text-xl font-serif text-[#102B28] mb-4">Sources &amp; Statutory References</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {article.sources.map((source) => (
+              {((article as any).sources as { id: number; sourceUrl: string; sourceTitle: string; accessedAt?: Date | string | null }[]).map((source) => (
                 <a
                   key={source.id}
                   href={source.sourceUrl}
@@ -821,39 +847,55 @@ function LearnDetail({ slug }: { slug: string }) {
           </section>
         ) : null}
 
-        {article.related && article.related.length > 0 ? (
-          <section className="mt-12 pt-8 border-t border-[#143B35]/15">
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#C96632]">
-                Related Guides
-              </p>
-              <span className="text-xs font-mono text-[#62726C]">Issue #{String(article.calendarOrder).padStart(2, "0")} series</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {article.related.map((item) => (
-                <Link
-                  href={`/learn/${item.slug}`}
-                  key={item.slug}
-                  className="group p-5 rounded-2xl bg-[#FFFDF8] hover:bg-white border border-[#143B35]/12 hover:border-[#143B35]/30 hover:shadow-md transition-all flex flex-col justify-between gap-3 no-underline"
-                >
-                  <div>
-                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#62726C] mb-2">
-                      <Clock3 className="size-3 text-[#C96632]" />
-                      <span>{item.readTime}</span>
+        {(() => {
+          const relatedItems =
+            "related" in article && Array.isArray((article as any).related) && (article as any).related.length > 0
+              ? (article as any).related
+              : article.relatedSlugs && article.relatedSlugs.length > 0
+              ? article.relatedSlugs
+                  .map((relSlug: string) => getStaticArticleBySlug(relSlug))
+                  .filter((item: any): item is NonNullable<typeof item> => Boolean(item))
+              : [];
+
+          if (relatedItems.length === 0) return null;
+
+          return (
+            <section className="mt-12 pt-8 border-t border-[#143B35]/15">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#C96632]">
+                  Related Guides
+                </p>
+                <span className="text-xs font-mono text-[#62726C]">
+                  Issue #{String(article.calendarOrder).padStart(2, "0")} series
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {relatedItems.map((item: any) => (
+                  <Link
+                    href={`/learn/${item.slug}`}
+                    key={item.slug}
+                    className="group p-5 rounded-2xl bg-[#FFFDF8] hover:bg-white border border-[#143B35]/12 hover:border-[#143B35]/30 hover:shadow-md transition-all flex flex-col justify-between gap-3 no-underline"
+                  >
+                    <div>
+                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#62726C] mb-2">
+                        <Clock3 className="size-3 text-[#C96632]" />
+                        <span>{item.readTime}</span>
+                      </div>
+                      <h4 className="text-base font-serif font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors leading-snug">
+                        {item.title}
+                      </h4>
                     </div>
-                    <h4 className="text-base font-serif font-bold text-[#102B28] group-hover:text-[#C96632] transition-colors leading-snug">
-                      {item.title}
-                    </h4>
-                  </div>
-                  <div className="flex items-center gap-1 text-xs font-bold text-[#C96632] group-hover:translate-x-1 transition-transform self-end mt-2">
-                    <span>Read guide</span>
-                    <ArrowRight className="size-3.5" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ) : null}
+                    <div className="flex items-center gap-1 text-xs font-bold text-[#C96632] group-hover:translate-x-1 transition-transform self-end mt-2">
+                      <span>Read guide</span>
+                      <ArrowRight className="size-3.5" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
+
       </article>
     </SiteLayout>
   );
@@ -861,7 +903,16 @@ function LearnDetail({ slug }: { slug: string }) {
 
 function TopicPage({ slug }: { slug: string }) {
   const topic = getLearnTopic(slug)!;
-  const query = trpc.learn.topic.useQuery({ topic: slug });
+  const staticTopicArticles = useMemo(() => getStaticArticlesByTopic(slug), [slug]);
+  const query = trpc.learn.topic.useQuery(
+    { topic: slug },
+    {
+      retry: false,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const topicArticles = query.data && query.data.length > 0 ? query.data : staticTopicArticles;
 
   return (
     <SiteLayout>
@@ -891,13 +942,9 @@ function TopicPage({ slug }: { slug: string }) {
       </section>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-20">
-        {query.isLoading ? (
-          <LibraryLoading />
-        ) : query.isError ? (
-          <LibraryUnavailable onRetry={() => void query.refetch()} />
-        ) : query.data?.length ? (
+        {topicArticles.length > 0 ? (
           <div className="flex flex-col gap-3">
-            {query.data.map((article) => (
+            {topicArticles.map((article) => (
               <Link
                 href={`/learn/${article.slug}`}
                 key={article.slug}
@@ -934,6 +981,10 @@ function TopicPage({ slug }: { slug: string }) {
               </Link>
             ))}
           </div>
+        ) : query.isLoading ? (
+          <LibraryLoading />
+        ) : query.isError ? (
+          <LibraryUnavailable onRetry={() => void query.refetch()} />
         ) : (
           <p className="topic-empty">
             This collection is being carefully built. Try a practical planning tool while the next notes are reviewed.
@@ -944,6 +995,7 @@ function TopicPage({ slug }: { slug: string }) {
     </SiteLayout>
   );
 }
+
 
 function LibraryLoading() {
   return (

@@ -232,7 +232,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-16 flex flex-col gap-2 border-t border-white/15 pt-6 text-xs text-[#AAB6AE] sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 Kuberos Technologies. Made with care in India.</span>
+          <span>© 2026 Kuberos Innovations Pvt. Ltd. · Surat, India.</span>
           <span>For everyday Indian money moments.</span>
         </div>
       </div>

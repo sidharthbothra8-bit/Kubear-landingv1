@@ -1,33 +1,63 @@
-import { ArrowRight, ArrowUpRight, Calculator, Landmark, Plane, Sparkles, WalletCards } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Calculator, CreditCard, Landmark, Plane, Sparkles, Users, Wallet, WalletCards } from "lucide-react";
 import { Link } from "wouter";
 
 const toolMoments = [
   {
-    href: "/learn/tools/sip-calculator",
+    href: "/learn/tools/salary-allocation",
     index: "01",
-    moment: "Salary Day",
-    title: "Set a monthly SIP",
-    detail: "Test monthly investments, time horizons, and compounded growth assumptions.",
+    moment: "Salary Day Burn",
+    title: "Day-1 Salary Allocation",
+    detail: "Lock rent, parents & SIPs upfront. See your exact daily guilt-free spend limit.",
+    icon: Wallet,
+    accent: "#FF5C2B",
+    bgAccent: "bg-[#FF5C2B]/10 text-[#D44722]",
+  },
+  {
+    href: "/learn/tools/tax-regime-comparator",
+    index: "02",
+    moment: "Tax Planning",
+    title: "Old vs New Tax Regime",
+    detail: "Compare Budget 2024-26 standard deductions, 87A rebate & 80C/80D tax exemptions.",
+    icon: Landmark,
+    accent: "#047857",
+    bgAccent: "bg-[#047857]/10 text-[#047857]",
+  },
+  {
+    href: "/learn/tools/credit-card-trap",
+    index: "03",
+    moment: "Debt Freedom",
+    title: "Credit Card Trap Simulator",
+    detail: "See the brutal 42% APR math on minimum due payments and fixed payoff milestones.",
+    icon: CreditCard,
+    accent: "#C96632",
+    bgAccent: "bg-[#C96632]/10 text-[#9F3017]",
+  },
+  {
+    href: "/learn/tools/flatmate-maid-split",
+    index: "04",
+    moment: "Shared Living",
+    title: "Flatmate & Maid Split",
+    detail: "Split rent, cook, maid, wifi, and grocery pools with transparent room-size weights.",
+    icon: Users,
+    accent: "#123630",
+    bgAccent: "bg-[#123630]/10 text-[#123630]",
+  },
+  {
+    href: "/learn/tools/sip-calculator",
+    index: "05",
+    moment: "Wealth Compounding",
+    title: "Step-Up SIP Engine",
+    detail: "Model annual salary increment step-ups with 6% inflation purchasing power.",
     icon: WalletCards,
     accent: "#FF5C2B",
     bgAccent: "bg-[#FF5C2B]/10 text-[#D44722]",
   },
   {
-    href: "/learn/tools/emi-calculator",
-    index: "02",
-    moment: "Home & Loan Plan",
-    title: "Understand your EMI",
-    detail: "Calculate true monthly payments, interest totals, and tenure trade-offs.",
-    icon: Landmark,
-    accent: "#123630",
-    bgAccent: "bg-[#123630]/10 text-[#123630]",
-  },
-  {
     href: "/learn/tools/goa-goal-calculator",
-    index: "03",
-    moment: "Holiday & Milestones",
-    title: "Target savings runway",
-    detail: "Spread what is left across the months that remain to reach your goal.",
+    index: "06",
+    moment: "Travel & Goals",
+    title: "Goa & Wedding Planner",
+    detail: "Spread what is left across remaining months to fund trips without loans.",
     icon: Plane,
     accent: "#E5AD2B",
     bgAccent: "bg-[#E5AD2B]/15 text-[#B87B08]",
@@ -45,7 +75,7 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#123630]/12">
         <div>
           <p className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider uppercase text-[#C96632] mb-1.5">
-            <Calculator className="size-3.5" /> Interactive Planning Desk
+            <Calculator className="size-3.5" /> Interactive Planning Desk · India
           </p>
           <h2
             id="learn-tools-title"
@@ -54,20 +84,29 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
             Start with the money moment.
           </h2>
         </div>
-        <p className="text-sm sm:text-base text-[#4B605B] max-w-md">
-          Simple, grounded calculators that turn complex money decisions into clear, monthly clarity.
-        </p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <p className="text-sm sm:text-base text-[#4B605B] max-w-md">
+            Grounded financial calculators tailored for urban Indian salaries, rent, and investments.
+          </p>
+          <Link
+            href="/learn/tools"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#123630] text-[#FFFDF8] text-xs font-bold shrink-0 hover:bg-[#1A4B43] transition-all no-underline"
+          >
+            <span>View All 9 Tools</span>
+            <ArrowRight className="size-3.5" />
+          </Link>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-6">
         {toolMoments.map(({ href, index, moment, title, detail, icon: Icon, bgAccent }) => (
           <Link
             href={href}
             key={href}
-            className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-[#FFFDF8] border border-[#123630]/12 shadow-sm hover:shadow-md hover:border-[#123630]/30 transition-all duration-200 hover:-translate-y-1 overflow-hidden"
+            className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-[#FFFDF8] border border-[#123630]/12 shadow-sm hover:shadow-md hover:border-[#123630]/30 transition-all duration-200 hover:-translate-y-1 overflow-hidden no-underline"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
+              <div className="flex items-center justify-between gap-2 mb-3">
                 <span className="font-mono text-xs font-bold text-[#6F827C] tracking-wider">
                   TOOL {index}
                 </span>
@@ -78,7 +117,7 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
                   {moment}
                 </span>
               </div>
-              <h3 className="text-xl font-serif text-[#123630] group-hover:text-[#C96632] transition-colors mb-2">
+              <h3 className="text-lg font-serif font-bold text-[#123630] group-hover:text-[#C96632] transition-colors mb-2 leading-snug">
                 {title}
               </h3>
               <p className="text-xs sm:text-sm text-[#5B6F68] leading-relaxed">
@@ -87,7 +126,7 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
             </div>
 
             <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#123630]/8 text-xs font-bold text-[#123630] group-hover:text-[#C96632] transition-colors">
-              <span>Open calculator</span>
+              <span>Open live calculation</span>
               <ArrowUpRight className="size-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </Link>
@@ -95,9 +134,8 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
       </div>
 
       <p className="text-[11px] text-[#6E817B] text-center md:text-left mt-4">
-        For illustration and planning. Calculator outputs are educational and do not constitute financial advice.
+        For illustration and planning. Calculator outputs are educational, local to Indian tax/financial regimes, and do not constitute formal financial advice.
       </p>
     </section>
   );
 }
-
