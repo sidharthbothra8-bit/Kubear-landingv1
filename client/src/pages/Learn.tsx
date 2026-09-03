@@ -148,7 +148,7 @@ function LearnHub() {
             <span /> Kubear Learn & Tools Desk
           </p>
           <h1 className="week-section-title">
-            Money talk & practical math. <em>One unified desk.</em>
+            Money talk &amp; practical math.
           </h1>
           <p className="week-lede">
             Short, verified guides and interactive calculators for the decisions that shape Indian financial lives, from salary day SIPs and rent vs buy math to emergency runway and FIRE goals.
@@ -179,24 +179,24 @@ function LearnHub() {
         </div>
       </section>
 
-      {/* Prominent Segmented Switcher Bar */}
+      {/* Segmented Switcher Bar */}
       <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2" aria-label="Desk view mode selector">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-2 rounded-2xl bg-[#FAF7F0] border border-[#123630]/12">
+        <div className="flex items-center justify-center sm:justify-start">
           {/* Segmented Switcher Controls */}
-          <div className="flex items-center gap-1.5 w-full sm:w-auto p-1 bg-[#FFFDF8] rounded-xl border border-[#123630]/10 shadow-2xs">
+          <div className="grid grid-cols-3 sm:flex sm:items-center gap-1 sm:gap-1.5 w-full sm:w-auto p-1 bg-[#FAF7F0] rounded-xl sm:rounded-2xl border border-[#123630]/12 shadow-2xs">
             <button
               type="button"
               onClick={() => setViewMode("all")}
-              className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer select-none ${
                 viewMode === "all"
                   ? "bg-[#123630] text-[#FFF8EE] shadow-xs"
                   : "text-[#4A5E58] hover:text-[#123630] hover:bg-[#123630]/5"
               }`}
             >
-              <Layers className="size-3.5" />
-              <span>All (Desk)</span>
+              <Layers className="size-3.5 shrink-0" />
+              <span className="truncate">All</span>
               <span
-                className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none shrink-0 ${
                   viewMode === "all" ? "bg-[#FFF8EE]/20 text-[#FFF8EE]" : "bg-[#123630]/8 text-[#546862]"
                 }`}
               >
@@ -207,16 +207,19 @@ function LearnHub() {
             <button
               type="button"
               onClick={() => setViewMode("calculators")}
-              className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer select-none ${
                 viewMode === "calculators"
                   ? "bg-[#123630] text-[#FFF8EE] shadow-xs"
                   : "text-[#4A5E58] hover:text-[#123630] hover:bg-[#123630]/5"
               }`}
             >
-              <Calculator className="size-3.5" />
-              <span>Interactive Calculators</span>
+              <Calculator className="size-3.5 shrink-0" />
+              <span className="truncate">
+                <span className="sm:hidden">Calculators</span>
+                <span className="hidden sm:inline">Interactive Calculators</span>
+              </span>
               <span
-                className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none shrink-0 ${
                   viewMode === "calculators" ? "bg-[#FFF8EE]/20 text-[#FFF8EE]" : "bg-[#123630]/8 text-[#546862]"
                 }`}
               >
@@ -227,16 +230,19 @@ function LearnHub() {
             <button
               type="button"
               onClick={() => setViewMode("guides")}
-              className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer select-none ${
                 viewMode === "guides"
                   ? "bg-[#123630] text-[#FFF8EE] shadow-xs"
                   : "text-[#4A5E58] hover:text-[#123630] hover:bg-[#123630]/5"
               }`}
             >
-              <BookOpen className="size-3.5" />
-              <span>Guides & Articles</span>
+              <BookOpen className="size-3.5 shrink-0" />
+              <span className="truncate">
+                <span className="sm:hidden">Guides</span>
+                <span className="hidden sm:inline">Guides & Articles</span>
+              </span>
               <span
-                className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none shrink-0 ${
                   viewMode === "guides" ? "bg-[#FFF8EE]/20 text-[#FFF8EE]" : "bg-[#123630]/8 text-[#546862]"
                 }`}
               >
@@ -244,12 +250,6 @@ function LearnHub() {
               </span>
             </button>
           </div>
-
-          <p className="text-xs text-[#5C6E68] text-center sm:text-right">
-            {viewMode === "all" && "Showing complete unified desk: tools, contextual pairs & 50 guides."}
-            {viewMode === "calculators" && "Showing interactive calculators & contextual math models."}
-            {viewMode === "guides" && "Showing 50 verified editorial guides across 10 financial pillars."}
-          </p>
         </div>
       </section>
 
@@ -280,63 +280,70 @@ function LearnHub() {
             </div>
           </div>
 
-          <div
-            ref={topicRailRef}
-            className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1.5 px-0.5 scroll-smooth"
-          >
-            <button
-              type="button"
-              onClick={() => setActiveTopicFilter("all")}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-150 cursor-pointer ${
-                activeTopicFilter === "all"
-                  ? "bg-[#123630] text-[#FFF8EE] border border-[#123630] font-semibold shadow-xs"
-                  : "bg-[#FFFDF8] border border-[#123630]/15 text-[#3E5750] hover:border-[#123630]/35 hover:text-[#123630] hover:bg-white"
-              }`}
+          <div className="relative group">
+            {/* Left fade indicator */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-[#FBF8F2] to-transparent z-10 opacity-70" />
+            {/* Right fade indicator */}
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#FBF8F2] to-transparent z-10 opacity-90" />
+
+            <div
+              ref={topicRailRef}
+              className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth"
             >
-              <span>All Topics</span>
-              <span
-                className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+              <button
+                type="button"
+                onClick={() => setActiveTopicFilter("all")}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-150 cursor-pointer shrink-0 ${
                   activeTopicFilter === "all"
-                    ? "bg-[#FFF8EE]/20 text-[#FFF8EE]"
-                    : "bg-[#123630]/8 text-[#536861]"
+                    ? "bg-[#123630] text-[#FFF8EE] border border-[#123630] font-semibold shadow-xs"
+                    : "bg-[#FFFDF8] border border-[#123630]/15 text-[#3E5750] hover:border-[#123630]/35 hover:text-[#123630] hover:bg-white"
                 }`}
               >
-                {allArticles.length}
-              </span>
-            </button>
-
-            {learnTopics.map((topic) => {
-              const count = allArticles.filter(
-                (a) =>
-                  a.topic === topic.slug ||
-                  (topic.slug === "tax-records" && (a.topic === "taxes-records" || a.topic === "tax-records")) ||
-                  (topic.slug === "long-term" && (a.topic === "wealth-independence" || a.topic === "long-term"))
-              ).length;
-              const isActive = activeTopicFilter === topic.slug;
-              return (
-                <button
-                  key={topic.slug}
-                  type="button"
-                  onClick={() => setActiveTopicFilter(topic.slug)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-150 cursor-pointer ${
-                    isActive
-                      ? "bg-[#123630] text-[#FFF8EE] border border-[#123630] font-semibold shadow-xs"
-                      : "bg-[#FFFDF8] border border-[#123630]/15 text-[#3E5750] hover:border-[#123630]/35 hover:text-[#123630] hover:bg-white"
+                <span>All Topics</span>
+                <span
+                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                    activeTopicFilter === "all"
+                      ? "bg-[#FFF8EE]/20 text-[#FFF8EE]"
+                      : "bg-[#123630]/8 text-[#536861]"
                   }`}
                 >
-                  <span>{topic.label}</span>
-                  <span
-                    className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                  {allArticles.length}
+                </span>
+              </button>
+
+              {learnTopics.map((topic) => {
+                const count = allArticles.filter(
+                  (a) =>
+                    a.topic === topic.slug ||
+                    (topic.slug === "tax-records" && (a.topic === "taxes-records" || a.topic === "tax-records")) ||
+                    (topic.slug === "long-term" && (a.topic === "wealth-independence" || a.topic === "long-term"))
+                ).length;
+                const isActive = activeTopicFilter === topic.slug;
+                return (
+                  <button
+                    key={topic.slug}
+                    type="button"
+                    onClick={() => setActiveTopicFilter(topic.slug)}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-150 cursor-pointer shrink-0 ${
                       isActive
-                        ? "bg-[#FFF8EE]/20 text-[#FFF8EE]"
-                        : "bg-[#123630]/8 text-[#536861]"
+                        ? "bg-[#123630] text-[#FFF8EE] border border-[#123630] font-semibold shadow-xs"
+                        : "bg-[#FFFDF8] border border-[#123630]/15 text-[#3E5750] hover:border-[#123630]/35 hover:text-[#123630] hover:bg-white"
                     }`}
                   >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
+                    <span>{topic.label}</span>
+                    <span
+                      className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                        isActive
+                          ? "bg-[#FFF8EE]/20 text-[#FFF8EE]"
+                          : "bg-[#123630]/8 text-[#536861]"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </section>
       )}
@@ -732,10 +739,6 @@ function LearnDetail({ slug }: { slug: string }) {
               </p>
             </div>
           ) : null}
-
-          <div className="my-8 p-4 rounded-xl bg-[#FAF7F0] border border-[#143B35]/12 text-xs text-[#596E67] leading-relaxed">
-            <p>This article is general financial education. It is not personal tax, legal, or investment advice.</p>
-          </div>
 
           {toolHref && article.toolLabel ? (
             <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#143B35] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">

@@ -133,10 +133,6 @@ export function LearnDeskTools({ compact = false }: { compact?: boolean }) {
           </Link>
         ))}
       </div>
-
-      <p className="text-[11px] text-[#6E817B] text-center md:text-left mt-4">
-        For illustration and planning. Calculator outputs are educational, local to Indian tax/financial regimes, and do not constitute formal financial advice.
-      </p>
     </section>
   );
 }

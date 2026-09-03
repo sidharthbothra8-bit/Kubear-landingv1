@@ -51,10 +51,10 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
       detailA: `Total Invested: ${formatInr(est.contributed)}`,
       detailB: `Estimated Growth: ${formatInr(est.growth)}`,
       explanation: `Assuming an annual compounding rate of ${r.value}% over ${est.periods} months.`,
-      linkedGuide: "/learn/index-funds-vs-active-mutual-funds-india",
+      linkedGuide: "/learn/index-funds-vs-active-large-cap",
       guideTitle: "Index Funds vs Active Mutual Funds in India",
-      guideSlug: "index-funds-vs-active-mutual-funds-india",
-      guideNumber: "21",
+      guideSlug: "index-funds-vs-active-large-cap",
+      guideNumber: "23",
     };
   }, [sipMonthly, sipRate, sipYears]);
 
@@ -71,10 +71,10 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
       detailA: `Total Amount Payable: ${formatInr(est.total)}`,
       detailB: `Total Interest: ${formatInr(est.interest)}`,
       explanation: `Calculated at ${r.value}% p.a. reducing balance over ${est.periods} monthly instalments.`,
-      linkedGuide: "/learn/rent-vs-buy-in-india-the-real-math",
-      guideTitle: "Rent vs Buy in India: The Real Math Behind 25 Years",
-      guideSlug: "rent-vs-buy-in-india-the-real-math",
-      guideNumber: "16",
+      linkedGuide: "/learn/rent-vs-buy-in-indian-metros",
+      guideTitle: "Rent vs Buy in Indian Metros: Rental Yields, EMI Math",
+      guideSlug: "rent-vs-buy-in-indian-metros",
+      guideNumber: "31",
     };
   }, [emiLoan, emiRate, emiYears]);
 
@@ -91,10 +91,10 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
         detailA: "Target already achieved!",
         detailB: "No additional monthly savings required",
         explanation: "Your goal is 100% covered by current savings.",
-        linkedGuide: "/learn/goa-fund-without-guilt",
-        guideTitle: "Goa Fund Without Guilt: Saving for Travel",
-        guideSlug: "goa-fund-without-guilt",
-        guideNumber: "26",
+        linkedGuide: "/learn/travel-fund-goa-to-europe-sinking-fund",
+        guideTitle: "From Goa to Europe: Travel Sinking Funds",
+        guideSlug: "travel-fund-goa-to-europe-sinking-fund",
+        guideNumber: "30",
       };
     }
     return {
@@ -104,10 +104,10 @@ export function InteractiveCalculatorSuite({ defaultSlug = "sip-calculator" }: {
       detailA: `Remaining to Save: ${formatInr(est.remaining)}`,
       detailB: `Time Horizon: ${est.months} months`,
       explanation: `Dividing ${formatInr(est.remaining)} evenly across the remaining ${est.months} months to target.`,
-      linkedGuide: "/learn/goa-fund-without-guilt",
-      guideTitle: "Goa Fund Without Guilt: Saving for Travel",
-      guideSlug: "goa-fund-without-guilt",
-      guideNumber: "26",
+      linkedGuide: "/learn/travel-fund-goa-to-europe-sinking-fund",
+      guideTitle: "From Goa to Europe: Travel Sinking Funds",
+      guideSlug: "travel-fund-goa-to-europe-sinking-fund",
+      guideNumber: "30",
     };
   }, [goalTarget, goalSaved, goalMonth]);
 

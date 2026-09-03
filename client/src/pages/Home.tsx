@@ -150,6 +150,14 @@ export default function Home() {
         amount: "₹1,500",
         runway: "Personal balance 100% isolated",
       };
+    } else if (lower.includes("bill") || lower.includes("receipt") || lower.includes("snap") || lower.includes("cafe")) {
+      botReply = {
+        sender: "bot",
+        text: "OCR Scanned: ₹240 Cappuccino + ₹180 Butter Croissant = ₹420",
+        tag: "Cafe / Dining",
+        amount: "₹420",
+        runway: "Runway safely adjusted (-₹420)",
+      };
     }
 
     setChatMessages((prev) => [...prev, userMsg, botReply]);
@@ -192,10 +200,10 @@ export default function Home() {
               Open Web App <ArrowUpRight className="size-4" />
             </a>
             <a className="mm-button mm-button-ghost desktop-secondary" href={PLAY_URL} target="_blank" rel="noreferrer">
-              Get it on Google Play <Play className="size-3.5 fill-current" />
+              Get on Google Play <Play className="size-3.5 fill-current" />
             </a>
             <a className="mm-button mm-button-orange mobile-primary" href={PLAY_URL} target="_blank" rel="noreferrer">
-              Get it on Google Play <Play className="size-3.5 fill-current" />
+              Get on Google Play <Play className="size-3.5 fill-current" />
             </a>
             <a className="mm-button mm-button-ghost mobile-secondary" href={APP_URL}>
               Open Web App <ArrowUpRight className="size-4" />
@@ -204,7 +212,7 @@ export default function Home() {
 
           <p className="mm-trust">
             <ShieldCheck className="size-4 text-[#4ADE80]" />
-            No bank access. No SMS reading. 100% private.
+            Zero bank logins. Zero SMS scraping. Zero telemarketing spam.
           </p>
         </div>
 
@@ -285,7 +293,7 @@ export default function Home() {
       </div>
 
       {/* PROBLEM 1: THE 8-APP KHICHDI */}
-      <section className="py-16 md:py-24 bg-[#FFF9F3] border-b border-[#EBE2D5] relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-[#FAF7F0] border-b border-[#E8DEC8] relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
@@ -395,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* PROBLEM 2: SALARY DAY DOPAMINE ILLUSION */}
-      <section className="py-12 md:py-20 bg-[#FFFDF2] border-b border-[#ECE5CD] relative">
+      <section className="py-12 md:py-20 bg-[#FAF7F0] border-b border-[#E8DEC8] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
             <div className="md:col-span-5">
@@ -556,7 +564,7 @@ export default function Home() {
       </section>
 
       {/* PROBLEM 3: DEATH BY 1,000 UPI TAPS (INTERACTIVE CALCULATOR) */}
-      <section className="py-16 md:py-24 bg-[#FFF4EE] border-b border-[#EED7C8] relative">
+      <section className="py-16 md:py-24 bg-[#FAF7F0] border-b border-[#E8DEC8] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="text-xs font-mono font-bold text-[#D0451B] uppercase tracking-wider mb-2 flex items-center justify-center gap-1.5">
@@ -588,7 +596,8 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setChaiCount(Math.max(0, chaiCount - 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Decrease chai count"
                     >
                       -
                     </button>
@@ -602,7 +611,8 @@ export default function Home() {
                     />
                     <button
                       onClick={() => setChaiCount(Math.min(6, chaiCount + 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Increase chai count"
                     >
                       +
                     </button>
@@ -621,7 +631,8 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setQuickCommCount(Math.max(0, quickCommCount - 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Decrease quick commerce orders"
                     >
                       -
                     </button>
@@ -635,7 +646,8 @@ export default function Home() {
                     />
                     <button
                       onClick={() => setQuickCommCount(Math.min(10, quickCommCount + 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Increase quick commerce orders"
                     >
                       +
                     </button>
@@ -654,7 +666,8 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setSwiggyCount(Math.max(0, swiggyCount - 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Decrease Swiggy orders"
                     >
                       -
                     </button>
@@ -668,7 +681,8 @@ export default function Home() {
                     />
                     <button
                       onClick={() => setSwiggyCount(Math.min(8, swiggyCount + 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Increase Swiggy orders"
                     >
                       +
                     </button>
@@ -687,7 +701,8 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setAutoCount(Math.max(0, autoCount - 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Decrease auto rides"
                     >
                       -
                     </button>
@@ -701,7 +716,8 @@ export default function Home() {
                     />
                     <button
                       onClick={() => setAutoCount(Math.min(10, autoCount + 1))}
-                      className="size-8 rounded-lg bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer"
+                      className="size-10 sm:size-9 rounded-xl bg-[#F5EFE6] border border-[#DDD3C5] font-bold text-base sm:text-sm hover:bg-[#EAE1D2] flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] transition-colors"
+                      aria-label="Increase auto rides"
                     >
                       +
                     </button>
@@ -717,10 +733,13 @@ export default function Home() {
                     Your Invisible Monthly Leak
                   </div>
                   <div className="text-4xl md:text-5xl font-bold font-serif text-[#F4D277] mb-2">
-                    ₹{totalLeaks.toLocaleString("en-IN")}
+                    ₹{totalLeaks.toLocaleString("en-IN")} <span className="text-xs sm:text-sm font-sans font-normal text-[#B4CCC5]">/ month</span>
+                  </div>
+                  <div className="my-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 text-[#FFD480] text-xs font-mono font-bold">
+                    <span>⚡ That is ₹{(totalLeaks * 12).toLocaleString("en-IN")} / year</span>
                   </div>
                   <p className="text-xs text-[#B4CCC5] leading-relaxed">
-                    That is <strong>₹{(totalLeaks * 12).toLocaleString("en-IN")}</strong> a year. Equivalent to an entire international vacation or 2 extra monthly salaries lost in invisible micro-taps.
+                    Equivalent to an entire international vacation or 1.5 months of your Bangalore/Mumbai rent vanishing in untracked ₹20 and ₹180 micro-taps.
                   </p>
                 </div>
 
@@ -749,7 +768,7 @@ export default function Home() {
       </section>
 
       {/* PROBLEM 4: WHY SPREADSHEETS & SMS APPS DIED */}
-      <section className="py-16 md:py-24 bg-[#FAF7F0] border-b border-[#E8DFC9] relative">
+      <section className="py-16 md:py-24 bg-[#FAF7F0] border-b border-[#E8DEC8] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="text-xs font-mono font-bold text-[#D0451B] uppercase tracking-wider mb-2 flex items-center justify-center gap-1.5">
@@ -895,7 +914,7 @@ export default function Home() {
       </div>
 
       {/* SOLUTION 1: THE 5-SECOND CHAT & RECEIPT OCR */}
-      <section className="py-12 md:py-20 bg-[#F0FDF9] border-b border-[#D1F2E8] relative">
+      <section className="py-12 md:py-20 bg-[#F4FAF7] border-b border-[#D6EBE2] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
             <div className="md:col-span-5">
@@ -920,6 +939,7 @@ export default function Home() {
                     "+ Zepto milk & eggs ₹160",
                     "+ Auto to office ₹85",
                     "+ WiFi bill ₹1,200 (Split)",
+                    "📷 Snap cafe bill (₹420)",
                   ].map((sample, idx) => (
                     <button
                       key={idx}
@@ -1009,16 +1029,25 @@ export default function Home() {
                   }}
                   className="p-3 bg-white border-t border-[#E3EFEA] flex items-center gap-2"
                 >
+                  <button
+                    type="button"
+                    onClick={() => handleSendChat("📷 Snap cafe bill (₹420)")}
+                    title="Scan Receipt OCR"
+                    aria-label="Snap receipt with camera"
+                    className="p-2.5 rounded-xl bg-[#F0FDF9] border border-[#C6EBE0] text-[#123630] hover:bg-[#E3F8F2] cursor-pointer flex items-center justify-center transition-colors shrink-0"
+                  >
+                    <Camera className="size-4 text-[#FF5C2B]" />
+                  </button>
                   <input
                     type="text"
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
-                    placeholder="e.g. Paid ₹40 for ginger chai"
+                    placeholder="e.g. Paid ₹40 for ginger chai or tap camera"
                     className="flex-1 px-4 py-2.5 rounded-xl bg-[#F0FDF9] border border-[#C6EBE0] text-xs md:text-sm text-[#123630] focus:outline-none focus:ring-2 focus:ring-[#123630]"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2.5 rounded-xl bg-[#123630] text-white font-bold text-xs flex items-center gap-1.5 hover:bg-[#1A4B43] cursor-pointer"
+                    className="px-4 py-2.5 rounded-xl bg-[#123630] text-white font-bold text-xs flex items-center gap-1.5 hover:bg-[#1A4B43] cursor-pointer shrink-0"
                   >
                     <Send className="size-3.5" /> Send
                   </button>
@@ -1030,7 +1059,7 @@ export default function Home() {
       </section>
 
       {/* SOLUTION 2: TWO TABLES ARCHITECTURE */}
-      <section className="py-16 md:py-24 bg-[#FFFDF8] border-b border-[#ECE3D2] relative">
+      <section className="py-16 md:py-24 bg-[#F4FAF7] border-b border-[#D6EBE2] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="text-xs font-mono font-bold text-[#047857] uppercase tracking-wider mb-2 flex items-center justify-center gap-1.5">
@@ -1102,8 +1131,18 @@ export default function Home() {
                   </div>
                 </div>
 
+                <div className="p-3 sm:p-3.5 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] text-[11px] sm:text-xs font-mono text-[#166534] flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <ShieldCheck className="size-4 text-[#16A34A] shrink-0" />
+                    Flatmate Isolation Active: Personal investments & secret trip savings are 100% invisible to Rohit & Ananya.
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#DCFCE7] text-[#15803D] font-bold shrink-0">
+                    Zero Contamination
+                  </span>
+                </div>
+
                 <div className="p-4 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-xs text-[#065F46] flex items-center justify-between">
-                  <span>✅ Shared costs never pollute your personal runway.</span>
+                  <span>✅ Shared costs settle in 1 tap without polluting your personal runway.</span>
                   <a className="font-bold underline" href={APP_URL}>
                     Open Shared Table →
                   </a>
@@ -1114,10 +1153,20 @@ export default function Home() {
                 <div className="flex items-center justify-between pb-4 border-b border-[#EDE4D5]">
                   <div>
                     <div className="font-bold text-lg text-[#123630] font-serif">Your 100% Private Ledger</div>
-                    <div className="text-xs text-[#6B8079]">Visible strictly to your eyes only. No flatmates, no partners.</div>
+                    <div className="text-xs text-[#6B8079]">Visible strictly to your eyes only. No flatmates, no partners, no external eyes.</div>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-[#123630] text-[#F4D277] font-mono text-xs font-bold">
-                    🔒 Zero Access
+                    🔒 Zero Access Partition
+                  </span>
+                </div>
+
+                <div className="p-3 sm:p-3.5 rounded-xl bg-[#FFFBEB] border border-[#FDE68A] text-[11px] sm:text-xs font-mono text-[#92400E] flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <Lock className="size-4 text-[#D97706] shrink-0" />
+                    Complete Privacy Partition: Neither housemates nor bank algorithms can ever view your personal ledger.
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#FEF3C7] text-[#B45309] font-bold shrink-0">
+                    Private Vault
                   </span>
                 </div>
 
@@ -1149,7 +1198,7 @@ export default function Home() {
       </section>
 
       {/* SOLUTION 3: DAY 30 SUKOON (THE MONTH-END VICTORY) */}
-      <section className="py-16 md:py-24 bg-[#FAF7F0] border-b border-[#E8DFC9] relative">
+      <section className="py-16 md:py-24 bg-[#F4FAF7] border-b border-[#D6EBE2] relative">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="text-xs font-mono font-bold text-[#047857] uppercase tracking-wider mb-2 flex items-center justify-center gap-1.5">
@@ -1203,7 +1252,7 @@ export default function Home() {
       </section>
 
       {/* FREQUENTLY ASKED QUESTIONS */}
-      <section className="py-20 md:py-28 bg-[#FFF9F3] border-b border-[#EBE2D5]">
+      <section className="py-20 md:py-28 bg-[#FAF7F0] border-b border-[#E8DEC8]">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF5C2B] mb-2">Zero Jargon Answers</p>
@@ -1254,7 +1303,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              Get it on Google Play <Play className="size-3.5 fill-current ml-1" />
+              Get on Google Play <Play className="size-3.5 fill-current ml-1" />
             </a>
           </div>
 

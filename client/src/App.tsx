@@ -60,7 +60,7 @@ function LegacyToolsRedirect() {
   const [location, setLocation] = useLocation();
   const destination = location.replace(/^\/tools/, "/learn/tools");
   useEffect(() => { setLocation(destination, { replace: true }); }, [destination, setLocation]);
-  return <main className="grid min-h-screen place-items-center bg-[#FFFCF7] p-6 text-center"><div><p className="eyebrow text-[#C96632]">Kubear Learn & Tools</p><h1 className="mt-3 font-serif text-4xl text-[#152043]">Opening Learn & Tools.</h1><p className="mt-3 text-[#5E6680]">Planning tools now live inside the unified Learn & Tools desk.</p><Link href={destination} className="button button-primary mt-6">Continue to Learn & Tools</Link></div></main>;
+  return <main className="grid min-h-screen place-items-center bg-[#FFFCF7] p-6 text-center"><div><p className="eyebrow text-[#C96632]">Kubear Learn & Tools</p><h1 className="mt-3 font-serif text-4xl text-[#152043]">Opening Learn & Tools.</h1><p className="mt-3 text-[#5E6680]">Planning tools now live inside the Learn & Tools desk.</p><Link href={destination} className="button button-primary mt-6">Continue to Learn & Tools</Link></div></main>;
 }
 
 function LegacyDeskRedirect() {
@@ -74,7 +74,7 @@ function LegacyDeskRedirect() {
       <div>
         <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#C96632]">Kubear Learn & Tools</p>
         <h1 className="mt-3 font-serif text-4xl text-[#123630]">Opening the Learn & Tools Desk</h1>
-        <p className="mt-3 text-[#5A6E69]">Your planning tools and money guides live together in one unified desk.</p>
+        <p className="mt-3 text-[#5A6E69]">Your planning tools and money guides live together.</p>
         <Link href={destination} className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full bg-[#123630] px-6 text-sm font-extrabold text-[#FFFDF8] mt-6">
           Continue to Learn & Tools
         </Link>

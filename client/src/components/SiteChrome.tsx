@@ -116,7 +116,7 @@ export function Header() {
             target="_blank"
             rel="noreferrer"
           >
-            <span>Open App</span>
+            <span>Open Web App</span>
             <ArrowUpRight className={isScrolled ? "size-3" : "size-3.5"} />
           </a>
         </div>
@@ -179,7 +179,7 @@ export function Footer() {
                 className="inline-flex items-center gap-2 text-sm font-bold text-[#FFB18E] transition-transform hover:translate-x-1"
                 href={APP_URL}
               >
-                Open Kubear Web App <MoveRight className="size-4" />
+                Open Web App <MoveRight className="size-4" />
               </a>
               <a
                 className="inline-flex items-center gap-2 text-sm font-bold text-[#F4D277] transition-transform hover:translate-x-1"
@@ -187,7 +187,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Get it on Google Play <ArrowUpRight className="size-4" />
+                Get on Google Play <ArrowUpRight className="size-4" />
               </a>
             </div>
           </div>
@@ -232,7 +232,7 @@ export function Footer() {
               Money moves. Your view can keep up.
             </p>
             <a className="button button-light mt-6" href={APP_URL}>
-              Use the web app <ArrowUpRight className="size-4" />
+              Open Web App <ArrowUpRight className="size-4" />
             </a>
           </div>
         </div>
@@ -249,7 +249,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       <MotionObserver />
-      <main id="main-content" className="pb-20 sm:pb-0">{children}</main>
+      <main id="main-content" className="pb-28 sm:pb-0">{children}</main>
       <MobileBottomNav />
       <Footer />
     </>
