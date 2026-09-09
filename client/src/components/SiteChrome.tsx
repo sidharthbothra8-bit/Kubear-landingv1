@@ -116,8 +116,7 @@ export function Header() {
             target="_blank"
             rel="noreferrer"
           >
-            <span>Open Web App</span>
-            <ArrowUpRight className={isScrolled ? "size-3" : "size-3.5"} />
+            <span>Start on Web →</span>
           </a>
         </div>
       </div>
@@ -206,7 +205,7 @@ export function Footer() {
             <div>
               <p className="eyebrow text-[#F4D277]">Trust</p>
               <div className="mt-4 grid gap-3 text-sm text-[#D8E8DE]">
-                <Link href="/privacy-data" className="hover:text-white">
+                <Link href="/privacy" className="hover:text-white">
                   Privacy
                 </Link>
                 <a href="https://www.kuberos.in/legal/terms" target="_blank" rel="noreferrer" className="hover:text-white">

@@ -21,6 +21,7 @@ function Router() {
     <Route path="/how-it-works" component={LegacyHomeRedirect} />
     <Route path="/your-money-picture" component={LegacyHomeRedirect} />
     <Route path="/money-view" component={LegacyHomeRedirect} />
+    <Route path="/privacy" component={PrivacyData} />
     <Route path="/privacy-data" component={PrivacyData} />
     <Route path="/journal" component={Journal} />
     <Route path="/learn" component={Learn} />

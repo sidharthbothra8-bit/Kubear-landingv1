@@ -39,7 +39,7 @@ async function startServer() {
   registerStorageProxy(app);
   registerOAuthRoutes(app);
   app.get("/sitemap.xml", async (_req, res) => {
-    const stablePaths = ["/", "/how-it-works", "/your-money-picture", "/privacy-data", "/journal", "/tools", "/tools/sip-calculator", "/tools/emi-calculator", "/tools/goa-goal-calculator", "/learn", "/learn/start-here", "/learn/salary-spending", "/learn/saving-buffers", "/learn/debt-credit", "/learn/investing", "/learn/goals-decisions", "/learn/home-household", "/learn/insurance-protection", "/learn/tax-records", "/learn/long-term"];
+    const stablePaths = ["/", "/how-it-works", "/your-money-picture", "/privacy", "/privacy-data", "/journal", "/tools", "/tools/sip-calculator", "/tools/emi-calculator", "/tools/goa-goal-calculator", "/learn", "/learn/start-here", "/learn/salary-spending", "/learn/saving-buffers", "/learn/debt-credit", "/learn/investing", "/learn/goals-decisions", "/learn/home-household", "/learn/insurance-protection", "/learn/tax-records", "/learn/long-term"];
     try {
       const articles = await getPublishedLearnPaths();
       const urlset: { path: string; updatedAt: Date | null }[] = [

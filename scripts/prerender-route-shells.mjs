@@ -8,7 +8,8 @@ const articleImage = `${origin}/manus-storage/kubear-goa-goal-still-life_2bd357a
 const routes = {
   "/": ["Kubear | A clearer view of your money week", "Kubear helps you see salary, UPI, rent, bills, goals and home money in one calm view."],
   "/how-it-works": ["How Kubear Works & Your Money View | One Unified Picture", "See how Kubear unifies your complete money story: fast natural chat, bill photo capture, upfront salary allocation, two-table flatmate splits, and goal runway."],
-  "/privacy-data": ["Privacy and data | Kubear", "Understand Kubear’s clear approach to control, data choices and account access."],
+  "/privacy": ["Kubear Privacy Policy | Kubear", "Official Kubear Privacy Policy. Version 2026-08-31. Operated by Kuberos Innovations Pvt Ltd."],
+  "/privacy-data": ["Kubear Privacy Policy | Kubear", "Official Kubear Privacy Policy. Version 2026-08-31. Operated by Kuberos Innovations Pvt Ltd."],
   "/journal": ["Kubear Journal | Everyday money notes", "A practical internal reading path for salary, UPI, bills, goals and home money."],
   "/learn/tools": ["Kubear Learn tools | Simple money answers", "Try simple planning tools for salary-day SIPs, home-plan EMIs and a Goa savings goal."],
   "/learn/tools/sip-calculator": ["SIP Calculator India | Kubear Learn", "Estimate the value of a monthly SIP using your contribution, expected return and time frame."],

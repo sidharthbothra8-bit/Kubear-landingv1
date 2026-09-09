@@ -1,6 +1,6 @@
 {
   "name": "Kubear",
-  "description": "A read-only personal finance assistant for seeing salary, UPI spending, bills, goals, and household commitments in one unified picture.",
+  "description": "Know what you spent. See what’s still due. A simple, intuitive money companion for Indian personal and household money clarity.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
