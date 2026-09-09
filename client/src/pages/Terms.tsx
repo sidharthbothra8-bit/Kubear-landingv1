@@ -21,7 +21,7 @@ export default function Terms() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/terms");
+    navigator.clipboard.writeText("https://kuberos.in/terms");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -30,7 +30,7 @@ export default function Terms() {
     <SiteLayout>
       <PageMeta
         title="Kubear Terms of Use"
-        description="Official Kubear Terms of Use. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/terms."
+        description="Official Kubear Terms of Use. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/terms."
         path="/terms"
       />
 
@@ -60,12 +60,12 @@ export default function Terms() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/terms"
+                  href="https://kuberos.in/terms"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/terms
+                  kuberos.in/terms
                 </a>
               </div>
               <button
@@ -140,12 +140,9 @@ export default function Terms() {
 
           {/* Section 1 */}
           <article id="operator-and-agreement" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Operator and agreement
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Operator and agreement
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               These Terms govern your use of Kubear, operated by <strong>KUBEROS INNOVATIONS PRIVATE LIMITED</strong>, CIN <strong>U62099GJ2026PTC177330</strong>, an Indian company (“Kuberos”, “we”, “us” or “our”).
             </p>
@@ -184,7 +181,7 @@ export default function Terms() {
               </Link>
               ,{" "}
               <a
-                href="https://kubear.kuberos.in/consent"
+                href="https://kuberos.in/consent"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -193,7 +190,7 @@ export default function Terms() {
               </a>
               ,{" "}
               <a
-                href="https://kubear.kuberos.in/data-deletion"
+                href="https://kuberos.in/data-deletion"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -202,7 +199,7 @@ export default function Terms() {
               </a>
               ,{" "}
               <a
-                href="https://kubear.kuberos.in/support"
+                href="https://kuberos.in/support"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -211,7 +208,7 @@ export default function Terms() {
               </a>{" "}
               and{" "}
               <a
-                href="https://kubear.kuberos.in/cookies"
+                href="https://kuberos.in/cookies"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -224,12 +221,9 @@ export default function Terms() {
 
           {/* Section 2 */}
           <article id="eligibility-security" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Eligibility and account security
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Eligibility and account security
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear is offered for use in India by people aged <strong>18 or older</strong> with capacity to enter into a binding contract. Use accurate account information and a mobile number you are authorised to use. Do not impersonate another person, bypass access controls or let another person use your credentials to act as you.
             </p>
@@ -243,12 +237,9 @@ export default function Terms() {
 
           {/* Section 3 */}
           <article id="what-kubear-provides" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. What Kubear provides
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. What Kubear provides
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear helps you record and organise personal and authorised Household financial facts, review information from selected documents, track recorded commitments and goals, view calculations and trends, and obtain optional explanations.
             </p>
@@ -262,12 +253,9 @@ export default function Terms() {
 
           {/* Section 4 */}
           <article id="not-adviser" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. Not a financial or professional adviser
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. Not a financial or professional adviser
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear provides visibility, calculations and general education, not personalised investment, insurance, tax, legal, credit or debt advice. It does not recommend or rank products, assess suitability, prescribe allocations, choose a repayment strategy, or tell you what to buy, sell, insure or file.
             </p>
@@ -281,12 +269,9 @@ export default function Terms() {
 
           {/* Section 5 */}
           <article id="review-confirmation" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. Review, confirmation and corrections
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. Review, confirmation and corrections
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Check amounts, dates, account/Household context and source information before confirming a proposed record or correction. An extraction or AI suggestion remains review material until accepted through the normal save process.
             </p>
@@ -300,12 +285,9 @@ export default function Terms() {
 
           {/* Section 6 */}
           <article id="household-information" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">06</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                6. Household and other people's information
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              6. Household and other people's information
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Only use a shared space within your permissions. Do not upload another person's information without an appropriate basis or share their private records merely because they are a family member.
             </p>
@@ -322,12 +304,9 @@ export default function Terms() {
 
           {/* Section 7 */}
           <article id="documents-ai-third-party" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">07</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                7. Documents, AI and third-party services
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              7. Documents, AI and third-party services
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               You retain your rights in material you submit. You give Kuberos a limited, non-exclusive permission to store, copy, transmit, process and display that material only as needed to provide requested features, operate authorised sharing, protect the service and comply with law, consistently with the Privacy Policy. This is not ownership of your financial information or unrestricted permission to reuse it for model training or advertising.
             </p>
@@ -344,12 +323,9 @@ export default function Terms() {
 
           {/* Section 8 */}
           <article id="fees-rewards" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">08</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                8. Fees, access levels and non-cash rewards
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              8. Fees, access levels and non-cash rewards
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Creating an account or accepting these Terms does <strong>not</strong> authorise a payment. A price, taxes, billing frequency, included service, renewal, cancellation and refund terms must be clearly shown before a paid purchase is agreed to. No paid subscription or automatic renewal is created by a plan label, trial or these Terms alone.
             </p>
@@ -366,12 +342,9 @@ export default function Terms() {
 
           {/* Section 9 */}
           <article id="acceptable-use" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">09</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                9. Acceptable use
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              9. Acceptable use
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Do not:
             </p>
@@ -406,12 +379,9 @@ export default function Terms() {
 
           {/* Section 10 */}
           <article id="intellectual-property" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">10</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                10. Kuberos intellectual property
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              10. Kuberos intellectual property
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kuberos and its licensors retain rights in Kubear's software, branding and original service content, subject to third-party and open-source licences. You receive a limited permission to use the service for its intended purposes while entitled to access it.
             </p>
@@ -422,12 +392,9 @@ export default function Terms() {
 
           {/* Section 11 */}
           <article id="availability-changes" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">11</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                11. Availability, changes and suspension
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              11. Availability, changes and suspension
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               We aim to operate a dependable service, but maintenance, connectivity problems, supplier failures or security incidents may interrupt access. We do not guarantee uninterrupted availability, perfect AI output or that every feature suits every purpose.
             </p>
@@ -441,12 +408,9 @@ export default function Terms() {
 
           {/* Section 12 */}
           <article id="responsibility-limitations" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">12</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                12. Responsibility and limitations
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              12. Responsibility and limitations
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               You are responsible for the accuracy of information you choose to submit and your independent financial decisions. Kuberos remains responsible for obligations that apply to its service.
             </p>
@@ -460,16 +424,13 @@ export default function Terms() {
 
           {/* Section 13 */}
           <article id="closure-data-rights" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">13</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                13. Closure and data rights
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              13. Closure and data rights
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Follow the{" "}
               <a
-                href="https://kubear.kuberos.in/data-deletion"
+                href="https://kuberos.in/data-deletion"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -485,12 +446,9 @@ export default function Terms() {
 
           {/* Section 14 */}
           <article id="complaints-governing-law" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">14</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                14. Complaints, governing law and disputes
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              14. Complaints, governing law and disputes
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Indian law governs these Terms, subject to mandatory protections applicable to you. Contact{" "}
               <a href="mailto:support@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -509,12 +467,9 @@ export default function Terms() {
 
           {/* Section 15 */}
           <article id="changes-general" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">15</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                15. Changes and general provisions
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              15. Changes and general provisions
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               We will identify the applicable version and effective date and provide appropriate notice of material changes. Where fresh acceptance or consent is required, it must be obtained; a later edit does not rewrite an earlier receipt.
             </p>

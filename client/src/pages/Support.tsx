@@ -57,7 +57,7 @@ export default function Support() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/support");
+    navigator.clipboard.writeText("https://kuberos.in/support");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -66,7 +66,7 @@ export default function Support() {
     <SiteLayout>
       <PageMeta
         title="Kubear Support and Grievances"
-        description="Official Kubear Support and Grievances directory. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/support."
+        description="Official Kubear Support and Grievances directory. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/support."
         path="/support"
       />
 
@@ -96,12 +96,12 @@ export default function Support() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/support"
+                  href="https://kuberos.in/support"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/support
+                  kuberos.in/support
                 </a>
               </div>
               <button
@@ -149,12 +149,9 @@ export default function Support() {
 
           {/* Section 1 */}
           <article id="company-contact-person" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Company and contact person
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Company and contact person
+            </h2>
 
             <div className="p-5 rounded-xl bg-[#FAF7F0] border border-[#123630]/10 text-xs sm:text-sm text-[#3E514B] space-y-2 leading-relaxed">
               <p>
@@ -183,12 +180,9 @@ export default function Support() {
 
           {/* Section 2 */}
           <article id="where-to-write" className="space-y-6 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Where to write
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Where to write
+            </h2>
 
             {/* Email Routing Directory Table */}
             <div className="overflow-hidden rounded-xl border border-[#123630]/15 bg-white shadow-xs">
@@ -240,12 +234,9 @@ export default function Support() {
 
           {/* Section 3 */}
           <article id="information-helps-respond" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. Information that helps us respond
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. Information that helps us respond
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Describe the issue, when it happened, the outcome you seek and any support, transaction or deletion reference. For an account-specific issue, provide the registered mobile number with country code and your account name if present.
             </p>
@@ -256,12 +247,9 @@ export default function Support() {
 
           {/* Section 4 */}
           <article id="formal-grievances-deadlines" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. Formal grievances and deadlines
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. Formal grievances and deadlines
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Address a grievance to <strong>Sidharth Bothra</strong> at{" "}
               <a href="mailto:grievance@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -286,12 +274,9 @@ export default function Support() {
 
           {/* Section 5 */}
           <article id="security-reports" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. Security reports
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. Security reports
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               State the affected feature, approximate time, safe reproduction details and potential impact. Stop testing if you encounter another person's information. Do not download, retain or send that person's records as evidence.
             </p>
@@ -302,12 +287,9 @@ export default function Support() {
 
           {/* Section 6 */}
           <article id="legal-notices-personal-info" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">06</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                6. Legal notices and personal information
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              6. Legal notices and personal information
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Address notices to the company, not just the product name. The email route supplements, and does not replace, any statutory method of service.
             </p>

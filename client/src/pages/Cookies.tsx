@@ -54,7 +54,7 @@ export default function CookiesPage() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/cookies");
+    navigator.clipboard.writeText("https://kuberos.in/cookies");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -63,7 +63,7 @@ export default function CookiesPage() {
     <SiteLayout>
       <PageMeta
         title="Kubear Cookie and Browser Storage Notice"
-        description="Official Kubear Cookie and Browser Storage Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/cookies."
+        description="Official Kubear Cookie and Browser Storage Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/cookies."
         path="/cookies"
       />
 
@@ -93,12 +93,12 @@ export default function CookiesPage() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/cookies"
+                  href="https://kuberos.in/cookies"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/cookies
+                  kuberos.in/cookies
                 </a>
               </div>
               <button
@@ -143,12 +143,9 @@ export default function CookiesPage() {
 
           {/* Section 1 */}
           <article id="scope" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Scope
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Scope
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               This notice describes cookies, browser storage and similar technologies used by Kubear, operated by <strong>KUBEROS INNOVATIONS PRIVATE LIMITED</strong>, CIN <strong>U62099GJ2026PTC177330</strong>, at kubear.kuberos.in. It supplements the{" "}
               <Link href="/privacy" className="text-[#C96632] hover:underline font-medium">
@@ -163,12 +160,9 @@ export default function CookiesPage() {
 
           {/* Section 2 */}
           <article id="technologies-purposes" className="space-y-6 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Technologies and purposes
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Technologies and purposes
+            </h2>
 
             {/* Table */}
             <div className="overflow-hidden rounded-xl border border-[#123630]/15 bg-white shadow-xs">
@@ -207,12 +201,9 @@ export default function CookiesPage() {
 
           {/* Section 3 */}
           <article id="optional-technology" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. Optional technology
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. Optional technology
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear does not use this notice as permission to introduce advertising trackers or unrelated analytics. This release does not offer unrelated advertising tracking as part of core recordkeeping. Any future optional measurement will have a specific disclosure and appropriate choice before activation.
             </p>
@@ -223,12 +214,9 @@ export default function CookiesPage() {
 
           {/* Section 4 */}
           <article id="duration-controls" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. Duration and controls
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. Duration and controls
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Authentication persistence lasts according to the selected session mode and provider/browser controls, until expiry or removal. Local preferences and encrypted snapshots can persist between visits until replaced or cleared by an applicable account action or your browser. Application caches remain until replaced, expired or cleared; closing a tab alone is not removal. Notification registration persists until revoked, invalidated or removed by the relevant account/device action. Provider-managed storage follows that provider's expiry and controls.
             </p>
@@ -249,12 +237,9 @@ export default function CookiesPage() {
 
           {/* Section 5 */}
           <article id="providers-contact" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. Providers and contact
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. Providers and contact
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Google verification services have separate{" "}
               <a

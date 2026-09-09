@@ -69,7 +69,7 @@ export default function Consent() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/consent");
+    navigator.clipboard.writeText("https://kuberos.in/consent");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -78,7 +78,7 @@ export default function Consent() {
     <SiteLayout>
       <PageMeta
         title="Kubear Consent Notice"
-        description="Official Kubear Consent Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/consent."
+        description="Official Kubear Consent Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/consent."
         path="/consent"
       />
 
@@ -108,12 +108,12 @@ export default function Consent() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/consent"
+                  href="https://kuberos.in/consent"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/consent
+                  kuberos.in/consent
                 </a>
               </div>
               <button
@@ -164,12 +164,9 @@ export default function Consent() {
 
           {/* Section 1 */}
           <article id="who-is-asking" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Who is asking and why
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Who is asking and why
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               <strong>KUBEROS INNOVATIONS PRIVATE LIMITED</strong>, CIN <strong>U62099GJ2026PTC177330</strong>, operates Kubear. This notice explains choices alongside the{" "}
               <Link href="/privacy" className="text-[#C96632] hover:underline font-medium">
@@ -184,12 +181,9 @@ export default function Consent() {
 
           {/* Section 2 */}
           <article id="core-recordkeeping" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Core recordkeeping
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Core recordkeeping
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               An account requires phone authentication, associated security checks and account identifiers. Requesting an OTP sends the mobile number to Google/Firebase; Google also stores it for spam and abuse prevention across Google services. The sign-in notice and{" "}
               <a
@@ -212,12 +206,9 @@ export default function Consent() {
 
           {/* Section 3 */}
           <article id="separate-feature-choices" className="space-y-6 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. Separate feature choices
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. Separate feature choices
+            </h2>
 
             {/* Feature Choices Table */}
             <div className="overflow-hidden rounded-xl border border-[#123630]/15 bg-white shadow-xs">
@@ -262,12 +253,9 @@ export default function Consent() {
 
           {/* Section 4 */}
           <article id="giving-a-valid-choice" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. Giving a valid choice
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. Giving a valid choice
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               A consent request should identify the information, purpose, relevant provider/recipient, optional nature and withdrawal method in language you can understand. Optional choices must not be preselected or obtained through inactivity, misleading controls or unrelated bundled permissions.
             </p>
@@ -278,12 +266,9 @@ export default function Consent() {
 
           {/* Section 5 */}
           <article id="withdrawal-and-existing-info" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. Withdrawal and existing information
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. Withdrawal and existing information
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Use <strong>Settings → Privacy Center</strong> for available controls or email{" "}
               <a href="mailto:privacy@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -301,12 +286,9 @@ export default function Consent() {
 
           {/* Section 6 */}
           <article id="other-people-children" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">06</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                6. Other people, children and representatives
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              6. Other people, children and representatives
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               You cannot consent on behalf of another adult merely because you own a Household. Share only information you are authorised to provide. Child-related information and representative requests require appropriate authority and safeguards; the service is not open to child accounts.
             </p>
@@ -314,12 +296,9 @@ export default function Consent() {
 
           {/* Section 7 */}
           <article id="records-and-questions" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">07</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                7. Records and questions
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              7. Records and questions
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear records applicable choices and notice versions to administer and demonstrate what was agreed. Terms acceptance and acknowledgment of the Privacy Policy do not replace a separate choice for an optional purpose. A revised notice does not retroactively expand earlier consent. We will seek a new choice where a new purpose or applicable law requires one.
             </p>
@@ -338,7 +317,7 @@ export default function Consent() {
               </a>
               . See{" "}
               <a
-                href="https://kubear.kuberos.in/support"
+                href="https://kuberos.in/support"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"

@@ -20,7 +20,7 @@ export default function PrivacyData() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/privacy");
+    navigator.clipboard.writeText("https://kuberos.in/privacy");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -29,7 +29,7 @@ export default function PrivacyData() {
     <SiteLayout>
       <PageMeta
         title="Kubear Privacy Policy"
-        description="Official Kubear Privacy Policy. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/privacy."
+        description="Official Kubear Privacy Policy. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/privacy."
         path="/privacy"
       />
 
@@ -59,12 +59,12 @@ export default function PrivacyData() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/privacy"
+                  href="https://kuberos.in/privacy"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/privacy
+                  kuberos.in/privacy
                 </a>
               </div>
               <button
@@ -127,12 +127,9 @@ export default function PrivacyData() {
 
           {/* Section 1 */}
           <article id="who-we-are" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Who we are and what this policy covers
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Who we are and what this policy covers
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear is operated by <strong>KUBEROS INNOVATIONS PRIVATE LIMITED</strong>, an Indian company, CIN <strong>U62099GJ2026PTC177330</strong> (“Kuberos”, “we”, “us” or “our”).
             </p>
@@ -180,12 +177,9 @@ export default function PrivacyData() {
 
           {/* Section 2 */}
           <article id="information-we-process" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Information we process
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Information we process
+            </h2>
 
             {/* Structured Table */}
             <div className="overflow-x-auto rounded-xl border border-[#123630]/12 bg-white shadow-xs">
@@ -355,12 +349,9 @@ export default function PrivacyData() {
 
           {/* Section 3 */}
           <article id="purposes-consent-required" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. Purposes, consent and required processing
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. Purposes, consent and required processing
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               We process information to provide the functions you request: secure sign-in, Personal and Household recordkeeping, review and confirmation, server receipts, sync and restore, calculations, export, optional file/AI features, support and account controls. We also administer service limits, investigate abuse, maintain security and meet applicable legal requirements.
             </p>
@@ -373,7 +364,7 @@ export default function PrivacyData() {
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               See the{" "}
               <a
-                href="https://kubear.kuberos.in/consent"
+                href="https://kuberos.in/consent"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
@@ -386,12 +377,9 @@ export default function PrivacyData() {
 
           {/* Section 4 */}
           <article id="personal-and-household" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. Personal and Household information
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. Personal and Household information
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Personal records are intended to remain separate from Household records. Joining a Household does not by itself authorise disclosure of your Personal records. Information deliberately placed in a shared space is accessible to members according to server-enforced membership, roles and the feature's permissions.
             </p>
@@ -412,12 +400,9 @@ export default function PrivacyData() {
 
           {/* Section 5 */}
           <article id="ai-document-review-voice" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. AI, document review and voice
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. AI, document review and voice
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               When you request an AI explanation, Kubear sends the prompt and relevant server-authorised account or Household context to a Google Gemini service. Document extraction can send the selected file's content to the provider. Context may contain sensitive financial information. AI outputs and chat records may be saved with your account; usage and security records may also be generated.
             </p>
@@ -446,12 +431,9 @@ export default function PrivacyData() {
 
           {/* Section 6 */}
           <article id="providers-locations" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">06</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                6. Providers, recipients and processing locations
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              6. Providers, recipients and processing locations
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               We use providers for infrastructure and features, including:
             </p>
@@ -485,12 +467,9 @@ export default function PrivacyData() {
 
           {/* Section 7 */}
           <article id="retention" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">07</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                7. Retention
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              7. Retention
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               We retain information for its stated purpose and applicable legal requirements, then delete it or genuinely anonymise it. Removing a name while retaining a linkable user ID is not necessarily anonymisation.
             </p>
@@ -593,12 +572,9 @@ export default function PrivacyData() {
 
           {/* Section 8 */}
           <article id="your-controls-requests" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">08</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                8. Your controls and requests
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              8. Your controls and requests
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               You may use available account controls or email{" "}
               <a href="mailto:privacy@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -612,7 +588,7 @@ export default function PrivacyData() {
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               See{" "}
               <a
-                href="https://kubear.kuberos.in/data-deletion"
+                href="https://kuberos.in/data-deletion"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-semibold inline-flex items-center gap-0.5"
@@ -628,12 +604,9 @@ export default function PrivacyData() {
 
           {/* Section 9 */}
           <article id="adults-and-children" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">09</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                9. Adults and information about children
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              9. Adults and information about children
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Accounts are for people aged 18 or older who can enter into a binding contract. Children must not create accounts. Adult-only registration does not mean every uploaded document is child-free.
             </p>
@@ -648,12 +621,9 @@ export default function PrivacyData() {
 
           {/* Section 10 */}
           <article id="security-and-incidents" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">10</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                10. Security and incidents
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              10. Security and incidents
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Kubear uses measures designed to protect information, including authenticated server access, access restrictions, integrity checks, encrypted local persistence and secure network communication. These do not make the service end-to-end encrypted: authorised server processing and selected suppliers can process readable information.
             </p>
@@ -671,12 +641,9 @@ export default function PrivacyData() {
 
           {/* Section 11 */}
           <article id="grievances-and-changes" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">11</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                11. Grievances and changes
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              11. Grievances and changes
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Address privacy grievances to <strong>Sidharth Bothra</strong>,{" "}
               <a href="mailto:grievance@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -691,7 +658,7 @@ export default function PrivacyData() {
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Our{" "}
               <a
-                href="https://kubear.kuberos.in/support"
+                href="https://kuberos.in/support"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-semibold inline-flex items-center gap-0.5"
@@ -763,17 +730,17 @@ export default function PrivacyData() {
           {/* Quick Legal Navigation Links */}
           <div className="pt-6 border-t border-[#123630]/10 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
             <div className="flex flex-wrap gap-4 text-[#556963]">
-              <a href="https://kubear.kuberos.in/consent" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
+              <a href="https://kuberos.in/consent" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
                 Consent Notice <ArrowUpRight className="size-3" />
               </a>
-              <a href="https://kubear.kuberos.in/data-deletion" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
+              <a href="https://kuberos.in/data-deletion" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
                 Account and Data Deletion <ArrowUpRight className="size-3" />
               </a>
-              <a href="https://kubear.kuberos.in/support" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
+              <a href="https://kuberos.in/support" target="_blank" rel="noreferrer" className="hover:text-[#123630] underline flex items-center gap-1">
                 Support and Grievances <ArrowUpRight className="size-3" />
               </a>
-              <a href="https://kubear.kuberos.in/privacy" className="hover:text-[#123630] underline">
-                https://kubear.kuberos.in/privacy
+              <a href="https://kuberos.in/privacy" className="hover:text-[#123630] underline">
+                https://kuberos.in/privacy
               </a>
             </div>
             <p className="text-[11px] text-[#6E817B]">© {new Date().getFullYear()} KUBEROS INNOVATIONS PRIVATE LIMITED</p>

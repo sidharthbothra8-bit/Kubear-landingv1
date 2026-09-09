@@ -22,7 +22,7 @@ export default function DataDeletion() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
-    navigator.clipboard.writeText("https://kubear.kuberos.in/data-deletion");
+    navigator.clipboard.writeText("https://kuberos.in/data-deletion");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -31,7 +31,7 @@ export default function DataDeletion() {
     <SiteLayout>
       <PageMeta
         title="Kubear Account and Data Deletion"
-        description="Official Kubear Account and Data Deletion Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kubear.kuberos.in/data-deletion."
+        description="Official Kubear Account and Data Deletion Notice. Version 2026-09-08. Effective date 8 September 2026. Public URL: https://kuberos.in/data-deletion."
         path="/data-deletion"
       />
 
@@ -61,12 +61,12 @@ export default function DataDeletion() {
               <div className="min-w-0 pr-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E817B] block">Public URL</span>
                 <a
-                  href="https://kubear.kuberos.in/data-deletion"
+                  href="https://kuberos.in/data-deletion"
                   className="text-sm font-semibold text-[#C96632] hover:underline mt-0.5 block truncate"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  kubear.kuberos.in/data-deletion
+                  kuberos.in/data-deletion
                 </a>
               </div>
               <button
@@ -121,12 +121,9 @@ export default function DataDeletion() {
 
           {/* Section 1 */}
           <article id="request-by-email" className="space-y-4 pt-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">01</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                1. Request deletion by email
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              1. Request deletion by email
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Email{" "}
               <a
@@ -165,12 +162,9 @@ export default function DataDeletion() {
 
           {/* Section 2 */}
           <article id="request-in-app" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">02</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                2. Request deletion in the app
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              2. Request deletion in the app
+            </h2>
 
             <ol className="space-y-3 p-5 rounded-xl bg-white border border-[#123630]/12 text-sm sm:text-base text-[#3E514B] list-decimal pl-5 leading-relaxed">
               <li>Sign in to Kubear.</li>
@@ -200,12 +194,9 @@ export default function DataDeletion() {
 
           {/* Section 3 */}
           <article id="before-you-confirm" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">03</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                3. Before you confirm
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              3. Before you confirm
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Export information you need and save original documents outside Kubear. Deletion may be irreversible once processing starts. A cancellation request can be considered only if deletion has not progressed too far; cancellation is not guaranteed.
             </p>
@@ -219,12 +210,9 @@ export default function DataDeletion() {
 
           {/* Section 4 */}
           <article id="what-deletion-covers" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">04</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                4. What account deletion covers
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              4. What account deletion covers
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               After verification and safe processing, the account-deletion workflow covers the linked sign-in identity and associated account records, financial content, account-held AI/chat data, relevant stored files, account/bootstrap state and related server-managed data, subject to the exceptions below.
             </p>
@@ -238,12 +226,9 @@ export default function DataDeletion() {
 
           {/* Section 5 */}
           <article id="household-ownership" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">05</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                5. Household ownership and shared records
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              5. Household ownership and shared records
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Deletion must protect both your rights and other members' legitimate records. Shared entries may require unlinking, minimisation, tombstoning or an authorised ownership transfer instead of indiscriminately deleting an entire Household.
             </p>
@@ -261,12 +246,9 @@ export default function DataDeletion() {
 
           {/* Section 6 */}
           <article id="timing-exceptions-confirmation" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">06</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                6. Timing, exceptions and confirmation
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              6. Timing, exceptions and confirmation
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               Our normal target is to complete account deletion from active systems <strong>within 30 calendar days after proportionate ownership verification</strong>. If completion is delayed by an ownership dispute, legal hold, supplier dependency or technical failure, we will explain the outstanding steps and expected next update. We do not treat verification or this service target as an automatic extension of any binding legal deadline.
             </p>
@@ -290,12 +272,9 @@ export default function DataDeletion() {
 
           {/* Section 7 */}
           <article id="help-and-grievances" className="space-y-4 pt-6 border-t border-[#123630]/10">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#C96632]">07</span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
-                7. Help and grievances
-              </h2>
-            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#123630] font-normal">
+              7. Help and grievances
+            </h2>
             <p className="text-sm sm:text-base leading-relaxed text-[#41534D]">
               For status, email <strong>privacy@kuberos.in</strong> with the request reference and registered mobile number. For a formal grievance, contact <strong>Sidharth Bothra</strong>,{" "}
               <a href="mailto:grievance@kuberos.in" className="text-[#C96632] hover:underline font-semibold">
@@ -317,7 +296,7 @@ export default function DataDeletion() {
               </Link>
               . See{" "}
               <a
-                href="https://kubear.kuberos.in/support"
+                href="https://kuberos.in/support"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[#C96632] hover:underline font-medium inline-flex items-center gap-0.5"
