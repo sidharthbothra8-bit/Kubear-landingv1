@@ -208,17 +208,21 @@ export function Footer() {
                 <Link href="/privacy" className="hover:text-white">
                   Privacy
                 </Link>
-                <a href="https://www.kuberos.in/legal/terms" target="_blank" rel="noreferrer" className="hover:text-white">
+                <Link href="/terms" className="hover:text-white">
                   Terms
-                </a>
-                <a
-                  href="https://www.kuberos.in/legal/delete-account"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white"
-                >
+                </Link>
+                <Link href="/consent" className="hover:text-white">
+                  Consent
+                </Link>
+                <Link href="/data-deletion" className="hover:text-white">
                   Delete account
-                </a>
+                </Link>
+                <Link href="/support" className="hover:text-white">
+                  Support & Grievances
+                </Link>
+                <Link href="/cookies" className="hover:text-white">
+                  Cookies & Storage
+                </Link>
                 <a href="mailto:hello@kuberos.in" className="hover:text-white">
                   hello@kuberos.in
                 </a>

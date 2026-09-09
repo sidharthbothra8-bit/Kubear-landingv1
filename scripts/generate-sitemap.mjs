@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path";
 
 const origin = "https://www.kuberos.in";
 const routes = [
-  "/", "/how-it-works", "/privacy", "/privacy-data", "/journal", "/learn", "/learn/tools",
+  "/", "/how-it-works", "/privacy", "/privacy-data", "/terms", "/consent", "/data-deletion", "/support", "/cookies", "/journal", "/learn", "/learn/tools",
   "/learn/tools/sip-calculator", "/learn/tools/emi-calculator", "/learn/tools/goa-goal-calculator",
   "/learn/start-here", "/learn/salary-planning", "/learn/upi-and-spending", "/learn/home-money", "/learn/goals-and-saving", "/learn/tax-and-long-term",
   "/learn/salary-day-is-not-spending-day", "/learn/upi-weekly-check-in", "/learn/rent-bills-cards-what-to-see-first", "/learn/goa-fund-without-guilt", "/learn/home-money-without-mix-up", "/learn/epf-ppf-nps-basics",

@@ -6,6 +6,11 @@ import Learn from "@/pages/Learn";
 import LearnStudio from "@/pages/LearnStudio";
 import NotFound from "@/pages/NotFound";
 import PrivacyData from "@/pages/PrivacyData";
+import Terms from "@/pages/Terms";
+import Consent from "@/pages/Consent";
+import DataDeletion from "@/pages/DataDeletion";
+import Support from "@/pages/Support";
+import Cookies from "@/pages/Cookies";
 import Tools from "@/pages/Tools";
 import { Link, Route, Switch, useLocation } from "wouter";
 import { useEffect } from "react";
@@ -23,6 +28,16 @@ function Router() {
     <Route path="/money-view" component={LegacyHomeRedirect} />
     <Route path="/privacy" component={PrivacyData} />
     <Route path="/privacy-data" component={PrivacyData} />
+    <Route path="/terms" component={Terms} />
+    <Route path="/terms-of-use" component={Terms} />
+    <Route path="/consent" component={Consent} />
+    <Route path="/consent-notice" component={Consent} />
+    <Route path="/data-deletion" component={DataDeletion} />
+    <Route path="/delete-account" component={DataDeletion} />
+    <Route path="/support" component={Support} />
+    <Route path="/grievances" component={Support} />
+    <Route path="/cookies" component={Cookies} />
+    <Route path="/cookie-notice" component={Cookies} />
     <Route path="/journal" component={Journal} />
     <Route path="/learn" component={Learn} />
     <Route path="/learn/tools" component={Tools} />
