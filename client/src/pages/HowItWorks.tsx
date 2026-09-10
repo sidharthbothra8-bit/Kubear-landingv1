@@ -228,7 +228,7 @@ export default function HowItWorks() {
               <div className="text-xs text-[#5A6E69] mt-0.5 font-medium">Average finance tools on an Indian phone</div>
             </div>
             <div className="p-3.5 rounded-2xl bg-[#FFFDF8] border border-[#E5DFD4]">
-              <div className="font-mono text-2xl font-bold text-[#D44722]">₹40–₹250</div>
+              <div className="font-mono text-2xl font-bold text-[#D44722]">₹40 to ₹250</div>
               <div className="text-xs text-[#5A6E69] mt-0.5 font-medium">Invisible average UPI micro-leak size</div>
             </div>
             <div className="p-3.5 rounded-2xl bg-[#FFFDF8] border border-[#E5DFD4]">
@@ -861,8 +861,8 @@ export default function HowItWorks() {
                       <div
                         className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs leading-relaxed ${
                           log.sender === "user"
-                            ? "bg-[#123630] text-white rounded-tr-xs"
-                            : "bg-[#FAF7F0] border border-[#E5DFD4] text-[#123630] rounded-tl-xs"
+                            ? "bg-[#FFF8EE] border-2 border-[#E8DEC8] text-[#123630] font-semibold rounded-tr-xs shadow-xs"
+                            : "bg-white border border-[#E5DFD4] text-[#123630] rounded-tl-xs shadow-xs"
                         }`}
                       >
                         <p className="font-medium">{log.text}</p>
@@ -922,7 +922,7 @@ export default function HowItWorks() {
                   />
                   <button
                     type="submit"
-                    className="rounded-xl bg-[#123630] p-2 text-white hover:bg-[#D44722] transition-colors cursor-pointer"
+                    className="rounded-xl bg-[#FF5C2B] p-2 text-white hover:bg-[#E04B19] transition-colors cursor-pointer shadow-xs"
                     aria-label="Send message"
                   >
                     <Send className="size-3.5" />

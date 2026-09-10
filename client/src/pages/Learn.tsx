@@ -741,37 +741,37 @@ function LearnDetail({ slug }: { slug: string }) {
           ) : null}
 
           {toolHref && article.toolLabel ? (
-            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#143B35] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
+            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#FAF7F0] border-2 border-[#143B35]/15 text-[#123630] flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-xs">
               <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-white/15 text-[#D8E8DE] mb-2">
-                  <Calculator className="size-3 text-[#E5AD2B]" />
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FF5C2B]/10 text-[#CD4623] mb-2">
+                  <Calculator className="size-3 text-[#CD4623]" />
                   Interactive Tool
                 </div>
-                <h3 className="text-xl font-serif text-white font-normal">
+                <h3 className="text-xl font-serif text-[#123630] font-normal">
                   {article.toolLabel}
                 </h3>
-                <p className="text-xs text-[#A8C5BD] mt-1 max-w-md">
+                <p className="text-xs text-[#52665F] mt-1 max-w-md">
                   Calculate your exact allocation numbers with verified Indian tax and expense rules.
                 </p>
               </div>
               <Link
                 href={toolHref}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C96632] hover:bg-[#b05526] text-white text-sm font-bold shadow-xs hover:shadow transition-all shrink-0 no-underline"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all shrink-0 no-underline"
               >
                 <span>Open Calculator</span>
                 <ArrowRight className="size-4" />
               </Link>
             </div>
           ) : article.ctaHref ? (
-            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#143B35] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
+            <div className="my-10 p-6 sm:p-7 rounded-2xl bg-[#FAF7F0] border-2 border-[#143B35]/15 text-[#123630] flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-xs">
               <div>
-                <h3 className="text-xl font-serif text-white font-normal">
+                <h3 className="text-xl font-serif text-[#123630] font-normal">
                   {article.ctaLabel}
                 </h3>
               </div>
               <Link
                 href={article.ctaHref}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C96632] hover:bg-[#b05526] text-white text-sm font-bold shadow-xs hover:shadow transition-all shrink-0 no-underline"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all shrink-0 no-underline"
               >
                 <span>Get Started</span>
                 <ArrowRight className="size-4" />

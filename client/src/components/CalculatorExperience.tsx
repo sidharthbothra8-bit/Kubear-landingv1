@@ -381,7 +381,7 @@ export function CalculatorExperience({ slug }: { slug: string }) {
           subB: `Total Amount Repaid: ${formatInr(est.totalPaid)} on ${formatInr(bal.value)}`,
           explanation:
             form.cardPayMode === "minimum"
-              ? `Paying only the 5% minimum due keeps you trapped in debt for ${est.years} years! You end up paying ${formatInr(est.totalInterest)} just in interest—that is ${((est.totalInterest / bal.value) * 100).toFixed(0)}% more than your actual purchase!`
+              ? `Paying only the 5% minimum due keeps you trapped in debt for ${est.years} years! You end up paying ${formatInr(est.totalInterest)} just in interest (that is ${((est.totalInterest / bal.value) * 100).toFixed(0)}% more than your actual purchase)!`
               : `With a disciplined fixed payoff of ${formatInr(fix.valid ? fix.value : 3500)}/mo, you become debt-free in ${est.months} months and save ${formatInr(est.interestSaved)} in interest compared to paying minimum due.`,
           ratioA: 100 - est.interestRatio,
           ratioB: est.interestRatio,
@@ -413,7 +413,7 @@ export function CalculatorExperience({ slug }: { slug: string }) {
           mainLabel: `Estimated Maturity Corpus (${y.value} Years)`,
           subA: `You Invest: ${formatInr(est.contributed)}`,
           subB: `Compounded Growth: ${formatInr(est.growth)}`,
-          explanation: `With a ${step.valid ? step.value : 0}% annual step-up linked to your salary increment, your corpus reaches ${formatCompactInr(est.value)}—that is ${formatCompactInr(est.stepUpAdvantage)} higher than a flat SIP! (Inflation-adjusted purchasing power: ${formatCompactInr(est.realPurchasingPower)}).`,
+          explanation: `With a ${step.valid ? step.value : 0}% annual step-up linked to your salary increment, your corpus reaches ${formatCompactInr(est.value)}, which is ${formatCompactInr(est.stepUpAdvantage)} higher than a flat SIP! (Inflation-adjusted purchasing power: ${formatCompactInr(est.realPurchasingPower)}).`,
           ratioA: invRatio,
           ratioB: 100 - invRatio,
           labelA: "Amount Contributed",

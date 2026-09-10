@@ -808,10 +808,10 @@ function InvestingVisual({ className = "" }: { className?: string }) {
           <p className="text-[10px] text-emerald-800 mt-0.5">Invested: ₹12.0L</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#143B35] text-white">
-          <p className="text-[10px] font-mono uppercase text-[#A7F3D0]">15 Years Horizon</p>
-          <strong className="text-sm sm:text-base font-serif font-bold text-[#FFF8EE]">₹50.45 Lakh</strong>
-          <p className="text-[10px] text-[#A7F3D0] mt-0.5">Invested: ₹18.0L</p>
+        <div className="p-3 rounded-xl bg-[#FFF8EE] border border-[#F2DEB9]">
+          <p className="text-[10px] font-mono uppercase text-[#9A5200] font-bold">15 Years Horizon</p>
+          <strong className="text-sm sm:text-base font-serif font-bold text-[#143B35]">₹50.45 Lakh</strong>
+          <p className="text-[10px] text-[#786146] mt-0.5 font-medium">Invested: ₹18.0L</p>
         </div>
       </div>
 
@@ -983,57 +983,57 @@ function FamilyVisual({ className = "" }: { className?: string }) {
 function LibraryVisual({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`relative w-full rounded-2xl bg-[#143B35] text-[#FFF8EE] p-5 sm:p-6 shadow-sm overflow-hidden flex flex-col justify-between select-none ${className}`}
+      className={`relative w-full rounded-2xl bg-[#FAF7F0] border-2 border-[#143B35]/15 text-[#123630] p-5 sm:p-6 shadow-sm overflow-hidden flex flex-col justify-between select-none ${className}`}
       aria-label="Kubear Learn Editorial Desk Visual"
     >
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#143B35]/10">
         <div className="flex items-center gap-2">
           <span className="flex size-7 items-center justify-center rounded-lg bg-[#C96632] text-white">
             <BookOpen className="size-4" />
           </span>
           <div>
-            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FFB18E]">
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#C96632]">
               Kubear Editorial Desk
             </p>
-            <h4 className="text-sm sm:text-base font-serif font-bold text-white">
+            <h4 className="text-sm sm:text-base font-serif font-bold text-[#123630]">
               50 Plain-English Guides &amp; Math Tools
             </h4>
           </div>
         </div>
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-[#FFF8EE]/15 text-[#FFF8EE] border border-white/10">
-          <ShieldCheck className="size-3.5 text-[#4ADE80]" /> 10-Pillar Verified
+        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-[#10B981]/15 text-[#047857] border border-[#10B981]/25">
+          <ShieldCheck className="size-3.5 text-[#047857]" /> 10-Pillar Verified
         </span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 my-4">
-        <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-          <span className="text-[10px] font-mono font-bold text-[#FFB18E]">PILLARS 1-3</span>
-          <p className="text-xs font-bold text-white mt-1">Foundation</p>
-          <p className="text-[10px] text-[#D8E8DE]">Salary, UPI &amp; Rent</p>
+        <div className="p-3 rounded-xl bg-white border border-[#E0D8C8] shadow-xs">
+          <span className="text-[10px] font-mono font-bold text-[#C96632]">PILLARS 1-3</span>
+          <p className="text-xs font-bold text-[#123630] mt-1">Foundation</p>
+          <p className="text-[10px] text-[#556963]">Salary, UPI &amp; Rent</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-          <span className="text-[10px] font-mono font-bold text-[#FFB18E]">PILLARS 4-6</span>
-          <p className="text-xs font-bold text-white mt-1">Protection</p>
-          <p className="text-[10px] text-[#D8E8DE]">Emergency, Tax &amp; Debt</p>
+        <div className="p-3 rounded-xl bg-white border border-[#E0D8C8] shadow-xs">
+          <span className="text-[10px] font-mono font-bold text-[#C96632]">PILLARS 4-6</span>
+          <p className="text-xs font-bold text-[#123630] mt-1">Protection</p>
+          <p className="text-[10px] text-[#556963]">Emergency, Tax &amp; Debt</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-          <span className="text-[10px] font-mono font-bold text-[#FFB18E]">PILLARS 7-8</span>
-          <p className="text-xs font-bold text-white mt-1">Growth</p>
-          <p className="text-[10px] text-[#D8E8DE]">SIPs, Compounding &amp; Goals</p>
+        <div className="p-3 rounded-xl bg-white border border-[#E0D8C8] shadow-xs">
+          <span className="text-[10px] font-mono font-bold text-[#C96632]">PILLARS 7-8</span>
+          <p className="text-xs font-bold text-[#123630] mt-1">Growth</p>
+          <p className="text-[10px] text-[#556963]">SIPs, Compounding &amp; Goals</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-          <span className="text-[10px] font-mono font-bold text-[#FFB18E]">PILLARS 9-10</span>
-          <p className="text-xs font-bold text-white mt-1">Independence</p>
-          <p className="text-[10px] text-[#D8E8DE]">FIRE, Parents &amp; Housing</p>
+        <div className="p-3 rounded-xl bg-white border border-[#E0D8C8] shadow-xs">
+          <span className="text-[10px] font-mono font-bold text-[#C96632]">PILLARS 9-10</span>
+          <p className="text-xs font-bold text-[#123630] mt-1">Independence</p>
+          <p className="text-[10px] text-[#556963]">FIRE, Parents &amp; Housing</p>
         </div>
       </div>
 
-      <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#D8E8DE]">
+      <div className="pt-3 border-t border-[#143B35]/10 flex items-center justify-between text-xs text-[#556963]">
         <span>✓ Grounded in statutory Indian tax laws &amp; financial math</span>
-        <span className="font-mono font-bold text-[#FFB18E]">No Jargon · Plain Words</span>
+        <span className="font-mono font-bold text-[#C96632]">No Jargon · Plain Words</span>
       </div>
     </div>
   );

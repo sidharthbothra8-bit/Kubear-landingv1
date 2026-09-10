@@ -36,33 +36,33 @@ export default function Journal() {
         </div>
       </section>
 
-      <section className="bg-[#102B28] px-5 py-16 text-[#FFF8EE] sm:px-8 md:px-10 lg:px-12">
+      <section className="bg-[#FAF7F0] border-y-2 border-[#123630]/10 px-5 py-16 text-[#123630] sm:px-8 md:px-10 lg:px-12">
         <div className="mx-auto grid max-w-[1280px] gap-8 md:grid-cols-[.8fr_1.2fr] md:items-center">
-          <div className="journal-feature-card" aria-label="Featured reading summary">
-            <BookOpen className="size-7" />
-            <p>FEATURED ISSUE</p>
-            <strong>One clear question.<br />One useful next step.</strong>
-            <div>
+          <div className="journal-feature-card bg-white border-2 border-[#123630]/15 shadow-sm text-[#123630]" aria-label="Featured reading summary">
+            <BookOpen className="size-7 text-[#CD4623]" />
+            <p className="font-mono text-xs font-bold text-[#CD4623]">FEATURED ISSUE</p>
+            <strong className="text-[#123630]">One clear question.<br />One useful next step.</strong>
+            <div className="text-[#516761]">
               <span>{featured.category.toUpperCase()}</span>
               <span>{featured.readTime}</span>
               <span>ISSUE {String(featured.calendarOrder).padStart(2, "0")}</span>
             </div>
           </div>
           <article data-reveal>
-            <p className="eyebrow text-[#FFB18E]">Featured internal read</p>
-            <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-[.98] tracking-[-.055em] sm:text-4xl lg:text-5xl">
+            <p className="eyebrow text-[#CD4623]">Featured internal read</p>
+            <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-[.98] tracking-[-.055em] sm:text-4xl lg:text-5xl text-[#123630]">
               {featured.title}
             </h2>
-            <p className="mt-5 max-w-xl text-xs sm:text-sm leading-relaxed text-[#D8E8DE]">
+            <p className="mt-5 max-w-xl text-xs sm:text-sm leading-relaxed text-[#516761]">
               {featured.dek}
             </p>
             {featured.takeaway && (
-              <p className="journal-feature-takeaway">
-                <span>Takeaway</span>
+              <p className="journal-feature-takeaway bg-white border border-[#123630]/15 text-[#123630]">
+                <span className="text-[#CD4623] font-bold">Takeaway</span>
                 {featured.takeaway}
               </p>
             )}
-            <Link href={`/learn/${featured.slug}`} className="button button-light mt-8">
+            <Link href={`/learn/${featured.slug}`} className="inline-flex items-center gap-2 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white px-6 py-3 text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all mt-8">
               Read in {featured.readTime} <ArrowRight className="size-4" />
             </Link>
           </article>

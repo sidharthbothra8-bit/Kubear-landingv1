@@ -39,7 +39,7 @@ const supportDirectory = [
   {
     matter: "Formal grievance",
     email: "grievance@kuberos.in",
-    subject: "Kubear grievance — attention Sidharth Bothra",
+    subject: "Kubear grievance: attention Sidharth Bothra",
   },
   {
     matter: "Security report",
@@ -49,7 +49,7 @@ const supportDirectory = [
   {
     matter: "Legal notice",
     email: "support@kuberos.in",
-    subject: "Kubear legal notice — KUBEROS INNOVATIONS PRIVATE LIMITED",
+    subject: "Kubear legal notice: KUBEROS INNOVATIONS PRIVATE LIMITED",
   },
 ];
 
@@ -210,7 +210,7 @@ export default function Support() {
                             <a href={mailtoUrl} className="font-semibold text-[#C96632] hover:underline">
                               {item.email}
                             </a>
-                            <span className="text-[#6E817B]"> — “{item.subject}”</span>
+                            <span className="text-[#6E817B]"> : “{item.subject}”</span>
                           </td>
                         </tr>
                       );

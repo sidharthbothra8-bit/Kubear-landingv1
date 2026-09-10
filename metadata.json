@@ -1,6 +1,6 @@
 {
   "name": "Kubear",
-  "description": "Know what you spent. See what’s still due. A simple, intuitive money companion for Indian personal and household money clarity.",
+  "description": "Stop guessing your bank balance. Know what you can actually afford, what to do next, and if your goals are safe.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

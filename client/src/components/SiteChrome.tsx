@@ -165,23 +165,23 @@ export function MobileBottomNav() {
 
 export function Footer() {
   return (
-    <footer className="bg-[#123630] text-[#FFFDF8] border-t border-[#1C453E]">
+    <footer className="bg-[#FAF7F0] text-[#123630] border-t-2 border-[#123630]/12">
       <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr_1fr] lg:gap-16">
           <div>
-            <Brand inverse />
-            <p className="mt-5 max-w-sm text-base leading-7 text-[#D8E8DE]">
+            <Brand inverse={false} />
+            <p className="mt-5 max-w-sm text-base leading-7 text-[#516761]">
               Less chasing money. More space to live your week. Zero bank passwords, zero SMS scraping.
             </p>
             <div className="mt-7 flex flex-col items-start gap-3">
               <a
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#FFB18E] transition-transform hover:translate-x-1"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#CD4623] transition-transform hover:translate-x-1"
                 href={APP_URL}
               >
                 Open Web App <MoveRight className="size-4" />
               </a>
               <a
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#F4D277] transition-transform hover:translate-x-1"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#047857] transition-transform hover:translate-x-1"
                 href={PLAY_URL}
                 target="_blank"
                 rel="noreferrer"
@@ -192,54 +192,54 @@ export function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <p className="eyebrow text-[#F4D277]">Explore</p>
-              <div className="mt-4 grid gap-3 text-sm text-[#D8E8DE]">
-                <Link href="/" className="hover:text-white">
+              <p className="eyebrow text-[#CD4623] font-bold">Explore</p>
+              <div className="mt-4 grid gap-3 text-sm text-[#41534D]">
+                <Link href="/" className="hover:text-[#FF5C2B] transition-colors">
                   Overview
                 </Link>
-                <Link href="/learn" className="hover:text-white">
+                <Link href="/learn" className="hover:text-[#FF5C2B] transition-colors">
                   Learn & Tools
                 </Link>
               </div>
             </div>
             <div>
-              <p className="eyebrow text-[#F4D277]">Trust</p>
-              <div className="mt-4 grid gap-3 text-sm text-[#D8E8DE]">
-                <Link href="/privacy" className="hover:text-white">
+              <p className="eyebrow text-[#CD4623] font-bold">Trust</p>
+              <div className="mt-4 grid gap-3 text-sm text-[#41534D]">
+                <Link href="/privacy" className="hover:text-[#FF5C2B] transition-colors">
                   Privacy
                 </Link>
-                <Link href="/terms" className="hover:text-white">
+                <Link href="/terms" className="hover:text-[#FF5C2B] transition-colors">
                   Terms
                 </Link>
-                <Link href="/consent" className="hover:text-white">
+                <Link href="/consent" className="hover:text-[#FF5C2B] transition-colors">
                   Consent
                 </Link>
-                <Link href="/data-deletion" className="hover:text-white">
+                <Link href="/data-deletion" className="hover:text-[#FF5C2B] transition-colors">
                   Delete account
                 </Link>
-                <Link href="/support" className="hover:text-white">
+                <Link href="/support" className="hover:text-[#FF5C2B] transition-colors">
                   Support & Grievances
                 </Link>
-                <Link href="/cookies" className="hover:text-white">
+                <Link href="/cookies" className="hover:text-[#FF5C2B] transition-colors">
                   Cookies & Storage
                 </Link>
-                <a href="mailto:hello@kuberos.in" className="hover:text-white">
+                <a href="mailto:hello@kuberos.in" className="hover:text-[#FF5C2B] transition-colors">
                   hello@kuberos.in
                 </a>
               </div>
             </div>
           </div>
-          <div className="border-t border-white/15 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-            <p className="eyebrow text-[#FFB18E]">Your next view</p>
-            <p className="mt-4 font-serif text-3xl leading-tight text-white">
+          <div className="border-t border-[#123630]/10 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+            <p className="eyebrow text-[#CD4623] font-bold">Your next view</p>
+            <p className="mt-4 font-serif text-3xl leading-tight text-[#123630]">
               Money moves. Your view can keep up.
             </p>
-            <a className="button button-light mt-6" href={APP_URL}>
+            <a className="inline-flex items-center gap-2 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white px-6 py-3 text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all mt-6" href={APP_URL}>
               Open Web App <ArrowUpRight className="size-4" />
             </a>
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-2 border-t border-white/15 pt-6 text-xs text-[#AAB6AE] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-2 border-t border-[#123630]/10 pt-6 text-xs text-[#6B807A] sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Kuberos Innovations Pvt. Ltd. · Surat, India.</span>
           <span>For everyday Indian money moments.</span>
         </div>
