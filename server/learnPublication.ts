@@ -6,7 +6,7 @@ import { sdk } from "./_core/sdk";
 export async function runLearnPublication(req: Request, res: Response) {
   try {
     const user = await sdk.authenticateRequest(req);
-    if (!user.isCron || !user.taskUid) return res.status(403).json({ error: "cron-only" });
+    if (!user || !user.isCron || !user.taskUid) return res.status(403).json({ error: "cron-only" });
     const result = await publishEligibleLearnArticles(user.taskUid);
     return res.json({ ok: true, ...result });
   } catch (error) {

@@ -41,7 +41,7 @@ body {
 }
 
 /* Base Headings - Generous line-height, natural letter-spacing, zero vertical crunch */
-body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .topic-list h2, .tool-route h2, .journal-internal-list h3, .learn-calendar h2, .learn-studio-head h1) {
+body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .topic-list h2, .tool-route h2, .journal-internal-list h3, .learn-calendar h2, .learn-studio-head h1):not(.kubear-home-clarity *):not(.kubear-home-clarity) {
   color: var(--aurora-ink);
   font-family: "DM Serif Display", Georgia, serif !important;
   font-weight: 400 !important;

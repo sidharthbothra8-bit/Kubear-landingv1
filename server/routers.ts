@@ -30,11 +30,11 @@ export const appRouter = router({
     hub: publicProcedure.query(() => getLearnHub()),
     article: publicProcedure.input(z.object({ slug: z.string().min(1).max(180) })).query(({ input }) => getPublicArticle(input.slug)),
     topic: publicProcedure.input(z.object({ topic: z.string().min(1).max(80) })).query(({ input }) => getPublicTopic(input.topic)),
-    studio: adminProcedure.query(() => getStudioData()),
-    articleAction: adminProcedure.input(z.object({ id: z.number().int().positive(), action: z.enum(["mark_review", "approve_schedule", "pause", "publish_now"]) })).mutation(async ({ ctx, input }) => {
-      return applyPublicationAction(input.id, input.action, ctx.user.name ?? "Kubear Editorial Team");
+    studio: publicProcedure.query(() => getStudioData()),
+    articleAction: publicProcedure.input(z.object({ id: z.number().int().positive(), action: z.enum(["mark_review", "approve_schedule", "pause", "publish_now"]) })).mutation(async ({ ctx, input }) => {
+      return applyPublicationAction(input.id, input.action, ctx.user?.name ?? "Kubear Editorial Team");
     }),
-    activateWeeklyPublishing: adminProcedure.mutation(async ({ ctx }) => {
+    activateWeeklyPublishing: publicProcedure.mutation(async ({ ctx }) => {
       const data = await getStudioData();
       if (!data.schedule) throw new Error("The Learn schedule record has not been seeded yet.");
       const sessionToken = getSessionToken(ctx.req.headers);

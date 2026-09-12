@@ -1,6 +1,6 @@
 {
   "name": "Kubear",
-  "description": "Stop guessing your bank balance. Know what you can actually afford, what to do next, and if your goals are safe.",
+  "description": "Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you’re on track for your goals.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

@@ -52,7 +52,7 @@ export function Brand({ inverse = false, compact = false }: { inverse?: boolean;
   );
 }
 
-export function Header() {
+export function Header({ dark = false }: { dark?: boolean }) {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -69,12 +69,12 @@ export function Header() {
     location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
 
   return (
-    <header className={`mm-header mm-header-light ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={`mm-header ${dark ? "mm-header-dark" : "mm-header-light"} ${isScrolled ? "is-scrolled" : ""}`}>
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
       <div className="mm-header-inner">
-        <Brand inverse={false} compact={isScrolled} />
+        <Brand inverse={dark} compact={isScrolled} />
 
         {/* Desktop / Tablet Navigation Links */}
         <nav className="hidden sm:flex items-center" aria-label="Money Map">
@@ -89,16 +89,20 @@ export function Header() {
                   isScrolled ? "px-3 py-1.5 text-xs" : "px-3.5 py-1.5 text-[0.82rem]"
                 } ${
                   active
-                    ? "bg-[#123630] text-[#FFF8EE] shadow-xs border border-[#123630]"
+                    ? dark
+                      ? "bg-white text-stone-950 shadow-xs border border-white"
+                      : "bg-[#123630] text-[#FFF8EE] shadow-xs border border-[#123630]"
+                    : dark
+                    ? "bg-white/5 text-stone-300 border border-white/10 hover:bg-white/10 hover:text-white"
                     : "bg-[#123630]/[0.04] text-[#24453E] border border-[#123630]/10 hover:bg-[#123630]/10 hover:border-[#123630]/25 hover:text-[#123630]"
                 }`}
               >
                 <Icon
                   className={`transition-colors ${
                     isScrolled ? "size-3.5" : "size-4"
-                  } ${active ? "text-[#FFB18E]" : "text-[#C96632]"}`}
+                  } ${active ? (dark ? "text-emerald-700" : "text-[#FFB18E]") : (dark ? "text-emerald-400" : "text-[#C96632]")}`}
                 />
-                <span className={active ? "text-[#FFF8EE]" : "text-[#143B35]"}>{item.label}</span>
+                <span className={active ? (dark ? "text-stone-950" : "text-[#FFF8EE]") : (dark ? "text-stone-200" : "text-[#143B35]")}>{item.label}</span>
               </Link>
             );
           })}
@@ -124,7 +128,7 @@ export function Header() {
   );
 }
 
-export function MobileBottomNav() {
+export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
   const [location] = useLocation();
 
   const isNavActive = (href: string) => {
@@ -137,7 +141,11 @@ export function MobileBottomNav() {
       className="sm:hidden fixed bottom-3 left-4 right-4 z-50 pointer-events-auto"
       aria-label="Mobile Navigation"
     >
-      <div className="max-w-xs mx-auto bg-[#FFFDF8] rounded-2xl shadow-[0_10px_30px_rgba(18,54,48,0.12)] border border-[#123630]/10 p-1.5 flex items-center justify-between gap-1">
+      <div className={`max-w-xs mx-auto rounded-2xl p-1.5 flex items-center justify-between gap-1 ${
+        dark
+          ? "bg-[#0F1412] shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-white/10"
+          : "bg-[#FFFDF8] shadow-[0_10px_30px_rgba(18,54,48,0.12)] border border-[#123630]/10"
+      }`}>
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const active = isNavActive(item.href);
@@ -145,43 +153,56 @@ export function MobileBottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex-1 min-h-[44px] flex items-center justify-center gap-2 py-1.5 px-3 rounded-xl transition-all ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
                 active
-                  ? "bg-[#123630] text-[#FFF8EE] font-bold shadow-xs"
-                  : "text-[#516761] hover:text-[#123630] hover:bg-[#123630]/5 font-medium"
+                  ? dark
+                    ? "bg-white text-stone-950 shadow-xs"
+                    : "bg-[#123630] text-[#FFF8EE] shadow-xs"
+                  : dark
+                  ? "text-stone-400 hover:text-white"
+                  : "text-[#24453E] hover:bg-[#123630]/5"
               }`}
             >
-              <Icon className={`size-4 ${active ? "text-[#FFB18E]" : "text-[#516761]"}`} />
-              <span className={`text-xs tracking-tight font-bold whitespace-nowrap ${active ? "text-[#FFF8EE]" : ""}`}>
-                {item.label}
-              </span>
+              <Icon className="size-3.5 shrink-0" />
+              <span>{item.label}</span>
             </Link>
           );
         })}
+        <a
+          href={APP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="flex-1 flex items-center justify-center gap-1 py-2 px-3 rounded-xl text-xs font-black bg-[#FF5C2B] text-white shadow-[0_2px_0_#9F3017]"
+        >
+          <span>App</span>
+          <ArrowUpRight className="size-3" />
+        </a>
       </div>
     </nav>
   );
 }
 
-export function Footer() {
+export function Footer({ dark = false }: { dark?: boolean }) {
   return (
-    <footer className="bg-[#FAF7F0] text-[#123630] border-t-2 border-[#123630]/12">
+    <footer className={dark ? "bg-[#050706] text-stone-400 border-t border-white/10" : "bg-[#FAF7F0] text-[#123630] border-t-2 border-[#123630]/12"}>
       <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr_1fr] lg:gap-16">
           <div>
-            <Brand inverse={false} />
-            <p className="mt-5 max-w-sm text-base leading-7 text-[#516761]">
-              Less chasing money. More space to live your week. Zero bank passwords, zero SMS scraping.
+            <Brand inverse={dark} />
+            <p className={`mt-5 max-w-sm text-base leading-7 ${dark ? "text-stone-400" : "text-[#516761]"}`}>
+              Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you’re on track for your goals.
             </p>
             <div className="mt-7 flex flex-col items-start gap-3">
               <a
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#CD4623] transition-transform hover:translate-x-1"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#FF5C2B] transition-transform hover:translate-x-1"
                 href={APP_URL}
               >
                 Open Web App <MoveRight className="size-4" />
               </a>
               <a
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#047857] transition-transform hover:translate-x-1"
+                className={`inline-flex items-center gap-2 text-sm font-bold transition-transform hover:translate-x-1 ${
+                  dark ? "text-emerald-400 hover:text-emerald-300" : "text-[#047857]"
+                }`}
                 href={PLAY_URL}
                 target="_blank"
                 rel="noreferrer"
@@ -193,7 +214,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8">
             <div>
               <p className="eyebrow text-[#CD4623] font-bold">Explore</p>
-              <div className="mt-4 grid gap-3 text-sm text-[#41534D]">
+              <div className={`mt-4 grid gap-3 text-sm ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
                 <Link href="/" className="hover:text-[#FF5C2B] transition-colors">
                   Overview
                 </Link>
@@ -204,7 +225,7 @@ export function Footer() {
             </div>
             <div>
               <p className="eyebrow text-[#CD4623] font-bold">Trust</p>
-              <div className="mt-4 grid gap-3 text-sm text-[#41534D]">
+              <div className={`mt-4 grid gap-3 text-sm ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
                 <Link href="/privacy" className="hover:text-[#FF5C2B] transition-colors">
                   Privacy
                 </Link>
@@ -229,32 +250,37 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="border-t border-[#123630]/10 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-            <p className="eyebrow text-[#CD4623] font-bold">Your next view</p>
-            <p className="mt-4 font-serif text-3xl leading-tight text-[#123630]">
-              Money moves. Your view can keep up.
+          <div className={`border-t pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 ${
+            dark ? "border-white/10" : "border-[#123630]/10"
+          }`}>
+            <p className="eyebrow text-[#CD4623] font-bold">Financial Clarity</p>
+            <p className={`mt-4 font-serif text-3xl leading-tight ${dark ? "text-white" : "text-[#123630]"}`}>
+              Know your number. Sleep with peace of mind.
             </p>
             <a className="inline-flex items-center gap-2 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white px-6 py-3 text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all mt-6" href={APP_URL}>
               Open Web App <ArrowUpRight className="size-4" />
             </a>
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-2 border-t border-[#123630]/10 pt-6 text-xs text-[#6B807A] sm:flex-row sm:items-center sm:justify-between">
+        <div className={`mt-16 flex flex-col gap-2 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between ${
+          dark ? "border-white/10 text-stone-500" : "border-[#123630]/10 text-[#6B807A]"
+        }`}>
           <span>© 2026 Kuberos Innovations Pvt. Ltd. · Surat, India.</span>
-          <span>For everyday Indian money moments.</span>
+          <span>Understand your complete financial life.</span>
         </div>
       </div>
     </footer>
   );
 }
-export function SiteLayout({ children }: { children: React.ReactNode }) {
+
+export function SiteLayout({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <>
-      <Header />
+    <div className={dark ? "bg-[#060807] text-white min-h-screen selection:bg-emerald-500/30" : "min-h-screen"}>
+      <Header dark={dark} />
       <MotionObserver />
       <main id="main-content" className="pb-28 sm:pb-0">{children}</main>
-      <MobileBottomNav />
-      <Footer />
-    </>
+      <MobileBottomNav dark={dark} />
+      <Footer dark={dark} />
+    </div>
   );
 }

@@ -78,8 +78,12 @@ const staticSources = full50Articles.flatMap((raw) =>
 
 export function canPublishLearnArticle(
   article: Pick<LearnArticle, "status" | "scheduledAt" | "reviewedAt" | "productClaimReview">,
-  _now: Date,
+  now: Date,
 ) {
+  if (article.status !== "scheduled") return false;
+  if (!article.reviewedAt) return false;
+  if (!article.productClaimReview) return false;
+  if (article.scheduledAt && article.scheduledAt.getTime() > now.getTime()) return false;
   return true;
 }
 

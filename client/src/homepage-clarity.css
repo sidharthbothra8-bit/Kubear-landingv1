@@ -1,0 +1,237 @@
+/* Homepage Scoped Clarity Styles - Scoped strictly to .kubear-home-clarity */
+.kubear-home-clarity {
+  --kh-bg: #FFFFFF;
+  --kh-card: #FFFFFF;
+  --kh-heading: #142823;
+  --kh-body: #53625C;
+  --kh-muted: #7D8D86;
+  --kh-border: #E5EBE6;
+  --kh-border-subtle: #EDF2EE;
+  --kh-border-highlight: rgba(255, 255, 255, 0.85);
+  --kh-green: #24523F;
+  --kh-green-hover: #1A3E2F;
+  --kh-green-light: #366D55;
+  --kh-orange: #C96632;
+  --kh-orange-vibrant: #E85D3F;
+  --kh-orange-light: #FDF2EB;
+  --kh-orange-border: #F7D7C4;
+  --kh-sage-bg: #F9F7F3;
+  --kh-answer-bg: #FAFBF9;
+  --kh-answer-border: #DFE8E2;
+
+  background-color: var(--kh-bg);
+  color: var(--kh-body);
+  font-family: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.kubear-home-clarity h1,
+.kubear-home-clarity h2,
+.kubear-home-clarity h3,
+.kubear-home-clarity h4,
+.kubear-home-clarity .kh-heading {
+  font-family: "Plus Jakarta Sans", "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  color: var(--kh-heading);
+  letter-spacing: -0.028em;
+}
+
+.kubear-home-clarity .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "cv05" 1;
+}
+
+/* Handwritten annotation styling - Kubear terracotta ink */
+.kh-handwritten {
+  font-family: "Caveat", cursive;
+  color: #C96632;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+/* Primary Green CTA Button with Specular Edge and warm focus */
+.kh-btn-primary {
+  background: linear-gradient(180deg, #2A5D48 0%, #1E4636 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 4px 14px rgba(36, 82, 63, 0.22);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease;
+}
+.kh-btn-primary:hover {
+  background: linear-gradient(180deg, #2E654E 0%, #183C2D 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 20px rgba(201, 102, 50, 0.22);
+  transform: translateY(-1px);
+}
+.kh-btn-primary:active {
+  transform: scale(0.98) translateY(0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 2px 8px rgba(36, 82, 63, 0.2);
+}
+
+/* Secondary Link */
+.kh-link-secondary {
+  color: var(--kh-heading);
+  font-weight: 600;
+  transition: color 150ms ease, transform 150ms ease;
+}
+.kh-link-secondary:hover {
+  color: #C96632;
+}
+.kh-link-secondary:hover svg {
+  transform: translateX(3px);
+  color: #C96632;
+}
+.kh-link-secondary svg {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms ease;
+}
+
+/* Subtle focus indicators */
+.kubear-home-clarity a:focus-visible,
+.kubear-home-clarity button:focus-visible {
+  outline: 2px solid #C96632;
+  outline-offset: 2px;
+}
+
+/* Tactile Frosted Surface with Specular Rim */
+.kh-tactile-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 40, 32, 0.08);
+  box-shadow: 
+    0 1px 2px rgba(20, 40, 32, 0.03),
+    0 6px 18px -4px rgba(20, 40, 32, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease;
+}
+.kh-tactile-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 102, 50, 0.25);
+  box-shadow: 
+    0 2px 4px rgba(20, 40, 32, 0.02),
+    0 12px 28px -6px rgba(201, 102, 50, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* High-elevation Floating Card (Hero Decision Check) */
+.kh-floating-hero-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 40, 32, 0.08);
+  box-shadow: 
+    0 1px 3px rgba(20, 40, 32, 0.04),
+    0 16px 40px -8px rgba(20, 40, 32, 0.12),
+    0 32px 64px -16px rgba(20, 40, 32, 0.06),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kh-floating-hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 2px 6px rgba(20, 40, 32, 0.05),
+    0 24px 50px -10px rgba(20, 40, 32, 0.15),
+    0 40px 72px -16px rgba(20, 40, 32, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+/* Glowing Pulse Dot */
+@keyframes kh-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.4;
+  }
+}
+.kh-live-dot {
+  animation: kh-dot-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Step Number Ceramic Tokens */
+.kh-step-badge {
+  background: linear-gradient(180deg, #F9FAF9 0%, #E8EFEA 100%);
+  border: 1px solid #D8E4DC;
+  box-shadow: 
+    0 2px 6px rgba(20, 40, 32, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .kh-step-badge {
+  transform: scale(1.06);
+}
+
+/* Orange Step Token */
+.kh-step-badge-orange {
+  background: linear-gradient(180deg, #FFF6F1 0%, #FDE9DF 100%);
+  border: 1px solid #F9D5C2;
+  color: #C96632;
+  box-shadow: 
+    0 2px 6px rgba(201, 102, 50, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .kh-step-badge-orange {
+  transform: scale(1.06);
+}
+
+/* Icon Pods */
+.kh-icon-pod {
+  background: linear-gradient(135deg, #F7FBF8 0%, #EBF4EE 100%);
+  border: 1px solid #DCEAE0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms ease;
+}
+.group:hover .kh-icon-pod {
+  transform: translateY(-2px);
+}
+
+/* Orange Icon Pod */
+.kh-icon-pod-orange {
+  background: linear-gradient(135deg, #FFF7F2 0%, #FDEEE4 100%);
+  border: 1px solid #F9DCCB;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(201, 102, 50, 0.08);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms ease;
+}
+.group:hover .kh-icon-pod-orange {
+  transform: translateY(-2px);
+}
+
+/* Luminous Ambient Line with Kubear Terracotta Beam for Connected Life */
+@keyframes kh-beam-travel {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.kh-luminous-wire {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 232, 228, 0.8) 0%,
+    rgba(201, 102, 50, 0.45) 50%,
+    rgba(226, 232, 228, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: kh-beam-travel 6s ease-in-out infinite;
+}
+
+/* Node Orb Lens */
+.kh-node-orb {
+  box-shadow: 
+    0 3px 10px rgba(20, 40, 32, 0.08),
+    0 1px 2px rgba(20, 40, 32, 0.04),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.85);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kh-node-orb:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 
+    0 8px 22px rgba(20, 40, 32, 0.14),
+    0 2px 4px rgba(20, 40, 32, 0.06),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+}
+
