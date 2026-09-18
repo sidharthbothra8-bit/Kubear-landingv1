@@ -3,162 +3,174 @@ import { ArrowRight, BarChart3, Check, FileText, Sparkles } from "lucide-react";
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 lg:py-24 border-t border-[#E5EBE6]">
+    <section id="how-it-works" className="py-14 sm:py-18 lg:py-24 border-t border-[#E8EFEA] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3 pb-10 sm:pb-14">
-          <div>
-            <span className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#C96632] mb-2">
+        {/* Section Header - persistently side-by-side */}
+        <div className="flex flex-row items-baseline justify-between gap-4 pb-8 sm:pb-12">
+          <div className="min-w-0">
+            <span className="inline-flex items-center gap-1.5 px-[clamp(0.5rem,1vw,0.75rem)] py-[clamp(0.2rem,0.4vw,0.35rem)] rounded-full text-[clamp(0.65rem,0.8vw,0.75rem)] font-bold uppercase tracking-wider bg-[#FFF7ED] text-[#EA580C] border border-[#FFEDD5] mb-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
               Three simple steps
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-[#142823] tracking-tight">
+            <h2 className="text-[clamp(1.2rem,2.4vw,2.25rem)] font-bold text-[#0E241E] tracking-tight">
               Start with what you know.
             </h2>
           </div>
-          <p className="text-sm sm:text-base text-[#7D8D86] max-w-md sm:text-right">
-            It only takes a few minutes to get a clearer picture of your money.
+          <p className="text-[clamp(0.72rem,1.1vw,1rem)] text-[#5B6E66] max-w-[45%] text-right font-medium shrink-0">
+            It only takes two minutes to bring total harmony to your monthly commitments.
           </p>
         </div>
 
-        {/* 3 Steps in a Row with Continuous Flow */}
+        {/* 3 Steps in a Row with Continuous Flow - NEVER REARRANGE */}
         <div className="relative">
-          {/* Subtle horizontal connecting line behind the cards on desktop */}
-          <div className="hidden lg:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-[#F5DACB] via-[#E2EAE4] to-[#CDE4D6] pointer-events-none z-0" />
+          {/* Connecting line behind cards - always visible */}
+          <div className="block absolute top-9 sm:top-12 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-[#FFD8B5] via-[#A7F3D0] to-[#FDE68A] pointer-events-none z-0" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative z-10">
-            {/* STEP 1 */}
-            <div className="kh-tactile-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between group min-h-[310px]">
+          <div className="grid grid-cols-3 gap-[clamp(0.5rem,1.6vw,2rem)] relative z-10">
+            {/* STEP 1: Surya Saffron */}
+            <div 
+              data-reveal
+              data-reveal-delay="1"
+              className="kh-tactile-card rounded-[clamp(0.85rem,1.5vw,1.25rem)] p-[clamp(0.75rem,1.6vw,1.75rem)] flex flex-col justify-between group min-h-[clamp(240px,26vw,340px)] border-t-2 border-t-[#EA580C]"
+            >
               <div>
-                {/* Header: Consolidated Step Milestone + Icon Pod */}
+                {/* Header: Step Milestone + Icon Pod */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="size-12 rounded-2xl bg-gradient-to-br from-[#FFF7F2] to-[#FDE8DC] border border-[#FAD7C2] text-[#C96632] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_2px_8px_rgba(201,102,50,0.12)] transition-transform duration-200 group-hover:scale-105">
-                      <FileText className="size-5" />
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="size-[clamp(34px,3.8vw,48px)] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#FFF7ED] to-[#FED7AA] border border-[#FDBA74] text-[#EA580C] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,1),0_4px_12px_rgba(234,88,12,0.15)] transition-transform duration-200 group-hover:scale-105 shrink-0">
+                      <FileText className="size-[clamp(15px,1.6vw,20px)]" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#C96632] block">
+                      <span className="text-[clamp(9px,0.85vw,11px)] font-extrabold uppercase tracking-wider text-[#EA580C] block">
                         Step 01
                       </span>
-                      <span className="text-xs text-[#7A6B63] font-medium">
-                        Input
+                      <span className="text-[clamp(10px,0.9vw,12px)] text-[#7A6B63] font-medium">
+                        Quick Add
                       </span>
                     </div>
                   </div>
 
                   {/* Flow indicator to next step */}
-                  <span className="hidden md:inline-flex items-center text-xs font-semibold text-[#C96632] bg-[#FFF4EE] border border-[#FCDAC7] px-2.5 py-1 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                    Next <ArrowRight className="size-3 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  <span className="inline-flex items-center text-[clamp(9px,0.8vw,11px)] font-semibold text-[#EA580C] bg-[#FFF7ED] border border-[#FFEDD5] px-2 py-0.5 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                    Next <ArrowRight className="size-2.5 sm:size-3 ml-0.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold font-sans text-[#142823] mt-5">
+                <h3 className="text-[clamp(0.95rem,1.35vw,1.25rem)] font-bold font-sans text-[#0E241E] mt-3 sm:mt-5">
                   Tell Kubear.
                 </h3>
-                <p className="text-sm text-[#53625C] mt-2 leading-relaxed">
-                  Add what matters: income, bills, savings, goals, and more. No complex setup required.
+                <p className="text-[clamp(0.72rem,0.95vw,0.875rem)] text-[#42564F] mt-1 sm:mt-2 leading-relaxed font-medium">
+                  Add salary, SIPs, rent, and card bills. No bank passwords needed.
                 </p>
               </div>
 
               {/* Bottom Micro-Artifact: Tangible User Input */}
-              <div className="mt-6 pt-4 border-t border-[#F2EBE3]">
-                <div className="flex items-center justify-between text-[11px] font-medium text-[#8F7D73] uppercase tracking-wider mb-2">
-                  <span>What you add</span>
-                  <span className="text-[#C96632] font-semibold">Step 1</span>
+              <div className="mt-4 pt-3 border-t border-[#F2EBE3]">
+                <div className="flex items-center justify-between text-[clamp(8.5px,0.8vw,10.5px)] font-bold text-[#8C644E] uppercase tracking-wider mb-1.5">
+                  <span>What you enter</span>
+                  <span className="text-[#EA580C] font-extrabold">Step 1</span>
                 </div>
-                <div className="inline-flex items-center w-full px-3 py-2 rounded-xl bg-[#FFF9F5] border border-[#F5DACB] text-xs font-semibold text-[#142823] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
-                  <span className="size-2 rounded-full bg-[#E85D3F] mr-2.5 shrink-0" />
-                  <span className="truncate">Salary ₹75,000 · Rent ₹18,000</span>
+                <div className="inline-flex items-center w-full px-2 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-[#FFF9F5] border border-[#FDD5BE] text-[clamp(8.5px,0.9vw,11.5px)] font-bold text-[#0E241E] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <span className="size-1.5 sm:size-2 rounded-full bg-[#EA580C] mr-2 shrink-0 kh-live-dot" />
+                  <span className="truncate">Salary ₹85k · Rent ₹22k · SIP ₹15k</span>
                 </div>
               </div>
             </div>
 
-            {/* STEP 2 */}
-            <div className="kh-tactile-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between group min-h-[310px]">
+            {/* STEP 2: Kalyan Emerald */}
+            <div 
+              data-reveal
+              data-reveal-delay="2"
+              className="kh-tactile-card rounded-[clamp(0.85rem,1.5vw,1.25rem)] p-[clamp(0.75rem,1.6vw,1.75rem)] flex flex-col justify-between group min-h-[clamp(240px,26vw,340px)] border-t-2 border-t-[#059669]"
+            >
               <div>
-                {/* Header: Consolidated Step Milestone + Icon Pod */}
+                {/* Header: Step Milestone + Icon Pod */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="size-12 rounded-2xl bg-gradient-to-br from-[#F5F9F6] to-[#E5F1E8] border border-[#D5E8DA] text-[#24523F] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_2px_8px_rgba(36,82,63,0.08)] transition-transform duration-200 group-hover:scale-105">
-                      <Sparkles className="size-5" />
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="size-[clamp(34px,3.8vw,48px)] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#ECFDF5] to-[#D1FAE5] border border-[#A7F3D0] text-[#059669] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,1),0_4px_12px_rgba(5,150,105,0.15)] transition-transform duration-200 group-hover:scale-105 shrink-0">
+                      <Sparkles className="size-[clamp(15px,1.6vw,20px)]" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#24523F] block">
+                      <span className="text-[clamp(9px,0.85vw,11px)] font-extrabold uppercase tracking-wider text-[#059669] block">
                         Step 02
                       </span>
-                      <span className="text-xs text-[#63756C] font-medium">
-                        Processing
+                      <span className="text-[clamp(10px,0.9vw,12px)] text-[#556C63] font-medium">
+                        Smart Link
                       </span>
                     </div>
                   </div>
 
                   {/* Flow indicator to next step */}
-                  <span className="hidden md:inline-flex items-center text-xs font-semibold text-[#24523F] bg-[#EEF6F0] border border-[#D5EADC] px-2.5 py-1 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                    Next <ArrowRight className="size-3 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  <span className="inline-flex items-center text-[clamp(9px,0.8vw,11px)] font-semibold text-[#059669] bg-[#ECFDF5] border border-[#A7F3D0] px-2 py-0.5 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                    Next <ArrowRight className="size-2.5 sm:size-3 ml-0.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold font-sans text-[#142823] mt-5">
-                  Review the details.
+                <h3 className="text-[clamp(0.95rem,1.35vw,1.25rem)] font-bold font-sans text-[#0E241E] mt-3 sm:mt-5">
+                  Review the link.
                 </h3>
-                <p className="text-sm text-[#53625C] mt-2 leading-relaxed">
-                  We’ll make sense of it, link your recurring expenses, and connect the dots for you automatically.
+                <p className="text-[clamp(0.72rem,0.95vw,0.875rem)] text-[#42564F] mt-1 sm:mt-2 leading-relaxed font-medium">
+                  We categorize commitments and shield what must be reserved before month-end.
                 </p>
               </div>
 
               {/* Bottom Micro-Artifact: Tangible Auto-Connection */}
-              <div className="mt-6 pt-4 border-t border-[#E8EEE9]">
-                <div className="flex items-center justify-between text-[11px] font-medium text-[#6B7D74] uppercase tracking-wider mb-2">
-                  <span>How Kubear connects it</span>
-                  <span className="text-[#24523F] font-semibold">Step 2</span>
+              <div className="mt-4 pt-3 border-t border-[#E2EBE5]">
+                <div className="flex items-center justify-between text-[clamp(8.5px,0.8vw,10.5px)] font-bold text-[#556C63] uppercase tracking-wider mb-1.5">
+                  <span>How Kubear shields it</span>
+                  <span className="text-[#059669] font-extrabold">Step 2</span>
                 </div>
-                <div className="inline-flex items-center w-full px-3 py-2 rounded-xl bg-[#F4F9F5] border border-[#D6EADB] text-xs font-semibold text-[#142823] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
-                  <span className="size-2 rounded-full bg-[#3D7A5D] mr-2.5 shrink-0" />
-                  <span className="truncate">Rent → Fixed Need · ₹32k free</span>
+                <div className="inline-flex items-center w-full px-2 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-[#F0FDF4] border border-[#B7E8C7] text-[clamp(8.5px,0.9vw,11.5px)] font-bold text-[#0E241E] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <span className="size-1.5 sm:size-2 rounded-full bg-[#059669] mr-2 shrink-0 kh-live-dot" />
+                  <span className="truncate">Rent + SIP Locked · ₹48k headroom</span>
                 </div>
               </div>
             </div>
 
-            {/* STEP 3 */}
-            <div className="kh-tactile-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between group min-h-[310px]">
+            {/* STEP 3: Utsav Gold */}
+            <div 
+              data-reveal
+              data-reveal-delay="3"
+              className="kh-tactile-card rounded-[clamp(0.85rem,1.5vw,1.25rem)] p-[clamp(0.75rem,1.6vw,1.75rem)] flex flex-col justify-between group min-h-[clamp(240px,26vw,340px)] border-t-2 border-t-[#D97706]"
+            >
               <div>
-                {/* Header: Consolidated Step Milestone + Icon Pod */}
+                {/* Header: Step Milestone + Icon Pod */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="size-12 rounded-2xl bg-gradient-to-br from-[#FAF8F2] to-[#F5EEDD] border border-[#EADBBD] text-[#8C6424] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_2px_8px_rgba(140,100,36,0.1)] transition-transform duration-200 group-hover:scale-105">
-                      <BarChart3 className="size-5" />
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="size-[clamp(34px,3.8vw,48px)] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A] border border-[#FCD34D] text-[#B45309] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,1),0_4px_12px_rgba(217,119,6,0.18)] transition-transform duration-200 group-hover:scale-105 shrink-0">
+                      <BarChart3 className="size-[clamp(15px,1.6vw,20px)]" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C6424] block">
+                      <span className="text-[clamp(9px,0.85vw,11px)] font-extrabold uppercase tracking-wider text-[#B45309] block">
                         Step 03
                       </span>
-                      <span className="text-xs text-[#7D705B] font-medium">
-                        Clarity
+                      <span className="text-[clamp(10px,0.9vw,12px)] text-[#7A684C] font-medium">
+                        Instant Peace
                       </span>
                     </div>
                   </div>
 
-                  <span className="inline-flex items-center text-xs font-bold text-[#24523F] bg-[#E9F5EC] border border-[#CDE5D4] px-2.5 py-1 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                    <Check className="size-3 mr-1 text-[#24523F]" /> Ready
+                  <span className="inline-flex items-center text-[clamp(9px,0.8vw,11px)] font-extrabold text-[#065F46] bg-[#D1FAE5] border border-[#A7F3D0] px-2 py-0.5 rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                    <Check className="size-2.5 sm:size-3 mr-0.5 text-[#065F46]" /> Clear
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold font-sans text-[#142823] mt-5">
-                  See what it means.
+                <h3 className="text-[clamp(0.95rem,1.35vw,1.25rem)] font-bold font-sans text-[#0E241E] mt-3 sm:mt-5">
+                  Decide with joy.
                 </h3>
-                <p className="text-sm text-[#53625C] mt-2 leading-relaxed">
-                  Get simple, personalised answers to your biggest money questions without second guessing.
+                <p className="text-[clamp(0.72rem,0.95vw,0.875rem)] text-[#42564F] mt-1 sm:mt-2 leading-relaxed font-medium">
+                  Know exactly how much you can spend on weekend dining, festivals, or holidays without anxiety.
                 </p>
               </div>
 
               {/* Bottom Micro-Artifact: Tangible Verdict */}
-              <div className="mt-6 pt-4 border-t border-[#EDE7D9]">
-                <div className="flex items-center justify-between text-[11px] font-medium text-[#7D705B] uppercase tracking-wider mb-2">
+              <div className="mt-4 pt-3 border-t border-[#F2EBE3]">
+                <div className="flex items-center justify-between text-[clamp(8.5px,0.8vw,10.5px)] font-bold text-[#7A684C] uppercase tracking-wider mb-1.5">
                   <span>Your clear answer</span>
-                  <span className="text-[#8C6424] font-semibold">Step 3</span>
+                  <span className="text-[#D97706] font-extrabold">Step 3</span>
                 </div>
-                <div className="inline-flex items-center w-full px-3 py-2 rounded-xl bg-[#FAF8F2] border border-[#E9DDC2] text-xs font-bold text-[#142823] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
-                  <span className="size-2 rounded-full bg-[#8C6424] mr-2.5 shrink-0" />
-                  <span className="truncate">₹3,000 left for your weekend plan</span>
+                <div className="inline-flex items-center w-full px-2 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-[#FFFDF9] border border-[#FDE68A] text-[clamp(8.5px,0.9vw,11.5px)] font-bold text-[#0E241E] tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <span className="size-1.5 sm:size-2 rounded-full bg-[#D97706] mr-2 shrink-0 kh-live-dot" />
+                  <span className="truncate">₹5,400 safe for Diwali shopping this weekend</span>
                 </div>
               </div>
             </div>
@@ -168,4 +180,5 @@ export function HowItWorksSection() {
     </section>
   );
 }
+
 

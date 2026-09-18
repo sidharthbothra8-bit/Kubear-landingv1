@@ -76,8 +76,8 @@ export function Header({ dark = false }: { dark?: boolean }) {
       <div className="mm-header-inner">
         <Brand inverse={dark} compact={isScrolled} />
 
-        {/* Desktop / Tablet Navigation Links */}
-        <nav className="hidden sm:flex items-center" aria-label="Money Map">
+        {/* Navigation Links - always centered and visible */}
+        <nav className="flex items-center" aria-label="Money Map">
           {desktopNavItems.map((item) => {
             const Icon = item.icon;
             const active = isNavActive(item.href);
@@ -185,36 +185,36 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
 export function Footer({ dark = false }: { dark?: boolean }) {
   return (
     <footer className={dark ? "bg-[#050706] text-stone-400 border-t border-white/10" : "bg-[#FAF7F0] text-[#123630] border-t-2 border-[#123630]/12"}>
-      <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr_1fr] lg:gap-16">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-10 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-[clamp(0.75rem,2vw,3rem)]">
           <div>
             <Brand inverse={dark} />
-            <p className={`mt-5 max-w-sm text-base leading-7 ${dark ? "text-stone-400" : "text-[#516761]"}`}>
+            <p className={`mt-3 sm:mt-5 max-w-sm text-[clamp(0.75rem,0.95vw,1rem)] leading-relaxed ${dark ? "text-stone-400" : "text-[#516761]"}`}>
               Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you’re on track for your goals.
             </p>
-            <div className="mt-7 flex flex-col items-start gap-3">
+            <div className="mt-4 sm:mt-7 flex flex-col items-start gap-2 sm:gap-3">
               <a
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#FF5C2B] transition-transform hover:translate-x-1"
+                className="inline-flex items-center gap-1.5 text-[clamp(0.75rem,0.9vw,0.875rem)] font-bold text-[#FF5C2B] transition-transform hover:translate-x-1"
                 href={APP_URL}
               >
-                Open Web App <MoveRight className="size-4" />
+                Open Web App <MoveRight className="size-3 sm:size-4" />
               </a>
               <a
-                className={`inline-flex items-center gap-2 text-sm font-bold transition-transform hover:translate-x-1 ${
+                className={`inline-flex items-center gap-1.5 text-[clamp(0.75rem,0.9vw,0.875rem)] font-bold transition-transform hover:translate-x-1 ${
                   dark ? "text-emerald-400 hover:text-emerald-300" : "text-[#047857]"
                 }`}
                 href={PLAY_URL}
                 target="_blank"
                 rel="noreferrer"
               >
-                Get on Google Play <ArrowUpRight className="size-4" />
+                Get on Google Play <ArrowUpRight className="size-3 sm:size-4" />
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
             <div>
-              <p className="eyebrow text-[#CD4623] font-bold">Explore</p>
-              <div className={`mt-4 grid gap-3 text-sm ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
+              <p className="eyebrow text-[#CD4623] font-bold text-[clamp(0.7rem,0.8vw,0.875rem)]">Explore</p>
+              <div className={`mt-2 sm:mt-4 grid gap-2 sm:gap-3 text-[clamp(0.72rem,0.85vw,0.875rem)] ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
                 <Link href="/" className="hover:text-[#FF5C2B] transition-colors">
                   Overview
                 </Link>
@@ -224,49 +224,49 @@ export function Footer({ dark = false }: { dark?: boolean }) {
               </div>
             </div>
             <div>
-              <p className="eyebrow text-[#CD4623] font-bold">Trust</p>
-              <div className={`mt-4 grid gap-3 text-sm ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
-                <Link href="/privacy" className="hover:text-[#FF5C2B] transition-colors">
+              <p className="eyebrow text-[#CD4623] font-bold text-[clamp(0.7rem,0.8vw,0.875rem)]">Trust</p>
+              <div className={`mt-2 sm:mt-4 grid gap-1.5 sm:gap-2.5 text-[clamp(0.7rem,0.82vw,0.875rem)] ${dark ? "text-stone-400" : "text-[#41534D]"}`}>
+                <Link href="/privacy" className="hover:text-[#FF5C2B] transition-colors truncate">
                   Privacy
                 </Link>
-                <Link href="/terms" className="hover:text-[#FF5C2B] transition-colors">
+                <Link href="/terms" className="hover:text-[#FF5C2B] transition-colors truncate">
                   Terms
                 </Link>
-                <Link href="/consent" className="hover:text-[#FF5C2B] transition-colors">
+                <Link href="/consent" className="hover:text-[#FF5C2B] transition-colors truncate">
                   Consent
                 </Link>
-                <Link href="/data-deletion" className="hover:text-[#FF5C2B] transition-colors">
+                <Link href="/data-deletion" className="hover:text-[#FF5C2B] transition-colors truncate">
                   Delete account
                 </Link>
-                <Link href="/support" className="hover:text-[#FF5C2B] transition-colors">
-                  Support & Grievances
+                <Link href="/support" className="hover:text-[#FF5C2B] transition-colors truncate">
+                  Support
                 </Link>
-                <Link href="/cookies" className="hover:text-[#FF5C2B] transition-colors">
-                  Cookies & Storage
+                <Link href="/cookies" className="hover:text-[#FF5C2B] transition-colors truncate">
+                  Cookies
                 </Link>
-                <a href="mailto:hello@kuberos.in" className="hover:text-[#FF5C2B] transition-colors">
+                <a href="mailto:hello@kuberos.in" className="hover:text-[#FF5C2B] transition-colors truncate">
                   hello@kuberos.in
                 </a>
               </div>
             </div>
           </div>
-          <div className={`border-t pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 ${
+          <div className={`border-l pl-3 sm:pl-6 lg:pl-10 ${
             dark ? "border-white/10" : "border-[#123630]/10"
           }`}>
-            <p className="eyebrow text-[#CD4623] font-bold">Financial Clarity</p>
-            <p className={`mt-4 font-serif text-3xl leading-tight ${dark ? "text-white" : "text-[#123630]"}`}>
+            <p className="eyebrow text-[#CD4623] font-bold text-[clamp(0.7rem,0.8vw,0.875rem)]">Financial Clarity</p>
+            <p className={`mt-2 sm:mt-4 font-serif text-[clamp(0.95rem,1.4vw,1.75rem)] leading-tight ${dark ? "text-white" : "text-[#123630]"}`}>
               Know your number. Sleep with peace of mind.
             </p>
-            <a className="inline-flex items-center gap-2 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white px-6 py-3 text-sm font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all mt-6" href={APP_URL}>
-              Open Web App <ArrowUpRight className="size-4" />
+            <a className="inline-flex items-center gap-1.5 rounded-xl bg-[#FF5C2B] hover:bg-[#E04B19] text-white px-3 sm:px-6 py-2 sm:py-3 text-[clamp(0.72rem,0.85vw,0.875rem)] font-bold shadow-[0_3px_0_#9F3017] hover:shadow-[0_2px_0_#9F3017] transition-all mt-3 sm:mt-6" href={APP_URL}>
+              Open Web App <ArrowUpRight className="size-3.5 sm:size-4" />
             </a>
           </div>
         </div>
-        <div className={`mt-16 flex flex-col gap-2 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between ${
+        <div className={`mt-10 sm:mt-16 flex flex-row items-center justify-between border-t pt-4 sm:pt-6 text-[clamp(0.65rem,0.8vw,0.75rem)] ${
           dark ? "border-white/10 text-stone-500" : "border-[#123630]/10 text-[#6B807A]"
         }`}>
           <span>© 2026 Kuberos Innovations Pvt. Ltd. · Surat, India.</span>
-          <span>Understand your complete financial life.</span>
+          <span className="text-right">Understand your complete financial life.</span>
         </div>
       </div>
     </footer>

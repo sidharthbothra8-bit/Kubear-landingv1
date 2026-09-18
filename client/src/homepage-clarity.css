@@ -1,25 +1,41 @@
 /* Homepage Scoped Clarity Styles - Scoped strictly to .kubear-home-clarity */
 .kubear-home-clarity {
-  --kh-bg: #FFFFFF;
+  /* Luminous Lotus Ivory & Crisp Porcelain Base */
+  --kh-bg: #FCFAF7;
   --kh-card: #FFFFFF;
-  --kh-heading: #142823;
-  --kh-body: #53625C;
-  --kh-muted: #7D8D86;
-  --kh-border: #E5EBE6;
-  --kh-border-subtle: #EDF2EE;
-  --kh-border-highlight: rgba(255, 255, 255, 0.85);
-  --kh-green: #24523F;
-  --kh-green-hover: #1A3E2F;
-  --kh-green-light: #366D55;
-  --kh-orange: #C96632;
-  --kh-orange-vibrant: #E85D3F;
-  --kh-orange-light: #FDF2EB;
-  --kh-orange-border: #F7D7C4;
-  --kh-sage-bg: #F9F7F3;
-  --kh-answer-bg: #FAFBF9;
-  --kh-answer-border: #DFE8E2;
+  --kh-heading: #0E241E;
+  --kh-body: #42564F;
+  --kh-muted: #6E827A;
+  --kh-border: #E8EFEA;
+  --kh-border-subtle: #F1F6F3;
+  --kh-border-highlight: rgba(255, 255, 255, 0.95);
+
+  /* Cultural High-Vitality Palette */
+  --kh-emerald: #059669;
+  --kh-emerald-dark: #065F46;
+  --kh-emerald-light: #ECFDF5;
+  --kh-emerald-border: #A7F3D0;
+
+  --kh-saffron: #EA580C;
+  --kh-saffron-vibrant: #FF5722;
+  --kh-saffron-light: #FFF7ED;
+  --kh-saffron-border: #FFEDD5;
+
+  --kh-utsav-gold: #D97706;
+  --kh-gold-light: #FEF3C7;
+  --kh-gold-border: #FDE68A;
+
+  --kh-indigo: #4F46E5;
+  --kh-indigo-light: #EEF2FF;
+  --kh-indigo-border: #C7D2FE;
 
   background-color: var(--kh-bg);
+  background-image: 
+    radial-gradient(circle at 18% 8%, rgba(254, 243, 199, 0.45) 0%, transparent 35%),
+    radial-gradient(circle at 82% 16%, rgba(255, 237, 213, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 50% 55%, rgba(236, 253, 245, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(254, 243, 199, 0.35) 0%, transparent 40%);
+  background-attachment: local;
   color: var(--kh-body);
   font-family: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif !important;
   overflow-x: hidden;
@@ -43,30 +59,30 @@
   font-feature-settings: "tnum" 1, "cv05" 1;
 }
 
-/* Handwritten annotation styling - Kubear terracotta ink */
+/* Handwritten annotation styling - Vibrant Indian saffron/terracotta */
 .kh-handwritten {
   font-family: "Caveat", cursive;
-  color: #C96632;
+  color: #EA580C;
   font-size: 1.35rem;
   line-height: 1.2;
 }
 
-/* Primary Green CTA Button with Specular Edge and warm focus */
+/* Primary Green/Emerald CTA Button with Specular Edge and warm focus */
 .kh-btn-primary {
-  background: linear-gradient(180deg, #2A5D48 0%, #1E4636 100%);
+  background: linear-gradient(180deg, #047857 0%, #065F46 100%);
   color: #FFFFFF;
   font-weight: 600;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 4px 14px rgba(36, 82, 63, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 16px rgba(5, 150, 105, 0.28);
   transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms ease;
 }
 .kh-btn-primary:hover {
-  background: linear-gradient(180deg, #2E654E 0%, #183C2D 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 20px rgba(201, 102, 50, 0.22);
-  transform: translateY(-1px);
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 8px 24px rgba(5, 150, 105, 0.35);
+  transform: translateY(-1.5px);
 }
 .kh-btn-primary:active {
   transform: scale(0.98) translateY(0);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 2px 8px rgba(36, 82, 63, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 2px 8px rgba(5, 150, 105, 0.2);
 }
 
 /* Secondary Link */
@@ -76,11 +92,11 @@
   transition: color 150ms ease, transform 150ms ease;
 }
 .kh-link-secondary:hover {
-  color: #C96632;
+  color: #EA580C;
 }
 .kh-link-secondary:hover svg {
   transform: translateX(3px);
-  color: #C96632;
+  color: #EA580C;
 }
 .kh-link-secondary svg {
   transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms ease;
@@ -89,39 +105,39 @@
 /* Subtle focus indicators */
 .kubear-home-clarity a:focus-visible,
 .kubear-home-clarity button:focus-visible {
-  outline: 2px solid #C96632;
+  outline: 2px solid #EA580C;
   outline-offset: 2px;
 }
 
-/* Tactile Frosted Surface with Specular Rim */
+/* Tactile Pure White Card with Luminous Specular Rim */
 .kh-tactile-card {
   background: #FFFFFF;
-  border: 1px solid rgba(20, 40, 32, 0.08);
+  border: 1px solid rgba(14, 36, 30, 0.07);
   box-shadow: 
-    0 1px 2px rgba(20, 40, 32, 0.03),
-    0 6px 18px -4px rgba(20, 40, 32, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 200ms ease;
+    0 1px 3px rgba(14, 36, 30, 0.02),
+    0 8px 24px -4px rgba(14, 36, 30, 0.05),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms ease;
 }
 .kh-tactile-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(201, 102, 50, 0.25);
+  border-color: rgba(234, 88, 12, 0.28);
   box-shadow: 
-    0 2px 4px rgba(20, 40, 32, 0.02),
-    0 12px 28px -6px rgba(201, 102, 50, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    0 2px 6px rgba(14, 36, 30, 0.03),
+    0 16px 36px -6px rgba(234, 88, 12, 0.1),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
 }
 
 /* High-elevation Floating Card (Hero Decision Check) */
 .kh-floating-hero-card {
   background: #FFFFFF;
-  border: 1px solid rgba(20, 40, 32, 0.08);
+  border: 1px solid rgba(14, 36, 30, 0.08);
   box-shadow: 
-    0 1px 3px rgba(20, 40, 32, 0.04),
-    0 16px 40px -8px rgba(20, 40, 32, 0.12),
-    0 32px 64px -16px rgba(20, 40, 32, 0.06),
+    0 1px 3px rgba(14, 36, 30, 0.04),
+    0 18px 44px -8px rgba(14, 36, 30, 0.1),
+    0 32px 64px -16px rgba(234, 88, 12, 0.07),
     inset 0 1.5px 0 rgba(255, 255, 255, 1);
   transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -129,9 +145,9 @@
 .kh-floating-hero-card:hover {
   transform: translateY(-4px);
   box-shadow: 
-    0 2px 6px rgba(20, 40, 32, 0.05),
-    0 24px 50px -10px rgba(20, 40, 32, 0.15),
-    0 40px 72px -16px rgba(20, 40, 32, 0.08),
+    0 2px 6px rgba(14, 36, 30, 0.05),
+    0 24px 52px -10px rgba(14, 36, 30, 0.14),
+    0 44px 76px -16px rgba(234, 88, 12, 0.1),
     inset 0 1.5px 0 rgba(255, 255, 255, 1);
 }
 
@@ -139,38 +155,38 @@
 @keyframes kh-dot-pulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.85;
+    opacity: 0.9;
   }
   50% {
-    transform: scale(1.3);
-    opacity: 0.4;
+    transform: scale(1.35);
+    opacity: 0.45;
   }
 }
 .kh-live-dot {
-  animation: kh-dot-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: kh-dot-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Step Number Ceramic Tokens */
 .kh-step-badge {
-  background: linear-gradient(180deg, #F9FAF9 0%, #E8EFEA 100%);
-  border: 1px solid #D8E4DC;
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECFDF5 100%);
+  border: 1px solid #A7F3D0;
   box-shadow: 
-    0 2px 6px rgba(20, 40, 32, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 2px 6px rgba(5, 150, 105, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .group:hover .kh-step-badge {
   transform: scale(1.06);
 }
 
-/* Orange Step Token */
+/* Saffron Step Token */
 .kh-step-badge-orange {
-  background: linear-gradient(180deg, #FFF6F1 0%, #FDE9DF 100%);
-  border: 1px solid #F9D5C2;
-  color: #C96632;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%);
+  border: 1px solid #FFEDD5;
+  color: #EA580C;
   box-shadow: 
-    0 2px 6px rgba(201, 102, 50, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 2px 8px rgba(234, 88, 12, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .group:hover .kh-step-badge-orange {
@@ -179,27 +195,27 @@
 
 /* Icon Pods */
 .kh-icon-pod {
-  background: linear-gradient(135deg, #F7FBF8 0%, #EBF4EE 100%);
-  border: 1px solid #DCEAE0;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, #FFFFFF 0%, #ECFDF5 100%);
+  border: 1px solid #A7F3D0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms ease;
 }
 .group:hover .kh-icon-pod {
   transform: translateY(-2px);
 }
 
-/* Orange Icon Pod */
+/* Saffron Icon Pod */
 .kh-icon-pod-orange {
-  background: linear-gradient(135deg, #FFF7F2 0%, #FDEEE4 100%);
-  border: 1px solid #F9DCCB;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(201, 102, 50, 0.08);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%);
+  border: 1px solid #FFEDD5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 2px 8px rgba(234, 88, 12, 0.1);
   transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms ease;
 }
 .group:hover .kh-icon-pod-orange {
   transform: translateY(-2px);
 }
 
-/* Luminous Ambient Line with Kubear Terracotta Beam for Connected Life */
+/* Luminous Ambient Line with Saffron-Emerald-Gold Beam for Connected Life */
 @keyframes kh-beam-travel {
   0% {
     background-position: -200% 0;
@@ -211,27 +227,64 @@
 .kh-luminous-wire {
   background: linear-gradient(
     90deg,
-    rgba(226, 232, 228, 0.8) 0%,
-    rgba(201, 102, 50, 0.45) 50%,
-    rgba(226, 232, 228, 0.8) 100%
+    rgba(5, 150, 105, 0.25) 0%,
+    rgba(234, 88, 12, 0.6) 35%,
+    rgba(217, 119, 6, 0.6) 65%,
+    rgba(79, 70, 229, 0.3) 100%
   );
   background-size: 200% 100%;
-  animation: kh-beam-travel 6s ease-in-out infinite;
+  animation: kh-beam-travel 5s ease-in-out infinite;
 }
 
 /* Node Orb Lens */
 .kh-node-orb {
   box-shadow: 
-    0 3px 10px rgba(20, 40, 32, 0.08),
-    0 1px 2px rgba(20, 40, 32, 0.04),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.85);
+    0 4px 14px rgba(14, 36, 30, 0.08),
+    0 1px 2px rgba(14, 36, 30, 0.04),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
   transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .kh-node-orb:hover {
   transform: scale(1.12) translateY(-2px);
   box-shadow: 
-    0 8px 22px rgba(20, 40, 32, 0.14),
-    0 2px 4px rgba(20, 40, 32, 0.06),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.95);
+    0 10px 26px rgba(14, 36, 30, 0.14),
+    0 2px 4px rgba(14, 36, 30, 0.06),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
 }
+
+/* ========================================================================= */
+/* Scroll-Based Transitions & Animations                                     */
+/* ========================================================================= */
+.kubear-home-clarity [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition: 
+    opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.kubear-home-clarity [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delays for child grid cards */
+.kubear-home-clarity [data-reveal-delay="1"] {
+  transition-delay: 100ms;
+}
+.kubear-home-clarity [data-reveal-delay="2"] {
+  transition-delay: 200ms;
+}
+.kubear-home-clarity [data-reveal-delay="3"] {
+  transition-delay: 300ms;
+}
+.kubear-home-clarity [data-reveal-delay="4"] {
+  transition-delay: 400ms;
+}
+.kubear-home-clarity [data-reveal-delay="5"] {
+  transition-delay: 500ms;
+}
+
+
 
