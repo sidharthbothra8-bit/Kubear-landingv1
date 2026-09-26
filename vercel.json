@@ -2,10 +2,34 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "dist/public",
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=86400, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
       "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
     },
     {
       "source": "/(.*)",

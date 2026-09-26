@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" href="/branding/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;600;700;800&family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Kubear: Understand Your Complete Financial Life</title>
     <script>document.documentElement.classList.add('js');</script>
     <script type="application/ld+json">
@@ -105,6 +105,23 @@
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <script>
+      (function() {
+        var endpoint = "%VITE_ANALYTICS_ENDPOINT%";
+        var websiteId = "%VITE_ANALYTICS_WEBSITE_ID%";
+        if (
+          endpoint &&
+          !endpoint.startsWith("%") &&
+          websiteId &&
+          !websiteId.startsWith("%")
+        ) {
+          var s = document.createElement("script");
+          s.defer = true;
+          s.src = endpoint.replace(/\/+$/, "") + "/umami";
+          s.setAttribute("data-website-id", websiteId);
+          document.head.appendChild(s);
+        }
+      })();
+    </script>
   </body>
 </html>

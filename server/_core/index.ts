@@ -1,4 +1,6 @@
 import "dotenv/config";
+import fs from "node:fs";
+import path from "node:path";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -39,10 +41,17 @@ async function startServer() {
   registerStorageProxy(app);
   registerOAuthRoutes(app);
   app.get("/sitemap.xml", async (_req, res) => {
-    const stablePaths = ["/", "/how-it-works", "/your-money-picture", "/privacy", "/privacy-data", "/terms", "/terms-of-use", "/consent", "/consent-notice", "/data-deletion", "/delete-account", "/support", "/grievances", "/cookies", "/cookie-notice", "/journal", "/tools", "/tools/sip-calculator", "/tools/emi-calculator", "/tools/goa-goal-calculator", "/learn", "/learn/start-here", "/learn/salary-spending", "/learn/saving-buffers", "/learn/debt-credit", "/learn/investing", "/learn/goals-decisions", "/learn/home-household", "/learn/insurance-protection", "/learn/tax-records", "/learn/long-term"];
     try {
+      const distSitemap = path.resolve(process.cwd(), "dist", "public", "sitemap.xml");
+      const clientSitemap = path.resolve(process.cwd(), "client", "public", "sitemap.xml");
+      const sitemapPath = fs.existsSync(distSitemap) ? distSitemap : clientSitemap;
+      if (fs.existsSync(sitemapPath)) {
+        const xml = await fs.promises.readFile(sitemapPath, "utf8");
+        return res.type("application/xml").send(xml);
+      }
+      const stablePaths = ["/", "/about", "/how-it-works", "/privacy", "/privacy-data", "/terms", "/terms-of-use", "/consent", "/consent-notice", "/data-deletion", "/delete-account", "/support", "/grievances", "/cookies", "/cookie-notice", "/journal", "/learn", "/learn/tools", "/learn/start-here", "/learn/salary-spending", "/learn/saving-buffers", "/learn/debt-credit", "/learn/investing", "/learn/goals-decisions", "/learn/home-household", "/learn/insurance-protection", "/learn/tax-records", "/learn/long-term"];
       const articles = await getPublishedLearnPaths();
-      const urlset: { path: string; updatedAt: Date | null }[] = [
+      const urlset = [
         ...stablePaths.map(path => ({ path, updatedAt: null })),
         ...articles.map(article => ({ path: article.canonicalPath, updatedAt: article.updatedAt })),
       ];

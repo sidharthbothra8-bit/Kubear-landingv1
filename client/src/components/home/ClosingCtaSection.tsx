@@ -17,35 +17,35 @@ export function ClosingCtaSection({ appUrl }: ClosingCtaSectionProps) {
           <div className="grid grid-cols-12 items-center min-h-[clamp(240px,30vw,390px)]">
             {/* Left Column: Heading and CTA */}
             <div className="col-span-7 p-[clamp(1rem,3vw,3.5rem)] z-10">
-              <span className="inline-flex items-center gap-1.5 px-[clamp(0.5rem,1vw,0.75rem)] py-[clamp(0.2rem,0.4vw,0.35rem)] rounded-full text-[clamp(0.65rem,0.8vw,0.75rem)] font-bold uppercase tracking-wider bg-[#FFF7ED] text-[#EA580C] border border-[#FFEDD5] mb-2 sm:mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+              <span className="kh-eyebrow-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#C2410C] mb-3 sm:mb-5">
                 <Sparkles className="size-3 text-[#EA580C]" />
                 Samriddhi & Peace of Mind
               </span>
-              <h2 className="text-[clamp(1.25rem,2.8vw,2.75rem)] font-extrabold text-[#0E241E] tracking-tight leading-[1.15]">
+              <h2 className="kh-hero-display text-[1.65rem] sm:text-3xl lg:text-[2.65rem] font-bold text-[#0A241E] tracking-tight leading-[1.12]">
                 Make room for the life<br />
                 you’re planning.
               </h2>
-              <p className="text-[clamp(0.72rem,1vw,1rem)] text-[#42564F] mt-2 sm:mt-4 font-medium leading-relaxed max-w-md">
+              <p className="text-[0.95rem] sm:text-base text-[#3E524B] mt-3 sm:mt-5 font-normal leading-relaxed max-w-md">
                 Step into every month knowing your family commitments, rent, SIPs, and celebrations are completely protected.
               </p>
-              <div className="pt-4 sm:pt-8 flex flex-row items-center gap-3 sm:gap-5">
+              <div className="pt-5 sm:pt-8 flex flex-wrap items-center gap-3.5 sm:gap-5">
                 <a
                   href={appUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="kh-btn-primary inline-flex items-center justify-center min-h-[clamp(38px,4vw,48px)] px-[clamp(1rem,2vw,2rem)] py-[clamp(0.5rem,1vw,0.875rem)] rounded-xl text-white font-bold text-[clamp(0.75rem,0.95vw,1rem)] cursor-pointer gap-2 whitespace-nowrap"
+                  className="kh-btn-primary group inline-flex items-center justify-center min-h-[46px] sm:min-h-[50px] px-6 sm:px-7 py-2.5 sm:py-3 rounded-full text-white font-semibold text-[14.5px] sm:text-[15.5px] cursor-pointer gap-2 whitespace-nowrap shadow-md"
                 >
                   <span>Start on Web</span>
-                  <ArrowRight className="size-3.5 sm:size-4" />
+                  <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </a>
                 <a
                   href={PLAY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="kh-link-secondary inline-flex items-center gap-1.5 min-h-[clamp(38px,4vw,48px)] text-[clamp(0.75rem,0.95vw,1rem)] font-bold py-1 cursor-pointer whitespace-nowrap"
+                  className="kh-link-secondary-btn group inline-flex items-center justify-center min-h-[46px] sm:min-h-[50px] px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-[#0E241E] font-semibold text-[14.5px] sm:text-[15.5px] cursor-pointer gap-2 whitespace-nowrap"
                 >
                   <span>Get it on Google Play</span>
-                  <ArrowRight className="size-3.5 sm:size-4 text-[#EA580C]" />
+                  <ArrowRight className="size-4 text-[#EA580C] transition-transform duration-200 group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
