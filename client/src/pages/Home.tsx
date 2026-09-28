@@ -1,58 +1,53 @@
 import React from "react";
+import { motion, type Variants } from "framer-motion";
 import { PageMeta } from "@/components/PageMeta";
 import { SiteLayout } from "@/components/SiteChrome";
-import { HeroSection } from "@/components/home/hero/HeroSection";
-import { BankBalanceIllusion } from "@/components/home/BankBalanceIllusion";
-import { ConnectedMoneyFlow } from "@/components/home/ConnectedMoneyFlow";
-import { MoneyQuestionsSection } from "@/components/home/MoneyQuestionsSection";
-import { IndiaMoneyCalendar } from "@/components/home/IndiaMoneyCalendar";
-import { AskYourMoneySection } from "@/components/home/AskYourMoneySection";
-import { PersonalVsSharedSection } from "@/components/home/PersonalVsSharedSection";
-import { ProductShowcaseSection } from "@/components/home/ProductShowcaseSection";
-import { TrustPillarsSection } from "@/components/home/TrustPillarsSection";
-import { FinalCtaSection } from "@/components/home/FinalCtaSection";
-import "@/homepage-clarity.css";
+import { HeroSectionRedesign } from "@/components/home/redesign/HeroSectionRedesign";
+import { PlansChangeSection } from "@/components/home/redesign/PlansChangeSection";
+import { YouNeedAnAnswerSection } from "@/components/home/redesign/YouNeedAnAnswerSection";
+import { ShouldntHaveToAskSection } from "@/components/home/redesign/ShouldntHaveToAskSection";
+import { JustMineAndOursSection } from "@/components/home/redesign/JustMineAndOursSection";
+import { YourLifeComesFirstSection } from "@/components/home/redesign/YourLifeComesFirstSection";
+
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.16, 1, 0.3, 1]
+    } 
+  }
+};
 
 export default function Home() {
   return (
     <SiteLayout>
       <PageMeta
         title="Kubear: Understand Your Complete Financial Life"
-        description="Kubear connects your complete financial life and shows you what you can afford, what needs attention, and whether you're on track."
+        description="Kubear brings your income, spending, loans, savings, investments and goals together, so you know what you can spend, what needs attention and what to do next."
       />
 
-      {/* Main Redesigned Homepage Container matching download.png */}
-      <main className="kubear-home-clarity w-full overflow-hidden bg-[#FAF7F0] text-[#123630]">
+      <main className="w-full overflow-hidden bg-white text-[#16191E]">
         
-        {/* Chapter 1: Hero Section */}
-        <HeroSection />
+        {/* Section 1: Hero */}
+        <HeroSectionRedesign />
 
-        {/* Chapter 2: The Bank Balance Illusion */}
-        <BankBalanceIllusion />
+        {/* Section 2: Plans Change (02) */}
+        <PlansChangeSection />
 
-        {/* Chapter 3: Because Your Money Is All Connected */}
-        <ConnectedMoneyFlow />
+        {/* Section 3: You Need an Answer (03) */}
+        <YouNeedAnAnswerSection />
 
-        {/* Chapter 4: Money Questions Deserve Better Than 'It Depends' */}
-        <MoneyQuestionsSection />
+        {/* Section 4: And Sometimes, You Shouldn't Have to Ask (04) */}
+        <ShouldntHaveToAskSection />
 
-        {/* Chapter 5: Because Money in India Has a Busy Calendar */}
-        <IndiaMoneyCalendar />
+        {/* Section 5: Not everything needs to be shared (05) */}
+        <JustMineAndOursSection />
 
-        {/* Chapter 6: Dark Editorial Section - Ask Your Money Anything */}
-        <AskYourMoneySection />
-
-        {/* Chapter 7: Some Money Is Yours. Some Plans Are Shared. */}
-        <PersonalVsSharedSection />
-
-        {/* Chapter 8: The Kubear App - All That Clarity. One Place. */}
-        <ProductShowcaseSection />
-
-        {/* Chapter 9: Trust Section - Your Financial Life Is Personal */}
-        <TrustPillarsSection />
-
-        {/* Chapter 10: Final Call to Action - Now You Can Have A Plan Too */}
-        <FinalCtaSection />
+        {/* Section 6: Your Life Comes First (06) */}
+        <YourLifeComesFirstSection />
 
       </main>
     </SiteLayout>

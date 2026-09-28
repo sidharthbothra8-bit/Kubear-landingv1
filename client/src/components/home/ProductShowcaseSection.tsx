@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FileText, CheckCircle2, Lock, ArrowDown, Sparkles, ShieldCheck } from "lucide-react";
+import { FileText, CheckCircle2, Lock, ArrowDown, Sparkles, ShieldCheck, UploadCloud, RefreshCw } from "lucide-react";
+import { playTick, playZen } from "@/lib/soundFx";
 
 export function ProductShowcaseSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const [simulationState, setSimulationState] = useState<"idle" | "parsing" | "done">("idle");
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,16 +17,24 @@ export function ProductShowcaseSection() {
   ];
 
   // Document ingestion animation transforms linked to scroll
-  const docY = useTransform(scrollYProgress, [0.05, 0.4], [-40, 0]);
-  const docScale = useTransform(scrollYProgress, [0.05, 0.4], [0.92, 1]);
-  const docOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0.3, 1]);
+  const docY = useTransform(scrollYProgress, [0.05, 0.4], [-30, 0]);
+  const docScale = useTransform(scrollYProgress, [0.05, 0.4], [0.94, 1]);
+  const docOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0.35, 1]);
 
   // Extraction output stagger triggers based on scroll progress
   const extractionOpacity = useTransform(scrollYProgress, [0.35, 0.65], [0, 1]);
-  const extractionY = useTransform(scrollYProgress, [0.35, 0.65], [20, 0]);
+  const extractionY = useTransform(scrollYProgress, [0.35, 0.65], [16, 0]);
 
-  // Security badge pulse
-  const badgeScale = useTransform(scrollYProgress, [0.45, 0.75], [0.95, 1]);
+  const handleSimulate = () => {
+    if (simulationState === "parsing") return;
+    setSimulationState("parsing");
+    playTick(1.2);
+
+    setTimeout(() => {
+      setSimulationState("done");
+      playZen();
+    }, 1800);
+  };
 
   return (
     <section 
@@ -35,7 +45,7 @@ export function ProductShowcaseSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Headline */}
-        <div className="max-w-3xl mb-12 sm:mb-16 text-left">
+        <div className="max-w-3xl mb-10 sm:mb-12 text-left">
           <div className="mb-2 select-none">
             <span className="kh-handwritten text-[#EA580C] text-2xl sm:text-3xl font-bold -rotate-1 inline-block">
               Zero Manual Entry
@@ -52,15 +62,18 @@ export function ProductShowcaseSection() {
               No fragile bank passwords to surrender. No broken aggregators. As you scroll, observe our client-side engine ingest a standard password-locked PDF, strip out metadata, and parse obligations instantaneously.
             </p>
 
-            <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-[#516761]">
-              <span className="text-[11px] uppercase tracking-wider">Scroll down to simulate instant statement ingestion</span>
-              <ArrowDown className="size-3 text-[#059669] animate-bounce" />
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold text-[#516761]">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#EADBCA] shadow-2xs">
+                <span className="text-[11px] uppercase tracking-wider">Scroll-linked parser</span>
+                <ArrowDown className="size-3 text-[#059669] animate-bounce" />
+              </div>
+              <span className="text-[11px]">Or test real-time parsing with the simulator below</span>
             </div>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* SCROLL-DRIVEN STATEMENT INGESTION THEATRE                                 */}
+        {/* SCROLL-DRIVEN & INTERACTIVE STATEMENT INGESTION THEATRE                   */}
         {/* ========================================================================= */}
         <div className="max-w-3xl mx-auto">
           
@@ -70,7 +83,7 @@ export function ProductShowcaseSection() {
             <div className="relative border-2 border-dashed border-[#059669]/40 rounded-2xl p-6 sm:p-8 bg-[#FAF7F0]/60 text-center overflow-hidden">
               <div className="flex flex-col items-center justify-center space-y-4">
                 
-                {/* File Drop In Card bound to scrollYProgress */}
+                {/* File Drop In Card */}
                 <motion.div 
                   style={{ y: docY, scale: docScale, opacity: docOpacity }}
                   className="bg-white border border-[#EADBCA] rounded-2xl px-5 sm:px-6 py-4 shadow-md flex items-center gap-4 max-w-md w-full"
@@ -87,32 +100,59 @@ export function ProductShowcaseSection() {
                     </div>
                   </div>
 
-                  <span className="shrink-0 text-xs font-bold text-[#059669] bg-[#E6F4EA] px-2.5 py-1 rounded-full border border-[#A7F3D0]">
-                    Parsed
+                  <span className={`shrink-0 text-xs font-bold px-2.5 py-1 rounded-full border ${
+                    simulationState === "parsing"
+                      ? "text-amber-600 bg-amber-50 border-amber-200 animate-pulse"
+                      : "text-[#059669] bg-[#E6F4EA] border-[#A7F3D0]"
+                  }`}>
+                    {simulationState === "parsing" ? "Decoding..." : "Parsed"}
                   </span>
                 </motion.div>
 
+                {/* Progress status bar when simulated */}
+                {simulationState === "parsing" && (
+                  <div className="w-full max-w-xs space-y-1.5">
+                    <div className="w-full h-1.5 rounded-full bg-[#EADBCA] overflow-hidden">
+                      <motion.div 
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 1.6, ease: "easeInOut" }}
+                        className="h-full bg-[#059669]"
+                      />
+                    </div>
+                    <span className="text-[11px] font-bold text-[#059669]">Client-side zero-telemetry parse in progress...</span>
+                  </div>
+                )}
+
+                {/* Action Trigger Button */}
+                <div className="flex items-center gap-3 pt-1">
+                  <button
+                    onClick={handleSimulate}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#123630] hover:bg-[#0A241E] text-white text-xs font-bold cursor-pointer transition-all shadow-xs hover:shadow-md"
+                  >
+                    <RefreshCw className={`size-3.5 ${simulationState === "parsing" ? "animate-spin" : ""}`} />
+                    <span>{simulationState === "done" ? "Test Another Statement" : "Simulate Statement Decode"}</span>
+                  </button>
+                </div>
+
                 <div className="text-xs text-[#516761] font-semibold flex items-center gap-1.5">
                   <Sparkles className="size-3.5 text-[#059669]" />
-                  <span>Parsed 100% on your device without sending raw data to the cloud</span>
+                  <span>Parsed 100% on your device without sending raw statements to the cloud</span>
                 </div>
               </div>
             </div>
 
             {/* Password Notice / Privacy Guarantee */}
-            <motion.div 
-              style={{ scale: badgeScale }}
-              className="mt-6 p-4 rounded-2xl bg-[#E6F4EA]/60 border border-[#A7F3D0] flex items-start gap-3 text-left"
-            >
+            <div className="mt-6 p-4 rounded-2xl bg-[#E6F4EA]/60 border border-[#A7F3D0] flex items-start gap-3 text-left">
               <Lock className="size-4 text-[#065F46] shrink-0 mt-0.5" />
               <div className="text-xs sm:text-sm text-[#065F46] font-medium leading-relaxed">
-                <strong className="font-bold">Password-protected PDF?</strong> We unlock it client-side on your device. Your passwords and raw statements never leave your browser unencrypted.
+                <strong className="font-bold">Password-protected PDF?</strong> We unlock it client-side inside your browser sandbox. Your passwords and raw banking statements never touch external servers unencrypted.
               </div>
-            </motion.div>
+            </div>
 
-            {/* Result: Breakdown Box revealing on scroll */}
+            {/* Result: Breakdown Box revealing on scroll or simulation */}
             <motion.div 
-              style={{ opacity: extractionOpacity, y: extractionY }}
+              style={simulationState === "done" ? { opacity: 1, y: 0 } : { opacity: extractionOpacity, y: extractionY }}
               className="mt-6 pt-6 border-t border-[#EADBCA]/70"
             >
               <div className="flex items-center justify-between mb-4">
@@ -121,26 +161,26 @@ export function ProductShowcaseSection() {
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs font-bold text-[#059669]">
                   <CheckCircle2 className="size-3.5" />
-                  Clean mathematical structure
+                  Clean mathematical structure verified
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left">
+                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left hover:border-[#059669]/40 transition-colors">
                   <div className="text-xs text-[#516761] font-semibold">Ledger Parse</div>
                   <div className="text-sm sm:text-base font-bold text-[#123630] mt-1">
                     47 transactions mapped
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left">
+                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left hover:border-[#059669]/40 transition-colors">
                   <div className="text-xs text-[#516761] font-semibold">Radar Sync</div>
                   <div className="text-sm sm:text-base font-bold text-[#123630] mt-1">
                     3 fixed obligations locked
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left">
+                <div className="p-3.5 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70 text-left hover:border-[#059669]/40 transition-colors">
                   <div className="text-xs text-[#516761] font-semibold">Safety Quarantine</div>
                   <div className="text-sm sm:text-base font-bold text-[#059669] mt-1">
                     100% mathematical accuracy
@@ -156,12 +196,13 @@ export function ProductShowcaseSection() {
               </span>
               <div className="flex flex-wrap justify-center gap-2">
                 {bankPills.map((pill, idx) => (
-                  <span 
+                  <button 
                     key={idx}
-                    className="px-3.5 py-1.5 rounded-full bg-[#FAF7F0] border border-[#EADBCA] text-xs font-bold text-[#123630]"
+                    onClick={() => playTick(1.0)}
+                    className="px-3.5 py-1.5 rounded-full bg-[#FAF7F0] border border-[#EADBCA] text-xs font-bold text-[#123630] hover:border-[#123630] hover:bg-white transition-colors cursor-pointer"
                   >
                     {pill}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>

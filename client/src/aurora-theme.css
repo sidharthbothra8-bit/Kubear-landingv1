@@ -41,12 +41,11 @@ body {
 }
 
 /* Base Headings - Generous line-height, natural letter-spacing, zero vertical crunch */
-body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .topic-list h2, .tool-route h2, .journal-internal-list h3, .learn-calendar h2, .learn-studio-head h1):not(.kubear-home-clarity *):not(.kubear-home-clarity) {
+body :is(.display, .section-title, .week-section-title, .learn-feature h2, .learn-calendar h2, .learn-studio-head h1):not(.kubear-home-clarity *):not(.kubear-home-clarity) {
   color: var(--aurora-ink);
-  font-family: "DM Serif Display", Georgia, serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.15 !important;
+  font-family: "DM Serif Display", "Fraunces", Georgia, serif;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
 body :is(.eyebrow, .week-kicker, .mm-eyebrow, .instrument-label, .article-visual-kicker) {
@@ -189,25 +188,14 @@ body summary:focus-visible {
   border-color: var(--aurora-line) !important;
 }
 
-footer,
 .bg-\[\#052C27\] {
   background: var(--aurora-ink-deep) !important;
 }
 
-footer :is(.font-serif, .text-3xl) {
-  font-family: "DM Serif Display", serif !important;
-  letter-spacing: -0.03em;
-  color: #FFFDF8 !important;
-}
-
-footer .text-\[\#D8E8DE\],
-footer .text-\[\#AAB6AE\] {
-  color: #C8D8D0 !important;
-}
-
-footer .text-\[\#F4D277\],
-footer .text-\[\#FFB18E\] {
-  color: #FFD46B !important;
+/* Light theme footer: clean crisp white with high-contrast text */
+footer {
+  background: #FFFFFF !important;
+  color: #1E293B !important;
 }
 
 /* Hero Section: Warm, airy canvas with high-contrast readable typography */

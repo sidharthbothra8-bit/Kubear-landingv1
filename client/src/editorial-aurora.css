@@ -9,12 +9,10 @@
   --aurora-muted: #4B605B;
 }
 
-body :is(h1, h2, h3, .display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .topic-list h2, .tool-route h2, .journal-internal-list h3, .learn-calendar h2, .learn-studio-head h1) {
-  font-family: "DM Serif Display", Georgia, serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.035em !important;
-  line-height: 0.98 !important;
-  color: var(--aurora-ink) !important;
+body :is(.display, .section-title, .week-section-title, .learn-feature h2, .article-intro h1, .learn-studio-head h1) {
+  font-family: "DM Serif Display", "Fraunces", Georgia, serif;
+  letter-spacing: -0.03em;
+  color: var(--aurora-ink);
 }
 
 body :is(.instrument-hero, .instrument-story-grid, .mm-salary-grid, .goal-runway-layout, .mm-home-grid, .mm-trust-grid, .mm-faq-grid) {
@@ -307,9 +305,7 @@ body :is(.instrument-hero, .instrument-story-grid, .mm-salary-grid, .goal-runway
 }
 
 .ledger-step .font-serif,
-.bg-\[\#102B28\] .text-\[\#E2BA66\],
-footer .text-\[\#F4D277\],
-footer .text-\[\#FFB18E\] {
+.bg-\[\#102B28\] .text-\[\#E2BA66\] {
   color: var(--aurora-lime) !important;
 }
 
@@ -324,8 +320,6 @@ footer .text-\[\#FFB18E\] {
 .learn-prose :is(h2, h3),
 .learn-studio-status strong,
 .learn-studio-row h2,
-.ledger-entry :is(h2, .text-2xl),
-footer :is(.font-serif, .text-3xl) {
-  font-family: "DM Serif Display", Georgia, serif !important;
-  font-weight: 400 !important;
+.ledger-entry :is(h2, .text-2xl) {
+  font-family: "DM Serif Display", "Fraunces", Georgia, serif;
 }

@@ -19,11 +19,13 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Product from "./pages/Product";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return <><ScrollToTop /><Switch>
     <Route path="/" component={Home} />
+    <Route path="/product" component={Product} />
     <Route path="/about" component={About} />
     <Route path="/company" component={About} />
     <Route path="/how-it-works" component={LegacyHomeRedirect} />

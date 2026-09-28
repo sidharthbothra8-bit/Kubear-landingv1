@@ -1,5 +1,5 @@
 /* Money Map: a floating product guide that gives every route a clear name, active position and thumb-ready app handoff. */
-import { ArrowUpRight, BookOpen, Building2, Home as HomeIcon, MoveRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Building2, ChevronRight, Compass, Home as HomeIcon, Instagram, Layers, Mail, Menu, Sparkles, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { MotionObserver } from "@/components/MotionObserver";
@@ -8,48 +8,28 @@ import { KubearLogo } from "@/components/KubearLogo";
 const APP_URL = "https://kubear.kuberos.in";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear&pcampaignid=web_share";
 
-const desktopNavItems = [
+const mobileNavItems = [
+  { href: "/product", label: "Product", icon: Layers },
+  { href: "/#plans-change", label: "How it works", icon: Compass },
   { href: "/learn", label: "Learn & Tools", icon: BookOpen },
   { href: "/about", label: "About Us", icon: Building2 },
 ];
 
-const mobileNavItems = [
-  { href: "/", label: "Home", icon: HomeIcon },
-  { href: "/learn", label: "Learn & Tools", icon: BookOpen },
-  { href: "/about", label: "About", icon: Building2 },
-];
-
-export function Brand({ inverse = false, compact = false }: { inverse?: boolean; compact?: boolean }) {
+export function Brand({ compact = false }: { compact?: boolean; inverse?: boolean }) {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 font-semibold tracking-[-0.045em] shrink-0 transition-all duration-200 hover:opacity-90 ${
-        inverse ? "text-[#FFF8EE]" : "text-[#123630]"
-      }`}
-      aria-label="Kubear by Kuberos home"
+      className="inline-flex items-center gap-2.5 font-semibold shrink-0 transition-opacity hover:opacity-90"
+      aria-label="Kubear home"
     >
       <KubearLogo
         className={`w-auto aspect-[470/365] transition-all duration-200 ${
-          inverse
-            ? "h-8 sm:h-9"
-            : compact
-            ? "h-6.5 sm:h-7"
-            : "h-7.5 sm:h-8.5"
+          compact ? "h-7.5 sm:h-8" : "h-8.5 sm:h-9"
         }`}
-        inverse={inverse}
       />
-      <div className="flex flex-col">
-        <span
-          className={`font-black tracking-tight transition-all duration-200 leading-none ${
-            compact ? "text-[1.12rem] sm:text-[1.2rem]" : "text-[1.22rem] sm:text-[1.34rem]"
-          }`}
-        >
-          Kubear
-        </span>
-        <span className="text-[9px] font-mono tracking-wider uppercase text-[#C96632] opacity-80 leading-none mt-0.5 hidden xs:inline-block">
-          by Kuberos
-        </span>
-      </div>
+      <span className="font-extrabold tracking-tight text-xl sm:text-[22px] text-[#123630]">
+        Kubear
+      </span>
     </Link>
   );
 }
@@ -57,151 +37,170 @@ export function Brand({ inverse = false, compact = false }: { inverse?: boolean;
 export function Header({ dark = false }: { dark?: boolean }) {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 24);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = location === "/";
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
 
-  // If on Homepage, render the exact editorial navigation from download.png
-  if (isHome) {
-    return (
-      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled 
-          ? "bg-[#FAF7F0]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(18,54,48,0.06)] border-b border-[#EADBCA]/80 py-3" 
-          : "bg-[#FAF7F0] py-4 sm:py-5 border-b border-transparent"
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+  const isActive = (href: string) => {
+    if (href === "/product") return location === "/product";
+    if (href === "/about") return location === "/about";
+    if (href === "/learn") return location === "/learn" || location.startsWith("/learn") || location.startsWith("/tools");
+    if (href === "/" || href === "/#overview") return location === "/" && !window.location.hash;
+    return false;
+  };
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 pt-2 sm:pt-3 px-3 sm:px-4 lg:px-6">
+      <div 
+        className={`max-w-6xl mx-auto rounded-[2rem] sm:rounded-full bg-[#FFFDF8]/95 sm:bg-[#FFFDF8]/90 backdrop-blur-md border border-[rgba(18,54,48,0.12)] shadow-[0_12px_36px_rgba(18,54,48,0.08)] pointer-events-auto transition-all duration-300 ${
+          isScrolled ? "py-2 sm:py-2 px-3.5 sm:px-5 shadow-[0_14px_40px_rgba(18,54,48,0.12)]" : "py-2 sm:py-2.5 px-4 sm:px-6"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Left: Brand */}
+          {/* Left: Brand Logo & Title */}
           <Brand compact={isScrolled} />
 
-          {/* Center Links (matching download.png: Home, Features, Security, Stories, Blog) */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-sm font-bold">
-            <Link 
-              href="/" 
-              className="text-[#EA580C] transition-colors relative py-1"
+          {/* Center: Desktop Navigation Pills */}
+          <nav 
+            className="hidden md:flex items-center gap-1.5 lg:gap-2"
+            aria-label="Main Navigation"
+          >
+            {/* Product Pill */}
+            <Link
+              href="/product"
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] lg:text-[14px] font-semibold border transition-all duration-150 ${
+                location === "/product"
+                  ? "bg-[#102F28] text-white border-[#102F28] shadow-xs"
+                  : "bg-[#FFFDF8] text-[#123630] border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] hover:bg-white"
+              }`}
             >
-              Home
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+              <Layers className={`size-3.5 ${location === "/product" ? "text-amber-200" : "text-[#C96632]"}`} />
+              <span>Product</span>
             </Link>
-            <a 
-              href="#features" 
-              className="text-[#516761] hover:text-[#123630] transition-colors"
+
+            {/* How it works Pill */}
+            <a
+              href="/#plans-change"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] lg:text-[14px] font-semibold border bg-[#FFFDF8] text-[#123630] border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] hover:bg-white transition-all duration-150"
             >
-              Features
+              <Compass className="size-3.5 text-[#C96632]" />
+              <span>How it works</span>
             </a>
-            <a 
-              href="#security" 
-              className="text-[#516761] hover:text-[#123630] transition-colors"
+
+            {/* Learn & Tools Pill */}
+            <Link
+              href="/learn"
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] lg:text-[14px] font-semibold border transition-all duration-150 ${
+                location.startsWith("/learn") || location.startsWith("/tools")
+                  ? "bg-[#102F28] text-white border-[#102F28] shadow-xs"
+                  : "bg-[#FFFDF8] text-[#123630] border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] hover:bg-white"
+              }`}
             >
-              Security
-            </a>
-            <a 
-              href="#stories" 
-              className="text-[#516761] hover:text-[#123630] transition-colors"
+              <BookOpen className={`size-3.5 ${location.startsWith("/learn") || location.startsWith("/tools") ? "text-amber-200" : "text-[#C96632]"}`} />
+              <span>Learn &amp; Tools</span>
+            </Link>
+
+            {/* About Us Pill */}
+            <Link
+              href="/about"
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] lg:text-[14px] font-semibold transition-all duration-150 ${
+                location === "/about"
+                  ? "bg-[#102F28] text-white shadow-xs border border-[#102F28]"
+                  : "bg-[#FFFDF8] text-[#123630] border border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] hover:bg-white"
+              }`}
             >
-              Stories
-            </a>
-            <Link 
-              href="/learn" 
-              className="text-[#516761] hover:text-[#123630] transition-colors"
-            >
-              Blog
+              <Building2 className={`size-3.5 ${location === "/about" ? "text-amber-200" : "text-[#C96632]"}`} />
+              <span>About Us</span>
             </Link>
           </nav>
 
-          {/* Right: Sign in & Start on Web button */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a
-              href="https://kubear.kuberos.in"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs sm:text-sm font-bold text-[#123630] hover:text-[#EA580C] transition-colors"
-            >
-              Sign in
-            </a>
-
+          {/* Right: Primary Vibrant Button - Open Kubear */}
+          <div className="flex items-center gap-2">
             <a
               href={APP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#123630] hover:bg-[#0A241E] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#FF5C2B] to-[#FF451A] hover:from-[#F04D1D] hover:to-[#E03A10] text-white font-bold text-xs sm:text-[13.5px] shadow-[0_4px_12px_rgba(255,92,43,0.35)] hover:shadow-[0_6px_16px_rgba(255,92,43,0.45)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 whitespace-nowrap"
             >
-              Start on Web
+              <span>Open Kubear</span>
+              <span className="text-base leading-none">→</span>
             </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-xl text-[#123630] hover:bg-[rgba(18,54,48,0.06)] transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
           </div>
 
         </div>
-      </header>
-    );
-  }
 
-  // Standard Header for other sub-routes
-  const isNavActive = (href: string) =>
-    location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
-
-  return (
-    <header className={`mm-header ${dark ? "mm-header-dark" : "mm-header-light"} ${isScrolled ? "is-scrolled" : ""}`}>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-      <div className="mm-header-inner">
-        <Brand inverse={dark} compact={isScrolled} />
-
-        {/* Navigation Links */}
-        <nav className="flex items-center" aria-label="Money Map">
-          {desktopNavItems.map((item) => {
-            const Icon = item.icon;
-            const active = isNavActive(item.href);
-            return (
+        {/* Mobile Dropdown Sheet */}
+        {mobileMenuOpen && (
+          <div className="md:hidden pt-3 pb-2 border-t border-[rgba(18,54,48,0.08)] mt-2 animate-in slide-in-from-top-2">
+            <nav className="flex flex-col gap-1">
               <Link
-                key={item.href}
-                href={item.href}
-                className={`relative inline-flex items-center gap-2 rounded-xl font-bold whitespace-nowrap transition-all duration-200 ${
-                  isScrolled ? "px-3 py-1.5 text-xs" : "px-3.5 py-1.5 text-[0.82rem]"
-                } ${
-                  active
-                    ? dark
-                      ? "bg-white text-stone-950 shadow-xs border border-white"
-                      : "bg-[#123630] text-[#FFF8EE] shadow-xs border border-[#123630]"
-                    : dark
-                    ? "bg-white/5 text-stone-300 border border-white/10 hover:bg-white/10 hover:text-white"
-                    : "bg-[#123630]/[0.04] text-[#24453E] border border-[#123630]/10 hover:bg-[#123630]/10 hover:border-[#123630]/25 hover:text-[#123630]"
-                }`}
+                href="/product"
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                <Icon
-                  className={`transition-colors ${
-                    isScrolled ? "size-3.5" : "size-4"
-                  } ${active ? (dark ? "text-emerald-700" : "text-[#FFB18E]") : (dark ? "text-emerald-400" : "text-[#C96632]")}`}
-                />
-                <span className={active ? (dark ? "text-stone-950" : "text-[#FFF8EE]") : (dark ? "text-stone-200" : "text-[#143B35]")}>{item.label}</span>
+                <span className="flex items-center gap-2">
+                  <Layers className="size-4 text-[#C96632]" />
+                  Product
+                </span>
+                <ChevronRight className="size-4 text-slate-400" />
               </Link>
-            );
-          })}
-        </nav>
-
-        {/* Action Button */}
-        <div className="flex items-center shrink-0">
-          <a
-            className={`inline-flex items-center gap-1.5 rounded-[0.65rem] sm:rounded-[0.75rem] bg-[#FF5C2B] text-[#FFF8EE] font-black shadow-[0_3px_0_#9F3017] hover:shadow-[0_4px_0_#9F3017] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#9F3017] transition-all duration-200 shrink-0 ${
-              isScrolled
-                ? "px-3 py-1.5 text-xs sm:text-[0.78rem]"
-                : "px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-[0.82rem]"
-            }`}
-            href={APP_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Start on Web →</span>
-          </a>
-        </div>
+              <a
+                href="/#plans-change"
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="flex items-center gap-2">
+                  <Compass className="size-4 text-[#C96632]" />
+                  How it works
+                </span>
+                <ChevronRight className="size-4 text-slate-400" />
+              </a>
+              <Link
+                href="/learn"
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="flex items-center gap-2">
+                  <BookOpen className="size-4 text-[#C96632]" />
+                  Learn &amp; Tools
+                </span>
+                <ChevronRight className="size-4 text-slate-400" />
+              </Link>
+              <Link
+                href="/about"
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="flex items-center gap-2">
+                  <Building2 className="size-4 text-[#C96632]" />
+                  About Us
+                </span>
+                <ChevronRight className="size-4 text-slate-400" />
+              </Link>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
@@ -211,6 +210,7 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
   const [location] = useLocation();
 
   const isNavActive = (href: string) => {
+    if (href === "/product") return location === "/product";
     if (href === "/") return location === "/";
     return location === href || (href === "/learn" && (location.startsWith("/learn") || location.startsWith("/tools")));
   };
@@ -263,150 +263,200 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
 
 export function Footer() {
   return (
-    <footer className="bg-[#0B231D] text-[#7A9C94] border-t border-[#13332B] pt-16 sm:pt-24 pb-12 sm:pb-16 overflow-hidden">
+    <footer className="bg-white text-slate-800 border-t border-slate-200/80 pt-16 sm:pt-20 pb-12 sm:pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main 4-Column Grid matching reference image */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+        {/* Main Split Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           
-          {/* Column 1: Brand & App links (4 cols) */}
-          <div className="lg:col-span-4 space-y-5">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-3 group"
-              aria-label="Kubear home"
-            >
-              <div className="size-10 rounded-full bg-[#081814] border border-[#16362E] flex items-center justify-center p-1.5 shadow-xs transition-transform group-hover:scale-105">
-                <KubearLogo className="size-7 w-auto aspect-[470/365]" inverse />
-              </div>
-              <span className="font-serif text-2xl sm:text-[1.75rem] font-bold tracking-tight text-[#2D5A50] group-hover:text-[#E0EFEA] transition-colors">
-                Kubear
-              </span>
-            </Link>
-
-            <p className="text-sm sm:text-[15px] text-[#6F9088] leading-relaxed max-w-sm font-normal">
-              Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you&apos;re on track for your goals.
-            </p>
-
-            <div className="pt-2 flex flex-col items-start gap-3">
-              <a
-                href={APP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-[15px] font-bold text-[#F95721] hover:text-[#FF7343] transition-all hover:translate-x-1"
-              >
-                <span>Open Web App</span>
-                <span className="text-lg leading-none">→</span>
-              </a>
-              <a
-                href={PLAY_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-[15px] font-bold text-[#00A86B] hover:text-[#34D399] transition-all hover:translate-x-1"
-              >
-                <span>Get on Google Play</span>
-                <ArrowUpRight className="size-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: EXPLORE (2 cols) */}
-          <div className="lg:col-span-2">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#E25C2D] mb-5">
-              EXPLORE
-            </p>
-            <nav className="space-y-3 text-[15px] font-normal" aria-label="Explore navigation">
+          {/* Left Area: 4-Column Navigation (8 cols) */}
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-6 items-start">
+            
+            {/* Column 1: Brand & App links (5 cols) */}
+            <div className="md:col-span-5 space-y-4 pr-0 sm:pr-2">
               <Link
                 href="/"
-                className="block text-[#6F9088] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2.5 group"
+                aria-label="Kubear home"
               >
-                Overview
+                <KubearLogo className="size-9 w-auto aspect-[470/365]" />
+                <span 
+                  className="text-2xl sm:text-[26px] font-bold tracking-tight text-slate-900 font-sans"
+                >
+                  Kubear
+                </span>
               </Link>
-              <Link
-                href="/learn"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Learn &amp; Tools
-              </Link>
-              <Link
-                href="/about"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                About Us
-              </Link>
-            </nav>
+
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal max-w-xs tracking-[-0.01em]">
+                Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you’re on track for your goals.
+              </p>
+
+              <div className="pt-2 flex flex-col items-start gap-3.5">
+                <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0F172A] hover:bg-slate-800 text-white font-semibold text-xs sm:text-[13px] transition-all duration-200 shadow-sm"
+                >
+                  <span>Open Web App</span>
+                  <ArrowRight className="size-3.5" />
+                </a>
+
+                <a
+                  href={PLAY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-slate-900 hover:text-orange-600 transition-colors border-b-2 border-orange-300 pb-0.5"
+                >
+                  <span>Get on Google Play</span>
+                  <ArrowUpRight className="size-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Column 2: EXPLORE (2 cols) */}
+            <div className="md:col-span-2">
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 mb-4 font-mono">
+                EXPLORE
+              </p>
+              <nav className="space-y-3 text-xs sm:text-[13px] font-normal" aria-label="Explore navigation">
+                <Link
+                  href="/product"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Product
+                </Link>
+                <Link
+                  href="/"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Overview
+                </Link>
+                <Link
+                  href="/learn"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Learn &amp; Tools
+                </Link>
+                <Link
+                  href="/about"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  About Us
+                </Link>
+              </nav>
+            </div>
+
+            {/* Column 3: TRUST (2 cols) */}
+            <div className="md:col-span-2">
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 mb-4 font-mono">
+                TRUST
+              </p>
+              <nav className="space-y-2.5 text-xs sm:text-[13px] font-normal" aria-label="Trust navigation">
+                <Link
+                  href="/privacy"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Privacy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Terms
+                </Link>
+                <Link
+                  href="/consent"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Consent
+                </Link>
+                <Link
+                  href="/data-deletion"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Delete account
+                </Link>
+                <Link
+                  href="/support"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Support
+                </Link>
+                <Link
+                  href="/cookies"
+                  className="block text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                >
+                  Cookies
+                </Link>
+              </nav>
+            </div>
+
+            {/* Column 4: CONNECT (3 cols) */}
+            <div className="md:col-span-3">
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 mb-4 font-mono">
+                CONNECT
+              </p>
+              <div className="space-y-4">
+                <a
+                  href="https://instagram.com/hellokubear"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 group"
+                >
+                  <Instagram className="size-5 text-slate-800 shrink-0 stroke-[1.75]" />
+                  <div>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 block leading-tight font-mono">
+                      Instagram
+                    </span>
+                    <span className="text-xs sm:text-[13px] font-medium text-slate-900 block leading-tight mt-0.5 group-hover:underline">
+                      hellokubear
+                    </span>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:hello@kuberos.in"
+                  className="flex items-center gap-3 group"
+                >
+                  <Mail className="size-5 text-slate-800 shrink-0 stroke-[1.75]" />
+                  <div>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 block leading-tight font-mono">
+                      Email
+                    </span>
+                    <span className="text-xs sm:text-[13px] font-medium text-slate-900 block leading-tight mt-0.5 group-hover:underline">
+                      hello@kuberos.in
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          {/* Column 3: TRUST & Legal Links (3 cols) */}
-          <div className="lg:col-span-3">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#E25C2D] mb-5">
-              TRUST
-            </p>
-            <nav className="space-y-2.5 text-[15px] font-normal" aria-label="Trust and Legal navigation">
-              <Link
-                href="/privacy"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Privacy
-              </Link>
-              <Link
-                href="/terms"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Terms
-              </Link>
-              <Link
-                href="/consent"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Consent
-              </Link>
-              <Link
-                href="/data-deletion"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Delete account
-              </Link>
-              <Link
-                href="/support"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Support
-              </Link>
-              <Link
-                href="/cookies"
-                className="block text-[#6F9088] hover:text-white transition-colors"
-              >
-                Cookies
-              </Link>
-              <a
-                href="mailto:hello@kuberos.in"
-                className="block text-[#6F9088] hover:text-white transition-colors pt-1"
-              >
-                hello@kuberos.in
-              </a>
-            </nav>
-          </div>
-
-          {/* Column 4: FINANCIAL CLARITY (3 cols) */}
-          <div className="lg:col-span-3 space-y-5">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#E25C2D]">
-              FINANCIAL CLARITY
-            </p>
-            
-            <h3 className="font-serif text-2xl sm:text-[1.85rem] font-bold text-white tracking-tight leading-[1.2]">
-              Know your number. Sleep with peace of mind.
+          {/* Right Area: Action & Statement Card (4 cols) */}
+          <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-slate-200/80 pt-8 lg:pt-0 lg:pl-10 xl:pl-14 flex flex-col justify-start">
+            <h3 
+              className="text-2xl sm:text-[26px] xl:text-[28px] font-semibold text-slate-900 leading-[1.25] tracking-tight"
+              style={{ fontFamily: '"Fraunces", "DM Serif Display", Georgia, serif' }}
+            >
+              See where you stand.<br />
+              Know what to do next.
             </h3>
 
-            <div className="pt-2">
+            <p className="mt-3 text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal tracking-[-0.01em]">
+              Get a clearer view of your complete financial life.
+            </p>
+
+            <div className="mt-6">
               <a
                 href={APP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-2xl bg-[#F95721] hover:bg-[#EA580C] text-white font-bold text-sm sm:text-base shadow-[0_5px_0_#C23A0E,0_12px_24px_rgba(249,87,33,0.35)] hover:shadow-[0_3px_0_#C23A0E,0_8px_16px_rgba(249,87,33,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-1 active:shadow-none"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#0F172A] hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <span>Open Web App</span>
-                <ArrowUpRight className="size-4.5" />
+                <ArrowRight className="size-4" />
               </a>
             </div>
           </div>
@@ -414,7 +464,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 sm:mt-24 pt-8 border-t border-[#13332B] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#4F7168] font-medium">
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-slate-200/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-normal">
           <p>© 2026 Kuberos Innovations Pvt. Ltd. · Surat, India.</p>
           <p>Understand your complete financial life.</p>
         </div>
@@ -426,7 +476,7 @@ export function Footer() {
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F0] text-[#123630]">
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#16191E]">
       <MotionObserver />
       <Header />
       <div className="flex-1 w-full" id="main-content">

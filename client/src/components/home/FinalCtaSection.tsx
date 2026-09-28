@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
 import { APP_URL, PLAY_URL } from "@/const";
+import { playZen, playTick } from "@/lib/soundFx";
 
 function GooglePlayIcon({ className = "size-5" }: { className?: string }) {
   return (
@@ -72,6 +73,7 @@ export function FinalCtaSection() {
           <motion.a
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => playZen()}
             href={APP_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -84,6 +86,7 @@ export function FinalCtaSection() {
           <motion.a
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => playTick(1.0)}
             href={PLAY_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -98,27 +101,28 @@ export function FinalCtaSection() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-semibold text-[#516761]">
           <div className="inline-flex items-center gap-1.5">
             <CheckCircle2 className="size-4 text-[#059669]" />
-            <span>Free while in early access</span>
+            <span>100% Free during Early Access</span>
           </div>
+
           <div className="inline-flex items-center gap-1.5">
             <ShieldCheck className="size-4 text-[#059669]" />
-            <span>No credit card required</span>
+            <span>No bank login credentials required</span>
           </div>
+
           <div className="inline-flex items-center gap-1.5">
-            <span className="size-1.5 rounded-full bg-[#059669]" />
-            <span>Client-side decryption</span>
+            <Sparkles className="size-4 text-[#059669]" />
+            <span>Takes under 5 minutes to setup</span>
           </div>
         </div>
 
-      </div>
+        {/* Fine Assurance */}
+        <div className="mt-12 text-center select-none">
+          <span className="kh-handwritten text-[#EA580C] text-xl sm:text-2xl font-bold -rotate-1 inline-block">
+            Your money made calm. Finally.
+          </span>
+        </div>
 
-      {/* Subtle organic horizon footer trim */}
-      <div className="mt-14 w-full max-w-6xl mx-auto px-4 opacity-35">
-        <svg className="w-full h-14 sm:h-18 text-[#D8C7B0]" viewBox="0 0 900 80" fill="currentColor" preserveAspectRatio="none">
-          <path d="M0,80 L0,55 Q50,40 100,50 T200,35 T300,55 T400,30 T500,45 T600,30 T700,50 T800,35 L900,50 L900,80 Z" />
-        </svg>
       </div>
-
     </section>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, type Variants } from "framer-motion";
-import { ArrowRight, Home, Sprout, Palmtree, Users, CreditCard, ShoppingCart, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Home, Sprout, Palmtree, Users, CreditCard, ShoppingCart, Sparkles, CheckCircle2, Shield, Heart } from "lucide-react";
 import { APP_URL, PLAY_URL } from "@/const";
+import { playTick, playChime } from "@/lib/soundFx";
 
 function GooglePlayIcon({ className = "size-5" }: { className?: string }) {
   return (
@@ -39,6 +40,15 @@ interface NodePillProps {
   staggerIndex: number;
 }
 
+const categoryStyles: Record<string, { bg: string; text: string; border: string }> = {
+  rent: { bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200" },
+  family: { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+  card: { bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200" },
+  sip: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
+  goa: { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
+  everyday: { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200" },
+};
+
 function FloatingPill({
   id,
   label,
@@ -52,6 +62,17 @@ function FloatingPill({
   staggerIndex,
 }: NodePillProps) {
   const isActive = activeNode === id;
+  const style = categoryStyles[id] || { bg: "bg-[#FAF7F0]", text: "text-[#123630]", border: "border-[#EADBCA]" };
+
+  const handleClick = () => {
+    playTick(isActive ? 0.9 : 1.25);
+    setActiveNode(isActive ? null : id);
+  };
+
+  const handleMouseEnter = () => {
+    playTick(1.4);
+    setActiveNode(id);
+  };
 
   return (
     <motion.div
@@ -73,21 +94,23 @@ function FloatingPill({
         opacity: { duration: 0.55, delay: 0.5 + staggerIndex * 0.08, ease: [0.16, 1, 0.3, 1] },
         scale: { duration: 0.55, delay: 0.5 + staggerIndex * 0.08, ease: [0.16, 1, 0.3, 1] }
       }}
-      whileHover={{ scale: 1.06, y: -6 }}
-      onClick={() => setActiveNode(isActive ? null : id)}
-      onMouseEnter={() => setActiveNode(id)}
+      whileHover={{ scale: 1.07, y: -6 }}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setActiveNode(null)}
       className={`absolute z-30 cursor-pointer select-none transition-all duration-300 ${className}`}
     >
       <div 
-        className={`bg-white/95 backdrop-blur-md rounded-2xl px-3 sm:px-3.5 py-1.5 sm:py-2 flex items-center gap-2 sm:gap-2.5 transition-all duration-300 ${
+        className={`bg-white/95 backdrop-blur-md rounded-2xl px-3 sm:px-3.5 py-1.5 sm:py-2 flex items-center gap-2 sm:gap-2.5 transition-all duration-300 shadow-[0_4px_16px_rgba(18,54,48,0.06)] ${
           isActive 
-            ? "border-2 border-[#123630] shadow-[0_12px_30px_rgba(18,54,48,0.22)] ring-4 ring-[#059669]/15 scale-105" 
-            : "border border-[#EADBCA] shadow-[0_4px_16px_rgba(18,54,48,0.06)] hover:border-[#123630]/60 hover:shadow-lg"
+            ? "border-2 border-[#123630] shadow-[0_12px_32px_rgba(18,54,48,0.24)] ring-4 ring-[#059669]/20 scale-105" 
+            : "border border-[#EADBCA] hover:border-[#123630]/60 hover:shadow-lg"
         }`}
       >
-        <div className={`size-7 sm:size-8 rounded-xl flex items-center justify-center transition-colors duration-200 ${
-          isActive ? "bg-[#123630] text-white" : "bg-[#FAF7F0] border border-[#EADBCA] text-[#123630]"
+        <div className={`size-7 sm:size-8 rounded-xl flex items-center justify-center transition-colors duration-200 border ${
+          isActive 
+            ? "bg-[#123630] text-white border-[#123630]" 
+            : `${style.bg} ${style.border} ${style.text}`
         }`}>
           <Icon className="size-3.5 sm:size-4" />
         </div>
@@ -402,60 +425,60 @@ export function HeroSection() {
               <path 
                 d="M 310 52 C 340 50, 360 30, 385 25" 
                 stroke={activeNode === "rent" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "rent" ? 0.95 : 0.35} 
+                strokeOpacity={activeNode === "rent" ? 1 : 0.35} 
                 strokeWidth={activeNode === "rent" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "rent" ? "kh-flow-active" : "transition-all duration-300"}
               />
               
               {/* Line to Family (120, 65) */}
               <path 
                 d="M 310 52 C 220 52, 170 58, 125 65" 
-                stroke={activeNode === "family" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "family" ? 0.95 : 0.35} 
+                stroke={activeNode === "family" ? "#EA580C" : "#123630"} 
+                strokeOpacity={activeNode === "family" ? 1 : 0.35} 
                 strokeWidth={activeNode === "family" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "family" ? "kh-flow-active" : "transition-all duration-300"}
               />
               
               {/* Line to Card Bill (115, 175) */}
               <path 
                 d="M 310 52 C 210 80, 150 140, 120 175" 
-                stroke={activeNode === "card" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "card" ? 0.95 : 0.35} 
+                stroke={activeNode === "card" ? "#4F46E5" : "#123630"} 
+                strokeOpacity={activeNode === "card" ? 1 : 0.35} 
                 strokeWidth={activeNode === "card" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "card" ? "kh-flow-active" : "transition-all duration-300"}
               />
               
               {/* Line to SIP (475, 65) */}
               <path 
                 d="M 310 52 C 390 52, 440 58, 475 65" 
                 stroke={activeNode === "sip" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "sip" ? 0.95 : 0.35} 
+                strokeOpacity={activeNode === "sip" ? 1 : 0.35} 
                 strokeWidth={activeNode === "sip" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "sip" ? "kh-flow-active" : "transition-all duration-300"}
               />
               
               {/* Line to Goa Trip (525, 120) */}
               <path 
                 d="M 310 52 C 420 75, 480 100, 525 120" 
-                stroke={activeNode === "goa" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "goa" ? 0.95 : 0.35} 
+                stroke={activeNode === "goa" ? "#D97706" : "#123630"} 
+                strokeOpacity={activeNode === "goa" ? 1 : 0.35} 
                 strokeWidth={activeNode === "goa" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "goa" ? "kh-flow-active" : "transition-all duration-300"}
               />
               
               {/* Line to Everyday (515, 205) */}
               <path 
                 d="M 310 52 C 430 110, 480 170, 515 205" 
-                stroke={activeNode === "everyday" ? "#059669" : "#123630"} 
-                strokeOpacity={activeNode === "everyday" ? 0.95 : 0.35} 
+                stroke={activeNode === "everyday" ? "#0D9488" : "#123630"} 
+                strokeOpacity={activeNode === "everyday" ? 1 : 0.35} 
                 strokeWidth={activeNode === "everyday" ? 2.5 : 1.5} 
                 strokeDasharray="4 4" 
-                className="transition-all duration-300"
+                className={activeNode === "everyday" ? "kh-flow-active" : "transition-all duration-300"}
               />
             </motion.svg>
 
@@ -563,6 +586,46 @@ export function HeroSection() {
               staggerIndex={5}
             />
 
+          </motion.div>
+
+          {/* Interactive Life Stream Scenarios Bar */}
+          <motion.div 
+            variants={visualItemVariants}
+            className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 bg-white/80 backdrop-blur-md rounded-2xl border border-[#EADBCA] shadow-2xs"
+          >
+            <div className="flex items-center gap-2 text-xs font-bold text-[#123630]">
+              <span className="inline-block size-2 rounded-full bg-[#059669] animate-ping" />
+              <span>Tap a life stream to trace connections:</span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-1.5">
+              {[
+                { id: null, label: "All Streams" },
+                { id: "rent", label: "Rent ₹35k" },
+                { id: "family", label: "Family ₹15k" },
+                { id: "card", label: "Card ₹42k" },
+                { id: "sip", label: "SIP ₹25k" },
+                { id: "goa", label: "Goa ₹20k" },
+              ].map((filter) => {
+                const isSelected = activeNode === filter.id;
+                return (
+                  <button
+                    key={filter.label}
+                    onClick={() => {
+                      playTick(isSelected ? 0.9 : 1.3);
+                      setActiveNode(filter.id);
+                    }}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all duration-200 cursor-pointer ${
+                      isSelected
+                        ? "bg-[#123630] text-white shadow-xs"
+                        : "bg-[#FAF7F0] text-[#516761] hover:bg-white hover:text-[#123630] border border-[#EADBCA]/60"
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                );
+              })}
+            </div>
           </motion.div>
 
         </div>

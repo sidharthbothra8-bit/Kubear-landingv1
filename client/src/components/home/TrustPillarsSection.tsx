@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Cpu, ShieldBan, DownloadCloud, ShieldCheck, Check, KeyRound } from "lucide-react";
+import { Cpu, ShieldBan, DownloadCloud, ShieldCheck, Check, KeyRound, Sparkles } from "lucide-react";
+import { playTick, playZen } from "@/lib/soundFx";
 
 export function TrustPillarsSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -78,7 +79,10 @@ export function TrustPillarsSection() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
                 whileHover={{ y: -4 }}
-                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseEnter={() => {
+                  setHoveredIdx(idx);
+                  playTick(0.9);
+                }}
                 onMouseLeave={() => setHoveredIdx(null)}
                 className="bg-white rounded-3xl border border-[#EADBCA] p-6 sm:p-8 shadow-[0_8px_30px_rgba(18,54,48,0.05)] hover:border-[#059669]/60 hover:shadow-[0_16px_40px_rgba(18,54,48,0.1)] transition-all duration-300 text-left flex flex-col justify-between"
               >

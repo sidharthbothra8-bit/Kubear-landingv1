@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Home, CreditCard, ShieldCheck, CheckCircle2, ArrowDown } from "lucide-react";
+import { Home, CreditCard, ShieldCheck, CheckCircle2, ArrowDown, Eye, EyeOff, Sparkles } from "lucide-react";
+import { playTick, playChime } from "@/lib/soundFx";
 
 interface BillItem {
   id: string;
@@ -48,6 +49,7 @@ const SAFE_TO_SPEND = 157300;
 
 export function BankBalanceIllusion() {
   const containerRef = useRef<HTMLElement>(null);
+  const [manualRevealed, setManualRevealed] = useState<boolean | null>(null);
 
   // Bind scroll progress directly to this section's journey through viewport
   const { scrollYProgress } = useScroll({
@@ -56,15 +58,13 @@ export function BankBalanceIllusion() {
   });
 
   // Pure scroll-driven animations:
-  // Phase 1 (0 -> 0.45): Bank Illusion prominent (₹2,85,000)
-  // Phase 2 (0.45 -> 0.85): The peeling transition reveals Safe to Spend (₹1,57,300)
-  const bankCardOpacity = useTransform(scrollYProgress, [0.1, 0.48], [1, 0]);
-  const bankCardY = useTransform(scrollYProgress, [0.1, 0.48], [0, -24]);
-  const bankCardScale = useTransform(scrollYProgress, [0.1, 0.48], [1, 0.94]);
+  const scrollBankOpacity = useTransform(scrollYProgress, [0.1, 0.48], [1, 0]);
+  const scrollBankY = useTransform(scrollYProgress, [0.1, 0.48], [0, -24]);
+  const scrollBankScale = useTransform(scrollYProgress, [0.1, 0.48], [1, 0.94]);
 
-  const kubearCardOpacity = useTransform(scrollYProgress, [0.38, 0.75], [0, 1]);
-  const kubearCardY = useTransform(scrollYProgress, [0.38, 0.75], [28, 0]);
-  const kubearCardScale = useTransform(scrollYProgress, [0.38, 0.75], [0.96, 1]);
+  const scrollKubearOpacity = useTransform(scrollYProgress, [0.38, 0.75], [0, 1]);
+  const scrollKubearY = useTransform(scrollYProgress, [0.38, 0.75], [28, 0]);
+  const scrollKubearScale = useTransform(scrollYProgress, [0.38, 0.75], [0.96, 1]);
 
   // Commitments slide and dock into their quarantined state with scroll
   const bill1Slide = useTransform(scrollYProgress, [0.25, 0.55], [-20, 0]);
@@ -73,6 +73,16 @@ export function BankBalanceIllusion() {
 
   const quarantineTagOpacity = useTransform(scrollYProgress, [0.5, 0.8], [0, 1]);
   const scrollTrackProgress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const handleToggleManual = () => {
+    const next = manualRevealed === null ? true : !manualRevealed;
+    setManualRevealed(next);
+    if (next) {
+      playChime();
+    } else {
+      playTick(0.85);
+    }
+  };
 
   return (
     <section 
@@ -104,19 +114,29 @@ export function BankBalanceIllusion() {
             ₹2,85,000 in your account isn't ₹2,85,000 to spend.
           </h2>
           <p className="mt-3.5 text-base sm:text-lg text-[#516761] font-medium leading-relaxed">
-            Scroll to peel away the illusion. See how Kubear quarantines tomorrow's promises so today's spending is genuine guilt-free freedom.
+            Scroll or toggle to peel away the illusion. See how Kubear shields tomorrow's obligations so your current spending is genuine guilt-free freedom.
           </p>
 
-          {/* Minimal scroll-linked progress indicator */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs font-semibold text-[#516761]">
-            <span className="text-[11px] uppercase tracking-wider">Scroll-linked peel reveal</span>
-            <div className="w-24 h-1.5 bg-[#EADBCA] rounded-full overflow-hidden">
-              <motion.div 
-                style={{ width: scrollTrackProgress }} 
-                className="h-full bg-[#059669] rounded-full" 
-              />
+          {/* Interactive Scrub and Peel Action Bar */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EADBCA] shadow-2xs text-xs font-semibold text-[#516761]">
+              <span className="text-[11px] uppercase tracking-wider">Scroll-linked peel</span>
+              <div className="w-20 h-1.5 bg-[#EADBCA] rounded-full overflow-hidden">
+                <motion.div 
+                  style={{ width: scrollTrackProgress }} 
+                  className="h-full bg-[#059669] rounded-full" 
+                />
+              </div>
+              <ArrowDown className="size-3 text-[#059669] animate-bounce" />
             </div>
-            <ArrowDown className="size-3 text-[#059669] animate-bounce" />
+
+            <button
+              onClick={handleToggleManual}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#123630] text-white hover:bg-[#0A241E] text-xs font-bold shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
+            >
+              {manualRevealed ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5 text-[#059669]" />}
+              <span>{manualRevealed ? "Reset to Bank View" : "Tap to Peel Instantly"}</span>
+            </button>
           </div>
         </div>
 
@@ -127,13 +147,22 @@ export function BankBalanceIllusion() {
           
           {/* LAYER 1: DECEPTIVE BANK VIEW (Fades & shifts upward as user scrolls) */}
           <motion.div
-            style={{
-              opacity: bankCardOpacity,
-              y: bankCardY,
-              scale: bankCardScale,
-              pointerEvents: useTransform(scrollYProgress, (v) => v > 0.5 ? "none" : "auto"),
-            }}
-            className="absolute inset-x-0 top-0 rounded-3xl p-6 sm:p-10 border border-stone-200 bg-white shadow-[0_16px_45px_rgba(18,54,48,0.06)]"
+            style={
+              manualRevealed === null
+                ? {
+                    opacity: scrollBankOpacity,
+                    y: scrollBankY,
+                    scale: scrollBankScale,
+                    pointerEvents: useTransform(scrollYProgress, (v) => v > 0.5 ? "none" : "auto"),
+                  }
+                : {
+                    opacity: manualRevealed ? 0 : 1,
+                    y: manualRevealed ? -24 : 0,
+                    scale: manualRevealed ? 0.94 : 1,
+                    pointerEvents: manualRevealed ? "none" : "auto",
+                  }
+            }
+            className="absolute inset-x-0 top-0 rounded-3xl p-6 sm:p-10 border border-stone-200 bg-white shadow-[0_16px_45px_rgba(18,54,48,0.06)] transition-all duration-500"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-stone-100 text-[#516761]">
@@ -162,21 +191,30 @@ export function BankBalanceIllusion() {
 
           {/* LAYER 2: KUBEAR SAFE TO SPEND REALITY (Peels in cleanly with docked bills) */}
           <motion.div
-            style={{
-              opacity: kubearCardOpacity,
-              y: kubearCardY,
-              scale: kubearCardScale,
-            }}
-            className="relative rounded-3xl p-6 sm:p-10 border-2 border-[#059669]/60 bg-white shadow-[0_20px_55px_rgba(5,150,105,0.12)] ring-4 ring-[#059669]/10"
+            style={
+              manualRevealed === null
+                ? {
+                    opacity: scrollKubearOpacity,
+                    y: scrollKubearY,
+                    scale: scrollKubearScale,
+                  }
+                : {
+                    opacity: manualRevealed ? 1 : 0,
+                    y: manualRevealed ? 0 : 28,
+                    scale: manualRevealed ? 1 : 0.96,
+                  }
+            }
+            className="relative rounded-3xl p-6 sm:p-10 border-2 border-[#059669]/60 bg-white shadow-[0_20px_55px_rgba(5,150,105,0.12)] ring-4 ring-[#059669]/10 transition-all duration-500"
           >
             {/* Top Status */}
             <div className="flex items-center justify-between mb-4">
-              <span className="text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-[#E6F4EA] text-[#065F46] border border-[#A7F3D0]">
-                ✓ True Safe-to-Spend
+              <span className="text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-[#E6F4EA] text-[#065F46] border border-[#A7F3D0] flex items-center gap-1.5 shadow-2xs">
+                <Sparkles className="size-3 text-[#059669]" />
+                <span>True Safe-to-Spend</span>
               </span>
 
               <motion.span 
-                style={{ opacity: quarantineTagOpacity }}
+                style={manualRevealed === null ? { opacity: quarantineTagOpacity } : { opacity: 1 }}
                 className="text-xs text-[#059669] font-bold flex items-center gap-1.5"
               >
                 <CheckCircle2 className="size-3.5" />
@@ -213,8 +251,8 @@ export function BankBalanceIllusion() {
                   return (
                     <motion.div
                       key={bill.id}
-                      style={{ x: slideAnim }}
-                      className="p-3.5 rounded-2xl border border-[#EADBCA] bg-[#FAF7F0]/70 flex items-center justify-between text-xs sm:text-sm"
+                      style={manualRevealed === null ? { x: slideAnim } : { x: 0 }}
+                      className="p-3.5 rounded-2xl border border-[#EADBCA] bg-[#FAF7F0]/70 hover:bg-[#FAF7F0] flex items-center justify-between text-xs sm:text-sm transition-colors duration-200"
                     >
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-xl bg-white text-[#059669] shadow-2xs border border-[#EADBCA]">

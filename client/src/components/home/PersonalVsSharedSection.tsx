@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Users, Lock, Home, ShoppingCart, Wifi, Sprout, CreditCard, Target, ShieldCheck, ArrowDown } from "lucide-react";
+import { Users, Lock, Home, ShoppingCart, Wifi, Sprout, CreditCard, Target, ShieldCheck, ArrowDown, Sparkles } from "lucide-react";
+import { playTick, playZen } from "@/lib/soundFx";
 
 export function PersonalVsSharedSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const [manualSplitRatio, setManualSplitRatio] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -11,18 +13,27 @@ export function PersonalVsSharedSection() {
   });
 
   // Dual lens slide and convergence linked to scroll
-  const leftX = useTransform(scrollYProgress, [0.05, 0.45], [-35, 0]);
-  const rightX = useTransform(scrollYProgress, [0.05, 0.45], [35, 0]);
+  const leftX = useTransform(scrollYProgress, [0.05, 0.45], [-25, 0]);
+  const rightX = useTransform(scrollYProgress, [0.05, 0.45], [25, 0]);
   const cardsOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0.3, 1]);
 
-  // Dynamic proportional calculation linked to scroll progression
-  // Shifts smoothly from 50/50 to 60/40 proportional split
-  const userRatio = useTransform(scrollYProgress, [0.15, 0.75], [50, 60]);
+  // Dynamic proportional calculation linked to scroll progression (shifts 50/50 to 60/40)
+  const scrollUserRatio = useTransform(scrollYProgress, [0.15, 0.75], [50, 60]);
   const totalHouseholdExpense = 92000;
   
-  const userShareText = useTransform(userRatio, (r) => `₹${Math.round((totalHouseholdExpense * r) / 100).toLocaleString("en-IN")}`);
-  const partnerShareText = useTransform(userRatio, (r) => `₹${Math.round((totalHouseholdExpense * (100 - r)) / 100).toLocaleString("en-IN")}`);
-  const splitRatioLabel = useTransform(userRatio, (r) => `${Math.round(r)}% : ${Math.round(100 - r)}%`);
+  const scrollUserShareText = useTransform(scrollUserRatio, (r) => `₹${Math.round((totalHouseholdExpense * r) / 100).toLocaleString("en-IN")}`);
+  const scrollPartnerShareText = useTransform(scrollUserRatio, (r) => `₹${Math.round((totalHouseholdExpense * (100 - r)) / 100).toLocaleString("en-IN")}`);
+  const scrollSplitRatioLabel = useTransform(scrollUserRatio, (r) => `${Math.round(r)}% : ${Math.round(100 - r)}%`);
+
+  // Active values (manual override takes precedence if user taps a split preset)
+  const activeUserRatio = manualSplitRatio ?? 60;
+  const manualUserShare = Math.round((totalHouseholdExpense * activeUserRatio) / 100);
+  const manualPartnerShare = Math.round((totalHouseholdExpense * (100 - activeUserRatio)) / 100);
+
+  const handlePresetClick = (ratio: number) => {
+    setManualSplitRatio(ratio);
+    playTick(1.1);
+  };
 
   return (
     <section 
@@ -37,7 +48,7 @@ export function PersonalVsSharedSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Headline */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="mb-2 select-none">
             <span className="kh-handwritten text-[#EA580C] text-2xl sm:text-3xl font-bold -rotate-1 inline-block">
               Modern Indian Partnership
@@ -54,11 +65,39 @@ export function PersonalVsSharedSection() {
               Indian couples share rent, groceries, and school fees without surrendering individual financial autonomy. As you scroll, observe how the proportional split balances automatically while keeping private accounts strictly sealed.
             </p>
 
-            <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-[#516761]">
-              <span className="text-[11px] uppercase tracking-wider">Scroll down to synchronize the dual lenses</span>
-              <ArrowDown className="size-3 text-[#059669] animate-bounce" />
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold text-[#516761]">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#EADBCA] shadow-2xs">
+                <span className="text-[11px] uppercase tracking-wider">Dual Lens Convergence</span>
+                <ArrowDown className="size-3 text-[#059669] animate-bounce" />
+              </div>
+              <span className="text-[11px]">Tap split ratios to test live rebalancing</span>
             </div>
           </div>
+        </div>
+
+        {/* Proportional Split Controller Bar */}
+        <div className="flex flex-wrap items-center gap-2 mb-8 select-none">
+          <span className="text-xs font-bold text-[#516761] uppercase tracking-wider mr-1">Household Split Model:</span>
+          {[
+            { label: "50 : 50 Equal Split", ratio: 50 },
+            { label: "60 : 40 Proportional", ratio: 60 },
+            { label: "70 : 30 Dynamic Earner", ratio: 70 },
+          ].map((preset) => {
+            const isSelected = (manualSplitRatio ?? 60) === preset.ratio;
+            return (
+              <button
+                key={preset.ratio}
+                onClick={() => handlePresetClick(preset.ratio)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                  isSelected
+                    ? "bg-[#123630] text-white shadow-xs border border-[#123630]"
+                    : "bg-white text-[#516761] border border-[#EADBCA] hover:border-[#123630] hover:text-[#123630]"
+                }`}
+              >
+                {preset.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Dual Cards Container: Left Household View, Right Personal View */}
@@ -84,7 +123,7 @@ export function PersonalVsSharedSection() {
                 Shared obligations split equitably based on income proportion, eliminating monthly bill friction.
               </p>
 
-              {/* Shared Pool Total & Scroll-Linked Proportions */}
+              {/* Shared Pool Total & Proportions */}
               <div className="mt-5 p-4 rounded-2xl bg-[#FAF7F0] border border-[#EADBCA]/70">
                 <div className="flex justify-between items-center mb-1.5">
                   <span className="text-xs text-[#516761] font-bold">Total Shared Monthly Need</span>
@@ -93,22 +132,37 @@ export function PersonalVsSharedSection() {
 
                 <div className="pt-2 border-t border-[#EADBCA]/50 flex items-center justify-between text-xs">
                   <div>
-                    <span className="text-[#516761] block">Your Contribution</span>
-                    <motion.span className="font-serif font-bold text-sm sm:text-base text-[#EA580C] tabular-nums">
-                      {userShareText}
-                    </motion.span>
+                    <span className="text-[#516761] block font-medium">Your Contribution (60%)</span>
+                    <span className="font-serif font-bold text-sm sm:text-base text-[#EA580C] tabular-nums">
+                      {manualSplitRatio !== null ? `₹${manualUserShare.toLocaleString("en-IN")}` : <motion.span>{scrollUserShareText}</motion.span>}
+                    </span>
                   </div>
+
                   <div className="text-right">
-                    <span className="text-[#516761] block">Partner Contribution</span>
-                    <motion.span className="font-serif font-bold text-sm sm:text-base text-[#123630] tabular-nums">
-                      {partnerShareText}
-                    </motion.span>
+                    <span className="text-[#516761] block font-medium">Partner Contribution (40%)</span>
+                    <span className="font-serif font-bold text-sm sm:text-base text-[#123630] tabular-nums">
+                      {manualSplitRatio !== null ? `₹${manualPartnerShare.toLocaleString("en-IN")}` : <motion.span>{scrollPartnerShareText}</motion.span>}
+                    </span>
                   </div>
                 </div>
 
-                <div className="mt-2.5 flex items-center justify-between text-[11px] font-semibold text-[#059669]">
-                  <span>Dynamic Income Split:</span>
-                  <motion.span className="font-mono font-bold">{splitRatioLabel}</motion.span>
+                {/* Split visualization bar */}
+                <div className="mt-3 w-full h-2 rounded-full bg-[#EADBCA] overflow-hidden flex">
+                  <div 
+                    style={{ width: `${activeUserRatio}%` }}
+                    className="h-full bg-[#EA580C] transition-all duration-300"
+                  />
+                  <div 
+                    style={{ width: `${100 - activeUserRatio}%` }}
+                    className="h-full bg-[#123630] transition-all duration-300"
+                  />
+                </div>
+
+                <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-[#059669]">
+                  <span>Active Proportional Split:</span>
+                  <span className="font-mono font-bold">
+                    {manualSplitRatio !== null ? `${manualSplitRatio}% : ${100 - manualSplitRatio}%` : <motion.span>{scrollSplitRatioLabel}</motion.span>}
+                  </span>
                 </div>
               </div>
 
