@@ -121,12 +121,87 @@ routeShells.push({
       <nav aria-label="Quick Links">
         <h3>Explore Kubear</h3>
         <ul>
+          <li><a href="/product">Kubear Product Overview</a></li>
           <li><a href="/about">About Kuberos Innovations (Company & Technology)</a></li>
           <li><a href="/learn">Kubear Learn Knowledge Hub</a></li>
           <li><a href="/learn/tools">Interactive Financial Planning Tools</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms of Use</a></li>
         </ul>
+      </nav>
+    </main>
+  `,
+});
+
+// 2. PRODUCT PAGE (Full Feature Showcase, Screens, Web & Android links)
+routeShells.push({
+  route: "/product",
+  title: "Kubear Product | Clear, Connected Personal Finance",
+  description: "See what Kubear does: connect your income, bills, EMIs, savings, investments and life goals in one simple picture so you always know where you stand.",
+  schemaJson: {
+    "@context": "https://schema.org",
+    "@type": "ItemPage",
+    "name": "Kubear Product Overview",
+    "description": "Connected personal finance platform bringing together cashflow, wealth, emergency protection, goals, and household spending into one clear view.",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Kubear",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Android, Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kuberos Innovations Private Limited",
+        "url": "https://www.kuberos.in"
+      }
+    }
+  },
+  semanticHtml: `
+    <main itemscope itemtype="https://schema.org/ItemPage">
+      <h1>Kubear: Your Financial Life, All in One Place</h1>
+      <p class="lead">Most money apps only look backward at what you already spent. Kubear brings together your income, upcoming bills, EMIs, savings, investments, and life goals — so you always know where you stand today and what you can afford next.</p>
+      
+      <section>
+        <h2>01 · 10-Second Daily Check</h2>
+        <p>Start with what matters today. In just 10 seconds, see your available cash, your safe daily spending pace, and upcoming bills due in the next 5 days. Synchronizes with your actual payday, not arbitrary calendar months.</p>
+      </section>
+
+      <section>
+        <h2>02 · Connected Financial View</h2>
+        <p>See everything connected, not in silos. A calm living ledger that links your bank balances, active investments, and upcoming dues without switching apps. Instantly check your household emergency runway.</p>
+      </section>
+
+      <section>
+        <h2>03 · Speech & Natural Language Input</h2>
+        <p>Just speak or type. No spreadsheets, no uploading bank statements, and no sorting through 50 confusing expense categories. Tap the mic and say what you spent — review it on screen and confirm.</p>
+      </section>
+
+      <section>
+        <h2>The 5 Connected Areas</h2>
+        <ul>
+          <li><strong>Cash Flow:</strong> What you earn, what you spend, and upcoming bills.</li>
+          <li><strong>Wealth:</strong> Savings, mutual funds, and investments in one place.</li>
+          <li><strong>Protection:</strong> Emergency funds and insurances to keep you secure.</li>
+          <li><strong>Goals:</strong> See how today's spending affects the big things you're saving for.</li>
+          <li><strong>Family & Home:</strong> Manage shared household expenses without confusing personal money.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Available Platforms</h2>
+        <p>Kubear is live and available now on the Web and on Android via Google Play:</p>
+        <ul>
+          <li><a href="https://kubear.kuberos.in">Launch Kubear Web App</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=in.kuberos.kubear">Get Kubear on Google Play</a></li>
+        </ul>
+      </section>
+
+      <nav aria-label="Breadcrumb">
+        <a href="/">← Back to Home</a> · <a href="/about">About Kuberos Innovations</a> · <a href="/learn">Financial Knowledge Hub</a>
       </nav>
     </main>
   `,

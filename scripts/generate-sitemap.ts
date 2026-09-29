@@ -18,6 +18,7 @@ interface SitemapEntry {
 const entries: SitemapEntry[] = [
   // Core pages
   { path: "/", lastmod: today, changefreq: "weekly", priority: "1.0" },
+  { path: "/product", lastmod: today, changefreq: "weekly", priority: "0.95" },
   { path: "/about", lastmod: today, changefreq: "monthly", priority: "0.9" },
   { path: "/learn", lastmod: today, changefreq: "daily", priority: "0.9" },
   { path: "/learn/tools", lastmod: today, changefreq: "weekly", priority: "0.9" },
