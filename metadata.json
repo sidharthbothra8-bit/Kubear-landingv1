@@ -1,6 +1,6 @@
 {
   "name": "Kubear",
-  "description": "Kubear understands your complete financial life and tells you what you can afford, what to do next, and whether you’re on track for your goals.",
+  "description": "Kubear connects your income, bills, EMIs, savings, investments and goals in one clear view so you always know where you stand and what you can afford.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
