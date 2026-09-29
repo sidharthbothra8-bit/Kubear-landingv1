@@ -233,7 +233,8 @@ routeShells.push({
       "founder": {
         "@type": "Person",
         "name": "Sidharth Bothra",
-        "jobTitle": "Founder & Director"
+        "jobTitle": "Founder & Director",
+        "sameAs": "https://www.linkedin.com/in/sidharthbothra/"
       },
       "contactPoint": [
         {
@@ -277,7 +278,7 @@ routeShells.push({
 
       <section>
         <h2>Leadership & Corporate Directory</h2>
-        <p><strong>Founder & Director:</strong> Sidharth Bothra</p>
+        <p><strong>Founder & Director:</strong> Sidharth Bothra (<a href="https://www.linkedin.com/in/sidharthbothra/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>)</p>
         <p><strong>Registered Office:</strong> Surat, Gujarat, India</p>
         <p><strong>Official Corporate Domain:</strong> <a href="https://www.kuberos.in">https://www.kuberos.in</a></p>
         <p><strong>Contact Emails:</strong> hello@kuberos.in (Corporate) | support@kuberos.in (Support) | grievance@kuberos.in (DPDP Grievance Officer)</p>

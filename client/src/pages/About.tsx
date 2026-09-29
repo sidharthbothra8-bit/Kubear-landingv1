@@ -6,7 +6,8 @@ import {
   Lock, 
   MapPin, 
   Mail, 
-  ArrowRight
+  ArrowRight,
+  ArrowUpRight
 } from "lucide-react";
 import { Link } from "wouter";
 import { SiteLayout } from "@/components/SiteChrome";
@@ -183,7 +184,22 @@ export default function About() {
                       SB
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-[#0E241E]">Sidharth Bothra</h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-xl font-bold text-[#0E241E]">Sidharth Bothra</h3>
+                        <a
+                          href="https://www.linkedin.com/in/sidharthbothra/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 text-[#0A66C2] text-xs font-semibold transition-colors"
+                          aria-label="Sidharth Bothra on LinkedIn"
+                        >
+                          <svg className="size-3 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0-.02-3.28 1.64 1.64 0 0 0 .02 3.28m1.4 9.74v-8.37H5.06v8.37h2.8z" />
+                          </svg>
+                          <span>LinkedIn</span>
+                          <ArrowUpRight className="size-2.5 text-[#0A66C2]/70" />
+                        </a>
+                      </div>
                       <p className="text-xs font-mono text-[#EA580C] uppercase tracking-wider font-semibold mt-0.5">
                         Founder &amp; Director
                       </p>

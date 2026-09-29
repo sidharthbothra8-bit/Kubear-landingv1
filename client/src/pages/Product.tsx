@@ -174,11 +174,11 @@ export default function Product() {
               <a
                 href={PLAY_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-[#F3EADA] border border-[#E8DEC8] text-[#0E241E] font-bold text-sm sm:text-base shadow-xs hover:shadow-sm transition-all duration-150"
               >
                 <Smartphone className="size-4 text-[#EA580C]" />
-                <span>Get on Google Play</span>
+                <span>Get Kubear on Google Play</span>
                 <ArrowUpRight className="size-4 text-slate-400" />
               </a>
             </div>
@@ -584,11 +584,11 @@ export default function Product() {
                 <a
                   href={PLAY_URL}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-[#F3EADA] border border-[#E8DEC8] text-[#0E241E] font-bold text-sm shadow-xs transition-colors whitespace-nowrap"
                 >
                   <Smartphone className="size-4 text-[#EA580C]" />
-                  <span>Google Play</span>
+                  <span>Get Kubear on Google Play</span>
                   <ArrowUpRight className="size-4 text-slate-400" />
                 </a>
               </div>

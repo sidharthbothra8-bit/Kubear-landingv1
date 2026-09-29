@@ -6,7 +6,7 @@ import { MotionObserver } from "@/components/MotionObserver";
 import { KubearLogo } from "@/components/KubearLogo";
 
 const APP_URL = "https://kubear.kuberos.in";
-const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear&pcampaignid=web_share";
+const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubear";
 
 const mobileNavItems = [
   { href: "/product", label: "Product", icon: Layers },

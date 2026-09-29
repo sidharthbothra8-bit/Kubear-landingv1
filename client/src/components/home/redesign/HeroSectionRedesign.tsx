@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { HeroClarityArtwork } from "./HeroClarityArtwork";
 
 const APP_URL = "https://kubear.kuberos.in";
@@ -49,15 +50,25 @@ export function HeroSectionRedesign() {
 
             {/* CTA Button & Trust Meta */}
             <div className="flex flex-col items-start gap-3 sm:gap-3.5">
-              <a
-                href={APP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#0F172A] hover:bg-slate-900 text-white font-semibold text-xs sm:text-sm md:text-xs lg:text-[15px] shadow-[0_12px_24px_-6px_rgba(15,23,42,0.28)] hover:shadow-[0_16px_32px_-6px_rgba(15,23,42,0.36)] transition-all duration-200 transform hover:-translate-y-0.5 active:scale-[0.98]"
-              >
-                <span>Get started</span>
-                <span className="text-base leading-none transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#0F172A] hover:bg-slate-900 text-white font-semibold text-xs sm:text-sm md:text-xs lg:text-[15px] shadow-[0_12px_24px_-6px_rgba(15,23,42,0.28)] hover:shadow-[0_16px_32px_-6px_rgba(15,23,42,0.36)] transition-all duration-200 transform hover:-translate-y-0.5 active:scale-[0.98]"
+                >
+                  <span>Get started</span>
+                  <span className="text-base leading-none transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </a>
+
+                <Link
+                  href="/product"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-white hover:bg-[#FAF7F0] text-[#123630] border border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] font-semibold text-xs sm:text-sm md:text-xs lg:text-[15px] transition-all duration-200 shadow-2xs"
+                >
+                  <span>Explore Product</span>
+                  <span className="text-xs leading-none">↗</span>
+                </Link>
+              </div>
 
               {/* Trust Indicators with subtle visual refinement */}
               <div className="text-slate-500 text-[11px] sm:text-xs lg:text-[13px] font-medium tracking-normal flex flex-wrap items-center gap-2 pt-0.5">
