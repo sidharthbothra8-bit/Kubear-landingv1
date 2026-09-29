@@ -1,5 +1,5 @@
 /* Money Map: a floating product guide that gives every route a clear name, active position and thumb-ready app handoff. */
-import { ArrowRight, ArrowUpRight, BookOpen, Building2, ChevronRight, Compass, Home as HomeIcon, Instagram, Layers, Mail, Menu, Sparkles, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Building2, ChevronRight, Home as HomeIcon, Instagram, Layers, Mail, Menu, Sparkles, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { MotionObserver } from "@/components/MotionObserver";
@@ -10,7 +10,6 @@ const PLAY_URL = "https://play.google.com/store/apps/details?id=in.kuberos.kubea
 
 const mobileNavItems = [
   { href: "/product", label: "Product", icon: Layers },
-  { href: "/#plans-change", label: "How it works", icon: Compass },
   { href: "/learn", label: "Learn & Tools", icon: BookOpen },
   { href: "/about", label: "About Us", icon: Building2 },
 ];
@@ -90,15 +89,6 @@ export function Header({ dark = false }: { dark?: boolean }) {
               <span>Product</span>
             </Link>
 
-            {/* How it works Pill */}
-            <a
-              href="/#plans-change"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] lg:text-[14px] font-semibold border bg-[#FFFDF8] text-[#123630] border-[rgba(18,54,48,0.18)] hover:border-[rgba(18,54,48,0.35)] hover:bg-white transition-all duration-150"
-            >
-              <Compass className="size-3.5 text-[#C96632]" />
-              <span>How it works</span>
-            </a>
-
             {/* Learn & Tools Pill */}
             <Link
               href="/learn"
@@ -165,17 +155,6 @@ export function Header({ dark = false }: { dark?: boolean }) {
                 </span>
                 <ChevronRight className="size-4 text-slate-400" />
               </Link>
-              <a
-                href="/#plans-change"
-                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="flex items-center gap-2">
-                  <Compass className="size-4 text-[#C96632]" />
-                  How it works
-                </span>
-                <ChevronRight className="size-4 text-slate-400" />
-              </a>
               <Link
                 href="/learn"
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-semibold text-[#123630] hover:bg-[rgba(18,54,48,0.05)]"
@@ -217,13 +196,13 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
 
   return (
     <nav
-      className="sm:hidden fixed bottom-3 left-4 right-4 z-50 pointer-events-auto"
+      className="sm:hidden fixed bottom-3 left-3 right-3 z-50 pointer-events-auto"
       aria-label="Mobile Navigation"
     >
-      <div className={`max-w-xs mx-auto rounded-2xl p-1.5 flex items-center justify-between gap-1 ${
+      <div className={`w-full max-w-[420px] mx-auto rounded-2xl p-1.5 flex items-center justify-between gap-1 shadow-lg backdrop-blur-md ${
         dark
-          ? "bg-[#0F1412] shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-white/10"
-          : "bg-[#FFFDF8] shadow-[0_10px_30px_rgba(18,54,48,0.12)] border border-[#123630]/10"
+          ? "bg-[#0F1412]/95 shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-white/10"
+          : "bg-[#FFFDF8]/95 shadow-[0_10px_30px_rgba(18,54,48,0.12)] border border-[#123630]/10"
       }`}>
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
@@ -232,7 +211,7 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+              className={`flex-1 min-w-0 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all ${
                 active
                   ? dark
                     ? "bg-white text-stone-950 shadow-xs"
@@ -242,8 +221,10 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
                   : "text-[#24453E] hover:bg-[#123630]/5"
               }`}
             >
-              <Icon className="size-3.5 shrink-0" />
-              <span>{item.label}</span>
+              <Icon className="size-4 shrink-0 mb-0.5" />
+              <span className="text-[10px] font-semibold tracking-tight leading-none text-center truncate max-w-full">
+                {item.label}
+              </span>
             </Link>
           );
         })}
@@ -251,10 +232,12 @@ export function MobileBottomNav({ dark = false }: { dark?: boolean }) {
           href={APP_URL}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex items-center justify-center gap-1 py-2 px-3 rounded-xl text-xs font-black bg-[#FF5C2B] text-white shadow-[0_2px_0_#9F3017]"
+          className="flex-1 min-w-0 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-white bg-[#FF5C2B] hover:bg-[#E54D1F] shadow-[0_2px_0_#9F3017] transition-transform active:scale-95"
         >
-          <span>App</span>
-          <ArrowUpRight className="size-3" />
+          <div className="flex items-center gap-0.5">
+            <span className="text-[10.5px] font-black tracking-tight leading-none">App</span>
+            <ArrowUpRight className="size-3 shrink-0" />
+          </div>
         </a>
       </div>
     </nav>
